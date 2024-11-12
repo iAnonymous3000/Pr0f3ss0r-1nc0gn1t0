@@ -1,0 +1,257 @@
+# Basic Site Configuration
+baseURL: 'http://localhost:1313'  # Change to your domain in production
+languageCode: 'en-us'
+title: 'Pr0f3ss0r 1nc0gn1t0'
+theme: 'hugo-WonderMod'
+enableGitInfo: true
+enableRobotsTXT: true
+enableEmoji: true
+paginate: 10
+summaryLength: 70
+
+# Minification for Production
+minify:
+  disableXML: false
+  minifyOutput: true
+  tdewolff:
+    html:
+      keepWhitespace: false
+    css:
+      keepCSS2: false
+    js:
+      keepVarNames: false
+    json:
+      keepNumbers: false
+    svg:
+      keepComments: false
+
+# Primary Parameters
+params:
+  env: development  # Change to 'production' for deployment
+  author: "Pr0f3ss0r 1nc0gn1t0"
+
+  label:
+    text: "Pr0f3ss0r 1nc0gn1t0"
+    icon: "/images/favicon/favicon-32x32.png"
+  
+  # Theme Settings
+  defaultTheme: dark
+  disableThemeToggle: false
+  ShowReadingTime: true
+  ShowWordCount: true
+  ShowBreadCrumbs: true
+  ShowToc: true
+  ShowPostNavLinks: true
+  ShowCodeCopyButtons: true
+  
+  # Enhanced Search Configuration
+  search:
+    enable: true
+    type: "client"
+    preload: true
+    trigger: "focus"
+    resultContentWordCount: 240
+    fuseOptions:
+      threshold: 0.3
+      minMatchCharLength: 3
+      keys: ["title", "summary", "content"]
+
+  # Security Headers (Cloudflare Compatible)
+  securityHeaders:
+    contentSecurityPolicy: >-
+      default-src 'self';
+      script-src 'self' https://static.cloudflareinsights.com;
+      style-src 'self';
+      img-src 'self' data: https://*.cloudfront.net;
+      font-src 'self' data:;
+      connect-src 'self' https://cloudflareinsights.com;
+      frame-ancestors 'none';
+      form-action 'self';
+      base-uri 'self';
+      upgrade-insecure-requests;
+    xFrameOptions: "DENY"
+    xContentTypeOptions: "nosniff"
+    referrerPolicy: "strict-origin-when-cross-origin"
+    permissionsPolicy: >-
+      accelerometer=(),
+      camera=(),
+      geolocation=(),
+      gyroscope=(),
+      magnetometer=(),
+      microphone=(),
+      payment=(),
+      usb=()
+    strictTransportSecurity: "max-age=31536000; includeSubDomains"
+    crossOriginEmbedderPolicy: "require-corp"
+    crossOriginOpenerPolicy: "same-origin"
+    crossOriginResourcePolicy: "same-origin"
+
+  # Privacy Settings
+  privacy:
+    disableFingerprinting: true
+    cloudflare:
+      enable: true
+    googleAnalytics:
+      disable: true
+    instagram:
+      disable: true
+    youtube:
+      disable: false
+      privacyEnhanced: true
+    twitter:
+      disable: false
+      enableDNT: true
+    disqus:
+      disable: true
+    vimeo:
+      disable: true
+
+  # Asset Configuration
+  assets:
+    disableFingerprinting: false
+    favicon: "/favicon.ico"
+    favicon16x16: "/favicon-16x16.png"
+    favicon32x32: "/favicon-32x32.png"
+    apple_touch_icon: "/apple-touch-icon.png"
+    safari_pinned_tab: "/safari-pinned-tab.svg"
+    imageOptimization:
+      enable: true
+      formats: ["webp", "avif"]
+      quality: 85
+      stripMetadata: true
+      responsiveSizes: [320, 640, 768, 1024, 1366]
+    lazyLoading: true
+
+  # Homepage Configuration
+  profileMode:
+    enabled: true
+    title: "Pr0f3ss0r 1nc0gn1t0"
+    subtitle: "Privacy Researcher & Security Strategist"
+    imageUrl: "/images/profile.webp"  # Add your profile image
+    imageWidth: 120
+    imageHeight: 120
+    buttons:
+      - name: Blog
+        url: "/blog"
+      - name: Projects
+        url: "/projects"
+
+  # Social Icons (Modify with your links)
+  socialIcons:
+    - name: github
+      url: "https://github.com/yourusername"
+      params:
+        rel: "noopener noreferrer"
+        target: "_blank"
+    - name: mastodon
+      url: "https://mastodon.social/@yourusername"
+      params:
+        rel: "me noopener noreferrer"
+        target: "_blank"
+    - name: rss
+      url: "/index.xml"
+      params:
+        rel: "alternate"
+        type: "application/rss+xml"
+
+  # Cloudflare Integration
+  cloudflare:
+    analytics: true
+    cacheTTL: "4h"
+    alwaysUseHTTPS: true
+    minify:
+      html: true
+      css: true
+      js: true
+    cacheControlHeaders:
+      - pattern: "/*.(jpg|jpeg|gif|png|ico|cur|gz|svg|webp|avif)"
+        headers:
+          Cache-Control: "public, max-age=31536000, immutable"
+          X-Content-Type-Options: "nosniff"
+      - pattern: "/*.(css|js)"
+        headers:
+          Cache-Control: "public, max-age=86400, must-revalidate"
+          X-Content-Type-Options: "nosniff"
+
+# Navigation Menu
+menu:
+  main:
+    - identifier: blog
+      name: Blog
+      url: /blog/
+      weight: 10
+    - identifier: projects
+      name: Projects
+      url: /projects/
+      weight: 20
+    - identifier: research
+      name: Research
+      url: /research/
+      weight: 30
+    - identifier: about
+      name: About
+      url: /about/
+      weight: 40
+
+  footer:
+    - identifier: privacy
+      name: Privacy Policy
+      url: /privacy/
+      weight: 10
+    - identifier: pgp
+      name: PGP Key
+      url: /pgp.asc
+      weight: 20
+
+# Content Organization
+taxonomies:
+  category: categories
+  tag: tags
+  series: series
+
+# Enhanced Syntax Highlighting
+markup:
+  highlight:
+    style: dracula
+    lineNos: false
+    noClasses: true
+    codeFences: true
+    guessSyntax: true
+    tabWidth: 4
+    
+  # Markdown Rendering
+  goldmark:
+    extensions:
+      definitionList: true
+      footnote: true
+      linkify: true
+      strikethrough: true
+      table: true
+      taskList: true
+    parser:
+      attribute: true
+      autoHeadingID: true
+    renderer:
+      hardWraps: false
+      unsafe: false
+      xhtml: false
+
+# Output Settings
+outputs:
+  home:
+    - HTML
+    - RSS
+    - JSON
+  section:
+    - HTML
+    - RSS
+
+# Build Settings
+build:
+  writeStats: true
+
+# Sitemap Configuration
+sitemap:
+  changefreq: "weekly"
+  filename: "sitemap.xml"
+  priority: 0.5
