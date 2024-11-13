@@ -28,7 +28,7 @@ In our rapidly evolving technological landscape, inherited solutions and "best p
 
 ## The First Principles Method
 
-![Framework](https://github.com/user-attachments/assets/fb03f59b-de83-4805-8fc4-e4bf8ecd571c)
+![Framework](https://github.com/user-attachments/assets/52406d03-a2a2-444d-bb31-3d2f94a88264)
 
 
 ### 1. Question Everything Systematically
@@ -53,7 +53,7 @@ Analysis Framework:
 
 ### 3. Build Up from Fundamentals
 
-![Validation Process](https://github.com/user-attachments/assets/7d6e20ef-ff78-4dd0-8fe6-a3ca5e552491)
+![Validation Process](https://github.com/user-attachments/assets/390bd7ee-a58e-4511-8052-9dd5d9ca5c37)
 
 - **Start with Proven Truths**: Base your reasoning on established facts and mathematical certainties
 - **Add Only What You Can Verify**: Incorporate new elements only when supported by evidence
@@ -98,7 +98,8 @@ Analysis Framework:
 
 ### 1. The Socratic Method
 
-![Socratic Method Process](https://github.com/user-attachments/assets/a521f151-60e7-46ee-b2ea-aa67c7f077c2)
+![Socratic Method Process](https://github.com/user-attachments/assets/8dbbab7b-c911-448e-9cf7-c7bb22791a53)
+
 
 - **Question Assumptions**: Challenge every inherited belief
 - **Seek Evidence**: Gather data that supports or refutes each position
@@ -107,13 +108,9 @@ Analysis Framework:
 
 ### 2. Decision Trees
 
-![Decision Tree](https://github.com/user-attachments/assets/8d81d5bd-e91a-455d-aaf4-7452322b6dcb)
+![Decision Tree](https://github.com/user-attachments/assets/fca96e43-dc4f-4da9-933b-87dcfb8a1e12)
 
 
-Is this belief/assumption necessary?
-├── Yes → What evidence supports it?
-│       └── How can we verify it empirically?
-└── No → Eliminate it and reassess the system
 
 ### 3. First Principles Matrix
 
