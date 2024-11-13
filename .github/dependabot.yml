@@ -7,8 +7,7 @@ updates:
   - package-ecosystem: "github-actions"
     directory: "/"
     schedule:
-      interval: "weekly"
-      day: "monday"
+      interval: "daily"
       time: "09:00"
       timezone: "UTC"
     labels:
@@ -16,19 +15,17 @@ updates:
       - "dependencies"
     commit-message:
       prefix: "ci"
-      prefix-development: "ci"
       include: "scope"
     open-pull-requests-limit: 10
     pull-request-branch-name:
       separator: "-"
     target-branch: "main"
 
-  # Hugo Modules updates (if you use them)
+  # Hugo Modules updates
   - package-ecosystem: "gomod"
     directory: "/"
     schedule:
-      interval: "weekly"
-      day: "monday"
+      interval: "daily"
       time: "09:00"
       timezone: "UTC"
     labels:
@@ -36,22 +33,17 @@ updates:
       - "dependencies"
     commit-message:
       prefix: "hugo"
-      prefix-development: "hugo"
       include: "scope"
-    ignore:
-      - dependency-name: "*"
-        update-types: ["version-update:semver-patch"]
     open-pull-requests-limit: 10
     pull-request-branch-name:
       separator: "-"
     target-branch: "main"
 
-  # NPM dependencies (if you add any JavaScript packages)
+  # NPM dependencies
   - package-ecosystem: "npm"
     directory: "/"
     schedule:
-      interval: "weekly"
-      day: "monday"
+      interval: "daily"
       time: "09:00"
       timezone: "UTC"
     labels:
@@ -59,22 +51,17 @@ updates:
       - "dependencies"
     commit-message:
       prefix: "npm"
-      prefix-development: "npm"
       include: "scope"
-    ignore:
-      - dependency-name: "*"
-        update-types: ["version-update:semver-patch"]
     open-pull-requests-limit: 10
     pull-request-branch-name:
       separator: "-"
     target-branch: "main"
 
-  # Docker updates (if you use containers)
+  # Docker updates
   - package-ecosystem: "docker"
     directory: "/"
     schedule:
-      interval: "weekly"
-      day: "monday"
+      interval: "daily"
       time: "09:00"
       timezone: "UTC"
     labels:
@@ -82,7 +69,6 @@ updates:
       - "dependencies"
     commit-message:
       prefix: "docker"
-      prefix-development: "docker"
       include: "scope"
     open-pull-requests-limit: 10
     pull-request-branch-name:
