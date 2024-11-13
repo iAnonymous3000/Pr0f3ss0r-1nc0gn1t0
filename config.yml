@@ -8,12 +8,12 @@ enableGitInfo: true
 enableRobotsTXT: true
 enableEmoji: true
 
-# Updated pagination
+# Updated Pagination
 pagination:
   pagerSize: 10
 summaryLength: 70
 
-# Production settings
+# Production Settings
 buildDrafts: false
 buildExpired: false
 buildFuture: false
@@ -37,7 +37,7 @@ params:
   author: "Sooraj Sathyanarayanan"
   description: "Privacy Researcher & Security Strategist | FIDE Arena Grand Master | Chess-Inspired Security Thinking"
   keywords: [Privacy, Security, Chess, Research, FIDE]
-
+  
   # Site Label
   label:
     text: "Pr0f3ss0r 1nc0gn1t0"
@@ -50,13 +50,13 @@ params:
   # Theme Settings
   defaultTheme: dark
   disableThemeToggle: false
-  ShowReadingTime: true
-  ShowWordCount: true
-  ShowBreadCrumbs: true
-  ShowToc: true
-  ShowPostNavLinks: true
-  ShowCodeCopyButtons: true
-  ShowFullTextinRSS: true
+  showReadingTime: true
+  showWordCount: true
+  showBreadCrumbs: true
+  showToc: true
+  showPostNavLinks: true
+  showCodeCopyButtons: true
+  showFullTextInRSS: true
   
   # Social Icons Configuration
   socialIcons:
@@ -77,8 +77,7 @@ params:
       url: "/index.xml"
       title: "RSS"
 
-# Search Configuration
-params:
+  # Search Configuration
   search:
     enable: true
     type: "client"
@@ -99,45 +98,7 @@ params:
       threshold: 0.3
       minMatchCharLength: 3
       keys: ["title", "permalink", "summary", "content"]
-
-outputs:
-  home:
-    - HTML
-    - RSS
-    - JSON  # Important for search functionality
-
-  # Asset Configuration for Production
-  assets:
-    disableFingerprinting: false
-    disableHLJS: true
-    favicon: "/images/favicon/favicon.ico"
-    favicon16x16: "/images/favicon/favicon-16x16.png"
-    favicon32x32: "/images/favicon/favicon-32x32.png"
-    apple_touch_icon: "/images/favicon/apple-touch-icon.png"
-    android_chrome_192: "/images/favicon/android-chrome-192x192.png"
-    android_chrome_512: "/images/favicon/android-chrome-512x512.png"
-    webmanifest: "/images/favicon/site.webmanifest"
-    imageOptimization:
-      enable: true
-      formats: ["webp", "avif"]
-      quality: 85
-      stripMetadata: true
-      responsiveSizes: [640, 768, 1024, 1366, 1920]
-    lazyLoading: true
-
-  # Profile Mode Configuration
-  profileMode:
-    enabled: true
-    title: "Sooraj Sathyanarayanan"
-    subtitle: "Privacy Researcher & Security Strategist | FIDE Arena Grand Master | Chess-Inspired Security Thinking"
-    imageUrl: "/images/profile/avatar.jpg"
-    imageWidth: 120
-    imageHeight: 120
-    imageTitle: "Sooraj Sathyanarayanan"
-    buttons:
-      - name: "Portfolio"
-        url: "https://linksta.cc/@ianonymous3000"
-
+  
   # Privacy Settings
   privacy:
     disqus:
@@ -206,7 +167,7 @@ outputs:
   home:
     - HTML
     - RSS
-    - JSON
+    - JSON  # Important for search functionality
   section:
     - HTML
     - RSS
@@ -217,7 +178,7 @@ outputs:
 # Output Formats
 outputFormats:
   RSS:
-    mediatype: "application/rss+xml"
+    mediaType: "application/rss+xml"
     baseName: "index"
 
 # Markdown Rendering
@@ -251,6 +212,38 @@ build:
   writeStats: false
   cacheDir: tmp/hugo_cache
 
+# Asset Configuration for Production
+assets:
+  disableFingerprinting: false
+  disableHLJS: true
+  favicon: "/images/favicon/favicon.ico"
+  favicon16x16: "/images/favicon/favicon-16x16.png"
+  favicon32x32: "/images/favicon/favicon-32x32.png"
+  appleTouchIcon: "/images/favicon/apple-touch-icon.png"
+  androidChrome192: "/images/favicon/android-chrome-192x192.png"
+  androidChrome512: "/images/favicon/android-chrome-512x512.png"
+  webmanifest: "/images/favicon/site.webmanifest"
+  imageOptimization:
+    enable: true
+    formats: ["webp", "avif"]
+    quality: 85
+    stripMetadata: true
+    responsiveSizes: [640, 768, 1024, 1366, 1920]
+  lazyLoading: true
+
+# Profile Mode Configuration
+profileMode:
+  enabled: true
+  title: "Sooraj Sathyanarayanan"
+  subtitle: "Privacy Researcher & Security Strategist | FIDE Arena Grand Master | Chess-Inspired Security Thinking"
+  imageUrl: "/images/profile/avatar.jpg"
+  imageWidth: 120
+  imageHeight: 120
+  imageTitle: "Sooraj Sathyanarayanan"
+  buttons:
+    - name: "Portfolio"
+      url: "https://linksta.cc/@ianonymous3000"
+
 # Server Security Headers for Production
 server:
   headers:
@@ -260,5 +253,5 @@ server:
         X-Content-Type-Options: "nosniff"
         Referrer-Policy: "strict-origin-when-cross-origin"
         Strict-Transport-Security: "max-age=31536000; includeSubDomains"
-        Content-Security-Policy: "default-src 'self'; img-src 'self' data: https:; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline';"
+        Content-Security-Policy: "default-src 'self'; img-src 'self' data: https:; script-src 'self'; style-src 'self';"
         Permissions-Policy: "camera=(), microphone=(), geolocation=()"
