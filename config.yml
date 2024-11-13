@@ -121,6 +121,19 @@ params:
     Text: "Suggest Changes"
     appendFilePath: true
 
+  # Profile Mode Configuration
+  profileMode:
+    enabled: true
+    title: "Sooraj Sathyanarayanan"
+    subtitle: "Privacy Researcher & Security Strategist | FIDE Arena Grand Master | Chess-Inspired Security Thinking"
+    imageUrl: "/images/profile/avatar.jpg"
+    imageWidth: 120
+    imageHeight: 120
+    imageTitle: "Sooraj Sathyanarayanan"
+    buttons:
+      - name: "Portfolio"
+        url: "https://linksta.cc/@ianonymous3000"
+
 # Navigation Menu
 menu:
   main:
@@ -230,19 +243,6 @@ assets:
     stripMetadata: true
     responsiveSizes: [640, 768, 1024, 1366, 1920]
   lazyLoading: true
-
-# Profile Mode Configuration
-profileMode:
-  enabled: true
-  title: "Sooraj Sathyanarayanan"
-  subtitle: "Privacy Researcher & Security Strategist | FIDE Arena Grand Master | Chess-Inspired Security Thinking"
-  imageUrl: "/images/profile/avatar.jpg"
-  imageWidth: 120
-  imageHeight: 120
-  imageTitle: "Sooraj Sathyanarayanan"
-  buttons:
-    - name: "Portfolio"
-      url: "https://linksta.cc/@ianonymous3000"
 
 # Server Security Headers for Production
 server:
