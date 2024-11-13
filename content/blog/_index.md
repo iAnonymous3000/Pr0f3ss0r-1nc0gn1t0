@@ -1,6 +1,9 @@
 ---
 title: "Blog"
 description: "Insights on Privacy, Security, and Strategic Thinking"
+params:
+  feedIcon: true
+  feedURL: /blog/index.xml
 ---
 
 ## What to Expect
