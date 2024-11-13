@@ -137,10 +137,6 @@ outputs:
     buttons:
       - name: "Portfolio"
         url: "https://linksta.cc/@ianonymous3000"
-      - name: "Research"
-        url: "/research"
-      - name: "Chess"
-        url: "/chess"
 
   # Privacy Settings
   privacy:
