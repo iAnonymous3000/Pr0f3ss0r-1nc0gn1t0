@@ -11,7 +11,7 @@ TocOpen: true
 disableShare: true
 ---
 
-
+![Sooraj Sathyanarayanan presenting at a technical session](/images/about_header.jpg)
 
 👋 Hi there! I'm a cybersecurity and privacy researcher with over 3 years of comprehensive experience across security domains. Currently pursuing my Master's in Cybersecurity at Northeastern University (expected graduation: December 2024), I combine hands-on technical expertise with a passion for building privacy-respecting solutions.
 
