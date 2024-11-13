@@ -1,39 +1,52 @@
-# Basic Site Configuration
-baseURL: 'http://localhost:1313'  # Change to your domain in production
+# Base Configuration
+baseURL: 'https://profincognito.me'  # Updated to custom domain
 languageCode: 'en-us'
-title: 'Pr0f3ss0r 1nc0gn1t0'
+title: 'Sooraj Sathyanarayanan'
 theme: 'hugo-WonderMod'
+copyright: '[CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/)'
 enableGitInfo: true
 enableRobotsTXT: true
 enableEmoji: true
-paginate: 10
+
+# Updated pagination
+pagination:
+  pagerSize: 10
 summaryLength: 70
 
-# Minification for Production
+# Production settings
+buildDrafts: false
+buildExpired: false
+buildFuture: false
+watch: false
+
+# Minification Configuration - enabled for production
 minify:
-  disableXML: false
+  disableXML: true
   minifyOutput: true
   tdewolff:
     html:
       keepWhitespace: false
     css:
-      keepCSS2: false
+      keepCSS2: true
     js:
-      keepVarNames: false
-    json:
-      keepNumbers: false
-    svg:
-      keepComments: false
+      keepVars: false
 
 # Primary Parameters
 params:
-  env: development  # Change to 'production' for deployment
-  author: "Pr0f3ss0r 1nc0gn1t0"
+  env: production
+  author: "Sooraj Sathyanarayanan"
+  description: "Privacy Researcher & Security Strategist | FIDE Arena Grand Master | Chess-Inspired Security Thinking"
+  keywords: [Privacy, Security, Chess, Research, FIDE]
 
+  # Site Label
   label:
     text: "Pr0f3ss0r 1nc0gn1t0"
     icon: "/images/favicon/favicon-32x32.png"
-  
+
+  # Repository Info
+  githubUsername: "iAnonymous3000"
+  githubRepo: "Pr0f3ss0r-1nc0gn1t0"
+
   # Theme Settings
   defaultTheme: dark
   disableThemeToggle: false
@@ -43,135 +56,113 @@ params:
   ShowToc: true
   ShowPostNavLinks: true
   ShowCodeCopyButtons: true
+  ShowFullTextinRSS: true
   
-  # Enhanced Search Configuration
+  # Social Icons Configuration
+  socialIcons:
+    - name: "github"
+      url: "https://github.com/iAnonymous3000"
+      title: "GitHub"
+    - name: "linkedin"
+      url: "https://www.linkedin.com/in/soorajsathyanarayanan"
+      title: "LinkedIn"
+    - name: "twitter"
+      url: "https://x.com/iAnonymous3000"
+      title: "Twitter"
+    - name: "mastodon"
+      url: "https://mastodon.social/@ianonymous3000"
+      title: "Mastodon"
+      rel: "me"
+    - name: "rss"
+      url: "/index.xml"
+      title: "RSS"
+
+# Search Configuration
+params:
   search:
     enable: true
     type: "client"
+    contentLength: 4000
+    placeholder: "Search articles and resources..."
+    maxResults: 10
+    minMatch: 0
+    highlightTag: "em"
+    noResultsFound: "No results found"
     preload: true
     trigger: "focus"
     resultContentWordCount: 240
-    fuseOptions:
+    fuseOpts:
+      isCaseSensitive: false
+      shouldSort: true
+      location: 0
+      distance: 1000
       threshold: 0.3
       minMatchCharLength: 3
-      keys: ["title", "summary", "content"]
+      keys: ["title", "permalink", "summary", "content"]
 
-  # Security Headers (Cloudflare Compatible)
-  securityHeaders:
-    contentSecurityPolicy: >-
-      default-src 'self';
-      script-src 'self' https://static.cloudflareinsights.com;
-      style-src 'self';
-      img-src 'self' data: https://*.cloudfront.net;
-      font-src 'self' data:;
-      connect-src 'self' https://cloudflareinsights.com;
-      frame-ancestors 'none';
-      form-action 'self';
-      base-uri 'self';
-      upgrade-insecure-requests;
-    xFrameOptions: "DENY"
-    xContentTypeOptions: "nosniff"
-    referrerPolicy: "strict-origin-when-cross-origin"
-    permissionsPolicy: >-
-      accelerometer=(),
-      camera=(),
-      geolocation=(),
-      gyroscope=(),
-      magnetometer=(),
-      microphone=(),
-      payment=(),
-      usb=()
-    strictTransportSecurity: "max-age=31536000; includeSubDomains"
-    crossOriginEmbedderPolicy: "require-corp"
-    crossOriginOpenerPolicy: "same-origin"
-    crossOriginResourcePolicy: "same-origin"
+outputs:
+  home:
+    - HTML
+    - RSS
+    - JSON  # Important for search functionality
 
-  # Privacy Settings
-  privacy:
-    disableFingerprinting: true
-    cloudflare:
-      enable: true
-    googleAnalytics:
-      disable: true
-    instagram:
-      disable: true
-    youtube:
-      disable: false
-      privacyEnhanced: true
-    twitter:
-      disable: false
-      enableDNT: true
-    disqus:
-      disable: true
-    vimeo:
-      disable: true
-
-  # Asset Configuration
+  # Asset Configuration for Production
   assets:
     disableFingerprinting: false
-    favicon: "/favicon.ico"
-    favicon16x16: "/favicon-16x16.png"
-    favicon32x32: "/favicon-32x32.png"
-    apple_touch_icon: "/apple-touch-icon.png"
-    safari_pinned_tab: "/safari-pinned-tab.svg"
+    disableHLJS: true
+    favicon: "/images/favicon/favicon.ico"
+    favicon16x16: "/images/favicon/favicon-16x16.png"
+    favicon32x32: "/images/favicon/favicon-32x32.png"
+    apple_touch_icon: "/images/favicon/apple-touch-icon.png"
+    android_chrome_192: "/images/favicon/android-chrome-192x192.png"
+    android_chrome_512: "/images/favicon/android-chrome-512x512.png"
+    webmanifest: "/images/favicon/site.webmanifest"
     imageOptimization:
       enable: true
       formats: ["webp", "avif"]
       quality: 85
       stripMetadata: true
-      responsiveSizes: [320, 640, 768, 1024, 1366]
+      responsiveSizes: [640, 768, 1024, 1366, 1920]
     lazyLoading: true
 
-  # Homepage Configuration
+  # Profile Mode Configuration
   profileMode:
     enabled: true
-    title: "Pr0f3ss0r 1nc0gn1t0"
-    subtitle: "Privacy Researcher & Security Strategist"
-    imageUrl: "/images/profile.webp"  # Add your profile image
+    title: "Sooraj Sathyanarayanan"
+    subtitle: "Privacy Researcher & Security Strategist | FIDE Arena Grand Master | Chess-Inspired Security Thinking"
+    imageUrl: "/images/profile/avatar.jpg"
     imageWidth: 120
     imageHeight: 120
+    imageTitle: "Sooraj Sathyanarayanan"
     buttons:
-      - name: Blog
-        url: "/blog"
-      - name: Projects
-        url: "/projects"
+      - name: "Portfolio"
+        url: "https://linksta.cc/@ianonymous3000"
+      - name: "Research"
+        url: "/research"
+      - name: "Chess"
+        url: "/chess"
 
-  # Social Icons (Modify with your links)
-  socialIcons:
-    - name: github
-      url: "https://github.com/yourusername"
-      params:
-        rel: "noopener noreferrer"
-        target: "_blank"
-    - name: mastodon
-      url: "https://mastodon.social/@yourusername"
-      params:
-        rel: "me noopener noreferrer"
-        target: "_blank"
-    - name: rss
-      url: "/index.xml"
-      params:
-        rel: "alternate"
-        type: "application/rss+xml"
+  # Privacy Settings
+  privacy:
+    disqus:
+      disable: true
+    googleAnalytics:
+      anonymizeIP: true
+      disable: true
+      respectDoNotTrack: true
+      useSessionStorage: false
+    instagram:
+      disable: true
+    twitter:
+      enableDNT: true
+    youtube:
+      privacyEnhanced: true
 
-  # Cloudflare Integration
-  cloudflare:
-    analytics: true
-    cacheTTL: "4h"
-    alwaysUseHTTPS: true
-    minify:
-      html: true
-      css: true
-      js: true
-    cacheControlHeaders:
-      - pattern: "/*.(jpg|jpeg|gif|png|ico|cur|gz|svg|webp|avif)"
-        headers:
-          Cache-Control: "public, max-age=31536000, immutable"
-          X-Content-Type-Options: "nosniff"
-      - pattern: "/*.(css|js)"
-        headers:
-          Cache-Control: "public, max-age=86400, must-revalidate"
-          X-Content-Type-Options: "nosniff"
+  # Edit Post Configuration
+  editPost:
+    URL: "https://github.com/iAnonymous3000/Pr0f3ss0r-1nc0gn1t0/blob/main/content"
+    Text: "Suggest Changes"
+    appendFilePath: true
 
 # Navigation Menu
 menu:
@@ -180,36 +171,60 @@ menu:
       name: Blog
       url: /blog/
       weight: 10
-    - identifier: projects
-      name: Projects
-      url: /projects/
-      weight: 20
+      params:
+        feedIcon: true
+        feedURL: /blog/index.xml
     - identifier: research
       name: Research
       url: /research/
+      weight: 20
+    - identifier: projects
+      name: Projects
+      url: /projects/
       weight: 30
+    - identifier: chess
+      name: Chess
+      url: /chess/
+      weight: 40
+    - identifier: tags
+      name: Tags
+      url: /tags/
+      weight: 50
+    - identifier: search
+      name: Search
+      url: /search/
+      weight: 60
     - identifier: about
       name: About
       url: /about/
-      weight: 40
-
-  footer:
-    - identifier: privacy
-      name: Privacy Policy
-      url: /privacy/
-      weight: 10
-    - identifier: pgp
-      name: PGP Key
-      url: /pgp.asc
-      weight: 20
+      weight: 70
 
 # Content Organization
 taxonomies:
-  category: categories
   tag: tags
+  chess_category: chess_categories
   series: series
 
-# Enhanced Syntax Highlighting
+# Output Settings
+outputs:
+  home:
+    - HTML
+    - RSS
+    - JSON
+  section:
+    - HTML
+    - RSS
+  taxonomy:
+    - HTML
+    - RSS
+
+# Output Formats
+outputFormats:
+  RSS:
+    mediatype: "application/rss+xml"
+    baseName: "index"
+
+# Markdown Rendering
 markup:
   highlight:
     style: dracula
@@ -219,7 +234,6 @@ markup:
     guessSyntax: true
     tabWidth: 4
     
-  # Markdown Rendering
   goldmark:
     extensions:
       definitionList: true
@@ -233,25 +247,22 @@ markup:
       autoHeadingID: true
     renderer:
       hardWraps: false
-      unsafe: false
+      unsafe: true
       xhtml: false
 
-# Output Settings
-outputs:
-  home:
-    - HTML
-    - RSS
-    - JSON
-  section:
-    - HTML
-    - RSS
-
-# Build Settings
+# Production Build Settings
 build:
-  writeStats: true
+  writeStats: false
+  cacheDir: tmp/hugo_cache
 
-# Sitemap Configuration
-sitemap:
-  changefreq: "weekly"
-  filename: "sitemap.xml"
-  priority: 0.5
+# Server Security Headers for Production
+server:
+  headers:
+    - for: '/**'
+      values:
+        X-Frame-Options: "SAMEORIGIN"
+        X-Content-Type-Options: "nosniff"
+        Referrer-Policy: "strict-origin-when-cross-origin"
+        Strict-Transport-Security: "max-age=31536000; includeSubDomains"
+        Content-Security-Policy: "default-src 'self'; img-src 'self' data: https:; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline';"
+        Permissions-Policy: "camera=(), microphone=(), geolocation=()"

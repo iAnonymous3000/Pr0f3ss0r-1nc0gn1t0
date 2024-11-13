@@ -1,0 +1,23 @@
+/* Chess page specific styles */
+.chess-section {
+    margin: 2rem 0;
+}
+
+.chess-principles {
+    display: grid;
+    gap: 1.5rem;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+}
+
+.chess-principle {
+    background: var(--entry);
+    padding: 1.5rem;
+    border-radius: 8px;
+}
+
+/* Interactive elements */
+.lichess-frame {
+    margin: 2rem 0;
+    border-radius: 8px;
+    overflow: hidden;
+}
