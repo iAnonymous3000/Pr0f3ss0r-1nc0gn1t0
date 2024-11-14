@@ -2,19 +2,19 @@
 <style>
     .not-found-container {
         width: 100%;
-        min-height: calc(100vh - 120px);
+        height: calc(100vh - 120px);
         display: flex;
         flex-direction: column;
         justify-content: center;
         align-items: center;
-        margin-top: 0;  /* Removed negative margin */
-        padding: 2rem 1rem;  /* Added top padding */
+        margin-top: -2rem;
+        padding: 0 1rem;
+        overflow: hidden;
     }
 
     .not-found-header {
         text-align: center;
-        margin-bottom: 1.5rem;
-        margin-top: 2rem;  /* Added space at top */
+        margin-bottom: 1rem;
     }
 
     .not-found-header h1 {
@@ -40,17 +40,17 @@
     .not-found-message {
         color: var(--primary);
         font-size: 1.2rem;
-        margin: 1rem 0;
+        margin: 0.5rem 0;
     }
 
     .chess-game {
         width: min(400px, 90vw);
         aspect-ratio: 1;
         position: relative;
-        background: var(--entry);
+        background: #1a1a1a;
         border-radius: 12px;
         padding: 15px;
-        margin: 1.5rem auto;
+        margin: 1rem auto;
         box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
     }
 
@@ -60,7 +60,7 @@
         grid-template-rows: repeat(8, 1fr);
         width: 100%;
         height: 100%;
-        border: 2px solid rgba(var(--primary-rgb), 0.1);
+        border: 2px solid rgba(var(--primary-rgb), 0.2);
         border-radius: 8px;
         overflow: hidden;
     }
@@ -68,6 +68,7 @@
     .chess-square {
         width: 100%;
         height: 100%;
+        border: 1px solid rgba(var(--primary-rgb), 0.05);
     }
 
     /* Chess board pattern */
@@ -79,7 +80,7 @@
     .chess-square:nth-child(n+41):nth-child(-n+48):nth-child(odd),
     .chess-square:nth-child(n+49):nth-child(-n+56):nth-child(even),
     .chess-square:nth-child(n+57):nth-child(-n+64):nth-child(odd) {
-        background: rgba(var(--primary-rgb), 0.05);
+        background: rgba(var(--primary-rgb), 0.15);
     }
 
     @keyframes knightMove {
@@ -97,7 +98,6 @@
         width: 40px;
         height: 40px;
         background: var(--primary);
-        /* Higher quality chess knight SVG */
         mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 45 45'%3E%3Cpath d='M22 10c10.5 1 16.5 8 16 29H15c0-9 10-6.5 8-21M24 18c.38 2.91-5.55 7.37-8 9-3 2-2.82 4.34-5 4-1.042-.94 1.41-3.04 0-3-1 0 .19 1.23-1 2-1 0-4.003 1-4-4 0-2 6-12 6-12s1.89-1.9 2-3.5c-.73-.994-.5-2-.5-3 1-1 3 2.5 3 2.5h2s.78-1.992 2.5-3c1 0 1 3 1 3'  stroke='%23000' stroke-width='1.5' stroke-linejoin='round' fill='%23FFF'/%3E%3C/svg%3E") no-repeat center;
         animation: knightMove 8s infinite ease-in-out;
         filter: drop-shadow(0 0 10px rgba(var(--primary-rgb), 0.3));
@@ -113,7 +113,7 @@
         font-family: 'JetBrains Mono', monospace;
         font-size: 0.85rem;
         white-space: nowrap;
-        background: var(--entry);
+        background: rgba(26, 26, 26, 0.9);
         padding: 0.4rem 0.8rem;
         border-radius: 4px;
         border: 1px solid rgba(var(--primary-rgb), 0.2);
@@ -122,7 +122,7 @@
     .footer-links {
         display: flex;
         gap: 1rem;
-        margin: 1.5rem 0;
+        margin: 1rem 0;
     }
 
     .footer-link {
@@ -147,8 +147,21 @@
         color: var(--primary);
         opacity: 0.8;
         max-width: 400px;
-        margin: 1rem 0;
+        margin: 0.5rem 0;
         line-height: 1.4;
+    }
+
+    /* Responsive adjustments */
+    @media (max-height: 700px) {
+        .not-found-container {
+            margin-top: -1rem;
+        }
+        .chess-game {
+            width: min(320px, 80vw);
+        }
+        .not-found-header h1 {
+            font-size: clamp(3rem, 12vw, 6rem);
+        }
     }
 </style>
 
