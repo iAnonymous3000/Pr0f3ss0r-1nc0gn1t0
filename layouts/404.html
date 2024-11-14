@@ -1,14 +1,66 @@
-{{- define "main" }}
+{{ define "main" }}
+<div class="not-found-container">
+    <div class="profile">
+        <div class="profile_inner">
+            <header class="not-found-header">
+                <h1>404</h1>
+                <div class="stalemate-message">Stalemate: Page Not Found</div>
+            </header>
+            
+            <div class="chess-game">
+                <div class="chess-board">
+                    {{ range seq 64 }}
+                        <div class="chess-square"></div>
+                    {{ end }}
+                </div>
+                <div class="chess-piece"></div>
+                <div class="game-message">SYSTEM: Page_Location = null;</div>
+            </div>
+
+            <div class="footer-links">
+                <a href="{{ "/" | relURL }}" class="button">
+                    <span class="button-inner">Return Home</span>
+                </a>
+                <a href="{{ "/blog/" | relURL }}" class="button">
+                    <span class="button-inner">Read Blog</span>
+                </a>
+            </div>
+
+            <div class="privacy-note">
+                Even in error, your privacy remains paramount. This 404 page, like all others on this site, operates with zero tracking.
+                <p>Made with ♟️ Pr0f3ss0r 1nc0gn1t0</p>
+            </div>
+        </div>
+    </div>
+</div>
+
 <style>
+    :root {
+        --theme: #1b1d1e;
+        --entry: #2e2e33;
+        --primary: #ffffff;
+        --secondary: rgba(255, 255, 255, 0.7);
+        --tertiary: rgba(255, 255, 255, 0.5);
+        --content: rgba(255, 255, 255, 0.9);
+        --chess-light: #d4c19c;
+        --chess-dark: #8b5a4a;
+    }
+
     .not-found-container {
         max-width: 600px;
-        margin: 0 auto;
+        margin: 5% auto;
         padding: 2rem 1rem;
         text-align: center;
     }
 
-    .not-found-header {
-        margin-bottom: 2rem;
+    .profile {
+        max-width: 800px;
+        margin: 0 auto;
+    }
+
+    .profile_inner {
+        padding: 30px;
+        position: relative;
     }
 
     .not-found-header h1 {
@@ -18,12 +70,14 @@
         -webkit-background-clip: text;
         -webkit-text-fill-color: transparent;
         background-clip: text;
+        font-weight: 700;
     }
 
-    .not-found-message {
-        font-size: 1.1rem;
+    .stalemate-message {
+        font-size: 1.5rem;
         margin: 1rem 0;
-        opacity: 0.9;
+        font-weight: bold;
+        color: var(--secondary);
     }
 
     .chess-game {
@@ -35,6 +89,7 @@
         border-radius: 8px;
         overflow: hidden;
         padding: 20px;
+        box-shadow: 0 4px 6px rgba(0,0,0,0.3);
     }
 
     .chess-board {
@@ -44,43 +99,43 @@
         width: 100%;
         height: 100%;
         position: relative;
+        border: 2px solid var(--chess-dark);
+        border-radius: 4px;
     }
 
     .chess-square {
         width: 100%;
         height: 100%;
-        position: relative;
     }
 
-    /* Create alternating pattern */
-    .chess-square:nth-child(-n+8):nth-child(even),
-    .chess-square:nth-child(n+9):nth-child(-n+16):nth-child(odd),
-    .chess-square:nth-child(n+17):nth-child(-n+24):nth-child(even),
-    .chess-square:nth-child(n+25):nth-child(-n+32):nth-child(odd),
-    .chess-square:nth-child(n+33):nth-child(-n+40):nth-child(even),
-    .chess-square:nth-child(n+41):nth-child(-n+48):nth-child(odd),
-    .chess-square:nth-child(n+49):nth-child(-n+56):nth-child(even),
-    .chess-square:nth-child(n+57):nth-child(-n+64):nth-child(odd) {
-        background: rgba(255,255,255,0.1);
+    .chess-square:nth-child(16n+1),
+    .chess-square:nth-child(16n+3),
+    .chess-square:nth-child(16n+5),
+    .chess-square:nth-child(16n+7),
+    .chess-square:nth-child(16n+10),
+    .chess-square:nth-child(16n+12),
+    .chess-square:nth-child(16n+14),
+    .chess-square:nth-child(16n+16) {
+        background-color: var(--chess-light);
     }
 
-    .chess-square:nth-child(-n+8):nth-child(odd),
-    .chess-square:nth-child(n+9):nth-child(-n+16):nth-child(even),
-    .chess-square:nth-child(n+17):nth-child(-n+24):nth-child(odd),
-    .chess-square:nth-child(n+25):nth-child(-n+32):nth-child(even),
-    .chess-square:nth-child(n+33):nth-child(-n+40):nth-child(odd),
-    .chess-square:nth-child(n+41):nth-child(-n+48):nth-child(even),
-    .chess-square:nth-child(n+49):nth-child(-n+56):nth-child(odd),
-    .chess-square:nth-child(n+57):nth-child(-n+64):nth-child(even) {
-        background: rgba(46,164,79,0.1);
+    .chess-square:nth-child(16n+2),
+    .chess-square:nth-child(16n+4),
+    .chess-square:nth-child(16n+6),
+    .chess-square:nth-child(16n+8),
+    .chess-square:nth-child(16n+9),
+    .chess-square:nth-child(16n+11),
+    .chess-square:nth-child(16n+13),
+    .chess-square:nth-child(16n+15) {
+        background-color: var(--chess-dark);
     }
 
     @keyframes movePiece {
-        0% { transform: translate(0, 0); }
-        25% { transform: translate(200%, 0); }
-        50% { transform: translate(200%, 200%); }
-        75% { transform: translate(0, 200%); }
-        100% { transform: translate(0, 0); }
+        0% { transform: translate(0, 0) rotate(0deg); }
+        25% { transform: translate(200%, 0) rotate(90deg); }
+        50% { transform: translate(200%, 200%) rotate(180deg); }
+        75% { transform: translate(0, 200%) rotate(270deg); }
+        100% { transform: translate(0, 0) rotate(360deg); }
     }
 
     .chess-piece {
@@ -91,8 +146,10 @@
         height: 40px;
         background: var(--primary);
         mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M12 2L8 6h8l-4-4zm0 6l-4 4h8l-4-4zm0 6l-4 4h8l-4-4z'/%3E%3C/svg%3E") no-repeat center;
+        mask-size: contain;
         animation: movePiece 8s infinite linear;
         z-index: 2;
+        filter: drop-shadow(0 0 8px rgba(255, 255, 255, 0.4));
     }
 
     .game-message {
@@ -101,7 +158,7 @@
         left: 50%;
         transform: translateX(-50%);
         color: var(--primary);
-        font-family: monospace;
+        font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
         text-shadow: 0 0 10px var(--primary);
         z-index: 3;
     }
@@ -111,74 +168,82 @@
         display: flex;
         justify-content: center;
         gap: 1rem;
+        flex-wrap: wrap;
     }
 
-    .footer-link {
-        padding: 0.5rem 1rem;
-        border: 1px solid var(--primary);
-        border-radius: 4px;
-        text-decoration: none;
+    .button {
+        background: none;
+        border: 1px solid var(--tertiary);
+        border-radius: 8px;
+        cursor: pointer;
+        text-align: center;
+        padding: 6px 20px;
+        margin: 4px 0;
         color: var(--primary);
-        transition: all 0.3s ease;
+        font-size: 14px;
+        text-decoration: none;
+        transition: transform 0.1s;
+        user-select: none;
     }
 
-    .footer-link:hover {
-        background: var(--primary);
-        color: var(--theme);
+    .button:hover {
+        border-color: var(--primary);
+        transform: translateY(-1px);
+    }
+
+    .button-inner {
+        display: flex;
+        align-items: center;
+        gap: 4px;
     }
 
     .privacy-note {
         margin-top: 2rem;
         font-size: 0.9rem;
-        opacity: 0.8;
+        color: var(--secondary);
         max-width: 400px;
         margin-left: auto;
         margin-right: auto;
+        line-height: 1.4;
+    }
+
+    .privacy-note p {
+        margin-top: 0.5rem;
+        color: var(--tertiary);
+    }
+
+    @media (max-width: 900px) {
+        .chess-game {
+            max-width: 300px;
+        }
+        .chess-piece {
+            width: 35px;
+            height: 35px;
+        }
     }
 
     @media (max-width: 600px) {
-        .not-found-container {
-            padding: 1rem;
+        .profile_inner {
+            padding: 15px;
         }
         
         .chess-game {
             width: 100%;
+            margin: 1rem auto;
         }
 
         .chess-piece {
             width: 30px;
             height: 30px;
         }
+
+        .not-found-header h1 {
+            font-size: 3rem;
+        }
+
+        .stalemate-message {
+            font-size: 1.2rem;
+        }
     }
 </style>
-
-<div class="not-found-container">
-    <header class="not-found-header">
-        <h1>404</h1>
-        <div class="not-found-message">
-            <p><strong>Page Not Found in the Digital Labyrinth</strong></p>
-            <p>Like an encrypted message without its key, this page remains hidden.</p>
-        </div>
-    </header>
-    
-    <div class="chess-game">
-        <div class="chess-board">
-            {{ range seq 64 }}
-            <div class="chess-square"></div>
-            {{ end }}
-        </div>
-        <div class="chess-piece"></div>
-        <div class="game-message">SYSTEM: Page_Location = null;</div>
-    </div>
-
-    <div class="footer-links">
-        <a href="/" class="footer-link">Return Home</a>
-        <a href="/posts" class="footer-link">Read Articles</a>
-    </div>
-
-    <div class="privacy-note">
-        Even in error, your privacy remains paramount. This 404 page like all others on this site operates with zero tracking.
-        <p>Made with ♟️ Pr0f3ss0r 1nc0gn1t0</p>
-    </div>
-</div>
-{{- end }}
+{{ end }}
