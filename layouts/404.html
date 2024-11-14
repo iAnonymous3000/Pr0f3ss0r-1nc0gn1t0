@@ -2,7 +2,7 @@
 <style>
     .not-found-container {
         width: 100%;
-        height: 100vh;
+        height: 90vh; /* Reduced from 100vh to leave space for footer */
         margin: 0;
         padding: 0;
         text-align: center;
@@ -12,8 +12,8 @@
         align-items: center;
         overflow: hidden;
         box-sizing: border-box;
-        /* Add max-height to prevent scrolling */
-        max-height: 100vh;
+        /* Move content up slightly */
+        transform: translateY(-5vh);
     }
 
     .not-found-header {
@@ -155,12 +155,13 @@
     }
 
     .privacy-note {
-        margin-top: 2vh;
+        margin-top: 1.5vh;
         font-size: 0.8rem;
         opacity: 0.8;
         max-width: 400px;
         text-align: center;
         line-height: 1.4;
+        color: var(--primary);
     }
 
     .signature {
@@ -170,6 +171,10 @@
     }
 
     @media (max-height: 600px) {
+        .not-found-container {
+            transform: translateY(-3vh);
+        }
+
         .not-found-header h1 {
             font-size: clamp(2rem, 6vh, 4rem);
         }
@@ -225,9 +230,6 @@
 
     <div class="privacy-note">
         Even in error, your privacy remains paramount. This 404 page operates with zero tracking, like all pages on this site.
-    </div>
-    <div class="signature">
-        <p>Made with ♟️ by Pr0f3ss0r 1nc0gn1t0</p>
     </div>
 </div>
 {{- end }}
