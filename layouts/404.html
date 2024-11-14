@@ -2,13 +2,18 @@
 <style>
     .not-found-container {
         width: 100%;
-        min-height: calc(100vh - 120px); /* Account for header and footer */
+        min-height: calc(100vh - 120px);
         display: flex;
         flex-direction: column;
         justify-content: center;
         align-items: center;
-        margin-top: -60px; /* Move up to account for header */
+        margin-top: -60px;
         padding: 0 1rem;
+    }
+
+    .not-found-header {
+        text-align: center;
+        margin-bottom: 1rem;
     }
 
     .not-found-header h1 {
@@ -22,13 +27,20 @@
     }
 
     .not-found-message {
-        margin: 0.5rem 0 2rem;
         color: #85cc9c;
         font-size: 1.2rem;
+        margin: 0.5rem 0;
+    }
+
+    .status-message {
+        color: #85cc9c;
+        opacity: 0.9;
+        font-size: 1rem;
+        margin-bottom: 1rem;
     }
 
     .chess-game {
-        width: min(280px, 90vw);
+        width: min(400px, 90vw);  /* Increased size */
         aspect-ratio: 1;
         position: relative;
         background: rgba(40, 42, 44, 0.8);
@@ -78,8 +90,8 @@
         position: absolute;
         top: 25px;
         left: 25px;
-        width: 28px;
-        height: 28px;
+        width: 40px;  /* Increased size */
+        height: 40px;  /* Increased size */
         background: #85cc9c;
         mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M19,22H5V20H19V22M13,2V4H11V2H13M4.39,11H7V9H5V7H7V5H9V7H11V9H9V11H11A3,3 0 0,1 14,14H15V12H17V15H14A5,5 0 0,0 9,10V9L8,10L6,9L5,8L4.39,11M5,13.5A5.5,5.5 0 0,0 10.5,19H13.5A5.5,5.5 0 0,0 19,13.5V12.5H17V13.5A3.5,3.5 0 0,1 13.5,17H10.5A3.5,3.5 0 0,1 7,13.5V12.5H5V13.5Z'/%3E%3C/svg%3E") no-repeat center;
         animation: knightMove 8s infinite ease-in-out;
@@ -105,7 +117,7 @@
     .footer-links {
         display: flex;
         gap: 1rem;
-        margin: 2rem 0;
+        margin: 1.5rem 0;
     }
 
     .footer-link {
@@ -126,18 +138,22 @@
 
     .privacy-note {
         text-align: center;
-        max-width: 400px;
-        margin: 0.5rem auto;
         font-size: 0.9rem;
         color: #85cc9c;
         opacity: 0.8;
-        line-height: 1.4;
+        margin: 0.5rem 0;
     }
 </style>
 
 <div class="not-found-container">
     <div class="not-found-header">
         <h1>404</h1>
+        <div class="status-message">
+            Navigation menu and theme toggle are temporarily inactive
+        </div>
+        <div class="privacy-note">
+            Even in error, your privacy remains paramount. This 404 page operates with zero tracking, like all pages on this site.
+        </div>
         <div class="not-found-message">
             <strong>Stalemate: Page Not Found</strong>
         </div>
@@ -157,9 +173,5 @@
         <a href="/" class="footer-link">Return Home</a>
         <a href="/blog" class="footer-link">Read Blog</a>
     </nav>
-
-    <div class="privacy-note">
-        Even in error, your privacy remains paramount. This 404 page operates with zero tracking, like all pages on this site.
-    </div>
 </div>
 {{- end }}
