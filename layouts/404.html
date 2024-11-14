@@ -2,56 +2,40 @@
 <style>
     .not-found-container {
         width: 100%;
-        height: 90vh; /* Reduced from 100vh to leave space for footer */
-        margin: 0;
-        padding: 0;
-        text-align: center;
+        min-height: calc(100vh - 120px); /* Account for header and footer */
         display: flex;
         flex-direction: column;
         justify-content: center;
         align-items: center;
-        overflow: hidden;
-        box-sizing: border-box;
-        /* Move content up slightly */
-        transform: translateY(-5vh);
-    }
-
-    .not-found-header {
-        margin-bottom: 2vh;
+        margin-top: -60px; /* Move up to account for header */
+        padding: 0 1rem;
     }
 
     .not-found-header h1 {
-        font-size: clamp(3rem, 8vh, 5rem);
+        font-size: clamp(4rem, 15vw, 8rem);
         margin: 0;
-        background: linear-gradient(135deg, var(--primary), #2ea44f);
+        background: linear-gradient(135deg, #85cc9c, #2ea44f);
         -webkit-background-clip: text;
         -webkit-text-fill-color: transparent;
         background-clip: text;
-        text-shadow: 0 0 30px rgba(46, 164, 79, 0.2);
-        line-height: 1.2;
+        line-height: 1;
     }
 
     .not-found-message {
-        font-size: clamp(1rem, 2vh, 1.2rem);
-        margin: 1vh 0;
-        opacity: 0.9;
-    }
-
-    .not-found-message strong {
-        color: var(--primary);
-        font-weight: 600;
+        margin: 0.5rem 0 2rem;
+        color: #85cc9c;
+        font-size: 1.2rem;
     }
 
     .chess-game {
-        margin: 2vh auto;
-        width: min(300px, 35vh);
+        width: min(280px, 90vw);
         aspect-ratio: 1;
         position: relative;
-        background: var(--entry);
+        background: rgba(40, 42, 44, 0.8);
         border-radius: 12px;
-        overflow: hidden;
         padding: 15px;
-        box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+        margin: 1rem auto;
+        box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
     }
 
     .chess-board {
@@ -60,15 +44,14 @@
         grid-template-rows: repeat(8, 1fr);
         width: 100%;
         height: 100%;
-        position: relative;
-        border: 2px solid rgba(200, 200, 200, 0.1);
+        border: 2px solid rgba(133, 204, 156, 0.1);
         border-radius: 8px;
+        overflow: hidden;
     }
 
     .chess-square {
         width: 100%;
         height: 100%;
-        position: relative;
     }
 
     /* Chess board pattern */
@@ -80,18 +63,7 @@
     .chess-square:nth-child(n+41):nth-child(-n+48):nth-child(odd),
     .chess-square:nth-child(n+49):nth-child(-n+56):nth-child(even),
     .chess-square:nth-child(n+57):nth-child(-n+64):nth-child(odd) {
-        background: rgba(255, 255, 255, 0.05);
-    }
-
-    .chess-square:nth-child(-n+8):nth-child(odd),
-    .chess-square:nth-child(n+9):nth-child(-n+16):nth-child(even),
-    .chess-square:nth-child(n+17):nth-child(-n+24):nth-child(odd),
-    .chess-square:nth-child(n+25):nth-child(-n+32):nth-child(even),
-    .chess-square:nth-child(n+33):nth-child(-n+40):nth-child(odd),
-    .chess-square:nth-child(n+41):nth-child(-n+48):nth-child(even),
-    .chess-square:nth-child(n+49):nth-child(-n+56):nth-child(odd),
-    .chess-square:nth-child(n+57):nth-child(-n+64):nth-child(even) {
-        background: rgba(200, 200, 200, 0.05);
+        background: rgba(133, 204, 156, 0.05);
     }
 
     @keyframes knightMove {
@@ -104,114 +76,72 @@
 
     .chess-piece {
         position: absolute;
-        top: 10%;
-        left: 10%;
-        width: 32px;
-        height: 32px;
-        background: var(--primary);
-        /* Updated knight chess piece SVG */
+        top: 25px;
+        left: 25px;
+        width: 28px;
+        height: 28px;
+        background: #85cc9c;
         mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M19,22H5V20H19V22M13,2V4H11V2H13M4.39,11H7V9H5V7H7V5H9V7H11V9H9V11H11A3,3 0 0,1 14,14H15V12H17V15H14A5,5 0 0,0 9,10V9L8,10L6,9L5,8L4.39,11M5,13.5A5.5,5.5 0 0,0 10.5,19H13.5A5.5,5.5 0 0,0 19,13.5V12.5H17V13.5A3.5,3.5 0 0,1 13.5,17H10.5A3.5,3.5 0 0,1 7,13.5V12.5H5V13.5Z'/%3E%3C/svg%3E") no-repeat center;
         animation: knightMove 8s infinite ease-in-out;
-        filter: drop-shadow(0 0 10px rgba(46, 164, 79, 0.3));
+        filter: drop-shadow(0 0 10px rgba(133, 204, 156, 0.3));
         z-index: 2;
     }
 
     .game-message {
         position: absolute;
-        bottom: 1vh;
+        bottom: 15px;
         left: 50%;
         transform: translateX(-50%);
-        color: var(--primary);
+        color: #85cc9c;
         font-family: 'JetBrains Mono', monospace;
-        font-size: 0.8rem;
-        text-shadow: 0 0 15px var(--primary);
-        background: rgba(0, 0, 0, 0.4);
+        font-size: 0.85rem;
+        white-space: nowrap;
+        background: rgba(40, 42, 44, 0.9);
         padding: 0.4rem 0.8rem;
         border-radius: 4px;
-        white-space: nowrap;
+        border: 1px solid rgba(133, 204, 156, 0.2);
     }
 
     .footer-links {
-        margin: 2vh 0;
         display: flex;
-        justify-content: center;
-        gap: 1.5rem;
+        gap: 1rem;
+        margin: 2rem 0;
     }
 
     .footer-link {
-        padding: 0.6rem 1.2rem;
-        border: 2px solid var(--primary);
+        padding: 0.5rem 1.25rem;
+        border: 2px solid #85cc9c;
         border-radius: 6px;
+        color: #85cc9c;
         text-decoration: none;
-        color: var(--primary);
         font-weight: 500;
-        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        transition: all 0.2s ease;
     }
 
     .footer-link:hover {
-        background: var(--primary);
-        color: var(--theme);
+        background: #85cc9c;
+        color: #282a2c;
         transform: translateY(-2px);
     }
 
     .privacy-note {
-        margin-top: 1.5vh;
-        font-size: 0.8rem;
-        opacity: 0.8;
-        max-width: 400px;
         text-align: center;
-        line-height: 1.4;
-        color: var(--primary);
-    }
-
-    .signature {
-        margin-top: 1vh;
-        font-size: 0.8rem;
+        max-width: 400px;
+        margin: 0.5rem auto;
+        font-size: 0.9rem;
+        color: #85cc9c;
         opacity: 0.8;
-    }
-
-    @media (max-height: 600px) {
-        .not-found-container {
-            transform: translateY(-3vh);
-        }
-
-        .not-found-header h1 {
-            font-size: clamp(2rem, 6vh, 4rem);
-        }
-        
-        .chess-game {
-            width: min(250px, 30vh);
-        }
-        
-        .chess-piece {
-            width: 24px;
-            height: 24px;
-        }
-
-        .game-message {
-            font-size: 0.7rem;
-            padding: 0.3rem 0.6rem;
-        }
-        
-        .footer-link {
-            padding: 0.4rem 0.8rem;
-            font-size: 0.9rem;
-        }
-
-        .privacy-note {
-            font-size: 0.7rem;
-            margin-top: 1vh;
-        }
+        line-height: 1.4;
     }
 </style>
 
 <div class="not-found-container">
-    <header class="not-found-header">
+    <div class="not-found-header">
         <h1>404</h1>
         <div class="not-found-message">
-            <p><strong>Stalemate: Page Not Found</strong></p>
+            <strong>Stalemate: Page Not Found</strong>
         </div>
-    </header>
+    </div>
     
     <div class="chess-game" role="presentation">
         <div class="chess-board">
