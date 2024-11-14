@@ -1,18 +1,20 @@
 {{- define "main" }}
 <style>
     .not-found-container {
-        max-width: 800px;
-        margin: 0 auto;
-        padding: 3rem 1rem;
+        width: 100%;
+        height: 100vh;
+        margin: 0;
+        padding: 0;
         text-align: center;
-        min-height: 80vh;
         display: flex;
         flex-direction: column;
         justify-content: center;
+        align-items: center;
+        overflow: hidden;
     }
 
     .not-found-header {
-        margin-bottom: 2.5rem;
+        margin-bottom: 1.5rem;
     }
 
     .not-found-header h1 {
@@ -28,7 +30,7 @@
 
     .not-found-message {
         font-size: 1.2rem;
-        margin: 1.5rem 0;
+        margin: 1rem 0;
         opacity: 0.9;
         line-height: 1.6;
     }
@@ -39,7 +41,7 @@
     }
 
     .chess-game {
-        margin: 2.5rem auto;
+        margin: 1.5rem auto;
         width: min(400px, 90vw);
         aspect-ratio: 1;
         position: relative;
@@ -68,7 +70,7 @@
         transition: background-color 0.3s ease;
     }
 
-    /* Enhanced chess board pattern */
+    /* Chess board pattern with dark gray and light gray */
     .chess-square:nth-child(-n+8):nth-child(even),
     .chess-square:nth-child(n+9):nth-child(-n+16):nth-child(odd),
     .chess-square:nth-child(n+17):nth-child(-n+24):nth-child(even),
@@ -77,7 +79,7 @@
     .chess-square:nth-child(n+41):nth-child(-n+48):nth-child(odd),
     .chess-square:nth-child(n+49):nth-child(-n+56):nth-child(even),
     .chess-square:nth-child(n+57):nth-child(-n+64):nth-child(odd) {
-        background: rgba(255, 255, 255, 0.03);
+        background: rgba(255, 255, 255, 0.05);
     }
 
     .chess-square:nth-child(-n+8):nth-child(odd),
@@ -88,16 +90,15 @@
     .chess-square:nth-child(n+41):nth-child(-n+48):nth-child(even),
     .chess-square:nth-child(n+49):nth-child(-n+56):nth-child(odd),
     .chess-square:nth-child(n+57):nth-child(-n+64):nth-child(even) {
-        background: rgba(46, 164, 79, 0.05);
+        background: rgba(200, 200, 200, 0.05);
     }
 
-    /* Enhanced knight movement animation */
+    /* Clear knight movement animation */
     @keyframes knightMove {
         0% { transform: translate(0, 0) scale(1); }
-        20% { transform: translate(100%, -50%) scale(1.1); }
-        40% { transform: translate(200%, 0) scale(1); }
-        60% { transform: translate(150%, 100%) scale(1.1); }
-        80% { transform: translate(50%, 150%) scale(1); }
+        25% { transform: translate(100%, -50%) scale(1.1); }
+        50% { transform: translate(150%, 0) scale(1); }
+        75% { transform: translate(50%, 100%) scale(1.1); }
         100% { transform: translate(0, 0) scale(1); }
     }
 
@@ -108,9 +109,9 @@
         width: 48px;
         height: 48px;
         background: var(--primary);
-        /* Updated knight SVG path for better visibility */
-        mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M19 22H5v-2h14v2M13 2c-1.25 0-2.42.62-3.11 1.66L7 8v3h2v7h2v-7h2v7h2v-7h2V8l-2.89-4.34C15.42 2.62 14.25 2 13 2Z'/%3E%3C/svg%3E") no-repeat center;
-        animation: knightMove 10s infinite ease-in-out;
+        /* Updated SVG for clear knight representation */
+        mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M19 22H5v-2h14v2M13.04 2C11 2 9.22 3.23 8.16 5H6l1.46 4h1.54V20h2V9h2v11h2V9h2V5h-2.16c-1.06-1.77-2.84-3-4.84-3z'/%3E%3C/svg%3E") no-repeat center;
+        animation: knightMove 8s infinite ease-in-out;
         filter: drop-shadow(0 0 10px rgba(46, 164, 79, 0.3));
         z-index: 2;
     }
@@ -131,7 +132,7 @@
     }
 
     .footer-links {
-        margin-top: 2.5rem;
+        margin-top: 1.5rem;
         display: flex;
         justify-content: center;
         gap: 1.5rem;
@@ -146,31 +147,21 @@
         color: var(--primary);
         font-weight: 500;
         transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-        position: relative;
-        overflow: hidden;
     }
 
     .footer-link:hover {
         background: var(--primary);
         color: var(--theme);
         transform: translateY(-2px);
-        box-shadow: 0 4px 12px rgba(46, 164, 79, 0.2);
-    }
-
-    .footer-link:active {
-        transform: translateY(0);
     }
 
     .privacy-note {
-        margin-top: 3rem;
+        margin-top: 1.5rem;
         font-size: 0.9rem;
         opacity: 0.8;
         max-width: 400px;
-        margin-left: auto;
-        margin-right: auto;
+        text-align: center;
         line-height: 1.6;
-        padding: 1rem;
-        border-top: 1px solid rgba(46, 164, 79, 0.2);
     }
 
     @media (max-width: 600px) {
@@ -193,32 +184,13 @@
             padding: 0.4rem 0.8rem;
         }
     }
-
-    /* Dark mode enhancements */
-    @media (prefers-color-scheme: dark) {
-        .chess-game {
-            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
-        }
-
-        .chess-square:nth-child(-n+8):nth-child(odd),
-        .chess-square:nth-child(n+9):nth-child(-n+16):nth-child(even),
-        .chess-square:nth-child(n+17):nth-child(-n+24):nth-child(odd),
-        .chess-square:nth-child(n+25):nth-child(-n+32):nth-child(even),
-        .chess-square:nth-child(n+33):nth-child(-n+40):nth-child(odd),
-        .chess-square:nth-child(n+41):nth-child(-n+48):nth-child(even),
-        .chess-square:nth-child(n+49):nth-child(-n+56):nth-child(odd),
-        .chess-square:nth-child(n+57):nth-child(-n+64):nth-child(even) {
-            background: rgba(46, 164, 79, 0.08);
-        }
-    }
 </style>
 
 <div class="not-found-container">
     <header class="not-found-header">
         <h1>404</h1>
         <div class="not-found-message">
-            <p><strong>Page Not Found in the Digital Labyrinth</strong></p>
-            <p>Like an encrypted message without its key, this page remains hidden in the depths of cyberspace.</p>
+            <p><strong>Stalemate: Page Not Found</strong></p>
         </div>
     </header>
     
@@ -234,7 +206,7 @@
 
     <nav class="footer-links" aria-label="Navigation options">
         <a href="/" class="footer-link">Return Home</a>
-        <a href="/posts" class="footer-link">Read Articles</a>
+        <a href="/blog" class="footer-link">Read Blog</a>
     </nav>
 
     <div class="privacy-note">
