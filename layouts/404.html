@@ -7,46 +7,50 @@
         flex-direction: column;
         justify-content: center;
         align-items: center;
-        margin-top: -60px;
-        padding: 0 1rem;
+        margin-top: 0;  /* Removed negative margin */
+        padding: 2rem 1rem;  /* Added top padding */
     }
 
     .not-found-header {
         text-align: center;
-        margin-bottom: 1rem;
+        margin-bottom: 1.5rem;
+        margin-top: 2rem;  /* Added space at top */
     }
 
     .not-found-header h1 {
         font-size: clamp(4rem, 15vw, 8rem);
         margin: 0;
-        background: linear-gradient(135deg, #85cc9c, #2ea44f);
+        background: linear-gradient(135deg, var(--primary), #2ea44f);
         -webkit-background-clip: text;
         -webkit-text-fill-color: transparent;
         background-clip: text;
         line-height: 1;
     }
 
-    .not-found-message {
-        color: #85cc9c;
-        font-size: 1.2rem;
-        margin: 0.5rem 0;
+    .error-link {
+        text-decoration: none;
+        color: inherit;
+        transition: opacity 0.2s ease;
     }
 
-    .status-message {
-        color: #85cc9c;
-        opacity: 0.9;
-        font-size: 1rem;
-        margin-bottom: 1rem;
+    .error-link:hover {
+        opacity: 0.8;
+    }
+
+    .not-found-message {
+        color: var(--primary);
+        font-size: 1.2rem;
+        margin: 1rem 0;
     }
 
     .chess-game {
-        width: min(400px, 90vw);  /* Increased size */
+        width: min(400px, 90vw);
         aspect-ratio: 1;
         position: relative;
-        background: rgba(40, 42, 44, 0.8);
+        background: var(--entry);
         border-radius: 12px;
         padding: 15px;
-        margin: 1rem auto;
+        margin: 1.5rem auto;
         box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
     }
 
@@ -56,7 +60,7 @@
         grid-template-rows: repeat(8, 1fr);
         width: 100%;
         height: 100%;
-        border: 2px solid rgba(133, 204, 156, 0.1);
+        border: 2px solid rgba(var(--primary-rgb), 0.1);
         border-radius: 8px;
         overflow: hidden;
     }
@@ -75,7 +79,7 @@
     .chess-square:nth-child(n+41):nth-child(-n+48):nth-child(odd),
     .chess-square:nth-child(n+49):nth-child(-n+56):nth-child(even),
     .chess-square:nth-child(n+57):nth-child(-n+64):nth-child(odd) {
-        background: rgba(133, 204, 156, 0.05);
+        background: rgba(var(--primary-rgb), 0.05);
     }
 
     @keyframes knightMove {
@@ -90,12 +94,13 @@
         position: absolute;
         top: 25px;
         left: 25px;
-        width: 40px;  /* Increased size */
-        height: 40px;  /* Increased size */
-        background: #85cc9c;
-        mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M19,22H5V20H19V22M13,2V4H11V2H13M4.39,11H7V9H5V7H7V5H9V7H11V9H9V11H11A3,3 0 0,1 14,14H15V12H17V15H14A5,5 0 0,0 9,10V9L8,10L6,9L5,8L4.39,11M5,13.5A5.5,5.5 0 0,0 10.5,19H13.5A5.5,5.5 0 0,0 19,13.5V12.5H17V13.5A3.5,3.5 0 0,1 13.5,17H10.5A3.5,3.5 0 0,1 7,13.5V12.5H5V13.5Z'/%3E%3C/svg%3E") no-repeat center;
+        width: 40px;
+        height: 40px;
+        background: var(--primary);
+        /* Higher quality chess knight SVG */
+        mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 45 45'%3E%3Cpath d='M22 10c10.5 1 16.5 8 16 29H15c0-9 10-6.5 8-21M24 18c.38 2.91-5.55 7.37-8 9-3 2-2.82 4.34-5 4-1.042-.94 1.41-3.04 0-3-1 0 .19 1.23-1 2-1 0-4.003 1-4-4 0-2 6-12 6-12s1.89-1.9 2-3.5c-.73-.994-.5-2-.5-3 1-1 3 2.5 3 2.5h2s.78-1.992 2.5-3c1 0 1 3 1 3'  stroke='%23000' stroke-width='1.5' stroke-linejoin='round' fill='%23FFF'/%3E%3C/svg%3E") no-repeat center;
         animation: knightMove 8s infinite ease-in-out;
-        filter: drop-shadow(0 0 10px rgba(133, 204, 156, 0.3));
+        filter: drop-shadow(0 0 10px rgba(var(--primary-rgb), 0.3));
         z-index: 2;
     }
 
@@ -104,14 +109,14 @@
         bottom: 15px;
         left: 50%;
         transform: translateX(-50%);
-        color: #85cc9c;
+        color: var(--primary);
         font-family: 'JetBrains Mono', monospace;
         font-size: 0.85rem;
         white-space: nowrap;
-        background: rgba(40, 42, 44, 0.9);
+        background: var(--entry);
         padding: 0.4rem 0.8rem;
         border-radius: 4px;
-        border: 1px solid rgba(133, 204, 156, 0.2);
+        border: 1px solid rgba(var(--primary-rgb), 0.2);
     }
 
     .footer-links {
@@ -122,40 +127,41 @@
 
     .footer-link {
         padding: 0.5rem 1.25rem;
-        border: 2px solid #85cc9c;
+        border: 2px solid var(--primary);
         border-radius: 6px;
-        color: #85cc9c;
+        color: var(--primary);
         text-decoration: none;
         font-weight: 500;
         transition: all 0.2s ease;
     }
 
     .footer-link:hover {
-        background: #85cc9c;
-        color: #282a2c;
+        background: var(--primary);
+        color: var(--theme);
         transform: translateY(-2px);
     }
 
     .privacy-note {
         text-align: center;
         font-size: 0.9rem;
-        color: #85cc9c;
+        color: var(--primary);
         opacity: 0.8;
-        margin: 0.5rem 0;
+        max-width: 400px;
+        margin: 1rem 0;
+        line-height: 1.4;
     }
 </style>
 
 <div class="not-found-container">
     <div class="not-found-header">
-        <h1>404</h1>
-        <div class="status-message">
-            Navigation menu and theme toggle are temporarily inactive
+        <a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/404" class="error-link" target="_blank" rel="noopener noreferrer">
+            <h1>404</h1>
+        </a>
+        <div class="not-found-message">
+            <strong>Stalemate: Page Not Found</strong>
         </div>
         <div class="privacy-note">
             Even in error, your privacy remains paramount. This 404 page operates with zero tracking, like all pages on this site.
-        </div>
-        <div class="not-found-message">
-            <strong>Stalemate: Page Not Found</strong>
         </div>
     </div>
     
