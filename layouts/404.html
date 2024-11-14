@@ -1,40 +1,69 @@
 {{- define "main" }}
 <style>
     .not-found-container {
-        max-width: 600px;
-        margin: 0 auto;
-        padding: 2rem 1rem;
-        text-align: center;
+        width: 100%;
+        height: 100vh; /* Changed to 100vh to ensure full height */
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        padding: 0 1rem;
+        overflow: hidden;
+        position: fixed; /* Added to prevent scrolling */
+        top: 0;
+        left: 0;
     }
 
     .not-found-header {
-        margin-bottom: 2rem;
+        text-align: center;
+        margin-bottom: 0.5rem;
     }
 
     .not-found-header h1 {
-        font-size: 3.5rem;
-        margin: 0;
-        background: linear-gradient(45deg, var(--primary), var(--secondary));
+        font-size: clamp(4rem, 15vw, 8rem);
+        margin: 0 0 0.5rem 0;
+        background: linear-gradient(135deg, var(--primary), #2ea44f);
         -webkit-background-clip: text;
         -webkit-text-fill-color: transparent;
         background-clip: text;
+        line-height: 1;
+    }
+
+    .error-link {
+        text-decoration: none;
+        color: inherit;
+        transition: opacity 0.2s ease;
+    }
+
+    .error-link:hover {
+        opacity: 0.8;
     }
 
     .not-found-message {
-        font-size: 1.1rem;
-        margin: 1rem 0;
-        opacity: 0.9;
+        color: var(--primary);
+        font-size: 1.2rem;
+        margin: 0;
+    }
+
+    .privacy-note {
+        text-align: center;
+        font-size: 0.9rem;
+        color: var(--primary);
+        opacity: 0.8;
+        max-width: 400px;
+        margin: 0.5rem 0;
+        line-height: 1.4;
     }
 
     .chess-game {
-        margin: 2rem auto;
-        max-width: 400px;
+        width: min(360px, 90vw);
         aspect-ratio: 1;
         position: relative;
-        background: var(--entry);
-        border-radius: 8px;
-        overflow: hidden;
-        padding: 20px;
+        background: #1e1e1e;
+        border-radius: 12px;
+        padding: 12px;
+        margin: 0.5rem auto;
+        box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
     }
 
     .chess-board {
@@ -43,16 +72,19 @@
         grid-template-rows: repeat(8, 1fr);
         width: 100%;
         height: 100%;
-        position: relative;
+        border: 2px solid rgba(var(--primary-rgb), 0.4);
+        border-radius: 8px;
+        overflow: hidden;
+        background: #252525;
     }
 
     .chess-square {
         width: 100%;
         height: 100%;
-        position: relative;
+        border: 1px solid rgba(var(--primary-rgb), 0.15);
     }
 
-    /* Create alternating pattern */
+    /* Chess board pattern */
     .chess-square:nth-child(-n+8):nth-child(even),
     .chess-square:nth-child(n+9):nth-child(-n+16):nth-child(odd),
     .chess-square:nth-child(n+17):nth-child(-n+24):nth-child(even),
@@ -61,124 +93,104 @@
     .chess-square:nth-child(n+41):nth-child(-n+48):nth-child(odd),
     .chess-square:nth-child(n+49):nth-child(-n+56):nth-child(even),
     .chess-square:nth-child(n+57):nth-child(-n+64):nth-child(odd) {
-        background: rgba(255,255,255,0.1);
+        background: rgba(var(--primary-rgb), 0.3);
     }
 
-    .chess-square:nth-child(-n+8):nth-child(odd),
-    .chess-square:nth-child(n+9):nth-child(-n+16):nth-child(even),
-    .chess-square:nth-child(n+17):nth-child(-n+24):nth-child(odd),
-    .chess-square:nth-child(n+25):nth-child(-n+32):nth-child(even),
-    .chess-square:nth-child(n+33):nth-child(-n+40):nth-child(odd),
-    .chess-square:nth-child(n+41):nth-child(-n+48):nth-child(even),
-    .chess-square:nth-child(n+49):nth-child(-n+56):nth-child(odd),
-    .chess-square:nth-child(n+57):nth-child(-n+64):nth-child(even) {
-        background: rgba(46,164,79,0.1);
-    }
-
-    @keyframes movePiece {
+    @keyframes knightMove {
         0% { transform: translate(0, 0); }
-        25% { transform: translate(200%, 0); }
-        50% { transform: translate(200%, 200%); }
-        75% { transform: translate(0, 200%); }
+        25% { transform: translate(calc(100% - 8px), calc(-100% + 8px)); }
+        50% { transform: translate(calc(200% - 16px), 0); }
+        75% { transform: translate(calc(100% - 8px), calc(100% - 8px)); }
         100% { transform: translate(0, 0); }
     }
 
     .chess-piece {
         position: absolute;
-        top: 10%;
-        left: 10%;
+        top: 20px;
+        left: 20px;
         width: 40px;
         height: 40px;
-        background: var(--primary);
-        mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M12 2L8 6h8l-4-4zm0 6l-4 4h8l-4-4zm0 6l-4 4h8l-4-4z'/%3E%3C/svg%3E") no-repeat center;
-        animation: movePiece 8s infinite linear;
+        background: #fff;
+        mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 45 45'%3E%3Cg fill='%23fff' fill-rule='evenodd' stroke='%23000' stroke-width='1.5' stroke-linejoin='round'%3E%3Cpath d='M 22,10 C 32.5,11 38.5,18 38,39 L 15,39 C 15,30 25,32.5 23,18' style='fill:%23ffffff'/%3E%3Cpath d='M 24,18 C 24.38,20.91 18.45,25.37 16,27 C 13,29 13.18,31.34 11,31 C 9.958,30.06 12.41,27.96 11,28 C 10,28 11.19,29.23 10,30 C 9,30 5.997,31 6,26 C 6,24 12,14 12,14 C 12,14 13.89,12.1 14,10.5 C 13.27,9.506 13.5,8.5 13.5,7.5 C 14.5,6.5 16.5,10 16.5,10 L 18.5,10 C 18.5,10 19.28,8.008 21,7 C 22,7 22,10 22,10' style='fill:%23ffffff'/%3E%3C/g%3E%3C/svg%3E") no-repeat center;
+        animation: knightMove 8s infinite ease-in-out;
+        filter: drop-shadow(2px 2px 2px rgba(0, 0, 0, 0.5));
         z-index: 2;
     }
 
     .game-message {
         position: absolute;
-        bottom: 1rem;
+        bottom: 12px;
         left: 50%;
         transform: translateX(-50%);
         color: var(--primary);
-        font-family: monospace;
-        text-shadow: 0 0 10px var(--primary);
-        z-index: 3;
+        font-family: 'JetBrains Mono', monospace;
+        font-size: 0.85rem;
+        white-space: nowrap;
+        background: rgba(26, 26, 26, 0.95);
+        padding: 0.4rem 0.8rem;
+        border-radius: 4px;
+        border: 1px solid rgba(var(--primary-rgb), 0.4);
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
     }
 
     .footer-links {
-        margin-top: 2rem;
         display: flex;
-        justify-content: center;
         gap: 1rem;
+        margin: 0.75rem 0 0 0;
     }
 
     .footer-link {
-        padding: 0.5rem 1rem;
-        border: 1px solid var(--primary);
-        border-radius: 4px;
-        text-decoration: none;
+        padding: 0.5rem 1.25rem;
+        border: 2px solid var(--primary);
+        border-radius: 6px;
         color: var(--primary);
-        transition: all 0.3s ease;
+        text-decoration: none;
+        font-weight: 500;
+        transition: all 0.2s ease;
     }
 
     .footer-link:hover {
         background: var(--primary);
         color: var(--theme);
+        transform: translateY(-2px);
     }
 
-    .privacy-note {
-        margin-top: 2rem;
-        font-size: 0.9rem;
-        opacity: 0.8;
-        max-width: 400px;
-        margin-left: auto;
-        margin-right: auto;
-    }
-
-    @media (max-width: 600px) {
-        .not-found-container {
-            padding: 1rem;
-        }
-        
+    @media (max-height: 700px) {
         .chess-game {
-            width: 100%;
+            width: min(320px, 80vw);
         }
-
-        .chess-piece {
-            width: 30px;
-            height: 30px;
+        .not-found-header h1 {
+            font-size: clamp(3rem, 12vw, 6rem);
         }
     }
 </style>
 
 <div class="not-found-container">
-    <header class="not-found-header">
-        <h1>404</h1>
+    <div class="not-found-header">
+        <a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/404" class="error-link" target="_blank" rel="noopener noreferrer">
+            <h1>404</h1>
+        </a>
         <div class="not-found-message">
-            <p><strong>Page Not Found in the Digital Labyrinth</strong></p>
-            <p>Like an encrypted message without its key, this page remains hidden.</p>
+            <strong>Stalemate: Page Not Found</strong>
         </div>
-    </header>
+        <div class="privacy-note">
+            Even in error, your privacy remains paramount. This 404 page operates with zero tracking, like all pages on this site.
+        </div>
+    </div>
     
-    <div class="chess-game">
+    <div class="chess-game" role="presentation">
         <div class="chess-board">
             {{ range seq 64 }}
             <div class="chess-square"></div>
             {{ end }}
         </div>
-        <div class="chess-piece"></div>
-        <div class="game-message">SYSTEM: Page_Location = null;</div>
+        <div class="chess-piece" aria-hidden="true"></div>
+        <div class="game-message" aria-live="polite">SYSTEM: Page_Location = null;</div>
     </div>
 
-    <div class="footer-links">
+    <nav class="footer-links" aria-label="Navigation options">
         <a href="/" class="footer-link">Return Home</a>
-        <a href="/posts" class="footer-link">Read Articles</a>
-    </div>
-
-    <div class="privacy-note">
-        Even in error, your privacy remains paramount. This 404 page like all others on this site operates with zero tracking.
-        <p>Made with ♟️ Pr0f3ss0r 1nc0gn1t0</p>
-    </div>
+        <a href="/blog" class="footer-link">Read Blog</a>
+    </nav>
 </div>
 {{- end }}
