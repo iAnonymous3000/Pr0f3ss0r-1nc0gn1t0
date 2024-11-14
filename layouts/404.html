@@ -1,83 +1,49 @@
 {{ define "main" }}
-<div class="not-found-container">
-    <div class="profile">
-        <div class="profile_inner">
-            <header class="not-found-header">
-                <h1>404</h1>
-                <div class="stalemate-message">Stalemate: Page Not Found</div>
-            </header>
-            
-            <div class="chess-game">
-                <div class="chess-board">
-                    {{ range seq 64 }}
-                        <div class="chess-square"></div>
-                    {{ end }}
-                </div>
-                <div class="chess-piece"></div>
-                <div class="game-message">SYSTEM: Page_Location = null;</div>
-            </div>
+<article class="post-single">
+    <header class="post-header">
+        <h1 class="post-title">404</h1>
+        <div class="post-description">Stalemate: Page Not Found</div>
+    </header>
 
-            <div class="footer-links">
-                <a href="{{ "/" | relURL }}" class="button">
-                    <span class="button-inner">Return Home</span>
-                </a>
-                <a href="{{ "/blog/" | relURL }}" class="button">
-                    <span class="button-inner">Read Blog</span>
-                </a>
+    <div class="post-content">
+        <div class="chess-game">
+            <div class="chess-board">
+                {{ range seq 64 }}
+                    <div class="chess-square"></div>
+                {{ end }}
             </div>
+            <div class="chess-piece"></div>
+            <div class="game-message">SYSTEM: Page_Location = null;</div>
+        </div>
 
-            <div class="privacy-note">
-                Even in error, your privacy remains paramount. This 404 page, like all others on this site, operates with zero tracking.
-                <p>Made with ♟️ Pr0f3ss0r 1nc0gn1t0</p>
-            </div>
+        <div class="buttons">
+            <a class="button" href="{{ "/" | relURL }}">
+                <span class="button-inner">Return Home</span>
+            </a>
+            <a class="button" href="{{ "/blog/" | relURL }}">
+                <span class="button-inner">Read Blog</span>
+            </a>
+        </div>
+
+        <div class="privacy-note">
+            Even in error, your privacy remains paramount. This 404 page, like all others on this site, operates with zero tracking.
+            <p>Made with ♟️ Pr0f3ss0r 1nc0gn1t0</p>
         </div>
     </div>
-</div>
+</article>
 
 <style>
-    :root {
-        --theme: #1b1d1e;
-        --entry: #2e2e33;
-        --primary: #ffffff;
-        --secondary: rgba(255, 255, 255, 0.7);
-        --tertiary: rgba(255, 255, 255, 0.5);
-        --content: rgba(255, 255, 255, 0.9);
-        --chess-light: #d4c19c;
-        --chess-dark: #8b5a4a;
-    }
-
-    .not-found-container {
-        max-width: 600px;
-        margin: 5% auto;
-        padding: 2rem 1rem;
+    .post-title {
+        font-size: 8rem !important;
         text-align: center;
+        margin-bottom: 0 !important;
     }
 
-    .profile {
-        max-width: 800px;
-        margin: 0 auto;
-    }
-
-    .profile_inner {
-        padding: 30px;
-        position: relative;
-    }
-
-    .not-found-header h1 {
-        font-size: 3.5rem;
-        margin: 0;
-        background: linear-gradient(45deg, var(--primary), var(--secondary));
-        -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
-        background-clip: text;
-        font-weight: 700;
-    }
-
-    .stalemate-message {
+    .post-description {
         font-size: 1.5rem;
-        margin: 1rem 0;
-        font-weight: bold;
+        text-align: center;
         color: var(--secondary);
+        margin: 1rem 0 2rem;
     }
 
     .chess-game {
@@ -99,7 +65,7 @@
         width: 100%;
         height: 100%;
         position: relative;
-        border: 2px solid var(--chess-dark);
+        border: 2px solid #8b5a4a;
         border-radius: 4px;
     }
 
@@ -116,7 +82,7 @@
     .chess-square:nth-child(16n+12),
     .chess-square:nth-child(16n+14),
     .chess-square:nth-child(16n+16) {
-        background-color: var(--chess-light);
+        background-color: #d4c19c;
     }
 
     .chess-square:nth-child(16n+2),
@@ -127,7 +93,7 @@
     .chess-square:nth-child(16n+11),
     .chess-square:nth-child(16n+13),
     .chess-square:nth-child(16n+15) {
-        background-color: var(--chess-dark);
+        background-color: #8b5a4a;
     }
 
     @keyframes movePiece {
@@ -158,52 +124,24 @@
         left: 50%;
         transform: translateX(-50%);
         color: var(--primary);
-        font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+        font-family: var(--monospace-font);
         text-shadow: 0 0 10px var(--primary);
         z-index: 3;
     }
 
-    .footer-links {
-        margin-top: 2rem;
+    .buttons {
         display: flex;
         justify-content: center;
         gap: 1rem;
-        flex-wrap: wrap;
-    }
-
-    .button {
-        background: none;
-        border: 1px solid var(--tertiary);
-        border-radius: 8px;
-        cursor: pointer;
-        text-align: center;
-        padding: 6px 20px;
-        margin: 4px 0;
-        color: var(--primary);
-        font-size: 14px;
-        text-decoration: none;
-        transition: transform 0.1s;
-        user-select: none;
-    }
-
-    .button:hover {
-        border-color: var(--primary);
-        transform: translateY(-1px);
-    }
-
-    .button-inner {
-        display: flex;
-        align-items: center;
-        gap: 4px;
+        margin: 2rem 0;
     }
 
     .privacy-note {
-        margin-top: 2rem;
+        text-align: center;
         font-size: 0.9rem;
         color: var(--secondary);
         max-width: 400px;
-        margin-left: auto;
-        margin-right: auto;
+        margin: 2rem auto;
         line-height: 1.4;
     }
 
@@ -213,9 +151,14 @@
     }
 
     @media (max-width: 900px) {
+        .post-title {
+            font-size: 6rem !important;
+        }
+        
         .chess-game {
             max-width: 300px;
         }
+        
         .chess-piece {
             width: 35px;
             height: 35px;
@@ -223,8 +166,12 @@
     }
 
     @media (max-width: 600px) {
-        .profile_inner {
-            padding: 15px;
+        .post-title {
+            font-size: 4rem !important;
+        }
+
+        .post-description {
+            font-size: 1.2rem;
         }
         
         .chess-game {
@@ -237,12 +184,9 @@
             height: 30px;
         }
 
-        .not-found-header h1 {
-            font-size: 3rem;
-        }
-
-        .stalemate-message {
-            font-size: 1.2rem;
+        .buttons {
+            flex-direction: column;
+            align-items: center;
         }
     }
 </style>
