@@ -1,49 +1,43 @@
 {{ define "main" }}
-<article class="post-single">
-    <header class="post-header">
-        <h1 class="post-title">404</h1>
-        <div class="post-description">Stalemate: Page Not Found</div>
-    </header>
-
-    <div class="post-content">
-        <div class="chess-game">
-            <div class="chess-board">
-                {{ range seq 64 }}
-                    <div class="chess-square"></div>
-                {{ end }}
-            </div>
-            <div class="chess-piece"></div>
-            <div class="game-message">SYSTEM: Page_Location = null;</div>
+<div class="main">
+    <h1>404</h1>
+    <div class="stalemate-message">Stalemate: Page Not Found</div>
+    
+    <div class="chess-game">
+        <div class="chess-board">
+            {{ range seq 64 }}
+                <div class="chess-square"></div>
+            {{ end }}
         </div>
-
-        <div class="buttons">
-            <a class="button" href="{{ "/" | relURL }}">
-                <span class="button-inner">Return Home</span>
-            </a>
-            <a class="button" href="{{ "/blog/" | relURL }}">
-                <span class="button-inner">Read Blog</span>
-            </a>
-        </div>
-
-        <div class="privacy-note">
-            Even in error, your privacy remains paramount. This 404 page, like all others on this site, operates with zero tracking.
-            <p>Made with ♟️ Pr0f3ss0r 1nc0gn1t0</p>
-        </div>
+        <div class="chess-piece"></div>
+        <div class="game-message">SYSTEM: Page_Location = null;</div>
     </div>
-</article>
+
+    <div class="buttons">
+        <a href="{{ "/" | relURL }}" class="button">Return Home</a>
+        <a href="{{ "/blog/" | relURL }}" class="button">Read Blog</a>
+    </div>
+</div>
 
 <style>
-    .post-title {
-        font-size: 8rem !important;
+    .main {
         text-align: center;
-        margin-bottom: 0 !important;
+        padding: 2rem 1rem;
+        color: var(--primary);
     }
 
-    .post-description {
+    h1 {
+        font-size: 8rem;
+        margin: 0;
+        font-family: var(--main-font);
+        font-weight: 700;
+    }
+
+    .stalemate-message {
         font-size: 1.5rem;
-        text-align: center;
+        margin: 1rem 0;
         color: var(--secondary);
-        margin: 1rem 0 2rem;
+        font-family: var(--main-font);
     }
 
     .chess-game {
@@ -55,7 +49,6 @@
         border-radius: 8px;
         overflow: hidden;
         padding: 20px;
-        box-shadow: 0 4px 6px rgba(0,0,0,0.3);
     }
 
     .chess-board {
@@ -82,7 +75,7 @@
     .chess-square:nth-child(16n+12),
     .chess-square:nth-child(16n+14),
     .chess-square:nth-child(16n+16) {
-        background-color: #d4c19c;
+        background-color: #f0d9b5;
     }
 
     .chess-square:nth-child(16n+2),
@@ -93,7 +86,7 @@
     .chess-square:nth-child(16n+11),
     .chess-square:nth-child(16n+13),
     .chess-square:nth-child(16n+15) {
-        background-color: #8b5a4a;
+        background-color: #b58863;
     }
 
     @keyframes movePiece {
@@ -115,7 +108,6 @@
         mask-size: contain;
         animation: movePiece 8s infinite linear;
         z-index: 2;
-        filter: drop-shadow(0 0 8px rgba(255, 255, 255, 0.4));
     }
 
     .game-message {
@@ -124,69 +116,45 @@
         left: 50%;
         transform: translateX(-50%);
         color: var(--primary);
-        font-family: var(--monospace-font);
+        font-family: var(--mono-font);
         text-shadow: 0 0 10px var(--primary);
         z-index: 3;
     }
 
     .buttons {
+        margin: 2rem 0;
         display: flex;
         justify-content: center;
         gap: 1rem;
-        margin: 2rem 0;
     }
 
-    .privacy-note {
-        text-align: center;
-        font-size: 0.9rem;
-        color: var(--secondary);
-        max-width: 400px;
-        margin: 2rem auto;
-        line-height: 1.4;
+    .button {
+        background: var(--tertiary);
+        color: var(--primary);
+        padding: 8px 20px;
+        border-radius: 6px;
+        text-decoration: none;
+        font-family: var(--main-font);
+        transition: all 0.3s ease;
     }
 
-    .privacy-note p {
-        margin-top: 0.5rem;
-        color: var(--tertiary);
+    .button:hover {
+        color: var(--theme);
+        background: var(--primary);
     }
 
-    @media (max-width: 900px) {
-        .post-title {
-            font-size: 6rem !important;
+    @media (max-width: 600px) {
+        h1 {
+            font-size: 5rem;
         }
         
         .chess-game {
             max-width: 300px;
         }
-        
-        .chess-piece {
-            width: 35px;
-            height: 35px;
-        }
-    }
-
-    @media (max-width: 600px) {
-        .post-title {
-            font-size: 4rem !important;
-        }
-
-        .post-description {
-            font-size: 1.2rem;
-        }
-        
-        .chess-game {
-            width: 100%;
-            margin: 1rem auto;
-        }
 
         .chess-piece {
             width: 30px;
             height: 30px;
-        }
-
-        .buttons {
-            flex-direction: column;
-            align-items: center;
         }
     }
 </style>
