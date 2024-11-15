@@ -38,10 +38,10 @@ params:
   description: "Privacy Researcher & Security Strategist | FIDE Arena Grand Master | Chess-Inspired Security Thinking"
   keywords: [Privacy, Security, Chess, Research, FIDE]
   
-  # Site Label
+# Site Label
   label:
     text: "Pr0f3ss0r 1nc0gn1t0"
-    icon: "/images/favicon/favicon-32x32.png"
+    icon: "/images/favicon/favicon-45x45.png"  # Updated to use 45x45 version
 
   # Repository Info
   githubUsername: "iAnonymous3000"
