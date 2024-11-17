@@ -1,6 +1,6 @@
 # Professor Incognito - Personal Website
-
 [![Hugo Version](https://img.shields.io/badge/Hugo-0.138.0-blue?style=flat-square&logo=hugo)](https://gohugo.io/)
+[![PageSpeed Score](https://img.shields.io/badge/PageSpeed-100%25-brightgreen?style=flat-square&logo=googlechrome)](https://pagespeed.web.dev/analysis/https-profincognito-me/n8txidsjdl)
 [![Modern Standards](https://img.shields.io/badge/internet.nl-97%25-brightgreen?style=flat-square)](https://internet.nl/site/profincognito.me/)
 [![License: AGPL-3.0](https://img.shields.io/badge/License-AGPL%20v3-blue.svg?style=flat-square)](https://www.gnu.org/licenses/agpl-3.0)
 [![Content License: CC BY-SA 4.0](https://img.shields.io/badge/Content-CC%20BY--SA%204.0-lightgrey.svg?style=flat-square)](https://creativecommons.org/licenses/by-sa/4.0/)
