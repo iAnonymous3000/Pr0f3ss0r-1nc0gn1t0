@@ -68,7 +68,7 @@ params:
       url: "https://www.linkedin.com/in/soorajsathyanarayanan"
       title: "LinkedIn"
       rel: "me noopener"
-    - name: "twitter" 
+    - name: "x" 
       url: "https://x.com/iAnonymous3000"
       title: "X (formerly Twitter)"
       rel: "me noopener"
