@@ -63,19 +63,26 @@ params:
     - name: "github"
       url: "https://github.com/iAnonymous3000"
       title: "GitHub"
+      rel: "me noopener"
     - name: "linkedin"
       url: "https://www.linkedin.com/in/soorajsathyanarayanan"
       title: "LinkedIn"
-    - name: "twitter"
+      rel: "me noopener"
+    - name: "twitter" 
       url: "https://x.com/iAnonymous3000"
-      title: "Twitter"
+      title: "X (formerly Twitter)"
+      rel: "me noopener"
     - name: "mastodon"
       url: "https://mastodon.social/@ianonymous3000"
       title: "Mastodon"
       rel: "me"
+    - name: "bluesky"  
+      url: "https://bsky.app/profile/ianonymous3000.bsky.social"
+      title: "Bluesky"
+      rel: "me noopener"
     - name: "rss"
       url: "/index.xml"
-      title: "RSS"
+      title: "RSS Feed"
 
   # Search Configuration
   search:
@@ -133,6 +140,7 @@ params:
     buttons:
       - name: "Portfolio"
         url: "https://linksta.cc/@ianonymous3000"
+        rel: "me noopener"
 
 # Navigation Menu
 menu:
