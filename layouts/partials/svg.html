@@ -1,0 +1,6 @@
+{{- if .name }}
+{{- $icon := lower .name }}
+{{- if eq $icon "bsky" }}
+{{- partial "svg/bluesky.svg" . }}
+{{- end }}
+{{- end }}
