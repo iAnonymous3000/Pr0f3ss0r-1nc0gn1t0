@@ -1,8 +1,6 @@
-{{- if .name }}
-{{- $icon := lower .name }}
-{{- if eq $icon "bsky" }}
-{{- partial "svg/bsky.svg" . }}
-{{- else }}
-{{- partial "svg/social-icons.svg" . }}
-{{- end }}
-{{- end }}
+{{- $icon_name := ( trim .name " " | lower )}}
+{{- if (eq $icon_name "bsky") -}}
+    {{- partial "svg/bsky.svg" . }}
+{{- else -}}
+    {{- partial (printf "svg/%s.svg" $icon_name) . }}
+{{- end -}}
