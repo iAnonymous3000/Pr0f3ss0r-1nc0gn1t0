@@ -2,5 +2,7 @@
 {{- $icon := lower .name }}
 {{- if eq $icon "bsky" }}
 {{- partial "svg/bsky.svg" . }}
+{{- else }}
+{{- partial "svg/social-icons.svg" . }}
 {{- end }}
 {{- end }}
