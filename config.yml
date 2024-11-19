@@ -76,7 +76,7 @@ params:
       url: "https://mastodon.social/@ianonymous3000"
       title: "Mastodon"
       rel: "me"
-    - name: "bluesky"  
+    - name: "bsky"  
       url: "https://bsky.app/profile/ianonymous3000.bsky.social"
       title: "Bluesky"
       rel: "me noopener"
