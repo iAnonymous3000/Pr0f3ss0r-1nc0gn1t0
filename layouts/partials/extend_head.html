@@ -8,9 +8,9 @@
 <link rel="icon" type="image/png" sizes="192x192" href="/images/favicon/android-chrome-192x192.png">
 <link rel="icon" type="image/png" sizes="512x512" href="/images/favicon/android-chrome-512x512.png">
 
-<!-- Mastodon Verification -->
+<!-- Mastodon Verification - with properly quoted attributes -->
 <link rel="me" href="https://mastodon.social/@ianonymous3000">
-<a rel="me" href="https://mastodon.social/@ianonymous3000">Mastodon</a>
+<a rel="me noopener noreferrer" href="https://mastodon.social/@ianonymous3000">Mastodon</a>
 
 <!-- Open Graph Meta Tags -->
 <meta property="og:title" content="{{ if .IsHome }}{{ site.Title }}{{ else }}{{ .Title }} | {{ site.Title }}{{ end }}">
