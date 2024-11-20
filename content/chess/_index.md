@@ -14,12 +14,16 @@ As a FIDE Arena Grand Master (AGM), I blend my passion for chess with my experti
 ### Elite Chess Encounters
 
 #### Meeting Garry Kasparov
-![Meeting with Garry Kasparov](https://github.com/user-attachments/assets/a95decab-7926-4c8d-9921-bd4e2c017307#center)
+<div class="chess-section">
+    <img class="img-profile" loading="lazy" src="https://github.com/user-attachments/assets/a95decab-7926-4c8d-9921-bd4e2c017307" alt="Meeting with Garry Kasparov">
+</div>
 
 At the "Beyond Boundaries" event at Northeastern University, I had the privilege of meeting chess legend Garry Kasparov. As NEU Chess Club's strategic advisor, I engaged with Kasparov in a meaningful discussion about digital rights and misinformation, gaining valuable insights about the intersection of technology and critical thinking. We secured a chess board signed by Kasparov for our club.
 
 #### Meeting Vishwanathan Anand
-![Meeting with Vishwanathan Anand](https://github.com/user-attachments/assets/c7880be8-94b5-4965-bbe6-09f070df4511#center)
+<div class="chess-section">
+    <img class="img-profile" loading="lazy" src="https://github.com/user-attachments/assets/c7880be8-94b5-4965-bbe6-09f070df4511" alt="Meeting with Vishwanathan Anand">
+</div>
 
 A dream came true when I met five-time World Chess Champion Vishy Anand. His quote resonates deeply with my approach to chess and life: "Chess is like body-building. If you train every day, you stay in top shape. It is the same with your brain – Chess exercises it!" This encounter reinforced my commitment to continuous improvement and mental agility.
 
@@ -40,7 +44,9 @@ As a key member of Northeastern's premier chess team, I've had the honor of repr
 ## Chess Achievements
 
 ### Championship Titles
-![Five-Time NEU Chess Champion](https://github.com/user-attachments/assets/855ea7bf-0e2e-49c2-8006-f898cf745bdd#center)
+<div class="chess-section">
+    <img class="img-wide" loading="lazy" src="https://github.com/user-attachments/assets/855ea7bf-0e2e-49c2-8006-f898cf745bdd" alt="Five-Time NEU Chess Champion">
+</div>
 
 - **5-Time Consecutive Northeastern University Chess Champion**
   - Intramural Chess Competition Champion (2019-2023)
