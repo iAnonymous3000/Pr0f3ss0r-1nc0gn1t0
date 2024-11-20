@@ -1,8 +1,10 @@
 {{- define "main" }}
 <style>
     :root {
-        --theme: #1a1a1a; /* Example background color */
-        --secondary: #ffffff; /* Example text and element color */
+        --theme: #1a1a1a; /* Background color */
+        --secondary: #ffffff; /* Text and element color */
+        --square-light: #f0d9b5; /* Light square color */
+        --square-dark: #b58863; /* Dark square color */
     }
 
     /* Reset margins and paddings to prevent unexpected spacing */
@@ -17,6 +19,7 @@
         height: 100%;
         width: 100%;
         overflow: hidden; /* Prevents scrolling */
+        font-family: Arial, sans-serif; /* Fallback font */
     }
 
     .not-found-container {
@@ -57,12 +60,25 @@
         margin-bottom: 2rem;
     }
 
+    .privacy-note {
+        text-align: center;
+        font-size: 0.9rem;
+        color: var(--secondary);
+        opacity: 0.8;
+        line-height: 1.6;
+        max-width: 600px;
+        padding: 0 1rem;
+        margin-top: 1.5rem; /* Added margin to separate from previous content */
+    }
+
     .chess-game {
         width: min(350px, 70vw);
         aspect-ratio: 1;
         position: relative;
         border-radius: 12px;
-        background: rgba(255, 255, 255, 0.05);
+        background: #333; /* Temporary background to visualize the chessboard */
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Adds depth */
+        margin-bottom: 2rem; /* Space below the chess game */
     }
 
     .chess-board {
@@ -79,19 +95,23 @@
         width: 100%;
         height: 100%;
         transition: background-color 0.3s ease;
-        background: rgba(255, 255, 255, 0.05);
     }
 
+    /* Alternate square colors for chessboard */
     .chess-square:nth-child(odd) {
-        background: rgba(0, 0, 0, 0.05);
+        background: var(--square-light);
     }
 
-    @keyframes knightMove {
-        0% { transform: translate(0, 0); }
-        25% { transform: translate(calc(100% - 8px), calc(-100% + 8px)); }
-        50% { transform: translate(calc(200% - 16px), 0); }
-        75% { transform: translate(calc(100% - 8px), calc(100% - 8px)); }
-        100% { transform: translate(0, 0); }
+    .chess-square:nth-child(even) {
+        background: var(--square-dark);
+    }
+
+    /* Adjust for row-wise alternation */
+    .chess-board > div:nth-child(8n+1),
+    .chess-board > div:nth-child(8n+3),
+    .chess-board > div:nth-child(8n+5),
+    .chess-board > div:nth-child(8n+7) {
+        background: var(--square-dark);
     }
 
     .chess-piece {
@@ -132,6 +152,14 @@
         50% { opacity: 0; }
     }
 
+    @keyframes knightMove {
+        0% { transform: translate(0, 0); }
+        25% { transform: translate(calc(100% - 8px), calc(-100% + 8px)); }
+        50% { transform: translate(calc(200% - 16px), 0); }
+        75% { transform: translate(calc(100% - 8px), calc(100% - 8px)); }
+        100% { transform: translate(0, 0); }
+    }
+
     .nav-footer {
         display: flex;
         flex-direction: column;
@@ -159,16 +187,6 @@
 
     .footer-link:hover {
         opacity: 1;
-    }
-
-    .privacy-note {
-        text-align: center;
-        font-size: 0.9rem;
-        color: var(--secondary);
-        opacity: 0.6;
-        line-height: 1.6;
-        max-width: 600px;
-        padding: 0 1rem;
     }
 
     /* Responsive Adjustments */
@@ -225,6 +243,11 @@
         <p class="not-found-message">
             <strong>Stalemate: Page Not Found</strong>
         </p>
+
+        <!-- Privacy Note Moved Here -->
+        <div class="privacy-note">
+            Even in error, your privacy remains paramount. This 404 page operates with zero tracking, like all pages on this site.
+        </div>
         
         <div class="chess-game" aria-hidden="true">
             <div class="chess-board">
@@ -233,7 +256,8 @@
                 {{ end }}
             </div>
             <div class="chess-piece">
-                <img src="/images/knight.svg" alt="Knight Piece" />
+                <!-- Use a placeholder image to ensure visibility -->
+                <img src="/images/knight.svg" alt="Knight Piece" onerror="this.onerror=null; this.src='https://via.placeholder.com/42';">
             </div>
             <div class="game-message">SYSTEM: Page_Location = null;_</div>
         </div>
@@ -244,10 +268,6 @@
             <a href="/" class="footer-link">Return Home</a>
             <a href="/blog" class="footer-link">Read Blog</a>
         </nav>
-        
-        <div class="privacy-note">
-            Even in error, your privacy remains paramount. This 404 page operates with zero tracking, like all pages on this site.
-        </div>
     </footer>
 </div>
 {{- end }}
