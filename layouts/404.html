@@ -1,184 +1,230 @@
 {{- define "main" }}
 <style>
-    .not-found-container {
-        max-width: 600px;
-        margin: 0 auto;
-        padding: 2rem 1rem;
-        text-align: center;
+    :root {
+        --square-light: #f0d9b5;
+        --square-dark: #b58863;
+        --knight-color: currentColor;
     }
 
-    .not-found-header {
-        margin-bottom: 2rem;
+    @media (prefers-color-scheme: dark) {
+        :root {
+            --square-light: #d1a054;
+            --square-dark: #7b4b2a;
+        }
+    }
+
+    body {
+        margin: 0;
+        overflow: hidden;
+        background: #1a1a1a;
+        color: white;
+    }
+
+    .not-found-container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        min-height: 100vh;
+        text-align: center;
+        padding: 2rem;
+        gap: 1.5rem;
     }
 
     .not-found-header h1 {
-        font-size: 3.5rem;
+        font-size: clamp(6rem, 15vw, 12rem);
+        font-weight: 900;
         margin: 0;
-        background: linear-gradient(45deg, var(--primary), var(--secondary));
-        -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
-        background-clip: text;
+        line-height: 1;
+        color: #fff;
     }
 
     .not-found-message {
-        font-size: 1.1rem;
-        margin: 1rem 0;
-        opacity: 0.9;
+        display: flex;
+        flex-direction: column;
+        gap: 0.5rem;
+        margin: 0;
+    }
+
+    .not-found-message p {
+        margin: 0;
+        font-size: 1.2rem;
+    }
+
+    .privacy-note {
+        font-size: 0.9rem;
+        opacity: 0.8;
+        max-width: 600px;
+        margin: 0;
     }
 
     .chess-game {
-        margin: 2rem auto;
-        max-width: 400px;
+        width: min(400px, 70vw);
         aspect-ratio: 1;
         position: relative;
-        background: var(--entry);
-        border-radius: 8px;
-        overflow: hidden;
-        padding: 20px;
+        border-radius: 12px;
+        background: var(--square-dark);
+        margin: 1rem 0 2.5rem;
     }
 
     .chess-board {
         display: grid;
         grid-template-columns: repeat(8, 1fr);
-        grid-template-rows: repeat(8, 1fr);
         width: 100%;
         height: 100%;
-        position: relative;
+        border-radius: 8px;
+        overflow: hidden;
     }
 
     .chess-square {
         width: 100%;
-        height: 100%;
-        position: relative;
+        aspect-ratio: 1;
     }
 
-    /* Create alternating pattern */
-    .chess-square:nth-child(-n+8):nth-child(even),
-    .chess-square:nth-child(n+9):nth-child(-n+16):nth-child(odd),
-    .chess-square:nth-child(n+17):nth-child(-n+24):nth-child(even),
-    .chess-square:nth-child(n+25):nth-child(-n+32):nth-child(odd),
-    .chess-square:nth-child(n+33):nth-child(-n+40):nth-child(even),
-    .chess-square:nth-child(n+41):nth-child(-n+48):nth-child(odd),
-    .chess-square:nth-child(n+49):nth-child(-n+56):nth-child(even),
-    .chess-square:nth-child(n+57):nth-child(-n+64):nth-child(odd) {
-        background: rgba(255,255,255,0.1);
-    }
-
-    .chess-square:nth-child(-n+8):nth-child(odd),
-    .chess-square:nth-child(n+9):nth-child(-n+16):nth-child(even),
-    .chess-square:nth-child(n+17):nth-child(-n+24):nth-child(odd),
-    .chess-square:nth-child(n+25):nth-child(-n+32):nth-child(even),
-    .chess-square:nth-child(n+33):nth-child(-n+40):nth-child(odd),
-    .chess-square:nth-child(n+41):nth-child(-n+48):nth-child(even),
-    .chess-square:nth-child(n+49):nth-child(-n+56):nth-child(odd),
-    .chess-square:nth-child(n+57):nth-child(-n+64):nth-child(even) {
-        background: rgba(46,164,79,0.1);
-    }
-
-    @keyframes movePiece {
-        0% { transform: translate(0, 0); }
-        25% { transform: translate(200%, 0); }
-        50% { transform: translate(200%, 200%); }
-        75% { transform: translate(0, 200%); }
-        100% { transform: translate(0, 0); }
+    /* Chessboard pattern */
+    .chess-board > div:nth-child(-n+8):nth-child(even),
+    .chess-board > div:nth-child(n+9):nth-child(-n+16):nth-child(odd),
+    .chess-board > div:nth-child(n+17):nth-child(-n+24):nth-child(even),
+    .chess-board > div:nth-child(n+25):nth-child(-n+32):nth-child(odd),
+    .chess-board > div:nth-child(n+33):nth-child(-n+40):nth-child(even),
+    .chess-board > div:nth-child(n+41):nth-child(-n+48):nth-child(odd),
+    .chess-board > div:nth-child(n+49):nth-child(-n+56):nth-child(even),
+    .chess-board > div:nth-child(n+57):nth-child(-n+64):nth-child(odd) {
+        background: var(--square-light);
     }
 
     .chess-piece {
         position: absolute;
-        top: 10%;
-        left: 10%;
-        width: 40px;
-        height: 40px;
-        background: var(--primary);
-        mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M12 2L8 6h8l-4-4zm0 6l-4 4h8l-4-4zm0 6l-4 4h8l-4-4z'/%3E%3C/svg%3E") no-repeat center;
-        animation: movePiece 8s infinite linear;
+        width: 60px;
+        height: 60px;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        animation: knightMove 8s infinite ease-in-out;
         z-index: 2;
+    }
+
+    @keyframes knightMove {
+        0% { transform: translate(-50%, -50%) translate(0, 0) rotate(0deg); }
+        25% { transform: translate(-50%, -50%) translate(100px, -100px) rotate(45deg); }
+        50% { transform: translate(-50%, -50%) translate(200px, 0) rotate(90deg); }
+        75% { transform: translate(-50%, -50%) translate(100px, 100px) rotate(135deg); }
+        100% { transform: translate(-50%, -50%) translate(0, 0) rotate(180deg); }
+    }
+
+    .knight-svg {
+        width: 100%;
+        height: 100%;
+        fill: white;
     }
 
     .game-message {
         position: absolute;
-        bottom: 1rem;
+        bottom: -40px;
         left: 50%;
         transform: translateX(-50%);
-        color: var(--primary);
-        font-family: monospace;
-        text-shadow: 0 0 10px var(--primary);
-        z-index: 3;
+        font-family: ui-monospace, 'Cascadia Code', 'Source Code Pro', monospace;
+        font-size: 0.9rem;
+        white-space: nowrap;
+        color: #fff;
+    }
+
+    .game-message::after {
+        content: "_";
+        animation: blink 1s step-end infinite;
+    }
+
+    @keyframes blink {
+        50% { opacity: 0; }
+    }
+
+    .nav-footer {
+        margin-top: 0;
     }
 
     .footer-links {
-        margin-top: 2rem;
         display: flex;
-        justify-content: center;
         gap: 1rem;
+        justify-content: center;
     }
 
     .footer-link {
-        padding: 0.5rem 1rem;
-        border: 1px solid var(--primary);
-        border-radius: 4px;
+        padding: 0.75rem 1.5rem;
+        border: 2px solid #fff;
+        border-radius: 8px;
         text-decoration: none;
-        color: var(--primary);
+        color: #fff;
+        font-weight: 500;
         transition: all 0.3s ease;
     }
 
     .footer-link:hover {
-        background: var(--primary);
-        color: var(--theme);
+        background: #fff;
+        color: #1a1a1a;
     }
 
-    .privacy-note {
-        margin-top: 2rem;
-        font-size: 0.9rem;
-        opacity: 0.8;
-        max-width: 400px;
-        margin-left: auto;
-        margin-right: auto;
-    }
-
-    @media (max-width: 600px) {
+    @media (max-width: 480px) {
         .not-found-container {
             padding: 1rem;
         }
-        
-        .chess-game {
-            width: 100%;
-        }
 
         .chess-piece {
-            width: 30px;
-            height: 30px;
+            width: 40px;
+            height: 40px;
+        }
+
+        .footer-link {
+            padding: 0.5rem 1rem;
+            font-size: 0.9rem;
+        }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+        .game-message::after {
+            animation: none;
+        }
+        
+        .footer-link:hover {
+            transform: none;
         }
     }
 </style>
 
-<div class="not-found-container">
+<div class="not-found-container" role="main" aria-labelledby="error-heading">
     <header class="not-found-header">
-        <h1>404</h1>
-        <div class="not-found-message">
-            <p><strong>Page Not Found in the Digital Labyrinth</strong></p>
-            <p>Like an encrypted message without its key, this page remains hidden.</p>
-        </div>
+        <h1 id="error-heading">404</h1>
     </header>
     
-    <div class="chess-game">
+    <div class="not-found-message">
+        <p><strong>Checkmate: Page Not Found</strong></p>
+        <p>The page you're looking for has made an unexpected move.</p>
+        <p class="privacy-note">
+            Even in error, your privacy remains paramount. This 404 page operates with zero tracking, like all pages on this site.
+        </p>
+    </div>
+
+    <div class="chess-game" aria-hidden="true">
         <div class="chess-board">
             {{ range seq 64 }}
             <div class="chess-square"></div>
             {{ end }}
         </div>
-        <div class="chess-piece"></div>
-        <div class="game-message">SYSTEM: Page_Location = null;</div>
+        <div class="chess-piece">
+            <svg class="knight-svg" viewBox="0 0 45 45" xmlns="http://www.w3.org/2000/svg">
+                <path d="M 22,10 C 32.5,11 38.5,18 38,39 L 15,39 C 15,30 25,32.5 23,18" />
+                <path d="M 24,18 C 24.38,20.91 18.45,25.37 16,27 C 13,29 13.18,31.34 11,31 C 9.958,30.06 12.41,27.96 11,28 C 10,28 11.19,29.23 10,30 C 9,30 5.997,31 6,26 C 6,24 12,14 12,14 C 12,14 13.89,12.1 14,10.5 C 13.27,9.506 13.5,8.5 13.5,7.5 C 14.5,6.5 16.5,10 16.5,10 L 18.5,10 C 18.5,10 19.28,8.008 21,7 C 22,7 22,10 22,10" />
+                <path d="M 9.5 25.5 A 0.5 0.5 0 1 1 8.5,25.5 A 0.5 0.5 0 1 1 9.5 25.5 z" />
+                <path d="M 15 15.5 A 0.5 1.5 0 1 1 14,15.5 A 0.5 1.5 0 1 1 15 15.5 z" transform="matrix(0.866,0.5,-0.5,0.866,9.693,-5.173)" />
+            </svg>
+        </div>
+        <div class="game-message">SYSTEM: page_location = null;</div>
     </div>
 
-    <div class="footer-links">
-        <a href="/" class="footer-link">Return Home</a>
-        <a href="/posts" class="footer-link">Read Articles</a>
-    </div>
-
-    <div class="privacy-note">
-        Even in error, your privacy remains paramount. This 404 page like all others on this site operates with zero tracking.
-        <p>Made with ♟️ Pr0f3ss0r 1nc0gn1t0</p>
-    </div>
+    <nav class="nav-footer" aria-label="Footer Navigation">
+        <div class="footer-links">
+            <a href="/" class="footer-link">Return Home</a>
+            <a href="/blog" class="footer-link">Read Blog</a>
+        </div>
+    </nav>
 </div>
 {{- end }}
