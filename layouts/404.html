@@ -1,41 +1,55 @@
 {{- define "main" }}
 <style>
     :root {
-        --theme: #1a1a1a; /* Background color */
-        --secondary: #ffffff; /* Text and element color */
-        --square-light: #f0d9b5; /* Light square color */
-        --square-dark: #b58863; /* Dark square color */
+        /* Light Mode Variables */
+        --background-color: #ffffff;
+        --text-color: #333333;
+        --button-bg: rgba(0, 0, 0, 0.1);
+        --button-hover-bg: rgba(0, 0, 0, 0.2);
+        --square-light: #f0d9b5;
+        --square-dark: #b58863;
     }
 
-    /* Reset margins and paddings to prevent unexpected spacing */
+    @media (prefers-color-scheme: dark) {
+        :root {
+            /* Dark Mode Variables */
+            --background-color: #1a1a1a;
+            --text-color: #cccccc;
+            --button-bg: rgba(255, 255, 255, 0.1);
+            --button-hover-bg: rgba(255, 255, 255, 0.2);
+            --square-light: #d1a054;
+            --square-dark: #7b4b2a;
+        }
+    }
+
     *, *::before, *::after {
         box-sizing: border-box;
         margin: 0;
         padding: 0;
     }
 
-    /* Ensure html and body take full height and prevent scrolling */
     html, body {
         height: 100%;
         width: 100%;
-        overflow: hidden; /* Prevents scrolling */
-        font-family: Arial, sans-serif; /* Fallback font */
+        overflow: hidden;
+        font-family: Arial, sans-serif;
+        background: var(--background-color);
+        color: var(--text-color);
     }
 
     .not-found-container {
-        position: fixed; /* Fixes the container to the viewport */
+        position: fixed;
         top: 0;
         left: 0;
         width: 100%;
-        height: 100vh; /* Ensures it covers the entire viewport height */
+        height: 100vh;
         display: flex;
         flex-direction: column;
-        justify-content: center; /* Centers content vertically */
-        align-items: center; /* Centers content horizontally */
+        justify-content: center;
+        align-items: center;
         padding: 2rem 1rem;
-        background: var(--theme);
-        overflow: hidden; /* Ensures no internal scrolling */
-        z-index: 9999; /* Ensures it stays on top */
+        background: var(--background-color);
+        z-index: 9999;
     }
 
     .main-content {
@@ -43,42 +57,38 @@
         flex-direction: column;
         align-items: center;
         text-align: center;
+        gap: 2rem;
     }
 
     .not-found-header h1 {
         font-size: clamp(6rem, 15vw, 10rem);
         font-weight: 700;
-        color: var(--secondary);
+        color: var(--text-color);
         line-height: 1;
-        margin-bottom: 1rem;
     }
 
     .not-found-message {
-        color: var(--secondary);
         font-size: clamp(1rem, 2.5vw, 1.2rem);
         opacity: 0.9;
-        margin-bottom: 2rem;
     }
 
     .privacy-note {
         text-align: center;
         font-size: 0.9rem;
-        color: var(--secondary);
         opacity: 0.8;
         line-height: 1.6;
         max-width: 600px;
         padding: 0 1rem;
-        margin-top: 1.5rem; /* Added margin to separate from previous content */
+        margin-top: 1rem;
     }
 
     .chess-game {
-        width: min(350px, 70vw);
+        width: min(500px, 80vw);
         aspect-ratio: 1;
         position: relative;
         border-radius: 12px;
-        background: #333; /* Temporary background to visualize the chessboard */
-        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Adds depth */
-        margin-bottom: 2rem; /* Space below the chess game */
+        background: #333;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
     }
 
     .chess-board {
@@ -97,16 +107,10 @@
         transition: background-color 0.3s ease;
     }
 
-    /* Alternate square colors for chessboard */
     .chess-square:nth-child(odd) {
         background: var(--square-light);
     }
 
-    .chess-square:nth-child(even) {
-        background: var(--square-dark);
-    }
-
-    /* Adjust for row-wise alternation */
     .chess-board > div:nth-child(8n+1),
     .chess-board > div:nth-child(8n+3),
     .chess-board > div:nth-child(8n+5),
@@ -118,8 +122,8 @@
         position: absolute;
         top: 8px;
         left: 8px;
-        width: 42px;
-        height: 42px;
+        width: 60px;
+        height: 60px;
         animation: knightMove 8s infinite ease-in-out;
         z-index: 2;
     }
@@ -128,7 +132,6 @@
         width: 100%;
         height: 100%;
         object-fit: contain;
-        animation: inherit; /* Inherits the parent's animation */
     }
 
     .game-message {
@@ -136,7 +139,7 @@
         bottom: -25px;
         left: 50%;
         transform: translateX(-50%);
-        color: var(--secondary);
+        color: var(--text-color);
         font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
         font-size: 0.9rem;
         white-space: nowrap;
@@ -154,9 +157,9 @@
 
     @keyframes knightMove {
         0% { transform: translate(0, 0); }
-        25% { transform: translate(calc(100% - 8px), calc(-100% + 8px)); }
-        50% { transform: translate(calc(200% - 16px), 0); }
-        75% { transform: translate(calc(100% - 8px), calc(100% - 8px)); }
+        25% { transform: translate(calc(100% - 10px), calc(-100% + 10px)); }
+        50% { transform: translate(calc(200% - 20px), 0); }
+        75% { transform: translate(calc(100% - 10px), calc(100% - 10px)); }
         100% { transform: translate(0, 0); }
     }
 
@@ -164,32 +167,32 @@
         display: flex;
         flex-direction: column;
         align-items: center;
-        gap: 2rem;
+        gap: 1.5rem;
         margin-top: 2rem;
     }
 
     .footer-links {
         display: flex;
-        gap: 1.5rem;
+        gap: 1rem;
     }
 
     .footer-link {
         padding: 0.75rem 1.5rem;
-        border: 1px solid var(--secondary);
+        border: 1px solid var(--text-color);
         border-radius: 6px;
-        color: var(--secondary);
+        color: var(--text-color);
         text-decoration: none;
         font-weight: 500;
-        transition: opacity 0.2s ease;
-        background: transparent;
-        opacity: 0.8;
+        transition: background 0.2s ease, opacity 0.2s ease;
+        background: var(--button-bg);
+        opacity: 0.9;
     }
 
     .footer-link:hover {
         opacity: 1;
+        background: var(--button-hover-bg);
     }
 
-    /* Responsive Adjustments */
     @media (max-width: 480px) {
         .not-found-container {
             padding: 1.5rem 0.5rem;
@@ -200,12 +203,12 @@
         }
         
         .chess-game {
-            width: min(300px, 80vw);
+            width: min(350px, 90vw);
         }
 
         .chess-piece {
-            width: 36px;
-            height: 36px;
+            width: 50px;
+            height: 50px;
         }
 
         .game-message {
@@ -223,12 +226,8 @@
         }
     }
 
-    /* Respect user's reduced motion preferences */
     @media (prefers-reduced-motion: reduce) {
-        .chess-piece {
-            animation: none;
-        }
-
+        .chess-piece,
         .game-message::after {
             animation: none;
         }
@@ -244,11 +243,10 @@
             <strong>Stalemate: Page Not Found</strong>
         </p>
 
-        <!-- Privacy Note Moved Here -->
         <div class="privacy-note">
             Even in error, your privacy remains paramount. This 404 page operates with zero tracking, like all pages on this site.
         </div>
-        
+
         <div class="chess-game" aria-hidden="true">
             <div class="chess-board">
                 {{ range $index, $element := (seq 1 64) }}
@@ -256,10 +254,9 @@
                 {{ end }}
             </div>
             <div class="chess-piece">
-                <!-- Use a placeholder image to ensure visibility -->
-                <img src="/images/knight.svg" alt="Knight Piece" onerror="this.onerror=null; this.src='https://via.placeholder.com/42';">
+                <img src="/images/knight.svg" alt="Knight Piece" onerror="this.onerror=null; this.src='https://via.placeholder.com/60';">
             </div>
-            <div class="game-message">SYSTEM: Page_Location = null;_</div>
+            <div class="game-message">SYSTEM: Page_Location = null;</div>
         </div>
     </div>
 
