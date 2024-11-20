@@ -49,7 +49,7 @@ As a key member of Northeastern's premier chess team, I've had the honor of repr
 </div>
 
 - **5-Time Consecutive Northeastern University Chess Champion**
-  - Intramural Chess Competition Champion (2019-2023)
+  - Intramural Chess Competition Champion
   - Record holder for most consecutive championship wins
   - Built and mentored a thriving chess community
 
