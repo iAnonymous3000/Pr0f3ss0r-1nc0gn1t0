@@ -1,42 +1,60 @@
 {{- define "main" }}
 <style>
-    .not-found-container {
+    :root {
+        --theme: #1a1a1a; /* Example background color */
+        --secondary: #ffffff; /* Example text and element color */
+    }
+
+    /* Reset margins and paddings to prevent unexpected spacing */
+    *, *::before, *::after {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+    }
+
+    /* Ensure html and body take full height and prevent scrolling */
+    html, body {
+        height: 100%;
         width: 100%;
-        height: 100vh;
-        display: flex;
-        flex-direction: column;
-        justify-content: space-between;  /* Changed to space-between */
-        align-items: center;
-        padding: 3rem 1rem;
-        background: var(--theme);
-        overflow: hidden;
-        position: fixed;
+        overflow: hidden; /* Prevents scrolling */
+    }
+
+    .not-found-container {
+        position: fixed; /* Fixes the container to the viewport */
         top: 0;
         left: 0;
+        width: 100%;
+        height: 100vh; /* Ensures it covers the entire viewport height */
+        display: flex;
+        flex-direction: column;
+        justify-content: center; /* Centers content vertically */
+        align-items: center; /* Centers content horizontally */
+        padding: 2rem 1rem;
+        background: var(--theme);
+        overflow: hidden; /* Ensures no internal scrolling */
+        z-index: 9999; /* Ensures it stays on top */
     }
 
     .main-content {
         display: flex;
         flex-direction: column;
         align-items: center;
-        margin: auto 0;  /* Centers the main content vertically */
+        text-align: center;
     }
 
     .not-found-header h1 {
-        font-size: clamp(8rem, 25vw, 15rem);
+        font-size: clamp(6rem, 15vw, 10rem);
         font-weight: 700;
-        margin: 0;
         color: var(--secondary);
         line-height: 1;
-        text-align: center;
+        margin-bottom: 1rem;
     }
 
     .not-found-message {
-        text-align: center;
         color: var(--secondary);
-        font-size: clamp(1.1rem, 2.5vw, 1.3rem);
-        margin: 0.5rem 0 2rem 0;
-        opacity: 0.7;
+        font-size: clamp(1rem, 2.5vw, 1.2rem);
+        opacity: 0.9;
+        margin-bottom: 2rem;
     }
 
     .chess-game {
@@ -44,7 +62,6 @@
         aspect-ratio: 1;
         position: relative;
         border-radius: 12px;
-        margin: 0 auto;
         background: rgba(255, 255, 255, 0.05);
     }
 
@@ -62,17 +79,11 @@
         width: 100%;
         height: 100%;
         transition: background-color 0.3s ease;
+        background: rgba(255, 255, 255, 0.05);
     }
 
-    .chess-square:nth-child(-n+8):nth-child(even),
-    .chess-square:nth-child(n+9):nth-child(-n+16):nth-child(odd),
-    .chess-square:nth-child(n+17):nth-child(-n+24):nth-child(even),
-    .chess-square:nth-child(n+25):nth-child(-n+32):nth-child(odd),
-    .chess-square:nth-child(n+33):nth-child(-n+40):nth-child(even),
-    .chess-square:nth-child(n+41):nth-child(-n+48):nth-child(odd),
-    .chess-square:nth-child(n+49):nth-child(-n+56):nth-child(even),
-    .chess-square:nth-child(n+57):nth-child(-n+64):nth-child(odd) {
-        background: rgba(255, 255, 255, 0.05);
+    .chess-square:nth-child(odd) {
+        background: rgba(0, 0, 0, 0.05);
     }
 
     @keyframes knightMove {
@@ -89,22 +100,27 @@
         left: 8px;
         width: 42px;
         height: 42px;
-        background: var(--secondary);
-        mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 45 45'%3E%3Cg fill='%23fff' fill-rule='evenodd' stroke='%23000' stroke-width='1.5' stroke-linejoin='round'%3E%3Cpath d='M 22,10 C 32.5,11 38.5,18 38,39 L 15,39 C 15,30 25,32.5 23,18' style='fill:%23ffffff'/%3E%3Cpath d='M 24,18 C 24.38,20.91 18.45,25.37 16,27 C 13,29 13.18,31.34 11,31 C 9.958,30.06 12.41,27.96 11,28 C 10,28 11.19,29.23 10,30 C 9,30 5.997,31 6,26 C 6,24 12,14 12,14 C 12,14 13.89,12.1 14,10.5 C 13.27,9.506 13.5,8.5 13.5,7.5 C 14.5,6.5 16.5,10 16.5,10 L 18.5,10 C 18.5,10 19.28,8.008 21,7 C 22,7 22,10 22,10' style='fill:%23ffffff'/%3E%3C/g%3E%3C/svg%3E") no-repeat center;
         animation: knightMove 8s infinite ease-in-out;
         z-index: 2;
     }
 
+    .chess-piece img {
+        width: 100%;
+        height: 100%;
+        object-fit: contain;
+        animation: inherit; /* Inherits the parent's animation */
+    }
+
     .game-message {
         position: absolute;
-        bottom: -35px;
+        bottom: -25px;
         left: 50%;
         transform: translateX(-50%);
         color: var(--secondary);
         font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
         font-size: 0.9rem;
         white-space: nowrap;
-        opacity: 0.7;
+        opacity: 0.9;
     }
 
     .game-message::after {
@@ -117,12 +133,11 @@
     }
 
     .nav-footer {
-        width: 100%;
         display: flex;
         flex-direction: column;
         align-items: center;
         gap: 2rem;
-        margin-top: 4rem;
+        margin-top: 2rem;
     }
 
     .footer-links {
@@ -137,7 +152,7 @@
         color: var(--secondary);
         text-decoration: none;
         font-weight: 500;
-        transition: all 0.2s ease;
+        transition: opacity 0.2s ease;
         background: transparent;
         opacity: 0.8;
     }
@@ -156,13 +171,14 @@
         padding: 0 1rem;
     }
 
+    /* Responsive Adjustments */
     @media (max-width: 480px) {
         .not-found-container {
-            padding: 2rem 1rem;
+            padding: 1.5rem 0.5rem;
         }
 
         .not-found-header h1 {
-            font-size: clamp(5rem, 15vw, 8rem);
+            font-size: clamp(4rem, 20vw, 7rem);
         }
         
         .chess-game {
@@ -174,41 +190,57 @@
             height: 36px;
         }
 
-        .nav-footer {
-            margin-top: 2rem;
-            gap: 1.5rem;
+        .game-message {
+            bottom: -20px;
+        }
+
+        .footer-link {
+            padding: 0.5rem 1rem;
+            font-size: 0.9rem;
+        }
+
+        .privacy-note {
+            font-size: 0.8rem;
+            padding: 0 0.5rem;
         }
     }
 
+    /* Respect user's reduced motion preferences */
     @media (prefers-reduced-motion: reduce) {
         .chess-piece {
+            animation: none;
+        }
+
+        .game-message::after {
             animation: none;
         }
     }
 </style>
 
-<div class="not-found-container">
+<div class="not-found-container" role="main" aria-labelledby="error-heading">
     <div class="main-content">
-        <div class="not-found-header">
-            <h1>404</h1>
-        </div>
-        <div class="not-found-message">
+        <header class="not-found-header">
+            <h1 id="error-heading">404</h1>
+        </header>
+        <p class="not-found-message">
             <strong>Stalemate: Page Not Found</strong>
-        </div>
+        </p>
         
-        <div class="chess-game">
+        <div class="chess-game" aria-hidden="true">
             <div class="chess-board">
-                {{ range seq 64 }}
-                <div class="chess-square"></div>
+                {{ range $index, $element := (seq 1 64) }}
+                    <div class="chess-square"></div>
                 {{ end }}
             </div>
-            <div class="chess-piece"></div>
+            <div class="chess-piece">
+                <img src="/images/knight.svg" alt="Knight Piece" />
+            </div>
             <div class="game-message">SYSTEM: Page_Location = null;_</div>
         </div>
     </div>
 
-    <div class="nav-footer">
-        <nav class="footer-links">
+    <footer class="nav-footer">
+        <nav class="footer-links" aria-label="Footer Navigation">
             <a href="/" class="footer-link">Return Home</a>
             <a href="/blog" class="footer-link">Read Blog</a>
         </nav>
@@ -216,6 +248,6 @@
         <div class="privacy-note">
             Even in error, your privacy remains paramount. This 404 page operates with zero tracking, like all pages on this site.
         </div>
-    </div>
+    </footer>
 </div>
 {{- end }}
