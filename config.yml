@@ -26,6 +26,7 @@ minify:
   tdewolff:
     html:
       keepWhitespace: false
+      keepQuotes: true    # Added this line to preserve quotes (Mastodon Verify) 
     css:
       keepCSS2: true
     js:
