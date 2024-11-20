@@ -16,21 +16,20 @@
     }
 
     .not-found-header h1 {
-        font-size: clamp(6rem, 20vw, 12rem);
-        font-weight: 900;
+        font-size: clamp(8rem, 25vw, 15rem);
+        font-weight: 700;
         margin: 0;
-        color: var(--primary);
+        color: var(--secondary);
         line-height: 1;
         text-align: center;
-        text-shadow: 0 0 20px rgba(var(--primary-rgb), 0.2);
     }
 
     .not-found-message {
         text-align: center;
-        color: var(--content);
+        color: var(--secondary);
         font-size: clamp(1.1rem, 2.5vw, 1.3rem);
         margin: 0.5rem 0 2rem 0;
-        opacity: 0.9;
+        opacity: 0.7;
     }
 
     .chess-game {
@@ -39,8 +38,7 @@
         position: relative;
         border-radius: 12px;
         margin: 0 auto;
-        padding: 1px;
-        background: var(--border);
+        background: rgba(255, 255, 255, 0.05);
     }
 
     .chess-board {
@@ -51,8 +49,6 @@
         height: 100%;
         border-radius: 8px;
         overflow: hidden;
-        background: var(--entry);
-        box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.1);
     }
 
     .chess-square {
@@ -70,30 +66,15 @@
     .chess-square:nth-child(n+41):nth-child(-n+48):nth-child(odd),
     .chess-square:nth-child(n+49):nth-child(-n+56):nth-child(even),
     .chess-square:nth-child(n+57):nth-child(-n+64):nth-child(odd) {
-        background: var(--border);
+        background: rgba(255, 255, 255, 0.05);
     }
 
     @keyframes knightMove {
-        0% { 
-            transform: translate(0, 0) rotate(0deg); 
-            opacity: 0.9;
-        }
-        25% { 
-            transform: translate(calc(100% - 8px), calc(-100% + 8px)) rotate(90deg); 
-            opacity: 1;
-        }
-        50% { 
-            transform: translate(calc(200% - 16px), 0) rotate(180deg); 
-            opacity: 0.9;
-        }
-        75% { 
-            transform: translate(calc(100% - 8px), calc(100% - 8px)) rotate(270deg); 
-            opacity: 1;
-        }
-        100% { 
-            transform: translate(0, 0) rotate(360deg); 
-            opacity: 0.9;
-        }
+        0% { transform: translate(0, 0); }
+        25% { transform: translate(calc(100% - 8px), calc(-100% + 8px)); }
+        50% { transform: translate(calc(200% - 16px), 0); }
+        75% { transform: translate(calc(100% - 8px), calc(100% - 8px)); }
+        100% { transform: translate(0, 0); }
     }
 
     .chess-piece {
@@ -102,11 +83,10 @@
         left: 8px;
         width: 42px;
         height: 42px;
-        background: var(--primary);
+        background: var(--secondary);
         mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 45 45'%3E%3Cg fill='%23fff' fill-rule='evenodd' stroke='%23000' stroke-width='1.5' stroke-linejoin='round'%3E%3Cpath d='M 22,10 C 32.5,11 38.5,18 38,39 L 15,39 C 15,30 25,32.5 23,18' style='fill:%23ffffff'/%3E%3Cpath d='M 24,18 C 24.38,20.91 18.45,25.37 16,27 C 13,29 13.18,31.34 11,31 C 9.958,30.06 12.41,27.96 11,28 C 10,28 11.19,29.23 10,30 C 9,30 5.997,31 6,26 C 6,24 12,14 12,14 C 12,14 13.89,12.1 14,10.5 C 13.27,9.506 13.5,8.5 13.5,7.5 C 14.5,6.5 16.5,10 16.5,10 L 18.5,10 C 18.5,10 19.28,8.008 21,7 C 22,7 22,10 22,10' style='fill:%23ffffff'/%3E%3C/g%3E%3C/svg%3E") no-repeat center;
         animation: knightMove 8s infinite ease-in-out;
         z-index: 2;
-        filter: drop-shadow(0 0 5px rgba(var(--primary-rgb), 0.2));
     }
 
     .game-message {
@@ -114,10 +94,11 @@
         bottom: -35px;
         left: 50%;
         transform: translateX(-50%);
-        color: var(--primary);
+        color: var(--secondary);
         font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
         font-size: 0.9rem;
         white-space: nowrap;
+        opacity: 0.7;
     }
 
     .game-message::after {
@@ -137,93 +118,72 @@
 
     .footer-link {
         padding: 0.75rem 1.5rem;
-        border: 2px solid var(--primary);
-        border-radius: 8px;
-        color: var(--primary);
+        border: 1px solid var(--secondary);
+        border-radius: 6px;
+        color: var(--secondary);
         text-decoration: none;
         font-weight: 500;
         transition: all 0.2s ease;
         background: transparent;
-        position: relative;
-        overflow: hidden;
+        opacity: 0.8;
     }
 
     .footer-link:hover {
-        background: var(--primary);
-        color: var(--theme);
+        opacity: 1;
     }
 
     .privacy-note {
         text-align: center;
         font-size: 0.9rem;
-        color: var(--content);
-        opacity: 0.8;
+        color: var(--secondary);
+        opacity: 0.6;
         margin-top: 2rem;
         line-height: 1.6;
         max-width: 600px;
         padding: 0 1rem;
     }
 
-    /* Focus styles */
-    :focus {
-        outline: 2px solid var(--primary);
-        outline-offset: 2px;
-    }
-
-    /* Responsive adjustments */
     @media (max-width: 480px) {
-        .footer-links {
-            flex-direction: column;
-            gap: 1rem;
-            align-items: stretch;
-            width: 80%;
-            max-width: 300px;
-        }
-
-        .footer-link {
-            text-align: center;
-        }
-
-        .game-message {
-            font-size: 0.8rem;
-            bottom: -30px;
-        }
-
         .not-found-header h1 {
             font-size: clamp(5rem, 15vw, 8rem);
         }
+        
+        .chess-game {
+            width: min(300px, 80vw);
+        }
+
+        .chess-piece {
+            width: 36px;
+            height: 36px;
+        }
     }
 
-    /* Reduced motion */
     @media (prefers-reduced-motion: reduce) {
         .chess-piece {
             animation: none;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
         }
     }
 </style>
 
 <div class="not-found-container">
-    <div class="not-found-header" role="banner">
+    <div class="not-found-header">
         <h1>404</h1>
     </div>
     <div class="not-found-message">
         <strong>Stalemate: Page Not Found</strong>
     </div>
     
-    <div class="chess-game" role="presentation">
+    <div class="chess-game">
         <div class="chess-board">
             {{ range seq 64 }}
             <div class="chess-square"></div>
             {{ end }}
         </div>
-        <div class="chess-piece" aria-hidden="true"></div>
-        <div class="game-message" aria-live="polite">SYSTEM: Page_Location = null;</div>
+        <div class="chess-piece"></div>
+        <div class="game-message">SYSTEM: Page_Location = null;_</div>
     </div>
 
-    <nav class="footer-links" aria-label="Navigation options">
+    <nav class="footer-links">
         <a href="/" class="footer-link">Return Home</a>
         <a href="/blog" class="footer-link">Read Blog</a>
     </nav>
