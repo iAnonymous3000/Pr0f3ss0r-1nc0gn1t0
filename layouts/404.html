@@ -5,14 +5,21 @@
         height: 100vh;
         display: flex;
         flex-direction: column;
-        justify-content: center;
+        justify-content: space-between;  /* Changed to space-between */
         align-items: center;
-        padding: 1rem;
+        padding: 3rem 1rem;
         background: var(--theme);
         overflow: hidden;
         position: fixed;
         top: 0;
         left: 0;
+    }
+
+    .main-content {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin: auto 0;  /* Centers the main content vertically */
     }
 
     .not-found-header h1 {
@@ -57,7 +64,6 @@
         transition: background-color 0.3s ease;
     }
 
-    /* Chess board pattern */
     .chess-square:nth-child(-n+8):nth-child(even),
     .chess-square:nth-child(n+9):nth-child(-n+16):nth-child(odd),
     .chess-square:nth-child(n+17):nth-child(-n+24):nth-child(even),
@@ -110,10 +116,18 @@
         50% { opacity: 0; }
     }
 
+    .nav-footer {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 2rem;
+        margin-top: 4rem;
+    }
+
     .footer-links {
         display: flex;
         gap: 1.5rem;
-        margin-top: 3rem;
     }
 
     .footer-link {
@@ -137,13 +151,16 @@
         font-size: 0.9rem;
         color: var(--secondary);
         opacity: 0.6;
-        margin-top: 2rem;
         line-height: 1.6;
         max-width: 600px;
         padding: 0 1rem;
     }
 
     @media (max-width: 480px) {
+        .not-found-container {
+            padding: 2rem 1rem;
+        }
+
         .not-found-header h1 {
             font-size: clamp(5rem, 15vw, 8rem);
         }
@@ -156,6 +173,11 @@
             width: 36px;
             height: 36px;
         }
+
+        .nav-footer {
+            margin-top: 2rem;
+            gap: 1.5rem;
+        }
     }
 
     @media (prefers-reduced-motion: reduce) {
@@ -166,30 +188,34 @@
 </style>
 
 <div class="not-found-container">
-    <div class="not-found-header">
-        <h1>404</h1>
-    </div>
-    <div class="not-found-message">
-        <strong>Stalemate: Page Not Found</strong>
-    </div>
-    
-    <div class="chess-game">
-        <div class="chess-board">
-            {{ range seq 64 }}
-            <div class="chess-square"></div>
-            {{ end }}
+    <div class="main-content">
+        <div class="not-found-header">
+            <h1>404</h1>
         </div>
-        <div class="chess-piece"></div>
-        <div class="game-message">SYSTEM: Page_Location = null;_</div>
+        <div class="not-found-message">
+            <strong>Stalemate: Page Not Found</strong>
+        </div>
+        
+        <div class="chess-game">
+            <div class="chess-board">
+                {{ range seq 64 }}
+                <div class="chess-square"></div>
+                {{ end }}
+            </div>
+            <div class="chess-piece"></div>
+            <div class="game-message">SYSTEM: Page_Location = null;_</div>
+        </div>
     </div>
 
-    <nav class="footer-links">
-        <a href="/" class="footer-link">Return Home</a>
-        <a href="/blog" class="footer-link">Read Blog</a>
-    </nav>
-    
-    <div class="privacy-note">
-        Even in error, your privacy remains paramount. This 404 page operates with zero tracking, like all pages on this site.
+    <div class="nav-footer">
+        <nav class="footer-links">
+            <a href="/" class="footer-link">Return Home</a>
+            <a href="/blog" class="footer-link">Read Blog</a>
+        </nav>
+        
+        <div class="privacy-note">
+            Even in error, your privacy remains paramount. This 404 page operates with zero tracking, like all pages on this site.
+        </div>
     </div>
 </div>
 {{- end }}
