@@ -9,7 +9,9 @@
 <link rel="icon" type="image/png" sizes="512x512" href="/images/favicon/android-chrome-512x512.png">
 
 <!-- Mastodon Verification - with properly quoted attributes -->
-<a rel="me" href="https://mastodon.social/@ianonymous3000">Mastodon</a>
+{{ "<!-- noMinify -->" | safeHTML }}
+<a rel="me" href="https://mastodon.social/@ianonymous3000" style="display: none">Mastodon</a>
+{{ "<!-- /noMinify -->" | safeHTML }}
 
 <!-- Open Graph Meta Tags -->
 <meta property="og:title" content="{{ if .IsHome }}{{ site.Title }}{{ else }}{{ .Title }} | {{ site.Title }}{{ end }}">
