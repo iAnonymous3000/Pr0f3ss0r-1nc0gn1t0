@@ -19,19 +19,6 @@ buildExpired: false
 buildFuture: false
 watch: false
 
-# Minification Configuration - enabled for production
-minify:
-  disableXML: true
-  minifyOutput: true
-  tdewolff:
-    html:
-      keepWhitespace: false
-      keepQuotes: true    # Added this line to preserve quotes (Mastodon Verify) 
-    css:
-      keepCSS2: true
-    js:
-      keepVars: false
-
 # Primary Parameters
 params:
   env: production
