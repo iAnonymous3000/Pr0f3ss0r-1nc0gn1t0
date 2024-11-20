@@ -31,25 +31,20 @@
     html, body {
         height: 100%;
         width: 100%;
-        overflow: hidden;
+        overflow: auto; /* Allow scrolling if content overflows */
         font-family: Arial, sans-serif;
         background: var(--background-color);
         color: var(--text-color);
     }
 
     .not-found-container {
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100vh;
         display: flex;
         flex-direction: column;
         justify-content: center;
         align-items: center;
-        padding: 2rem 1rem;
+        padding: 4rem 2rem; /* Increased padding for better spacing */
+        min-height: calc(100vh - 120px); /* Adjust based on your navbar and footer height */
         background: var(--background-color);
-        z-index: 9999;
     }
 
     .main-content {
@@ -58,6 +53,8 @@
         align-items: center;
         text-align: center;
         gap: 2rem;
+        max-width: 800px;
+        width: 100%;
     }
 
     .not-found-header h1 {
@@ -80,6 +77,7 @@
         max-width: 600px;
         padding: 0 1rem;
         margin-top: 1rem;
+        color: var(--text-color); /* Ensure text color matches theme */
     }
 
     .chess-game {
@@ -87,7 +85,7 @@
         aspect-ratio: 1;
         position: relative;
         border-radius: 12px;
-        background: #333;
+        background: var(--square-dark); /* Use dark square color as background */
         box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
     }
 
@@ -107,23 +105,22 @@
         transition: background-color 0.3s ease;
     }
 
-    .chess-square:nth-child(odd) {
+    /* Correcting the chessboard coloring */
+    .chess-board > div:nth-child(odd) {
         background: var(--square-light);
     }
 
-    .chess-board > div:nth-child(8n+1),
-    .chess-board > div:nth-child(8n+3),
-    .chess-board > div:nth-child(8n+5),
-    .chess-board > div:nth-child(8n+7) {
+    .chess-board > div:nth-child(even) {
         background: var(--square-dark);
     }
 
     .chess-piece {
         position: absolute;
-        top: 8px;
-        left: 8px;
+        top: 50%;
+        left: 50%;
         width: 60px;
         height: 60px;
+        transform: translate(-50%, -50%);
         animation: knightMove 8s infinite ease-in-out;
         z-index: 2;
     }
@@ -156,11 +153,11 @@
     }
 
     @keyframes knightMove {
-        0% { transform: translate(0, 0); }
-        25% { transform: translate(calc(100% - 10px), calc(-100% + 10px)); }
-        50% { transform: translate(calc(200% - 20px), 0); }
-        75% { transform: translate(calc(100% - 10px), calc(100% - 10px)); }
-        100% { transform: translate(0, 0); }
+        0% { transform: translate(-50%, -50%) translate(0, 0); }
+        25% { transform: translate(-50%, -50%) translate(100px, -100px); }
+        50% { transform: translate(-50%, -50%) translate(200px, 0); }
+        75% { transform: translate(-50%, -50%) translate(100px, 100px); }
+        100% { transform: translate(-50%, -50%) translate(0, 0); }
     }
 
     .nav-footer {
@@ -193,9 +190,10 @@
         background: var(--button-hover-bg);
     }
 
+    /* Responsive Adjustments */
     @media (max-width: 480px) {
         .not-found-container {
-            padding: 1.5rem 0.5rem;
+            padding: 2rem 1rem;
         }
 
         .not-found-header h1 {
@@ -226,6 +224,7 @@
         }
     }
 
+    /* Respect user's reduced motion preferences */
     @media (prefers-reduced-motion: reduce) {
         .chess-piece,
         .game-message::after {
@@ -247,6 +246,7 @@
             Even in error, your privacy remains paramount. This 404 page operates with zero tracking, like all pages on this site.
         </div>
 
+        <!-- Chessboard -->
         <div class="chess-game" aria-hidden="true">
             <div class="chess-board">
                 {{ range $index, $element := (seq 1 64) }}
@@ -254,7 +254,11 @@
                 {{ end }}
             </div>
             <div class="chess-piece">
-                <img src="/images/knight.svg" alt="Knight Piece" onerror="this.onerror=null; this.src='https://via.placeholder.com/60';">
+                <!-- Inline SVG for the knight to ensure visibility -->
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 45 45" fill="currentColor">
+                    <path d="M22.5,0C10.07,0,0,10.07,0,22.5S10.07,45,22.5,45S45,34.93,45,22.5S34.93,0,22.5,0z M22.5,40C12.27,40,4,31.73,4,21.5S12.27,3,22.5,3S41,11.27,41,21.5S32.73,40,22.5,40z"/>
+                    <path d="M30.94,15.16c-0.82-0.34-1.75-0.19-2.42,0.28c-1.43,1.02-3.15,1.49-4.88,1.49c-1.53,0-3.05-0.43-4.2-1.29 c-0.42-0.3-0.98-0.33-1.38-0.1c-0.4,0.23-0.61,0.64-0.58,1.09c0.05,0.86,0.73,1.59,1.58,1.85c1.61,0.56,3.26,0.85,4.93,0.85 c1.74,0,3.43-0.29,5.03-0.85c0.85-0.26,1.51-0.89,1.74-1.73c0.04-0.18,0.06-0.36,0.05-0.54C31.56,15.5,31.16,15.47,30.94,15.16z"/>
+                </svg>
             </div>
             <div class="game-message">SYSTEM: Page_Location = null;</div>
         </div>
