@@ -65,7 +65,7 @@ params:
       title: "Mastodon"
       rel: "me"
     - name: "bsky"  
-      url: "https://bsky.app/profile/ianonymous3000.bsky.social"
+      url: "https://bsky.app/profile/profincognito.me"
       title: "Bluesky"
       rel: "me noopener"
     - name: "signal"
