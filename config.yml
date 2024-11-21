@@ -133,6 +133,9 @@ params:
       - name: "Portfolio"
         url: "https://linksta.cc/@ianonymous3000"
         rel: "me noopener"
+      - name: "VERIFIED WITH KEYBASE ✓"
+        url: "https://keybase.io/ianonymous3000"
+        rel: "me noopener"
 
 # Navigation Menu
 menu:
