@@ -12,9 +12,17 @@ tags:
   - "FSF"
   - "AI Ethics"
   - "Richard Stallman"
+  - "Self Hosting"
+  - "GNU/Linux"
+  - "EFF"
+  - "Policy Advocacy"
+  - "Accessibility"
+  - "GPU Development"
+  - "Community Governance"
+  - "Tech Ethics"
+  - "Software Freedom"
+  - "GNU Taler"
 ---
-
-# LibrePlanet 2024: Cultivating Community in the Free Software Movement
 
 ![LibrePlanet 2024](https://github.com/user-attachments/assets/01f7e077-75f4-4971-9540-aeab85cfc982)
 
@@ -29,7 +37,7 @@ A highlight of the conference was meeting Richard Stallman, the pioneer of the f
 
 ## A Critical Moment for Digital Freedom
 
-As we face unprecedented challenges to digital rights, LibrePlanet 2024 provided a crucial forum for resistance and innovation. Google's "Web Environment Integrity" proposal threatens the open web, companies harvest data indiscriminately for AI training, and governments worldwide are drafting legislation that could restrict software freedom. These challenges make community building more essential than ever.
+As we face unprecedented challenges to digital rights, LibrePlanet 2024 provided a crucial forum for resistance and innovation. Google's [Web Environment Integrity](https://www.defectivebydesign.org/blog/web_environment_integrity_is_an_all_out_attack_on_free_internet) proposal threatens the open web, companies harvest data indiscriminately for AI training, and governments worldwide are drafting legislation that could restrict software freedom. These challenges make community building more essential than ever.
 
 ## Keynote Insights
 
@@ -116,7 +124,7 @@ The conference highlighted both the challenges and opportunities facing the free
 
 ## Get Involved
 
-After experiencing the vibrant community at LibrePlanet 2024, I encourage everyone interested in digital rights and software freedom to get involved:
+After experiencing the vibrant community at [LibrePlanet 2024](https://libreplanet.org/2024), I encourage everyone interested in digital rights and software freedom to get involved:
 
 ### Immediate Actions
 
