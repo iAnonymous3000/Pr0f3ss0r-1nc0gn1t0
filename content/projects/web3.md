@@ -12,7 +12,7 @@ Building a decentralized web presence is more than just following a trend—it's
 
 Before we dive into the technical steps, it's essential to understand the benefits of a decentralized website:
 
-- **Complete Ownership**: You retain full control over your domain and content, without relying on traditional hosting providers.
+- **Complete Ownership**: You retain full control over your domain and content without relying on traditional hosting providers.
 - **Enhanced Resilience**: Decentralized hosting eliminates single points of failure, ensuring your site remains accessible even if individual nodes go down.
 - **Censorship Resistance**: Your content is free from central authority control, promoting freedom of expression.
 - **Privacy & Security**: Improved data protection and ownership reduce the risk of data breaches and unauthorized access.
@@ -22,8 +22,9 @@ Before we dive into the technical steps, it's essential to understand the benefi
 
 Before we dive into the technical steps, let's understand how all the pieces fit together:
 
-![architecture](https://github.com/user-attachments/assets/89968305-c25c-4492-8a9f-efd036b4b10a)
+![Decentralized Web Architecture](https://github.com/user-attachments/assets/89968305-c25c-4492-8a9f-efd036b4b10a)
 
+*Architecture of a Decentralized Website using Unstoppable Domains, IPFS, and Cloudflare Web3 Gateways.*
 
 This architecture ensures your content remains accessible through multiple pathways, making your website resilient against failures and censorship.
 
@@ -35,6 +36,9 @@ Before starting, make sure you have the following:
 - **Ethereum (ETH)**: You'll need some ETH in your wallet to purchase a domain.
 - **Cloudflare Account**: Sign up at [Cloudflare](https://dash.cloudflare.com/sign-up).
 - **Website Content**: Have your site's content ready to deploy.
+- **IPFS Desktop or Command-Line Tool**: [Download IPFS](https://ipfs.io/#install) to upload your content to the network.
+
+> **Tip:** Accessing `.crypto` domains directly requires a Web3-enabled browser like Brave or a browser extension that supports Unstoppable Domains.
 
 ## Domain Acquisition
 
@@ -49,9 +53,14 @@ Before starting, make sure you have the following:
 
 Once purchased, your domain can be resolved via:
 
-```plaintext
-https://ud.me/yourname.crypto
-```
+- **Direct Access** (with a compatible browser): `https://yourname.crypto`
+- **Gateway Access**: `https://ud.me/yourname.crypto`
+
+**Example:**
+
+For instance, if you registered the domain `profincognito.unstoppable`, you can access it via:
+
+- `https://ud.me/profincognito.unstoppable`
 
 ## Cloudflare Web3 Gateway Configuration
 
@@ -61,13 +70,17 @@ https://ud.me/yourname.crypto
 2. **Navigate to Web3**: In the dashboard, select the **Web3** tab.
 3. **Create a New IPFS Gateway**:
    - **Gateway Type**: IPFS DNSLink
-   - **Hostname**: `ipfs.yourdomain.com`
+   - **Hostname**: `ipfs.yourdomain.com` (e.g., `ipfs.profincognito.me`)
 
 Your gateway URL will look like:
 
 ```plaintext
 https://ipfs.yourdomain.com/
 ```
+
+**Example:**
+
+- `https://ipfs.profincognito.me/`
 
 ### DNS Records Configuration
 
@@ -84,6 +97,12 @@ Add the following records to your Cloudflare DNS settings:
 
 Replace `YourContentHash` with the actual IPFS hash (CID) of your website content.
 
+**Example:**
+
+If your content hash is `QmdzAcJAapp51CMSYPWepAdktxgWX9C1NTyCeLx2dAVw9i`, your TXT record would be:
+
+- **Content**: `"dnslink=/ipfs/QmdzAcJAapp51CMSYPWepAdktxgWX9C1NTyCeLx2dAVw9i"`
+
 ## Content Publication
 
 ### Website Preparation Checklist
@@ -95,22 +114,37 @@ Before uploading, ensure:
 - [x] **Assets Optimized**: Compress images and minify code for faster loading.
 - [x] **Ready for IPFS**: Your content is packaged and ready for distribution.
 
-### Understanding IPFS Hosting Options
+### Uploading to IPFS
 
-#### 1. **Self-Hosted Node**
+You have several options to host your content on IPFS:
 
-- **Pros**: Maximum control and true decentralization.
-- **Cons**: Requires technical expertise and constant uptime.
+#### 1. **Using IPFS Desktop or Command-Line Tool**
 
-#### 2. **Pinning Services**
+- **Install IPFS**: Download and install [IPFS Desktop](https://ipfs.io/#install) or the [command-line tool](https://docs.ipfs.tech/install/command-line/#official-distributions).
+- **Add Your Files**:
+  - For IPFS Desktop: Click on "Add to IPFS" and select your website folder.
+  - For CLI:
 
-- **Pros**: Easier to manage; services like Pinata or Infura handle hosting.
-- **Cons**: Introduces a level of trust in third-party services.
+    ```bash
+    ipfs add -r /path/to/your/website
+    ```
 
-#### 3. **Hybrid Approach**
+- **Note Your Content Hash**: After uploading, you'll receive a CID (Content Identifier). This is your `YourContentHash`.
 
-- **Pros**: Balance between control and convenience by using multiple pinning services and self-hosting.
-- **Cons**: Still requires some technical setup and monitoring.
+#### 2. **Using Pinning Services**
+
+- **Sign Up for a Service**: Create an account with services like [Pinata](https://pinata.cloud/) or [Infura](https://infura.io/).
+- **Upload Your Content**: Follow the service's instructions to upload your website files.
+- **Retrieve Your Content Hash**: After uploading, note the CID provided.
+
+> **Pros and Cons**
+
+- **Self-Hosted Node**:
+  - *Pros*: Maximum control and true decentralization.
+  - *Cons*: Requires technical expertise and constant uptime.
+- **Pinning Services**:
+  - *Pros*: Easier to manage; services handle hosting.
+  - *Cons*: Introduces a level of trust in third-party services.
 
 > **Tip:** Always verify your uploads through multiple gateways before updating your DNS records to ensure proper distribution across the IPFS network.
 
@@ -123,13 +157,35 @@ curl -I https://cloudflare-ipfs.com/ipfs/$SITE_HASH
 curl -I https://gateway.pinata.cloud/ipfs/$SITE_HASH
 ```
 
+**Example:**
+
+Using the content hash `QmdzAcJAapp51CMSYPWepAdktxgWX9C1NTyCeLx2dAVw9i`:
+
+```bash
+curl -I https://ipfs.io/ipfs/QmdzAcJAapp51CMSYPWepAdktxgWX9C1NTyCeLx2dAVw9i/
+```
+
 ## Access Methods
 
 Your decentralized site will be accessible through multiple pathways:
 
-- **Primary Domain**: `https://yourname.crypto`
-- **Cloudflare Gateway**: `https://ipfs.yourdomain.com`
-- **Direct IPFS Access**: `https://ipfs.io/ipfs/YourContentHash`
+- **Primary Domain**:
+  - `https://yourname.crypto` (Requires a Web3-enabled browser like Brave or an extension)
+- **Cloudflare Gateway**:
+  - `https://ipfs.yourdomain.com`
+- **Unstoppable Domains Gateway**:
+  - `https://ud.me/yourname.crypto`
+- **Direct IPFS Access**:
+  - `https://ipfs.io/ipfs/YourContentHash`
+
+**Example:**
+
+- **Primary Domain**:
+  - `https://profincognito.unstoppable`
+- **Cloudflare Gateway**:
+  - `https://ipfs.profincognito.me/`
+- **Direct IPFS Access**:
+  - `https://ipfs.io/ipfs/QmdzAcJAapp51CMSYPWepAdktxgWX9C1NTyCeLx2dAVw9i/`
 
 ## Security Best Practices
 
