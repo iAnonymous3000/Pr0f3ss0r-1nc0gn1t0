@@ -1,7 +1,9 @@
 # Professor Incognito - Personal Website
 [![Hugo Version](https://img.shields.io/badge/Hugo-0.138.0-blue?style=flat-square&logo=hugo)](https://gohugo.io/)
 [![PageSpeed Score](https://img.shields.io/badge/PageSpeed-100%25-brightgreen?style=flat-square&logo=googlechrome)](https://pagespeed.web.dev/analysis/https-profincognito-me/l3b9r03hj6)
-[![Modern Standards](https://img.shields.io/badge/internet.nl-97%25-brightgreen?style=flat-square)](https://internet.nl/site/profincognito.me/)
+[![Internet.nl Score](https://img.shields.io/badge/internet.nl-97%25-brightgreen?style=flat-square)](https://internet.nl/site/profincognito.me/)
+[![SSL Rating](https://img.shields.io/badge/SSL%20Rating-A+-brightgreen?style=flat-square)](https://www.ssllabs.com/ssltest/analyze.html?d=profincognito.me)
+[![HSTS Preload](https://img.shields.io/badge/HSTS-Preloaded-brightgreen?style=flat-square)](https://hstspreload.org/?domain=profincognito.me)
 [![License: AGPL-3.0](https://img.shields.io/badge/License-AGPL%20v3-blue.svg?style=flat-square)](https://www.gnu.org/licenses/agpl-3.0)
 [![Content License: CC BY-SA 4.0](https://img.shields.io/badge/Content-CC%20BY--SA%204.0-lightgrey.svg?style=flat-square)](https://creativecommons.org/licenses/by-sa/4.0/)
 
@@ -23,7 +25,6 @@ A privacy-focused personal website built with Hugo WonderMod theme, showcasing s
 - **Hosting**: Cloudflare Pages
 - **DNS & Security**: Cloudflare
 - **Deployment**: Automated via Cloudflare Pages
-- **Email**: Cloudflare Email Routing
 
 ## Privacy Features
 
@@ -75,13 +76,6 @@ Support privacy research and development:
 - Privacy-preserving cryptocurrency donations
   - Monero (XMR)
   - Zcash (ZEC)
-
-## Contact
-
-- Mastodon: [@ianonymous3000@mastodon.social](https://mastodon.social/@ianonymous3000)
-- GitHub: [@iAnonymous3000](https://github.com/iAnonymous3000)
-- LinkedIn: [Sooraj Sathyanarayanan](https://www.linkedin.com/in/soorajsathyanarayanan)
-- X: [@iAnonymous3000](https://x.com/iAnonymous3000)
 
 ## License
 
