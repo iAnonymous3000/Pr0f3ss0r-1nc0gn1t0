@@ -133,7 +133,7 @@ You have the right to:
 ## 8. Source Code Transparency
 
 Our website is open source:
-- Code available on [GitHub](https://github.com/iAnonymous3000/portfolio-site)
+- Code available on [GitHub](https://github.com/iAnonymous3000/Pr0f3ss0r-1nc0gn1t0)
 - Content licensed under CC BY-SA 4.0
 - Theme licensed under MIT License
 
