@@ -22,7 +22,7 @@ For direct, secure communication:
   - Technical questions
   - Time-sensitive matters
 
-## 🤫 HushLine (Anonymous Tips)
+## 🤫 Hush Line (Anonymous Tips)
 For anonymous, sensitive information:
 
 ➜ [Submit Anonymous Tip](https://tips.hushline.app/to/ianonymous3000)
@@ -62,7 +62,7 @@ Available for:
 
 ### Reporting Priority
 1. **Signal**: For urgent, direct communication
-2. **HushLine**: For anonymous tips and sensitive disclosures
+2. **Hush Line**: For anonymous tips and sensitive disclosures
 3. **GitHub Security Advisory**: For public project issues
    ➜ [Submit Advisory](https://github.com/iAnonymous3000/Pr0f3ss0r-1nc0gn1t0/security)
 
@@ -70,7 +70,7 @@ Available for:
 
 ### Accepted Channels
 ✅ Signal Messenger  
-✅ HushLine (anonymous tips only)  
+✅ Hush Line (anonymous tips only)  
 ✅ GitHub Security Advisory  
 ✅ Calendar booking system
 
