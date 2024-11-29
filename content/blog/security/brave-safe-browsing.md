@@ -22,30 +22,12 @@ Google employs automated systems called web crawlers to systematically browse th
 - **Behavioral Analysis**: Scripts and code are executed in a sandbox environment to detect malicious behaviors not apparent through static analysis.
 - **Detection Techniques**: Uses heuristics and signature-based detection to identify malware and phishing sites.
 
-```mermaid
-flowchart TD
-    A[Web Crawler] --> B[Discover Websites]
-    B --> C{Content Analysis}
-    C -->|Static Analysis| D[HTML Analysis]
-    C -->|Dynamic Analysis| E[JavaScript Analysis]
-    C -->|Resource Analysis| F[Embedded Content]
-    
-    D --> G[Sandbox Environment]
-    E --> G
-    F --> G
-    
-    G --> H{Threat Detection}
-    H -->|Heuristics| I[Pattern Matching]
-    H -->|Signatures| J[Known Threats]
-    
-    I --> K[Threat Classification]
-    J --> K
-    
-    K -->|Malicious| L[Add to Safe Browsing Database]
-    K -->|Safe| M[Mark as Clean]
-```
+<div align="center">
+  <img src="https://github.com/user-attachments/assets/4f6df1a6-9168-4d2d-8e11-ebc03b29ccf4" alt="Web Crawling and Analysis Process">
 
-*Flowchart illustrating the web crawling and analysis process.*
+<em> Flowchart illustrating the web crawling and analysis process.</em>
+</div>
+
 
 ### 2. Threat Classification
 
@@ -118,46 +100,10 @@ Brave minimizes the data sent to Google by:
 - **Regular Updates**: Brave frequently updates the local Safe Browsing lists to ensure up-to-date protection.
 - **Efficiency**: Local checks are fast and protect user privacy by avoiding unnecessary network requests.
 
-```mermaid
-flowchart LR
-    %% Standard Implementation
-    subgraph Standard[" Standard Implementation "]
-        direction LR
-        A1[Visit URL] --> B1[Local Check]
-        B1 -->|Safe| C1[Allow Access]
-        B1 -->|Suspicious| D1[Request Google]
-        D1 --> E1[Verify Hash]
-        E1 -->|Safe| C1
-        E1 -->|Unsafe| F1[Show Warning]
-    end
-
-    %% Add spacing between subgraphs
-    Space[ ] 
-    Standard --> Space
-    style Space fill:none,stroke:none
-
-    %% Brave Implementation
-    subgraph Brave[" Brave's Implementation "]
-        direction LR
-        A2[Visit URL] --> B2[Local Check]
-        B2 -->|Safe| C2[Allow Access]
-        B2 -->|Suspicious| D2[Proxy via Brave]
-        D2 --> E2[Verify Hash]
-        E2 -->|Safe| C2
-        E2 -->|Unsafe| F2[Show Warning]
-    end
-
-    %% Style definitions
-    classDef default fill:#f9f9f9,stroke:#333,stroke-width:1px
-    classDef process fill:#e1f5fe,stroke:#01579b,stroke-width:2px
-    classDef decision fill:#fff3e0,stroke:#e65100,stroke-width:2px
-    
-    %% Apply styles
-    class A1,A2,B1,B2,D1,D2,E1,E2 process
-    class C1,C2,F1,F2 decision
-```
-
-*Flowchart comparing standard Safe Browsing implementation with Brave's enhanced privacy approach.*
+<div align="center">
+  <img src="https://github.com/user-attachments/assets/b9ee2d48-8560-4f99-bda7-2592c6bff4a7" alt="Standard vs Brave Safe Browsing Implementation">
+<em> Flowchart comparing standard Safe Browsing implementation with Brave's enhanced privacy approach.</em>
+</div>
 
 ## Responding to Google Safe Browsing Warnings
 
@@ -184,27 +130,11 @@ flowchart LR
 
 [Learn more about hash-based Safe Browsing in this Google Security Blog post.](https://security.googleblog.com/2022/08/how-hash-based-safe-browsing-works-in.html)
 
-```mermaid
-flowchart LR
-    subgraph Google["Google's Process"]
-        A[Malicious URL] --> B[Hash Function]
-        B --> C[Full Hash]
-        C --> D[Hash Prefix]
-        D --> E[Safe Browsing DB]
-    end
-    
-    subgraph Browser["Browser's Process"]
-        F[User Visits URL] --> G[Generate Hash]
-        G --> H[Extract Prefix]
-        H --> I{Check Local DB}
-        I -->|Match| J[Request Full Hashes]
-        I -->|No Match| K[Allow Access]
-        J -->|Contains Malicious URL| L[Show Warning]
-        J -->|No Malicious URL| K
-    end
-```
+<div align="center">
+  <img src="https://github.com/user-attachments/assets/7d1da7c2-32e6-4233-8c0e-677b3a4c35b2" alt="URL Hashing and Prefix Matching Process">
 
-*Diagram showing the process of URL hashing and how hash prefixes are used to check against the Safe Browsing database without compromising privacy.*
+<em> Diagram showing the process of URL hashing and how hash prefixes are used to check against the Safe Browsing database without compromising privacy.</em>
+</div>
 
 ### Machine Learning and Threat Detection
 
