@@ -1,63 +1,87 @@
 ---
 title: "Contact"
 description: "Secure and private communication channels"
-layout: "single"
-lastmod: 2024-11-21
-draft: false
-hidemeta: false
-comments: false
-showtoc: true
-tocopen: true
 ---
 
 # Secure Communication Channels
+Choose the appropriate channel based on your needs and the nature of your communication.
 
-I prioritize secure and private communication. Below are the verified and recommended methods to reach me.
+## 🔒 Signal Messenger (Primary)
+For direct, secure communication:
 
-## Signal Messenger (Preferred)
-
-For secure, real-time communication, Signal is my primary contact method.
-
-### Signal Contact Link
 ➜ [Contact via Signal](https://signal.me/#eu/tao35l1vQxmrWcie6iW3dXlcFo0t3Pzae7WFHEMJnAIqKn2WxP5KnKKq5ClE-ZDD)
 
-### Key Features
-- End-to-end encryption
-- Enhanced privacy features
+<img src="https://github.com/user-attachments/assets/e2549eae-458a-4699-9699-5dd98e354355" alt="Signal QR Code" width="300" height="300" style="display: block; margin: 20px 0;">
+
+- End-to-end encrypted
 - Secure media sharing
-- Direct communication channel
-- Typical response time: Within 24 hours
+- Best for:
+  - Direct collaboration requests
+  - Security consulting inquiries
+  - Project discussions
+  - Technical questions
+  - Time-sensitive matters
 
-## Schedule a Meeting
+## 🤫 HushLine (Anonymous Tips)
+For anonymous, sensitive information:
 
-To schedule a meeting with me, please use my calendar booking system:
+➜ [Submit Anonymous Tip](https://tips.hushline.app/to/ianonymous3000)
+
+<img src="https://github.com/user-attachments/assets/8e105c4f-344c-4506-a5b7-315087f7ae90" alt="HushLine QR Code" width="300" height="300" style="display: block; margin: 20px 0;">
+
+Appropriate for:
+- Security vulnerability reports
+- Privacy breach disclosures
+- Ethical concerns in tech
+- Whistleblowing
+- Anonymous feedback on projects/initiatives
+- Sensitive disclosures
+
+Key Features:
+- Anonymity
+- End-to-end encryption
+- Tor-friendly
+- No tracking
+- One-way communication channel
+
+## 📅 Meeting Requests
+For scheduled discussions:
+
 ➜ [Book a Meeting](https://cal.com/ianonymous3000)
 
-## Security Reports
+<img src="https://github.com/user-attachments/assets/f6d89164-43a3-4c7d-be8f-888f3908f8e8" alt="Calendar QR Code" width="300" height="300" style="display: block; margin: 20px 0;">
 
-For reporting security-related matters, please follow these channels:
+Available for:
+- Project consultations
+- Security assessments
+- Research discussions
+- Technical collaborations
+- In-depth topics requiring dedicated time
 
-### Priority Order
-1. **Signal Messenger**: Use for initial contact
-2. **Public Issues**: Submit through [GitHub Security Advisory](https://github.com/iAnonymous3000/Pr0f3ss0r-1nc0gn1t0/security)
+## Security Reports & Disclosures
 
-### Communication Policy
+### Reporting Priority
+1. **Signal**: For urgent, direct communication
+2. **HushLine**: For anonymous tips and sensitive disclosures
+3. **GitHub Security Advisory**: For public project issues
+   ➜ [Submit Advisory](https://github.com/iAnonymous3000/Pr0f3ss0r-1nc0gn1t0/security)
 
-#### Accepted Methods
-- ✅ Signal Messenger
-- ✅ GitHub Security Advisory (for public issues)
-- ✅ Calendar booking system
+## Communication Policy
 
-#### Not Accepted
-- ❌ Email communications
-- ❌ Other messaging platforms
+### Accepted Channels
+✅ Signal Messenger  
+✅ HushLine (anonymous tips only)  
+✅ GitHub Security Advisory  
+✅ Calendar booking system
 
-## Important Notes
+### Not Accepted
+❌ Email communications  
+❌ Social media platforms  
+❌ Other messaging platforms
 
-- All communication channels undergo regular security audits
-- Communication methods are updated to maintain highest security standards
-- Your privacy and security are paramount
-
----
-
-*Last updated: November 21, 2024*
+## Security Assurance & Response Times
+- All channels undergo regular security audits
+- Signal messages: Within 24 hours
+- Anonymous tips: No direct response (one-way channel)
+- Meeting requests: Automatic confirmation
+- Security advisories: Within 48 hours
