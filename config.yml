@@ -1,5 +1,5 @@
 # Base Configuration
-baseURL: 'https://profincognito.me'  # Updated to custom domain
+baseURL: 'https://profincognito.me'
 languageCode: 'en-us'
 title: 'Sooraj Sathyanarayanan'
 theme: 'hugo-WonderMod'
@@ -8,7 +8,7 @@ enableGitInfo: true
 enableRobotsTXT: true
 enableEmoji: true
 
-# Updated Pagination
+# Pagination
 pagination:
   pagerSize: 10
 summaryLength: 70
@@ -23,13 +23,13 @@ watch: false
 params:
   env: production
   author: "Sooraj Sathyanarayanan"
-  description: "Privacy Researcher & Security Strategist | FIDE Arena Grand Master | Chess-Inspired Security Thinking"
-  keywords: [Privacy, Security, Chess, Research, FIDE]
-  
+  description: "Privacy Researcher & Security Strategist | Advocate for Open Source, Privacy, and Digital Freedom | FIDE Arena Grand Master"
+  keywords: [Privacy, Cybersecurity, Open Source, Digital Freedom, Threat Intelligence, Digital Forensics, Privacy Advocacy, Security Research, Chess, Vulnerability Assessment, Penetration Testing, Secure System Design, Data Sovereignty, Anonymity Tools, Incident Response, Threat Modeling, Blockchain Security, Cryptography, Decentralized Systems]
+
 # Site Label
   label:
     text: "Pr0f3ss0r 1nc0gn1t0"
-    icon: "/images/favicon/favicon-45x45.png"  # Updated to use 45x45 version
+    icon: "/images/favicon/favicon-45x45.png"
 
   # Repository Info
   githubUsername: "iAnonymous3000"
@@ -51,27 +51,21 @@ params:
     - name: "github"
       url: "https://github.com/iAnonymous3000"
       title: "GitHub"
-      rel: "me noopener"
     - name: "linkedin"
       url: "https://www.linkedin.com/in/soorajsathyanarayanan"
       title: "LinkedIn"
-      rel: "me noopener"
     - name: "x" 
       url: "https://x.com/iAnonymous3000"
       title: "X (formerly Twitter)"
-      rel: "me noopener"
     - name: "mastodon"
       url: "https://mastodon.social/@ianonymous3000"
       title: "Mastodon"
-      rel: "me"
     - name: "bsky"  
       url: "https://bsky.app/profile/profincognito.me"
       title: "Bluesky"
-      rel: "me noopener"
     - name: "signal"
       url: "https://signal.me/#eu/tao35l1vQxmrWcie6iW3dXlcFo0t3Pzae7WFHEMJnAIqKn2WxP5KnKKq5ClE-ZDD"
       title: "Signal"
-      rel: "me noopener"
     - name: "rss"
       url: "/index.xml"
       title: "RSS Feed"
@@ -147,45 +141,40 @@ menu:
       params:
         feedIcon: true
         feedURL: /blog/index.xml
-    
     - identifier: research
       name: Research
       url: /research/
       weight: 20
       params:
         feedIcon: true
-        feedURL: /research/index.xml
-    
+        feedURL: /research/index.xml    
     - identifier: projects
       name: Projects
       url: /projects/
       weight: 30
       params:
         feedIcon: true
-        feedURL: /projects/index.xml
-    
+        feedURL: /projects/index.xml    
     - identifier: chess
       name: Chess
       url: /chess/
       weight: 40
       params:
         feedIcon: true
-        feedURL: /chess/index.xml
-    
+        feedURL: /chess/index.xml    
     - identifier: tags
       name: Tags
       url: /tags/
-      weight: 50
-    
+      weight: 50    
     - identifier: search
       name: Search
       url: /search/
-      weight: 60
-    
+      weight: 60    
     - identifier: about
       name: About
       url: /about/
       weight: 70
+
 # Content Organization
 taxonomies:
   tag: tags
