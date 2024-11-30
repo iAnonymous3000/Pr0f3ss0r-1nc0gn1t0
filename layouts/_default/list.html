@@ -1,5 +1,4 @@
 {{- define "main" }}
-
 {{- if (and site.Params.profileMode.enabled .IsHome) }}
 {{- partial "index_profile.html" . }}
 {{- else }} {{/* if not profileMode */}}
@@ -39,10 +38,9 @@
 {{- end }}
 
 {{- $pages := union .RegularPages .Sections }}
-
 {{- if .IsHome }}
 {{- $pages = where site.RegularPages "Type" "in" site.Params.mainSections }}
-{{- $pages = where $pages "Params.hiddenInHomeList" "!=" "true" }}
+{{- $pages = where $pages "Params.hiddenInHomeList" "!=" "true"  }}
 {{- end }}
 
 {{- $paginator := .Paginate $pages }}
@@ -53,10 +51,7 @@
 
 {{- $term := .Data.Term }}
 {{- range $index, $page := $paginator.Pages }}
-
-{{- $class := "post-entry" }}
-{{- $class = printf "%s section-%s" $class $page.Section }}
-
+{{- $class := printf "post-entry section-%s" $page.Section }}
 {{- $user_preferred := or site.Params.disableSpecial1stPost site.Params.homeInfoParams }}
 {{- if (and $.IsHome (eq $paginator.PageNumber 1) (eq $index 0) (not $user_preferred)) }}
 {{- $class = "first-entry" }}
@@ -64,10 +59,7 @@
 {{- $class = "post-entry tag-entry" }}
 {{- end }}
 
-<article class="{{ $class }}" 
-         data-type="{{ .Type }}" 
-         {{- if .Draft }}data-draft="true"{{- end }}
-         {{- if .Params.featured }}data-featured="true"{{- end }}>
+<article class="{{ $class }}" data-type="{{ .Type }}" {{- if .Draft }}data-draft="true"{{- end }}>
   {{- $isHidden := (.Param "cover.hiddenInList") | default (.Param "cover.hidden") | default false }}
   {{- partial "cover.html" (dict "cxt" . "IsSingle" false "isHidden" $isHidden) }}
   <header class="entry-header">
@@ -92,9 +84,7 @@
     {{- partial "post_meta.html" . -}}
   </footer>
   {{- end }}
-  <a class="entry-link" 
-     aria-label="post link to {{ .Title | plainify }}" 
-     href="{{ .Permalink }}"
+  <a class="entry-link" aria-label="post link to {{ .Title | plainify }}" href="{{ .Permalink }}" 
      {{- if .Draft }}rel="noindex"{{- end }}></a>
 </article>
 {{- end }}
@@ -104,18 +94,12 @@
   <nav class="pagination" aria-label="Pagination Navigation">
     {{- if $paginator.HasPrev }}
     <a class="prev" href="{{ $paginator.Prev.URL | absURL }}" rel="prev">
-      «&nbsp;{{ i18n "prev_page" }}&nbsp;
-      {{- if (.Param "ShowPageNums") }}
-      {{- sub $paginator.PageNumber 1 }}/{{ $paginator.TotalPages }}
-      {{- end }}
+      «&nbsp;{{ i18n "prev_page" }}
     </a>
     {{- end }}
     {{- if $paginator.HasNext }}
     <a class="next" href="{{ $paginator.Next.URL | absURL }}" rel="next">
-      {{- i18n "next_page" }}&nbsp;
-      {{- if (.Param "ShowPageNums") }}
-      {{- add 1 $paginator.PageNumber }}/{{ $paginator.TotalPages }}
-      {{- end }}&nbsp;»
+      {{ i18n "next_page" }}&nbsp;»
     </a>
     {{- end }}
   </nav>
