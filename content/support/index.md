@@ -3,8 +3,6 @@ title: "Support"
 description: "Support privacy research and open-source security projects by Sooraj Sathyanarayanan"
 ---
 
-# Support My Work
-
 Hey there! I'm Sooraj, a privacy advocate and open-source enthusiast. Your support helps fund my research, open-source projects, and efforts to make the world safer for everyone. Whether it's a small contribution or simply spreading the word, I'm incredibly grateful!
 
 ## Support Options
