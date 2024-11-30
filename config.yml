@@ -7,8 +7,6 @@ copyright: '[CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/)'
 enableGitInfo: true
 enableRobotsTXT: true
 enableEmoji: true
-frontmatter:
-  lastmod: [:git, :fileModTime, :default]
 
 # Pagination
 pagination:
@@ -27,7 +25,9 @@ params:
   author: "Sooraj Sathyanarayanan"
   description: "Privacy Researcher & Security Strategist | Advocate for Open Source, Privacy, and Digital Freedom | FIDE Arena Grand Master"
   keywords: [Privacy, Cybersecurity, Open Source, Digital Freedom, Threat Intelligence, Digital Forensics, Privacy Advocacy, Security Research, Chess, Vulnerability Assessment, Penetration Testing, Secure System Design, Data Sovereignty, Anonymity Tools, Incident Response, Threat Modeling, Blockchain Security, Cryptography, Decentralized Systems]
-
+  frontmatter:
+    lastmod: [:git, :fileModTime, :default]
+  
 # Site Label
   label:
     text: "Pr0f3ss0r 1nc0gn1t0"
