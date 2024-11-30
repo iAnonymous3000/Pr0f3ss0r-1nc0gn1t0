@@ -50,7 +50,7 @@
 {{- end }}
 
 {{- $term := .Data.Term }}
-{{- range $index, $page := $paginator.Pages.ByLastmod.Reverse }}
+{{- range $index, $page := $paginator.Pages }}
 {{- $class := printf "post-entry section-%s" $page.Section }}
 {{- $user_preferred := or site.Params.disableSpecial1stPost site.Params.homeInfoParams }}
 {{- if (and $.IsHome (eq $paginator.PageNumber 1) (eq $index 0) (not $user_preferred)) }}
