@@ -147,31 +147,45 @@ menu:
       params:
         feedIcon: true
         feedURL: /blog/index.xml
+    
     - identifier: research
       name: Research
       url: /research/
       weight: 20
+      params:
+        feedIcon: true
+        feedURL: /research/index.xml
+    
     - identifier: projects
       name: Projects
       url: /projects/
       weight: 30
+      params:
+        feedIcon: true
+        feedURL: /projects/index.xml
+    
     - identifier: chess
       name: Chess
       url: /chess/
       weight: 40
+      params:
+        feedIcon: true
+        feedURL: /chess/index.xml
+    
     - identifier: tags
       name: Tags
       url: /tags/
       weight: 50
+    
     - identifier: search
       name: Search
       url: /search/
       weight: 60
+    
     - identifier: about
       name: About
       url: /about/
       weight: 70
-
 # Content Organization
 taxonomies:
   tag: tags
