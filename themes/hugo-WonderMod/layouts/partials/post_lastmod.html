@@ -1,0 +1,6 @@
+{{ $date := .Date.Format "02.01.2006" }}
+{{ $lastmod := .Lastmod.Format "02.01.2006" }}
+
+{{- if ne $lastmod $date -}}
+<span title={{ .Lastmod }}><i>Last updated on {{ .Lastmod | time.Format (default "January 2, 2006" site.Params.DateFormat) }}</i></span>
+{{- end }}

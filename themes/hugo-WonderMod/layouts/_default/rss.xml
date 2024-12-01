@@ -1,0 +1,80 @@
+{{- /* Deprecate site.Author.email in favor of site.Params.author.email */}}
+{{- $authorEmail := "" }}
+{{- with site.Params.author }}
+  {{- if reflect.IsMap . }}
+    {{- with .email }}
+      {{- $authorEmail = . }}
+    {{- end }}
+  {{- end }}
+{{- else }}
+  {{- with site.Author.email }}
+    {{- $authorEmail = . }}
+    {{- warnf "The author key in site configuration is deprecated. Use params.author.email instead." }}
+  {{- end }}
+{{- end }}
+
+{{- /* Deprecate site.Author.name in favor of site.Params.author.name */}}
+{{- $authorName := "" }}
+{{- with site.Params.author }}
+  {{- if reflect.IsMap . }}
+    {{- with .name }}
+      {{- $authorName = . }}
+    {{- end }}
+  {{- else }}
+    {{- $authorName  = . }}
+  {{- end }}
+{{- else }}
+  {{- with site.Author.name }}
+    {{- $authorName = . }}
+    {{- warnf "The author key in site configuration is deprecated. Use params.author.name instead." }}
+  {{- end }}
+{{- end }}
+
+{{- $pctx := . }}
+{{- if .IsHome }}{{ $pctx = site }}{{ end }}
+{{- $pages := slice }}
+{{- if or $.IsHome $.IsSection }}
+{{- $pages = $pctx.RegularPages }}
+{{- else }}
+{{- $pages = $pctx.Pages }}
+{{- end }}
+{{- $limit := site.Config.Services.RSS.Limit }}
+{{- if ge $limit 1 }}
+{{- $pages = $pages | first $limit }}
+{{- end }}
+
+{{- printf "<?xml version=\"1.0\" encoding=\"utf-8\" standalone=\"yes\"?>" | safeHTML }}
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>{{ if eq .Title site.Title }}{{ site.Title }}{{ else }}{{ with .Title }}{{ . }} on {{ end }}{{ site.Title }}{{ end }}</title>
+  <link rel="alternate" href="{{ (.OutputFormats.Get "HTML").Permalink }}" />
+  <link rel="self" href="{{ (.OutputFormats.Get "RSS").Permalink }}" />
+  <subtitle>Recent content {{ if ne .Title site.Title }}{{ with .Title }}in {{ . }} {{ end }}{{ end }}on {{ site.Title }}</subtitle>
+  <id>{{ .Permalink }}</id>
+  <generator uri="http://gohugo.io" version="{{ hugo.Version }}">Hugo</generator>
+  <language>{{ site.Language.LanguageCode }}</language>
+  <updated>{{ .Date.Format "2006-01-02T15:04:05Z07:00" | safeHTML }}</updated>
+  <author>
+    {{ with $authorName }}<name>{{ . }}</name>{{ end }}
+    {{ with $authorEmail }}<name>{{ . }}</name>{{ end }}
+  </author>
+  {{ with site.Copyright }}<rights>{{ . }}</rights>{{ end }}
+
+  {{- range $pages }}
+    {{- if and (ne .Layout `search`) (ne .Layout `archives`) }}
+      <entry>
+        <title>{{ .Title }}</title>
+        <link rel="alternate" href="{{ .Permalink }}" />
+        <id>{{ .Permalink }}</id>
+        <published>{{ .Date.Format "2006-01-02T15:04:05Z07:00" | safeHTML }}</published>
+        <updated>{{ .Lastmod.Format "2006-01-02T15:04:05Z07:00" | safeHTML }}</updated>
+        <summary type="html">{{ with .Description | html }}{{ . }}{{ else }}{{ .Summary | html }}{{ end -}}</summary>
+        {{- if site.Params.ShowFullTextinRSS }}
+          <content type="html">{{ (printf "<![CDATA[%s]]>" .Content) | safeHTML }}</content>
+        {{- end }}
+      </entry>
+    {{- end }}
+  {{- end }}
+
+</feed>
+
+

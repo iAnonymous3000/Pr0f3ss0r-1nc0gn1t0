@@ -1,0 +1,36 @@
+:root {
+    --gap: 24px;
+    --content-gap: 20px;
+    --nav-width: 1024px;
+    --main-width: 720px;
+    --header-height: 60px;
+    --footer-height: 60px;
+    --radius: 8px;
+    --theme: #e2e4f2;
+    --entry: #efefff;
+    --primary: rgb(30, 30, 30);
+    --secondary: rgb(108, 108, 108);
+    --tertiary: #c3c5d0;
+    --content: rgb(31, 31, 31);
+    --code-bg: #e2e4f2;
+    --border: rgb(238, 238, 238);
+}
+
+.dark {
+    --theme: #1f2125;
+    --entry: #26282e;
+    --primary: rgb(218, 218, 219);
+    --secondary: rgb(155, 156, 157);
+    --tertiary: #3a3c42;
+    --content: rgb(196, 196, 197);
+    --code-bg: rgb(55, 56, 62);
+    --border: none;
+}
+
+.list {
+    background: var(--code-bg);
+}
+
+.dark.list {
+    background: var(--theme);
+}
