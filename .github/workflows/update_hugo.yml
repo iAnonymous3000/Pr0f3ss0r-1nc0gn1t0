@@ -1,0 +1,44 @@
+name: Update Hugo Version and Redeploy
+
+on:
+  schedule:
+    # Run this workflow every Sunday at midnight
+    - cron: '0 0 * * 0'
+  workflow_dispatch: # Allow manual trigger
+
+jobs:
+  update_hugo:
+    runs-on: ubuntu-latest
+
+    steps:
+      # Step 1: Checkout repository
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      # Step 2: Fetch the latest Hugo version
+      - name: Fetch the latest Hugo version
+        id: hugo_version
+        run: |
+          LATEST_VERSION=$(curl -s https://api.github.com/repos/gohugoio/hugo/releases/latest | grep '"tag_name"' | sed -E 's/.*"v([^"]+)".*/\1/')
+          echo "Latest Hugo version: $LATEST_VERSION"
+          echo "HUGO_VERSION=$LATEST_VERSION" >> $GITHUB_ENV
+
+      # Step 3: Update .env file with the latest Hugo version
+      - name: Update .env file
+        run: |
+          if [ -f .env ]; then
+            sed -i "s/^HUGO_VERSION=.*/HUGO_VERSION=${{ env.HUGO_VERSION }}/" .env
+          else
+            echo "HUGO_VERSION=${{ env.HUGO_VERSION }}" > .env
+          fi
+        shell: bash
+
+      # Step 4: Commit and push changes
+      - name: Commit and push changes
+        run: |
+          git config --global user.name "GitHub Actions Bot"
+          git config --global user.email "actions@github.com"
+          git add .env
+          git commit -m "Automated update to Hugo version ${{ env.HUGO_VERSION }}" || echo "No changes to commit"
+          git push origin main
+
