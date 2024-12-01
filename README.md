@@ -1,11 +1,30 @@
 # Professor Incognito - Personal Website  
-[![Hugo Version](https://img.shields.io/badge/Hugo-0.139.3-blue?style=flat-square&logo=hugo)](https://gohugo.io/)  
-[![PageSpeed Score](https://img.shields.io/badge/PageSpeed-100%25-brightgreen?style=flat-square&logo=googlechrome)](https://pagespeed.web.dev/analysis/https-profincognito-me/l3b9r03hj6)  
-[![Internet.nl Score](https://img.shields.io/badge/internet.nl-97%25-brightgreen?style=flat-square)](https://internet.nl/site/profincognito.me/)  
-[![SSL Rating](https://img.shields.io/badge/SSL%20Rating-A+-brightgreen?style=flat-square)](https://www.ssllabs.com/ssltest/analyze.html?d=profincognito.me)  
-[![HSTS Preload](https://img.shields.io/badge/HSTS-Preloaded-brightgreen?style=flat-square)](https://hstspreload.org/?domain=profincognito.me)  
-[![License: AGPL-3.0](https://img.shields.io/badge/License-AGPL%20v3-blue.svg?style=flat-square)](https://www.gnu.org/licenses/agpl-3.0)  
-[![Content License: CC BY-SA 4.0](https://img.shields.io/badge/Content-CC%20BY--SA%204.0-lightgrey.svg?style=flat-square)](https://creativecommons.org/licenses/by-sa/4.0/)  
+
+<a href="https://gohugo.io/">
+  <img src="https://img.shields.io/badge/Hugo-0.139.3-blue?style=flat-square&logo=hugo" alt="Hugo Version">
+</a>
+<a href="https://pagespeed.web.dev/analysis/https-profincognito-me/l3b9r03hj6">
+  <img src="https://img.shields.io/badge/PageSpeed-100%25-brightgreen?style=flat-square&logo=googlechrome" alt="PageSpeed Score">
+</a>
+<a href="https://internet.nl/site/profincognito.me/">
+  <img src="https://img.shields.io/badge/internet.nl-97%25-brightgreen?style=flat-square" alt="Internet.nl Score">
+</a>
+<a href="https://www.ssllabs.com/ssltest/analyze.html?d=profincognito.me">
+  <img src="https://img.shields.io/badge/SSL%20Rating-A+-brightgreen?style=flat-square" alt="SSL Rating">
+</a>
+<a href="https://hstspreload.org/?domain=profincognito.me">
+  <img src="https://img.shields.io/badge/HSTS-Preloaded-brightgreen?style=flat-square" alt="HSTS Preload">
+</a>
+<a href="https://observatory.mozilla.org/analyze/profincognito.me">
+  <img src="https://img.shields.io/badge/Mozilla%20Observatory-A%2B-brightgreen?style=flat-square&logo=mozilla" alt="Mozilla Observatory Score">
+</a>
+<a href="https://www.gnu.org/licenses/agpl-3.0">
+  <img src="https://img.shields.io/badge/License-AGPL%20v3-blue.svg?style=flat-square" alt="AGPL License">
+</a>
+<a href="https://creativecommons.org/licenses/by-sa/4.0/">
+  <img src="https://img.shields.io/badge/Content-CC%20BY--SA%204.0-lightgrey.svg?style=flat-square" alt="Content License">
+</a>
+
 
 A privacy-focused personal website built with Hugo WonderMod theme, showcasing security research, chess strategy, and digital rights advocacy.
 
