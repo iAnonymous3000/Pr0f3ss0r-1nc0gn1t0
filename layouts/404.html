@@ -4,8 +4,11 @@
         --square-light: #f0d9b5;
         --square-dark: #b58863;
         --knight-color: currentColor;
+        --bg-color: var(--w-bg-primary);
+        --text-color: var(--w-fg-primary);
     }
 
+    /* Use WonderMod's dark mode variables */
     @media (prefers-color-scheme: dark) {
         :root {
             --square-light: #d1a054;
@@ -13,11 +16,13 @@
         }
     }
 
-    body {
+    /* Prevent scrolling */
+    html, body {
+        overflow: hidden !important;
+        height: 100vh;
+        width: 100vw;
         margin: 0;
-        overflow: hidden;
-        background: #1a1a1a;
-        color: white;
+        padding: 0;
     }
 
     .not-found-container {
@@ -29,6 +34,13 @@
         text-align: center;
         padding: 2rem;
         gap: 1.5rem;
+        background: var(--bg-color);
+        color: var(--text-color);
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
     }
 
     .not-found-header h1 {
@@ -36,7 +48,7 @@
         font-weight: 900;
         margin: 0;
         line-height: 1;
-        color: #fff;
+        color: var(--text-color);
     }
 
     .not-found-message {
@@ -49,6 +61,7 @@
     .not-found-message p {
         margin: 0;
         font-size: 1.2rem;
+        color: var(--text-color);
     }
 
     .privacy-note {
@@ -115,7 +128,7 @@
     .knight-svg {
         width: 100%;
         height: 100%;
-        fill: white;
+        fill: var(--text-color);
     }
 
     .game-message {
@@ -126,7 +139,7 @@
         font-family: ui-monospace, 'Cascadia Code', 'Source Code Pro', monospace;
         font-size: 0.9rem;
         white-space: nowrap;
-        color: #fff;
+        color: var(--text-color);
     }
 
     .game-message::after {
@@ -150,17 +163,17 @@
 
     .footer-link {
         padding: 0.75rem 1.5rem;
-        border: 2px solid #fff;
+        border: 2px solid var(--text-color);
         border-radius: 8px;
         text-decoration: none;
-        color: #fff;
+        color: var(--text-color);
         font-weight: 500;
         transition: all 0.3s ease;
     }
 
     .footer-link:hover {
-        background: #fff;
-        color: #1a1a1a;
+        background: var(--text-color);
+        color: var(--bg-color);
     }
 
     @media (max-width: 480px) {
