@@ -81,7 +81,7 @@ params:
     enable: true
     type: "client"
     contentLength: 4000
-    placeholder: "Search articles and resources..."
+    placeholder: "Search the archives..."
     maxResults: 10
     minMatch: 0
     highlightTag: "em"
@@ -188,7 +188,6 @@ menu:
 # Content Organization
 taxonomies:
   tag: tags
-  chess_category: chess_categories
   series: series
 
 # Output Settings
@@ -259,19 +258,3 @@ assets:
     stripMetadata: true
     responsiveSizes: [640, 768, 1024, 1366, 1920]
   lazyLoading: true
-
-# Server Security Headers for Production
-server:
-  headers:
-    - for: '/**'
-      values:
-        X-Frame-Options: "SAMEORIGIN"
-        X-Content-Type-Options: "nosniff"
-        X-XSS-Protection: "1; mode=block"
-        Referrer-Policy: "strict-origin-when-cross-origin"
-        Strict-Transport-Security: "max-age=31536000; includeSubDomains; preload"
-        Content-Security-Policy: "default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; img-src 'self' data: https:; font-src 'self'; connect-src 'self'; media-src 'self'; object-src 'none'; child-src 'none'; frame-src 'none'; worker-src 'self'; frame-ancestors 'none'; form-action 'self'; base-uri 'self'; manifest-src 'self'"
-        Permissions-Policy: "accelerometer=(), ambient-light-sensor=(), autoplay=(), battery=(), camera=(), clipboard-read=(), clipboard-write=(), display-capture=(), document-domain=(), encrypted-media=(), fullscreen=(), geolocation=(), gyroscope=(), hid=(), magnetometer=(), microphone=(), midi=(), payment=(), picture-in-picture=(), screen-wake-lock=(), serial=(), usb=(), xr-spatial-tracking=()"
-        Cross-Origin-Embedder-Policy: "require-corp"
-        Cross-Origin-Opener-Policy: "same-origin"
-        Cross-Origin-Resource-Policy: "same-origin"
