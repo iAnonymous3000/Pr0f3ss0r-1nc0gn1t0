@@ -3,12 +3,8 @@
     :root {
         --square-light: #f0d9b5;
         --square-dark: #b58863;
-        --knight-color: currentColor;
-        --bg-color: var(--w-bg-primary);
-        --text-color: var(--w-fg-primary);
     }
 
-    /* Use WonderMod's dark mode variables */
     @media (prefers-color-scheme: dark) {
         :root {
             --square-light: #d1a054;
@@ -16,68 +12,53 @@
         }
     }
 
-    /* Prevent scrolling */
-    html, body {
-        overflow: hidden !important;
-        height: 100vh;
-        width: 100vw;
-        margin: 0;
-        padding: 0;
-    }
-
+    /* Remove fixed positioning and allow theme's nav to work */
     .not-found-container {
         display: flex;
         flex-direction: column;
         align-items: center;
         justify-content: center;
-        min-height: 100vh;
+        min-height: calc(100vh - 150px); /* Account for nav and footer */
         text-align: center;
-        padding: 2rem;
-        gap: 1.5rem;
-        background: var(--bg-color);
-        color: var(--text-color);
-        position: fixed;
-        top: 0;
-        left: 0;
-        right: 0;
-        bottom: 0;
+        padding: 0 2rem;
+        gap: 2.5rem;
     }
 
     .not-found-header h1 {
-        font-size: clamp(6rem, 15vw, 12rem);
+        font-size: clamp(8rem, 20vw, 15rem);
         font-weight: 900;
         margin: 0;
-        line-height: 1;
-        color: var(--text-color);
+        line-height: 0.8;
+        letter-spacing: -0.05em;
     }
 
     .not-found-message {
         display: flex;
         flex-direction: column;
-        gap: 0.5rem;
+        gap: 1rem;
         margin: 0;
+        max-width: 600px;
     }
 
     .not-found-message p {
         margin: 0;
-        font-size: 1.2rem;
-        color: var(--text-color);
+        font-size: 1.25rem;
     }
 
     .privacy-note {
-        font-size: 0.9rem;
-        opacity: 0.8;
-        max-width: 600px;
+        font-size: 1rem;
+        opacity: 0.7;
         margin: 0;
     }
 
     .chess-game {
-        width: min(400px, 70vw);
+        width: min(500px, 80vw);
         aspect-ratio: 1;
         position: relative;
         border-radius: 12px;
         background: var(--square-dark);
-        margin: 1rem 0 2.5rem;
+        margin: 1rem 0 3rem;
+        box-shadow: 0 8px 30px rgba(0,0,0,0.2);
     }
 
     .chess-board {
@@ -108,8 +89,8 @@
 
     .chess-piece {
         position: absolute;
-        width: 60px;
-        height: 60px;
+        width: 80px;
+        height: 80px;
         top: 50%;
         left: 50%;
         transform: translate(-50%, -50%);
@@ -128,18 +109,18 @@
     .knight-svg {
         width: 100%;
         height: 100%;
-        fill: var(--text-color);
+        fill: currentColor;
     }
 
     .game-message {
         position: absolute;
-        bottom: -40px;
+        bottom: -48px;
         left: 50%;
         transform: translateX(-50%);
         font-family: ui-monospace, 'Cascadia Code', 'Source Code Pro', monospace;
-        font-size: 0.9rem;
+        font-size: 1rem;
         white-space: nowrap;
-        color: var(--text-color);
+        opacity: 0.8;
     }
 
     .game-message::after {
@@ -152,43 +133,42 @@
     }
 
     .nav-footer {
-        margin-top: 0;
+        margin: 2rem 0 3rem;
     }
 
     .footer-links {
         display: flex;
-        gap: 1rem;
+        gap: 1.5rem;
         justify-content: center;
     }
 
     .footer-link {
-        padding: 0.75rem 1.5rem;
-        border: 2px solid var(--text-color);
+        padding: 0.75rem 2rem;
+        border: 2px solid currentColor;
         border-radius: 8px;
         text-decoration: none;
-        color: var(--text-color);
         font-weight: 500;
         transition: all 0.3s ease;
     }
 
     .footer-link:hover {
-        background: var(--text-color);
-        color: var(--bg-color);
+        background: currentColor;
+        color: var(--w-bg-primary);
     }
 
     @media (max-width: 480px) {
         .not-found-container {
             padding: 1rem;
+            min-height: calc(100vh - 120px);
         }
 
         .chess-piece {
-            width: 40px;
-            height: 40px;
+            width: 50px;
+            height: 50px;
         }
 
         .footer-link {
-            padding: 0.5rem 1rem;
-            font-size: 0.9rem;
+            padding: 0.5rem 1.5rem;
         }
     }
 
@@ -203,9 +183,9 @@
     }
 </style>
 
-<div class="not-found-container" role="main" aria-labelledby="error-heading">
+<div class="not-found-container">
     <header class="not-found-header">
-        <h1 id="error-heading">404</h1>
+        <h1>404</h1>
     </header>
     
     <div class="not-found-message">
