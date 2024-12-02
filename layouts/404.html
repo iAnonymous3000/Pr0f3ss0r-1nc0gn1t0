@@ -153,10 +153,14 @@
         border-radius: 8px;
         text-decoration: none;
         font-weight: 500;
-        transition: all 0.3s ease;
+        transition: all 0.2s ease;
+        position: relative;
+        overflow: hidden;
     }
 
     .footer-link:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
         background: var(--w-fg-primary);
         color: var(--w-bg-primary);
     }
@@ -194,7 +198,7 @@
     </header>
     
     <div class="not-found-message">
-        <p><strong>Checkmate: Page Not Found</strong></p>
+        <p><strong>Stalemate: Page Not Found</strong></p>
         <p>The page you're looking for has made an unexpected move.</p>
         <p class="privacy-note">
             Even in error, your privacy remains paramount. This 404 page operates with zero tracking, like all pages on this site.
