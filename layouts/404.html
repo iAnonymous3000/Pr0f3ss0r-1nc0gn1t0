@@ -12,7 +12,13 @@
         }
     }
 
-    /* Remove fixed positioning and allow theme's nav to work */
+    /* Prevent scrolling while maintaining layout */
+    html, body {
+        overflow: hidden;
+        height: 100%;
+        margin: 0;
+        padding: 0;
+    }
     .not-found-container {
         display: flex;
         flex-direction: column;
