@@ -8,12 +8,6 @@ enableGitInfo: true
 enableRobotsTXT: true
 enableEmoji: true
 
-frontmatter:
-  lastmod:
-    - git
-    - fileModTime
-    - default
-
 # Pagination
 pagination:
   pagerSize: 10
