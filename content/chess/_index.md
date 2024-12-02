@@ -3,10 +3,6 @@ title: "Chess Journey"
 description: "Building Bridges Between Chess and Security | FIDE Arena Grand Master | NEU Chess Club Strategic Advisor"
 ---
 
-# Chess Journey
-
-## Overview
-
 As a FIDE Arena Grand Master (AGM), I blend my passion for chess with my expertise in cybersecurity. Currently serving as the Strategic Advisor at NEU Chess Club while pursuing my MS in Cybersecurity at Northeastern University, I bring unique perspectives that bridge strategic thinking between chess and security domains. This intersection reveals powerful frameworks for understanding complex systems, anticipating threats, and developing robust defenses.
 
 ## Notable Chess Encounters & Tournament Experience
