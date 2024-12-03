@@ -44,58 +44,58 @@ jobs:
       - name: Configure Tor
         run: |
           sudo bash -c 'cat > /etc/tor/torrc << EOL
-          HiddenServiceDir /var/lib/tor/hidden_service/
-          HiddenServicePort 80 127.0.0.1:80
-          HiddenServiceVersion 3
-          
-          # Security Hardening
-          SafeLogging 1
-          HeartbeatPeriod 6 hours
-          CircuitBuildTimeout 60
-          NumEntryGuards 4
-          StrictNodes 1
-          EnforceDistinctSubnets 1
-          EOL'
+HiddenServiceDir /var/lib/tor/hidden_service/
+HiddenServicePort 80 127.0.0.1:80
+HiddenServiceVersion 3
+
+# Security Hardening
+SafeLogging 1
+HeartbeatPeriod 6 hours
+CircuitBuildTimeout 60
+NumEntryGuards 4
+StrictNodes 1
+EnforceDistinctSubnets 1
+EOL'
 
       - name: Configure Nginx
         run: |
           sudo bash -c 'cat > /etc/nginx/conf.d/onion_mirror.conf << EOL
-          server {
-              listen 127.0.0.1:80;
-              server_name _;
-              
-              # Security Headers
-              server_tokens off;
-              add_header X-Content-Type-Options nosniff;
-              add_header X-Frame-Options DENY;
-              add_header X-XSS-Protection "1; mode=block";
-              add_header Content-Security-Policy "default-src '\''self'\''; script-src '\''self'\''; style-src '\''self'\'' '\''unsafe-inline'\''; img-src '\''self'\'' data:;";
-              add_header Onion-Location $scheme://${{ secrets.TOR_ADDRESS }}$request_uri;
-              
-              # Privacy Headers
-              add_header Cache-Control "no-store, no-cache, must-revalidate, proxy-revalidate";
-              add_header Pragma "no-cache";
-              add_header Expires "0";
-              add_header Strict-Transport-Security "max-age=31536000; includeSubDomains" always;
-              
-              # Privacy Enhancements
-              proxy_hide_header Set-Cookie;
-              proxy_ignore_headers Set-Cookie;
-              proxy_hide_header "Access-Control-Allow-Origin";
-              
-              location / {
-                  proxy_pass https://profincognito.me;
-                  proxy_set_header Host profincognito.me;
-                  proxy_set_header X-Real-IP $remote_addr;
-                  proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
-                  proxy_set_header X-Forwarded-Proto $scheme;
-                  
-                  # Prevent caching of sensitive content
-                  add_header Cache-Control "no-store, no-cache, must-revalidate";
-                  expires 0;
-              }
-          }
-          EOL'
+server {
+    listen 127.0.0.1:80;
+    server_name _;
+
+    # Security Headers
+    server_tokens off;
+    add_header X-Content-Type-Options nosniff;
+    add_header X-Frame-Options DENY;
+    add_header X-XSS-Protection "1; mode=block";
+    add_header Content-Security-Policy "default-src '\''self'\''; script-src '\''self'\''; style-src '\''self'\'' '\''unsafe-inline'\''; img-src '\''self'\'' data:;";
+    add_header Onion-Location $scheme://${{ secrets.TOR_ADDRESS }}$request_uri;
+
+    # Privacy Headers
+    add_header Cache-Control "no-store, no-cache, must-revalidate, proxy-revalidate";
+    add_header Pragma "no-cache";
+    add_header Expires "0";
+    add_header Strict-Transport-Security "max-age=31536000; includeSubDomains" always;
+
+    # Privacy Enhancements
+    proxy_hide_header Set-Cookie;
+    proxy_ignore_headers Set-Cookie;
+    proxy_hide_header "Access-Control-Allow-Origin";
+
+    location / {
+        proxy_pass https://profincognito.me;
+        proxy_set_header Host profincognito.me;
+        proxy_set_header X-Real-IP $remote_addr;
+        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+        proxy_set_header X-Forwarded-Proto $scheme;
+
+        # Prevent caching of sensitive content
+        add_header Cache-Control "no-store, no-cache, must-revalidate";
+        expires 0;
+    }
+}
+EOL'
           sudo nginx -t || exit 1
 
       - name: Start Services
