@@ -166,12 +166,8 @@ EOL
 
       - name: Commit Changes
         run: |
-          if git diff --quiet config.yaml; then
-            echo "No changes to commit"
-          else
-            git config --local user.email "github-actions[bot]@users.noreply.github.com"
-            git config --local user.name "github-actions[bot]"
-            git add config.yaml
-            git commit -m "Update Onion mirror address [skip ci]"
-            git push
-          fi
+          git config --local user.email "github-actions[bot]@users.noreply.github.com"
+          git config --local user.name "github-actions[bot]"
+          git add config.yaml
+          git commit -m "Update Onion mirror address [skip ci]" || echo "No changes to commit"
+          git push
