@@ -42,7 +42,7 @@ jobs:
 
       - name: Configure Tor
         run: |
-          sudo bash -c 'cat > /etc/tor/torrc << EOL
+          sudo tee /etc/tor/torrc > /dev/null << EOF
 HiddenServiceDir /var/lib/tor/hidden_service/
 HiddenServicePort 80 127.0.0.1:80
 HiddenServiceVersion 3
@@ -54,11 +54,11 @@ CircuitBuildTimeout 60
 NumEntryGuards 4
 StrictNodes 1
 EnforceDistinctSubnets 1
-EOL'
+EOF
 
       - name: Configure Nginx
         run: |
-          sudo bash -c 'cat > /etc/nginx/conf.d/onion_mirror.conf << EOL
+          sudo tee /etc/nginx/conf.d/onion_mirror.conf > /dev/null << EOF
 server {
     listen 127.0.0.1:80;
     server_name _;
@@ -68,8 +68,8 @@ server {
     add_header X-Content-Type-Options nosniff;
     add_header X-Frame-Options DENY;
     add_header X-XSS-Protection "1; mode=block";
-    add_header Content-Security-Policy "default-src '\''self'\''; script-src '\''self'\''; style-src '\''self'\'' '\''unsafe-inline'\''; img-src '\''self'\'' data:;";
-    add_header Onion-Location \$scheme://${{ secrets.TOR_ADDRESS }}\$request_uri;
+    add_header Content-Security-Policy "default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data:;";
+    add_header Onion-Location \$scheme://\${TOR_ADDRESS}\$request_uri;
 
     # Privacy Headers
     add_header Cache-Control "no-store, no-cache, must-revalidate, proxy-revalidate";
@@ -94,7 +94,9 @@ server {
         expires 0;
     }
 }
-EOL'
+EOF
+          export TOR_ADDRESS="${{ secrets.TOR_ADDRESS }}"
+          sudo sed -i "s/\${TOR_ADDRESS}/${TOR_ADDRESS}/g" /etc/nginx/conf.d/onion_mirror.conf
           sudo nginx -t || exit 1
 
       - name: Start Services
