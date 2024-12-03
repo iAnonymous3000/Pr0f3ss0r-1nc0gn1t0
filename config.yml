@@ -33,6 +33,12 @@ params:
   keywords: [Privacy, Cybersecurity, Open Source, Digital Freedom, Threat Intelligence, Digital Forensics, Privacy Advocacy, Security Research, Chess, Vulnerability Assessment, Penetration Testing, Secure System Design, Data Sovereignty, Anonymity Tools, Incident Response, Threat Modeling, Blockchain Security, Cryptography, Decentralized Systems]
 
   ShowRssButtonInSectionTermList: true
+
+  mirrors:
+    - name: "Onion Mirror"
+      url: "http://${{ secrets.TOR_ADDRESS }}"
+      icon: "tor"
+      info: "Access via Tor Browser"
   
 # Site Label
   label:
