@@ -40,3 +40,4 @@ jobs:
           publish_branch: gh-pages
           publish_dir: ./public
           force_orphan: true
+          cname: profincognito.me
