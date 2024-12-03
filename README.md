@@ -39,7 +39,8 @@ A privacy-focused personal website built with Hugo WonderMod theme, showcasing s
 ## Tech Stack  
 - **Static Site Generator**: Hugo  
 - **Theme**: [WonderMod](https://github.com/Wonderfall/hugo-WonderMod) (Privacy-hardened fork of PaperMod)  
-- **Hosting**: Cloudflare Pages  
+- **Primary Hosting**: Cloudflare Pages  
+- **Mirror/Backup**: GitHub Pages  
 - **DNS & Security**: Cloudflare  
 - **Deployment**: Automated via Cloudflare Pages and GitHub Actions  
 
@@ -55,16 +56,30 @@ Built with privacy-first principles:
 - Secure email routing  
 
 ## Deployment  
-The website is hosted on **Cloudflare Pages** with automated deployment. To ensure the latest version of Hugo is always used during the build process:  
+The website is deployed to two platforms:
 
-1. **GitHub Actions Workflow**: A scheduled GitHub Actions workflow checks for the latest Hugo version and updates the `.env` file in the repository with the version number.  
-2. **Cloudflare Build Command**: The build command is configured as:  
-   ```bash
-   source .env && hugo
-   ```  
-   This ensures Cloudflare Pages uses the latest Hugo version specified in the `.env` file during each deployment.  
+1. **Primary (Cloudflare Pages)**:
+   - Automated deployment via Cloudflare Pages
+   - Uses latest Hugo version specified in `.env`
+   - Build command: 
+     ```bash
+     source .env && hugo && \
+     git checkout --orphan gh-pages && \
+     git reset --hard && \
+     cp -r public/* . && \
+     git add . && \
+     git commit -m "Deploy to GitHub Pages" && \
+     git push origin gh-pages -f
+     ```
+   - Available at: [profincognito.me](https://profincognito.me)
 
-This automated process eliminates the need for manual updates to the Hugo version in the Cloudflare Pages settings.  
+2. **Mirror (GitHub Pages)**:
+   - Serves as backup/mirror
+   - Automatically updated when Cloudflare builds
+   - Serves static files from gh-pages branch
+   - Available at: [ianonymous3000.github.io/Pr0f3ss0r-1nc0gn1t0](https://ianonymous3000.github.io/Pr0f3ss0r-1nc0gn1t0)
+
+This dual-deployment setup ensures high availability.
 
 ## Local Development  
 
