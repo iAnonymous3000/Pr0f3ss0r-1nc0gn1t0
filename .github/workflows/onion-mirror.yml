@@ -29,21 +29,35 @@ jobs:
           sudo systemctl stop tor || true
           sudo systemctl stop nginx || true
 
+      - name: Verify Tor Installation
+        run: |
+          tor --version
+          which tor
+          sudo systemctl status tor || true
+
       - name: Setup Tor Hidden Service
         shell: bash
         env:
           TOR_PRIVATE_KEY: ${{ secrets.TOR_PRIVATE_KEY }}
         run: |
-          # First ensure tor user exists
+          # Ensure tor user exists
           if ! id -u debian-tor > /dev/null 2>&1; then
             sudo adduser --system --group --no-create-home debian-tor
           fi
 
-          # Setup directories with correct ownership
-          sudo install -d -m 700 -o debian-tor -g debian-tor /var/lib/tor
-          sudo install -d -m 700 -o debian-tor -g debian-tor /var/lib/tor/hidden_service
+          # Create and set permissions for parent directory
+          sudo mkdir -p /var/lib/tor
+          sudo chown debian-tor:debian-tor /var/lib/tor
+          sudo chmod 700 /var/lib/tor
+          
+          # Create and set permissions for hidden service directory
+          sudo -u debian-tor mkdir -p /var/lib/tor/hidden_service
+          sudo -u debian-tor chmod 700 /var/lib/tor/hidden_service
+          
+          # Allow filesystem to sync
+          sleep 2
 
-          # Write private key securely
+          # Write private key if provided
           if [ -n "$TOR_PRIVATE_KEY" ]; then
             echo "$TOR_PRIVATE_KEY" | base64 -d | sudo -u debian-tor tee /var/lib/tor/hidden_service/hs_ed25519_secret_key > /dev/null
             if [ $? -ne 0 ]; then
@@ -56,12 +70,19 @@ jobs:
             exit 1
           fi
 
-          # Verify permissions
-          ls -ld /var/lib/tor
-          ls -ld /var/lib/tor/hidden_service
+      - name: Verify Directory Permissions
+        run: |
+          echo "Main Tor directory:"
+          sudo ls -la /var/lib/tor/
+          echo "Hidden service directory:"
+          sudo -u debian-tor ls -la /var/lib/tor/hidden_service/ || echo "Failed to list hidden_service directory"
 
       - name: Configure Tor
         run: |
+          # Backup original config if it exists
+          sudo cp /etc/tor/torrc /etc/tor/torrc.bak || true
+          
+          # Write new config
           sudo tee /etc/tor/torrc << 'EOF'
           DataDirectory /var/lib/tor
           HiddenServiceDir /var/lib/tor/hidden_service/
@@ -77,48 +98,72 @@ jobs:
         run: |
           sudo -u debian-tor tor -f /etc/tor/torrc &
           echo "Waiting for Tor to initialize..."
-          sleep 30
+          sleep 45  # Increased wait time for proper initialization
 
           # Verify Tor process
           if ! pgrep -x tor > /dev/null; then
             echo "Tor failed to start"
+            echo "Tor logs:"
             sudo cat /var/log/tor/log || true
+            sudo journalctl -u tor@default || true
             exit 1
           fi
 
       - name: Configure and Start Nginx
         run: |
+          # Backup default config
+          sudo cp /etc/nginx/nginx.conf /etc/nginx/nginx.conf.bak || true
+          
+          # Write mirror configuration
           sudo tee /etc/nginx/conf.d/onion_mirror.conf << 'EOF'
           server {
               listen 127.0.0.1:80;
               server_name _;
+              
               location / {
                   proxy_pass https://profincognito.me;
                   proxy_set_header Host profincognito.me;
                   proxy_set_header X-Real-IP $remote_addr;
                   proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
                   proxy_set_header X-Forwarded-Proto $scheme;
+                  proxy_ssl_server_name on;
+                  proxy_connect_timeout 60s;
+                  proxy_read_timeout 60s;
               }
           }
           EOF
           
-          sudo nginx -t && sudo nginx
+          # Test and start nginx
+          sudo nginx -t
+          sudo nginx
 
       - name: Verify Onion Service
         env:
           EXPECTED_ONION: ${{ secrets.TOR_ADDRESS }}
         run: |
+          # Wait for hostname file
+          ATTEMPTS=0
+          while [ ! -f /var/lib/tor/hidden_service/hostname ] && [ $ATTEMPTS -lt 10 ]; do
+            echo "Waiting for hostname file... (attempt $ATTEMPTS)"
+            sleep 5
+            ATTEMPTS=$((ATTEMPTS + 1))
+          done
+
           if [ -f /var/lib/tor/hidden_service/hostname ]; then
             CURRENT_ONION=$(sudo -u debian-tor cat /var/lib/tor/hidden_service/hostname | tr -d '\n\r')
             echo "Found onion address: ${CURRENT_ONION}"
             
-            if [ "$CURRENT_ONION" != "$EXPECTED_ONION" ]; then
+            if [ "$CURRENT_ONION" = "$EXPECTED_ONION" ]; then
+              echo "✓ Onion service verified"
+            else
               echo "Error: Onion address mismatch!"
+              echo "Expected: $EXPECTED_ONION"
+              echo "Got: $CURRENT_ONION"
               exit 1
             fi
-            echo "✓ Onion service verified"
           else
-            echo "Error: Hostname file not found"
+            echo "Error: Hostname file not found after $ATTEMPTS attempts"
+            echo "Directory contents:"
             sudo -u debian-tor ls -la /var/lib/tor/hidden_service/
             exit 1
           fi
