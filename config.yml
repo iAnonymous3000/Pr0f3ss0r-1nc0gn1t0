@@ -1,5 +1,5 @@
 # Base Configuration
-baseURL: 'https://profincognito.me'
+baseURL: '/'
 languageCode: 'en-us'
 title: 'Sooraj Sathyanarayanan'
 theme: 'hugo-WonderMod'
@@ -34,11 +34,7 @@ params:
 
   ShowRssButtonInSectionTermList: true
 
-  mirrors:
-    - name: "Onion Mirror"
-      url: "http://${{ secrets.TOR_ADDRESS }}"
-      icon: "tor"
-      info: "Access via Tor Browser"
+  mirrors: []  # Empty array, the workflow will populate this
   
 # Site Label
   label:
