@@ -1,0 +1,177 @@
+# .github/workflows/onion-mirror.yml
+name: Onion Mirror
+
+on:
+  schedule:
+    - cron: '0 */6 * * *'  # Every 6 hours
+  workflow_dispatch:  # Manual trigger
+  push:
+    branches:
+      - main
+    paths:
+      - 'content/**'
+      - 'config.yaml'
+      - '.github/workflows/onion-mirror.yml'
+
+jobs:
+  setup-onion:
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+        
+      - name: Install Dependencies
+        run: |
+          sudo apt update
+          sudo apt install -y tor nginx
+          sudo systemctl stop tor nginx
+
+      - name: Setup Tor Hidden Service
+        run: |
+          sudo rm -rf /var/lib/tor/hidden_service
+          sudo mkdir -p /var/lib/tor/hidden_service
+          sudo chmod 700 /var/lib/tor/hidden_service
+          sudo chown debian-tor:debian-tor /var/lib/tor/hidden_service
+          
+          # Restore private key from GitHub secret
+          echo "${{ secrets.TOR_PRIVATE_KEY }}" | base64 -d | sudo tee /var/lib/tor/hidden_service/hs_ed25519_secret_key > /dev/null
+          sudo chmod 600 /var/lib/tor/hidden_service/hs_ed25519_secret_key
+          sudo chown debian-tor:debian-tor /var/lib/tor/hidden_service/hs_ed25519_secret_key
+
+      - name: Configure Tor
+        run: |
+          sudo bash -c 'cat > /etc/tor/torrc << EOL
+          HiddenServiceDir /var/lib/tor/hidden_service/
+          HiddenServicePort 80 127.0.0.1:80
+          HiddenServiceVersion 3
+          
+          # Security Hardening
+          SafeLogging 1
+          HeartbeatPeriod 6 hours
+          CircuitBuildTimeout 60
+          NumEntryGuards 4
+          StrictNodes 1
+          EnforceDistinctSubnets 1
+          EOL'
+
+      - name: Configure Nginx
+        run: |
+          sudo bash -c 'cat > /etc/nginx/conf.d/onion_mirror.conf << EOL
+          server {
+              listen 127.0.0.1:80;
+              server_name _;
+              
+              # Security Headers
+              server_tokens off;
+              add_header X-Content-Type-Options nosniff;
+              add_header X-Frame-Options DENY;
+              add_header X-XSS-Protection "1; mode=block";
+              add_header Content-Security-Policy "default-src '\''self'\''; script-src '\''self'\''; style-src '\''self'\'' '\''unsafe-inline'\''; img-src '\''self'\'' data:;";
+              add_header Onion-Location $scheme://${{ secrets.TOR_ADDRESS }}$request_uri;
+              
+              # Privacy Headers
+              add_header Cache-Control "no-store, no-cache, must-revalidate, proxy-revalidate";
+              add_header Pragma "no-cache";
+              add_header Expires "0";
+              add_header Strict-Transport-Security "max-age=31536000; includeSubDomains" always;
+              
+              # Privacy Enhancements
+              proxy_hide_header Set-Cookie;
+              proxy_ignore_headers Set-Cookie;
+              proxy_hide_header "Access-Control-Allow-Origin";
+              
+              location / {
+                  proxy_pass https://profincognito.me;
+                  proxy_set_header Host profincognito.me;
+                  proxy_set_header X-Real-IP $remote_addr;
+                  proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+                  proxy_set_header X-Forwarded-Proto $scheme;
+                  
+                  # Prevent caching of sensitive content
+                  add_header Cache-Control "no-store, no-cache, must-revalidate";
+                  expires 0;
+              }
+          }
+          EOL'
+          sudo nginx -t || exit 1
+
+      - name: Start Services
+        run: |
+          sudo systemctl start tor
+          sleep 5
+          sudo systemctl start nginx
+          sleep 5
+          
+          if ! systemctl is-active --quiet tor; then
+            echo "Error: Tor failed to start"
+            sudo journalctl -u tor --no-pager
+            exit 1
+          fi
+          
+          if ! systemctl is-active --quiet nginx; then
+            echo "Error: Nginx failed to start"
+            sudo journalctl -u nginx --no-pager
+            exit 1
+          fi
+
+      - name: Verify Onion Service
+        run: |
+          sleep 10  # Give Tor time to fully initialize
+          if [ -f /var/lib/tor/hidden_service/hostname ]; then
+            CURRENT_ONION=$(sudo cat /var/lib/tor/hidden_service/hostname)
+            if [ "$CURRENT_ONION" != "${{ secrets.TOR_ADDRESS }}" ]; then
+              echo "Error: Onion address mismatch!"
+              echo "Expected: ${{ secrets.TOR_ADDRESS }}"
+              echo "Got: $CURRENT_ONION"
+              exit 1
+            fi
+            echo "✓ Onion service verified: http://$CURRENT_ONION"
+          else
+            echo "Error: Onion hostname file not found"
+            exit 1
+          fi
+
+      - name: Update Hugo Config
+        run: |
+          # Backup current config
+          cp config.yaml config.yaml.bak
+          
+          # Ensure params section exists
+          if ! grep -q "^params:" config.yaml; then
+            echo -e "\nparams:" >> config.yaml
+          fi
+          
+          # Update mirrors section
+          if grep -q "^[[:space:]]*mirrors:" config.yaml; then
+            # Update existing mirror if found
+            if grep -q "name: \"Onion Mirror\"" config.yaml; then
+              sed -i "/name: \"Onion Mirror\"/,+3c\    - name: \"Onion Mirror\"\n      url: \"http://${{ secrets.TOR_ADDRESS }}\"\n      icon: \"tor\"\n      info: \"Access via Tor Browser\"" config.yaml
+            else
+              # Add new mirror entry to existing mirrors section
+              sed -i "/^[[:space:]]*mirrors:/a\    - name: \"Onion Mirror\"\n      url: \"http://${{ secrets.TOR_ADDRESS }}\"\n      icon: \"tor\"\n      info: \"Access via Tor Browser\"" config.yaml
+            fi
+          else
+            # Add complete new mirrors section
+            cat >> config.yaml << EOL
+  mirrors:
+    - name: "Onion Mirror"
+      url: "http://${{ secrets.TOR_ADDRESS }}"
+      icon: "tor"
+      info: "Access via Tor Browser"
+EOL
+          fi
+
+      - name: Commit Changes
+        run: |
+          if git diff --quiet config.yaml; then
+            echo "No changes to commit"
+          else
+            git config --local user.email "github-actions[bot]@users.noreply.github.com"
+            git config --local user.name "github-actions[bot]"
+            git add config.yaml
+            git commit -m "Update Onion mirror address [skip ci]"
+            git push
+          fi
