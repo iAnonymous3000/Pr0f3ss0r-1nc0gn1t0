@@ -1,25 +1,24 @@
 name: Deploy to GitHub Pages
 
 on:
-  workflow_dispatch:
   push:
     branches:
       - main
-    paths-ignore:
-      - 'README.md'
-      - '.github/**'
+  workflow_dispatch:
+
+permissions:
+  contents: write
 
 jobs:
   deploy:
     runs-on: ubuntu-latest
-    permissions:
-      contents: write
-    
     steps:
       - name: Checkout
         uses: actions/checkout@v4
+        with:
+          submodules: 'recursive'
 
-      - name: Get Hugo version from .env
+      - name: Read Hugo version
         id: hugo-version
         run: |
           . ./.env
@@ -40,3 +39,4 @@ jobs:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_branch: gh-pages
           publish_dir: ./public
+          force_orphan: true
