@@ -16,39 +16,42 @@ jobs:
   setup-onion:
     runs-on: ubuntu-latest
     
-    services:
-      tor:
-        image: dperson/tor
-        ports:
-          - 9050:9050
-        options: >-
-          --name tor
-          -v /tmp/hidden_service:/var/lib/tor/hidden_service
-          
     steps:
       - name: Checkout Repository
         uses: actions/checkout@v4
         with:
           fetch-depth: 0
 
+      - name: Install Tor
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y tor nginx
+
       - name: Setup Tor Hidden Service
         run: |
-          sudo mkdir -p /tmp/hidden_service
-          sudo chmod 700 /tmp/hidden_service
-          
+          sudo rm -rf /var/lib/tor/hidden_service
+          sudo mkdir -p /var/lib/tor/hidden_service
+          sudo chmod 700 /var/lib/tor/hidden_service
+          sudo chown debian-tor:debian-tor /var/lib/tor/hidden_service
+
           # Restore private key from GitHub secret
-          echo "${{ secrets.TOR_PRIVATE_KEY }}" | base64 -d | sudo tee /tmp/hidden_service/hs_ed25519_secret_key > /dev/null
-          sudo chmod 600 /tmp/hidden_service/hs_ed25519_secret_key
+          echo "${{ secrets.TOR_PRIVATE_KEY }}" | base64 -d | sudo tee /var/lib/tor/hidden_service/hs_ed25519_secret_key > /dev/null
+          sudo chmod 600 /var/lib/tor/hidden_service/hs_ed25519_secret_key
+          sudo chown debian-tor:debian-tor /var/lib/tor/hidden_service/hs_ed25519_secret_key
+
+      - name: Configure Tor
+        run: |
+          sudo tee /etc/tor/torrc > /dev/null << 'EOF'
+          HiddenServiceDir /var/lib/tor/hidden_service/
+          HiddenServicePort 80 127.0.0.1:80
+          HiddenServiceVersion 3
+EOF
 
       - name: Configure Nginx
         run: |
-          sudo apt-get update
-          sudo apt-get install -y nginx
-          
-          # Create nginx configuration
           sudo tee /etc/nginx/conf.d/onion_mirror.conf << 'EOF'
           server {
-              listen 80;
+              listen 127.0.0.1:80;
               server_name _;
               
               # Security Headers
@@ -65,9 +68,27 @@ jobs:
                   proxy_set_header X-Forwarded-Proto $scheme;
               }
           }
-          EOF
-          
+EOF
           sudo nginx -t
+
+      - name: Start Services
+        run: |
+          sudo systemctl start tor
+          sudo systemctl start nginx
+          sleep 10  # Give services time to start
+
+          # Verify services are running
+          if ! systemctl is-active --quiet tor; then
+            echo "Error: Tor failed to start"
+            sudo journalctl -u tor --no-pager
+            exit 1
+          fi
+
+          if ! systemctl is-active --quiet nginx; then
+            echo "Error: Nginx failed to start"
+            sudo journalctl -u nginx --no-pager
+            exit 1
+          fi
 
       - name: Verify and Update Config
         run: |
@@ -78,18 +99,21 @@ jobs:
           # Wait for hidden service to be ready
           sleep 30
           
-          if [ -f /tmp/hidden_service/hostname ]; then
-            CURRENT_ONION=$(sudo cat /tmp/hidden_service/hostname)
+          if [ -f /var/lib/tor/hidden_service/hostname ]; then
+            CURRENT_ONION=$(sudo cat /var/lib/tor/hidden_service/hostname)
             if [ "$CURRENT_ONION" != "${{ secrets.TOR_ADDRESS }}" ]; then
               echo "Error: Onion address mismatch!"
+              echo "Expected: ${{ secrets.TOR_ADDRESS }}"
+              echo "Got: $CURRENT_ONION"
               exit 1
             fi
             
             # Update Hugo config
-            yq eval ".params.mirrors[0].url = \"http://$CURRENT_ONION\"" -i config.yaml
+            yq eval -i ".params.mirrors = (.params.mirrors // []) + [{\"name\": \"Onion Mirror\", \"url\": \"http://$CURRENT_ONION\", \"icon\": \"tor\", \"info\": \"Access via Tor Browser\"}]" config.yaml
             echo "✓ Onion service verified and config updated"
           else
             echo "Error: Onion hostname file not found"
+            sudo ls -la /var/lib/tor/hidden_service/
             exit 1
           fi
 
