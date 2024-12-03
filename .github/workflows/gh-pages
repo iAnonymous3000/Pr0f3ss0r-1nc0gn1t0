@@ -13,30 +13,43 @@ jobs:
   deploy:
     runs-on: ubuntu-latest
     steps:
+      # Step 1: Checkout the repository
       - name: Checkout
         uses: actions/checkout@v4
         with:
           submodules: 'recursive'
 
-      - name: Read Hugo version
+      # Step 2: Load Hugo version from .env file
+      - name: Load Hugo Version from .env
         id: hugo-version
         run: |
-          . ./.env
+          set -a
+          source .env
+          set +a
           echo "version=${HUGO_VERSION}" >> $GITHUB_OUTPUT
 
+      # Step 3: Setup Hugo with the version from .env
       - name: Setup Hugo
         uses: peaceiris/actions-hugo@v2
         with:
-          hugo-version: '${{ steps.hugo-version.outputs.version }}'
+          hugo-version: ${{ steps.hugo-version.outputs.version }}
           extended: true
 
+      # Step 4: Build the Hugo site into docs/ folder
       - name: Build
-        run: hugo --minify
+        run: hugo --minify -d docs
 
-      - name: Deploy
-        uses: peaceiris/actions-gh-pages@v3
+      # Step 5: Commit the changes to the docs/ folder
+      - name: Commit Changes
+        run: |
+          git config --local user.email "github-actions[bot]@users.noreply.github.com"
+          git config --local user.name "GitHub Actions Bot"
+          git add docs/
+          git commit -m "Deploy site" || echo "No changes to commit"
+
+      # Step 6: Push the changes to the main branch
+      - name: Push Changes
+        uses: ad-m/github-push-action@v0.6
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_branch: gh-pages
-          publish_dir: ./public
-          force_orphan: true
+          branch: main
