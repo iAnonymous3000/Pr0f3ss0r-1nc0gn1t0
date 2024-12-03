@@ -30,26 +30,33 @@ jobs:
           sudo systemctl stop nginx || true
 
       - name: Setup Tor Hidden Service
+        shell: bash
+        env:
+          TOR_PRIVATE_KEY: ${{ secrets.TOR_PRIVATE_KEY }}
         run: |
           # First ensure tor user exists
           if ! id -u debian-tor > /dev/null 2>&1; then
             sudo adduser --system --group --no-create-home debian-tor
           fi
-          
-          # Create base directory with correct permissions
-          sudo mkdir -p /var/lib/tor
-          sudo chown -R debian-tor:debian-tor /var/lib/tor
-          sudo chmod 700 /var/lib/tor
-          
-          # Setup hidden service directory
-          sudo -u debian-tor mkdir -p /var/lib/tor/hidden_service
-          sudo -u debian-tor chmod 700 /var/lib/tor/hidden_service
-          
-          # Restore private key with correct ownership
-          echo "${{ secrets.TOR_PRIVATE_KEY }}" | base64 -d | sudo -u debian-tor tee /var/lib/tor/hidden_service/hs_ed25519_secret_key > /dev/null
-          sudo -u debian-tor chmod 600 /var/lib/tor/hidden_service/hs_ed25519_secret_key
-          
-          # Debug: Show permissions (sanitized output)
+
+          # Setup directories with correct ownership
+          sudo install -d -m 700 -o debian-tor -g debian-tor /var/lib/tor
+          sudo install -d -m 700 -o debian-tor -g debian-tor /var/lib/tor/hidden_service
+
+          # Write private key securely
+          if [ -n "$TOR_PRIVATE_KEY" ]; then
+            echo "$TOR_PRIVATE_KEY" | base64 -d | sudo -u debian-tor tee /var/lib/tor/hidden_service/hs_ed25519_secret_key > /dev/null
+            if [ $? -ne 0 ]; then
+              echo "Failed to decode and write private key"
+              exit 1
+            fi
+            sudo -u debian-tor chmod 600 /var/lib/tor/hidden_service/hs_ed25519_secret_key
+          else
+            echo "TOR_PRIVATE_KEY is not set"
+            exit 1
+          fi
+
+          # Verify permissions
           ls -ld /var/lib/tor
           ls -ld /var/lib/tor/hidden_service
 
@@ -66,13 +73,25 @@ jobs:
           sudo chown -R debian-tor:debian-tor /etc/tor
           sudo chmod 644 /etc/tor/torrc
 
-      - name: Configure Nginx
+      - name: Start Tor
+        run: |
+          sudo -u debian-tor tor -f /etc/tor/torrc &
+          echo "Waiting for Tor to initialize..."
+          sleep 30
+
+          # Verify Tor process
+          if ! pgrep -x tor > /dev/null; then
+            echo "Tor failed to start"
+            sudo cat /var/log/tor/log || true
+            exit 1
+          fi
+
+      - name: Configure and Start Nginx
         run: |
           sudo tee /etc/nginx/conf.d/onion_mirror.conf << 'EOF'
           server {
               listen 127.0.0.1:80;
               server_name _;
-              
               location / {
                   proxy_pass https://profincognito.me;
                   proxy_set_header Host profincognito.me;
@@ -83,37 +102,17 @@ jobs:
           }
           EOF
           
-          sudo nginx -t
-
-      - name: Start Services
-        run: |
-          # Start Tor with proper user
-          sudo -u debian-tor tor -f /etc/tor/torrc &
-          TOR_PID=$!
-          
-          echo "Waiting for Tor to initialize..."
-          sleep 30
-          
-          if ! ps -p $TOR_PID > /dev/null; then
-            echo "Tor failed to start. Checking logs..."
-            sudo tail -n 50 /var/log/tor/log || true
-            exit 1
-          fi
-          
-          # Start Nginx
-          sudo nginx
-          
-          # Verify services
-          ps aux | grep -v grep | grep tor
-          ps aux | grep -v grep | grep nginx
+          sudo nginx -t && sudo nginx
 
       - name: Verify Onion Service
+        env:
+          EXPECTED_ONION: ${{ secrets.TOR_ADDRESS }}
         run: |
           if [ -f /var/lib/tor/hidden_service/hostname ]; then
             CURRENT_ONION=$(sudo -u debian-tor cat /var/lib/tor/hidden_service/hostname | tr -d '\n\r')
             echo "Found onion address: ${CURRENT_ONION}"
             
-            if [ "$CURRENT_ONION" != "${{ secrets.TOR_ADDRESS }}" ]; then
+            if [ "$CURRENT_ONION" != "$EXPECTED_ONION" ]; then
               echo "Error: Onion address mismatch!"
               exit 1
             fi
@@ -126,6 +125,8 @@ jobs:
 
       - name: Update Hugo Config
         if: success()
+        env:
+          ONION_URL: ${{ secrets.TOR_ADDRESS }}
         run: |
           sudo apt-get install -y python3-pip
           pip3 install yq
@@ -140,8 +141,6 @@ jobs:
               "info": "Access via Tor Browser"
             }]
           ' config.yaml
-        env:
-          ONION_URL: "http://${{ secrets.TOR_ADDRESS }}"
 
       - name: Commit Changes
         if: success()
