@@ -22,7 +22,7 @@ jobs:
         with:
           fetch-depth: 0
 
-      - name: Install Tor
+      - name: Install Dependencies
         run: |
           sudo apt-get update
           sudo apt-get install -y tor nginx
@@ -33,7 +33,7 @@ jobs:
           sudo mkdir -p /var/lib/tor/hidden_service
           sudo chmod 700 /var/lib/tor/hidden_service
           sudo chown debian-tor:debian-tor /var/lib/tor/hidden_service
-
+          
           # Restore private key from GitHub secret
           echo "${{ secrets.TOR_PRIVATE_KEY }}" | base64 -d | sudo tee /var/lib/tor/hidden_service/hs_ed25519_secret_key > /dev/null
           sudo chmod 600 /var/lib/tor/hidden_service/hs_ed25519_secret_key
@@ -45,7 +45,12 @@ jobs:
           HiddenServiceDir /var/lib/tor/hidden_service/
           HiddenServicePort 80 127.0.0.1:80
           HiddenServiceVersion 3
-EOF
+          
+          # Basic security settings
+          SafeLogging 1
+          HeartbeatPeriod 6 hours
+          CircuitBuildTimeout 60
+          EOF
 
       - name: Configure Nginx
         run: |
@@ -59,6 +64,12 @@ EOF
               add_header X-Content-Type-Options nosniff;
               add_header X-Frame-Options DENY;
               add_header X-XSS-Protection "1; mode=block";
+              add_header Content-Security-Policy "default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; img-src 'self' data:;";
+              
+              # Privacy Headers
+              add_header Cache-Control "no-store, no-cache, must-revalidate";
+              add_header Pragma "no-cache";
+              add_header Expires "0";
               
               location / {
                   proxy_pass https://profincognito.me;
@@ -66,60 +77,84 @@ EOF
                   proxy_set_header X-Real-IP $remote_addr;
                   proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
                   proxy_set_header X-Forwarded-Proto $scheme;
+                  
+                  # Prevent caching of sensitive content
+                  expires 0;
+                  add_header Cache-Control "no-store, no-cache, must-revalidate";
               }
           }
-EOF
-          sudo nginx -t
+          EOF
+          
+          sudo nginx -t || exit 1
 
       - name: Start Services
         run: |
           sudo systemctl start tor
           sudo systemctl start nginx
-          sleep 10  # Give services time to start
-
+          sleep 15  # Give services time to start
+          
           # Verify services are running
           if ! systemctl is-active --quiet tor; then
             echo "Error: Tor failed to start"
             sudo journalctl -u tor --no-pager
             exit 1
           fi
-
+          
           if ! systemctl is-active --quiet nginx; then
             echo "Error: Nginx failed to start"
             sudo journalctl -u nginx --no-pager
             exit 1
           fi
 
-      - name: Verify and Update Config
+      - name: Verify Onion Service
         run: |
-          # Install yq
-          sudo apt-get install -y python3-pip
-          pip3 install yq
-          
           # Wait for hidden service to be ready
-          sleep 30
+          sleep 20
           
           if [ -f /var/lib/tor/hidden_service/hostname ]; then
-            CURRENT_ONION=$(sudo cat /var/lib/tor/hidden_service/hostname)
+            CURRENT_ONION=$(sudo cat /var/lib/tor/hidden_service/hostname | tr -d '\n\r')
             if [ "$CURRENT_ONION" != "${{ secrets.TOR_ADDRESS }}" ]; then
               echo "Error: Onion address mismatch!"
               echo "Expected: ${{ secrets.TOR_ADDRESS }}"
               echo "Got: $CURRENT_ONION"
               exit 1
             fi
-            
-            # Update Hugo config
-            yq eval -i ".params.mirrors = (.params.mirrors // []) + [{\"name\": \"Onion Mirror\", \"url\": \"http://$CURRENT_ONION\", \"icon\": \"tor\", \"info\": \"Access via Tor Browser\"}]" config.yaml
-            echo "✓ Onion service verified and config updated"
+            echo "✓ Onion service verified: http://$CURRENT_ONION"
           else
             echo "Error: Onion hostname file not found"
             sudo ls -la /var/lib/tor/hidden_service/
             exit 1
           fi
 
+      - name: Update Hugo Config
+        run: |
+          # Install yq
+          sudo apt-get install -y python3-pip
+          pip3 install yq
+          
+          # Update Hugo config
+          yq eval -i '
+            .params.mirrors = (
+              .params.mirrors // [] | map(select(.name != "Onion Mirror"))
+            ) + [{
+              "name": "Onion Mirror",
+              "url": strenv(ONION_URL),
+              "icon": "tor",
+              "info": "Access via Tor Browser"
+            }]
+          ' config.yaml
+        env:
+          ONION_URL: "http://${{ secrets.TOR_ADDRESS }}"
+
       - name: Commit Changes
         run: |
           git config --local user.email "github-actions[bot]@users.noreply.github.com"
           git config --local user.name "github-actions[bot]"
-          git add config.yaml
-          git diff-index --quiet HEAD || (git commit -m "Update Onion mirror address [skip ci]" && git push)
+          
+          if git diff --exit-code config.yaml; then
+            echo "No changes to commit"
+          else
+            git add config.yaml
+            git commit -m "Update Onion mirror address [skip ci]"
+            git push
+          fi
