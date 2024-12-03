@@ -35,9 +35,11 @@ jobs:
           hugo-version: ${{ steps.hugo-version.outputs.version }}
           extended: true
 
-      # Step 4: Build the Hugo site into docs/ folder
+      # Step 4: Build the Hugo site into docs/ folder and disable Jekyll
       - name: Build
-        run: hugo --minify -d docs
+        run: |
+          hugo --minify -d docs
+          touch docs/.nojekyll
 
       # Step 5: Commit the changes to the docs/ folder
       - name: Commit Changes
