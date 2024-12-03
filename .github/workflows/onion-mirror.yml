@@ -26,36 +26,35 @@ jobs:
         run: |
           sudo apt-get update
           sudo apt-get install -y tor nginx
-          sudo systemctl stop tor
-          sudo systemctl stop nginx
+          sudo systemctl stop tor || true
+          sudo systemctl stop nginx || true
 
       - name: Setup Tor Hidden Service
         run: |
-          # Ensure clean setup
-          sudo rm -rf /var/lib/tor/hidden_service
-          sudo mkdir -p /var/lib/tor/hidden_service
-          sudo chmod 700 /var/lib/tor/hidden_service
-          sudo chown debian-tor:debian-tor /var/lib/tor/hidden_service
-          
-          # Debug: Print directory permissions
-          ls -la /var/lib/tor/
-          
-          # Carefully restore private key
-          echo "${{ secrets.TOR_PRIVATE_KEY }}" | base64 -d | sudo tee /var/lib/tor/hidden_service/hs_ed25519_secret_key > /dev/null
-          if [ $? -ne 0 ]; then
-            echo "Failed to decode and write private key"
-            exit 1
+          # First ensure tor user exists
+          if ! id -u debian-tor > /dev/null 2>&1; then
+            sudo adduser --system --group --no-create-home debian-tor
           fi
           
-          sudo chmod 600 /var/lib/tor/hidden_service/hs_ed25519_secret_key
-          sudo chown debian-tor:debian-tor /var/lib/tor/hidden_service/hs_ed25519_secret_key
+          # Create base directory with correct permissions
+          sudo mkdir -p /var/lib/tor
+          sudo chown -R debian-tor:debian-tor /var/lib/tor
+          sudo chmod 700 /var/lib/tor
           
-          # Debug: Verify key file
-          sudo ls -la /var/lib/tor/hidden_service/
+          # Setup hidden service directory
+          sudo -u debian-tor mkdir -p /var/lib/tor/hidden_service
+          sudo -u debian-tor chmod 700 /var/lib/tor/hidden_service
+          
+          # Restore private key with correct ownership
+          echo "${{ secrets.TOR_PRIVATE_KEY }}" | base64 -d | sudo -u debian-tor tee /var/lib/tor/hidden_service/hs_ed25519_secret_key > /dev/null
+          sudo -u debian-tor chmod 600 /var/lib/tor/hidden_service/hs_ed25519_secret_key
+          
+          # Debug: Show permissions (sanitized output)
+          ls -ld /var/lib/tor
+          ls -ld /var/lib/tor/hidden_service
 
       - name: Configure Tor
         run: |
-          # Basic configuration
           sudo tee /etc/tor/torrc << 'EOF'
           DataDirectory /var/lib/tor
           HiddenServiceDir /var/lib/tor/hidden_service/
@@ -64,8 +63,8 @@ jobs:
           Log notice stdout
           EOF
           
-          # Debug: Verify config
-          cat /etc/tor/torrc
+          sudo chown -R debian-tor:debian-tor /etc/tor
+          sudo chmod 644 /etc/tor/torrc
 
       - name: Configure Nginx
         run: |
@@ -86,41 +85,32 @@ jobs:
           
           sudo nginx -t
 
-      - name: Start and Verify Services
+      - name: Start Services
         run: |
-          # Start Tor with debugging
-          sudo tor -f /etc/tor/torrc &
+          # Start Tor with proper user
+          sudo -u debian-tor tor -f /etc/tor/torrc &
           TOR_PID=$!
           
-          # Wait for Tor to initialize
+          echo "Waiting for Tor to initialize..."
           sleep 30
           
-          # Check if Tor is still running
-          if ! kill -0 $TOR_PID 2>/dev/null; then
-            echo "Tor failed to start or crashed"
+          if ! ps -p $TOR_PID > /dev/null; then
+            echo "Tor failed to start. Checking logs..."
+            sudo tail -n 50 /var/log/tor/log || true
             exit 1
           fi
           
           # Start Nginx
           sudo nginx
           
-          # Debug: Check service status
-          ps aux | grep tor
-          ps aux | grep nginx
-          
-          # Verify hostname file
-          if [ ! -f /var/lib/tor/hidden_service/hostname ]; then
-            echo "Hostname file not found. Directory contents:"
-            sudo ls -la /var/lib/tor/hidden_service/
-            echo "Tor logs:"
-            sudo cat /var/log/tor/log
-            exit 1
-          fi
+          # Verify services
+          ps aux | grep -v grep | grep tor
+          ps aux | grep -v grep | grep nginx
 
       - name: Verify Onion Service
         run: |
           if [ -f /var/lib/tor/hidden_service/hostname ]; then
-            CURRENT_ONION=$(sudo cat /var/lib/tor/hidden_service/hostname | tr -d '\n\r')
+            CURRENT_ONION=$(sudo -u debian-tor cat /var/lib/tor/hidden_service/hostname | tr -d '\n\r')
             echo "Found onion address: ${CURRENT_ONION}"
             
             if [ "$CURRENT_ONION" != "${{ secrets.TOR_ADDRESS }}" ]; then
@@ -130,6 +120,7 @@ jobs:
             echo "✓ Onion service verified"
           else
             echo "Error: Hostname file not found"
+            sudo -u debian-tor ls -la /var/lib/tor/hidden_service/
             exit 1
           fi
 
