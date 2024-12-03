@@ -2,7 +2,7 @@ name: Onion Mirror
 
 on:
   schedule:
-    - cron: '0 */6 * * *'  # Every 6 hours
+    - cron: '0 */6 * * *'
   workflow_dispatch:
   push:
     branches:
@@ -26,31 +26,46 @@ jobs:
         run: |
           sudo apt-get update
           sudo apt-get install -y tor nginx
+          sudo systemctl stop tor
+          sudo systemctl stop nginx
 
       - name: Setup Tor Hidden Service
         run: |
+          # Ensure clean setup
           sudo rm -rf /var/lib/tor/hidden_service
           sudo mkdir -p /var/lib/tor/hidden_service
           sudo chmod 700 /var/lib/tor/hidden_service
           sudo chown debian-tor:debian-tor /var/lib/tor/hidden_service
           
-          # Restore private key from GitHub secret
+          # Debug: Print directory permissions
+          ls -la /var/lib/tor/
+          
+          # Carefully restore private key
           echo "${{ secrets.TOR_PRIVATE_KEY }}" | base64 -d | sudo tee /var/lib/tor/hidden_service/hs_ed25519_secret_key > /dev/null
+          if [ $? -ne 0 ]; then
+            echo "Failed to decode and write private key"
+            exit 1
+          fi
+          
           sudo chmod 600 /var/lib/tor/hidden_service/hs_ed25519_secret_key
           sudo chown debian-tor:debian-tor /var/lib/tor/hidden_service/hs_ed25519_secret_key
+          
+          # Debug: Verify key file
+          sudo ls -la /var/lib/tor/hidden_service/
 
       - name: Configure Tor
         run: |
-          sudo tee /etc/tor/torrc > /dev/null << 'EOF'
+          # Basic configuration
+          sudo tee /etc/tor/torrc << 'EOF'
+          DataDirectory /var/lib/tor
           HiddenServiceDir /var/lib/tor/hidden_service/
           HiddenServicePort 80 127.0.0.1:80
           HiddenServiceVersion 3
-          
-          # Basic security settings
-          SafeLogging 1
-          HeartbeatPeriod 6 hours
-          CircuitBuildTimeout 60
+          Log notice stdout
           EOF
+          
+          # Debug: Verify config
+          cat /etc/tor/torrc
 
       - name: Configure Nginx
         run: |
@@ -59,80 +74,71 @@ jobs:
               listen 127.0.0.1:80;
               server_name _;
               
-              # Security Headers
-              server_tokens off;
-              add_header X-Content-Type-Options nosniff;
-              add_header X-Frame-Options DENY;
-              add_header X-XSS-Protection "1; mode=block";
-              add_header Content-Security-Policy "default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; img-src 'self' data:;";
-              
-              # Privacy Headers
-              add_header Cache-Control "no-store, no-cache, must-revalidate";
-              add_header Pragma "no-cache";
-              add_header Expires "0";
-              
               location / {
                   proxy_pass https://profincognito.me;
                   proxy_set_header Host profincognito.me;
                   proxy_set_header X-Real-IP $remote_addr;
                   proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
                   proxy_set_header X-Forwarded-Proto $scheme;
-                  
-                  # Prevent caching of sensitive content
-                  expires 0;
-                  add_header Cache-Control "no-store, no-cache, must-revalidate";
               }
           }
           EOF
           
-          sudo nginx -t || exit 1
+          sudo nginx -t
 
-      - name: Start Services
+      - name: Start and Verify Services
         run: |
-          sudo systemctl start tor
-          sudo systemctl start nginx
-          sleep 15  # Give services time to start
+          # Start Tor with debugging
+          sudo tor -f /etc/tor/torrc &
+          TOR_PID=$!
           
-          # Verify services are running
-          if ! systemctl is-active --quiet tor; then
-            echo "Error: Tor failed to start"
-            sudo journalctl -u tor --no-pager
+          # Wait for Tor to initialize
+          sleep 30
+          
+          # Check if Tor is still running
+          if ! kill -0 $TOR_PID 2>/dev/null; then
+            echo "Tor failed to start or crashed"
             exit 1
           fi
           
-          if ! systemctl is-active --quiet nginx; then
-            echo "Error: Nginx failed to start"
-            sudo journalctl -u nginx --no-pager
+          # Start Nginx
+          sudo nginx
+          
+          # Debug: Check service status
+          ps aux | grep tor
+          ps aux | grep nginx
+          
+          # Verify hostname file
+          if [ ! -f /var/lib/tor/hidden_service/hostname ]; then
+            echo "Hostname file not found. Directory contents:"
+            sudo ls -la /var/lib/tor/hidden_service/
+            echo "Tor logs:"
+            sudo cat /var/log/tor/log
             exit 1
           fi
 
       - name: Verify Onion Service
         run: |
-          # Wait for hidden service to be ready
-          sleep 20
-          
           if [ -f /var/lib/tor/hidden_service/hostname ]; then
             CURRENT_ONION=$(sudo cat /var/lib/tor/hidden_service/hostname | tr -d '\n\r')
+            echo "Found onion address: ${CURRENT_ONION}"
+            
             if [ "$CURRENT_ONION" != "${{ secrets.TOR_ADDRESS }}" ]; then
               echo "Error: Onion address mismatch!"
-              echo "Expected: ${{ secrets.TOR_ADDRESS }}"
-              echo "Got: $CURRENT_ONION"
               exit 1
             fi
-            echo "✓ Onion service verified: http://$CURRENT_ONION"
+            echo "✓ Onion service verified"
           else
-            echo "Error: Onion hostname file not found"
-            sudo ls -la /var/lib/tor/hidden_service/
+            echo "Error: Hostname file not found"
             exit 1
           fi
 
       - name: Update Hugo Config
+        if: success()
         run: |
-          # Install yq
           sudo apt-get install -y python3-pip
           pip3 install yq
           
-          # Update Hugo config
           yq eval -i '
             .params.mirrors = (
               .params.mirrors // [] | map(select(.name != "Onion Mirror"))
@@ -147,6 +153,7 @@ jobs:
           ONION_URL: "http://${{ secrets.TOR_ADDRESS }}"
 
       - name: Commit Changes
+        if: success()
         run: |
           git config --local user.email "github-actions[bot]@users.noreply.github.com"
           git config --local user.name "github-actions[bot]"
