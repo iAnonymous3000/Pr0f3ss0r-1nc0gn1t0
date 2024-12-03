@@ -42,7 +42,7 @@ jobs:
 
       - name: Configure Tor
         run: |
-          sudo tee /etc/tor/torrc > /dev/null << EOF
+          sudo tee /etc/tor/torrc > /dev/null << 'EOF'
 HiddenServiceDir /var/lib/tor/hidden_service/
 HiddenServicePort 80 127.0.0.1:80
 HiddenServiceVersion 3
@@ -58,7 +58,7 @@ EOF
 
       - name: Configure Nginx
         run: |
-          sudo tee /etc/nginx/conf.d/onion_mirror.conf > /dev/null << EOF
+          sudo tee /etc/nginx/conf.d/onion_mirror.conf > /dev/null << 'EOF'
 server {
     listen 127.0.0.1:80;
     server_name _;
@@ -138,24 +138,22 @@ EOF
           # Backup current config
           cp config.yaml config.yaml.bak
 
-          # Ensure 'params' section exists
-          if ! grep -q "^params:" config.yaml; then
-            echo -e "\nparams:" >> config.yaml
-          fi
+          # Install yq
+          sudo apt-get install -y python3-pip
+          pip3 install yq
 
-          # Update 'mirrors' section
-          if grep -q "^[[:space:]]*mirrors:" config.yaml; then
-            # Update existing mirror if found
-            if grep -q "name: \"Onion Mirror\"" config.yaml; then
-              sed -i "/name: \"Onion Mirror\"/,+3c\    - name: \"Onion Mirror\"\n      url: \"http://${{ secrets.TOR_ADDRESS }}\"\n      icon: \"tor\"\n      info: \"Access via Tor Browser\"" config.yaml
-            else
-              # Add new mirror entry to existing 'mirrors' section
-              sed -i "/^[[:space:]]*mirrors:/a\    - name: \"Onion Mirror\"\n      url: \"http://${{ secrets.TOR_ADDRESS }}\"\n      icon: \"tor\"\n      info: \"Access via Tor Browser\"" config.yaml
-            fi
-          else
-            # Add a new 'mirrors' section
-            sed -i "/^params:/a\  mirrors:\n    - name: \"Onion Mirror\"\n      url: \"http://${{ secrets.TOR_ADDRESS }}\"\n      icon: \"tor\"\n      info: \"Access via Tor Browser\"" config.yaml
-          fi
+          # Add or update the Onion mirror in the mirrors list under params
+          yq eval '
+            .params.mirrors = (
+              .params.mirrors // [] |
+              map(select(.name != "Onion Mirror")) + [{
+                "name": "Onion Mirror",
+                "url": "http://${{ secrets.TOR_ADDRESS }}",
+                "icon": "tor",
+                "info": "Access via Tor Browser"
+              }]
+            )
+          ' -i config.yaml
 
       - name: Commit Changes
         run: |
