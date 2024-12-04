@@ -1,5 +1,4 @@
 name: Deploy to GitHub Pages
-
 on:
   push:
     branches:
@@ -18,7 +17,7 @@ jobs:
         uses: actions/checkout@v4
         with:
           submodules: 'recursive'
-
+          
       # Step 2: Load Hugo version from .env file
       - name: Load Hugo Version from .env
         id: hugo-version
@@ -27,31 +26,35 @@ jobs:
           source .env
           set +a
           echo "version=${HUGO_VERSION}" >> $GITHUB_OUTPUT
-
+          
       # Step 3: Setup Hugo with the version from .env
       - name: Setup Hugo
         uses: peaceiris/actions-hugo@v2
         with:
           hugo-version: ${{ steps.hugo-version.outputs.version }}
           extended: true
-
-      # Step 4: Build the Hugo site into docs/ folder and disable Jekyll
+          
+      # Step 4: Build with GitHub Pages specific configuration
       - name: Build
         run: |
-          hugo --minify -d docs
+          # Create temporary config override for GitHub Pages
+          cat > config.github.yaml <<EOF
+          baseURL: 'https://ianonymous3000.github.io/Pr0f3ss0r-1nc0gn1t0'
+          publishDir: 'docs'
+          EOF
+          # Build using both configs (original + github override)
+          hugo --minify --config config.yaml,config.github.yaml
           touch docs/.nojekyll
-
-      # Step 5: Commit the changes to the docs/ folder
-      - name: Commit Changes
-        run: |
-          git config --local user.email "github-actions[bot]@users.noreply.github.com"
-          git config --local user.name "GitHub Actions Bot"
-          git add docs/
-          git commit -m "Deploy site" || echo "No changes to commit"
-
-      # Step 6: Push the changes to the main branch
-      - name: Push Changes
-        uses: ad-m/github-push-action@v0.6
+          
+      # Step 5: Deploy to GitHub Pages branch
+      - name: Deploy to GitHub Pages
+        uses: peaceiris/actions-gh-pages@v3
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          branch: main
+          publish_dir: ./docs
+          commit_message: "Deploy to GitHub Pages"
+          full_commit_message: |
+            Deploy to GitHub Pages
+            
+            Build from: ${{ github.sha }}
+            Workflow: ${{ github.workflow }}
