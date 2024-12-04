@@ -8,26 +8,17 @@ on:
       - "LICENSE"
       - "README.md"
   workflow_dispatch:
-    inputs:
-      hugoVersion:
-        description: "Hugo Version"
-        required: false
-        default: ""  # Will be read from .env if not specified
-
 # Allow one concurrent deployment
 concurrency:
   group: "pages"
   cancel-in-progress: true
-
 defaults:
   run:
     shell: bash
-
 permissions:
   contents: read
   pages: write
   id-token: write
-
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -37,32 +28,16 @@ jobs:
         with:
           submodules: 'recursive'
           fetch-depth: 0
-
-      - name: Load Hugo Version from .env
-        id: hugo-version
-        run: |
-          set -a
-          source .env
-          set +a
-          if [ "${{ github.event.inputs.hugoVersion }}" != "" ]; then
-            echo "version=${{ github.event.inputs.hugoVersion }}" >> $GITHUB_OUTPUT
-          else
-            echo "version=${HUGO_VERSION}" >> $GITHUB_OUTPUT
-          fi
-
       - name: Setup Hugo
         uses: peaceiris/actions-hugo@v2
         with:
-          hugo-version: ${{ steps.hugo-version.outputs.version }}
+          hugo-version: 'latest'
           extended: true
-
       - name: Setup Pages
         id: pages
         uses: actions/configure-pages@v3
-
       - name: Update theme to Latest commit
         run: git submodule update --remote --merge
-
       - name: Build
         run: |
           hugo \
@@ -70,12 +45,10 @@ jobs:
             --destination public \
             --baseURL ${{ steps.pages.outputs.base_url }}
           touch public/.nojekyll
-
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v2
         with:
           path: ./public
-
   deploy:
     environment:
       name: github-pages
