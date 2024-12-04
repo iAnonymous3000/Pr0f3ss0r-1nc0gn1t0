@@ -1,8 +1,9 @@
-<div class="social-icons" {{ with .align}}align="{{ . }}"{{ end }}>
+<div class="social-icons" {{ with .align }}align="{{ . }}"{{ end }}>
   {{- range .Site.Params.socialIcons }}
-    <a href="{{ .url }}" rel="noopener noreferrer me"
-      title="{{ .title | default .name }}">
+    <a href="{{ .url }}" 
+       {{- with .rel }} rel="{{ . }}"{{ else }} rel="noopener noreferrer me"{{ end }}
+       title="{{ .title | default .name }}">
       {{ partial "svg.html" . }}
     </a>
-  {{- end }}
+  {{ end }}
 </div>
