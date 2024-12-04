@@ -1,0 +1,372 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Projects on</title><link>https://ianonymous3000.github.io/Pr0f3ss0r-1nc0gn1t0/projects/</link><description>Recent content in Projects on</description><generator>Hugo</generator><language>en</language><atom:link href="https://ianonymous3000.github.io/Pr0f3ss0r-1nc0gn1t0/projects/index.xml" rel="self" type="application/rss+xml"/><item><title>A Beginner's Guide to Monero</title><link>https://ianonymous3000.github.io/Pr0f3ss0r-1nc0gn1t0/projects/monero-guide/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://ianonymous3000.github.io/Pr0f3ss0r-1nc0gn1t0/projects/monero-guide/</guid><description>&lt;h1 id="a-beginners-guide-to-monero">A Beginner&amp;rsquo;s Guide to Monero&lt;/h1>
+&lt;h2 id="project-overview">Project Overview&lt;/h2>
+&lt;p>This guide provides a complete introduction to Monero (XMR), a privacy-focused cryptocurrency that enables secure, untraceable transactions. We cover everything from basic setup to advanced features, helping newcomers understand and effectively use Monero&amp;rsquo;s privacy-preserving technology.&lt;/p>
+&lt;h2 id="why-this-matters">Why This Matters&lt;/h2>
+&lt;p>In an era of increasing surveillance and data collection, Monero offers essential financial privacy through advanced cryptographic techniques. Understanding how to properly use Monero helps protect your financial privacy while participating in the digital economy securely and anonymously.&lt;/p></description></item><item><title>Comprehensive Cryptocurrency Wallet OpSec Guide</title><link>https://ianonymous3000.github.io/Pr0f3ss0r-1nc0gn1t0/projects/cryptowallet-opsec-guide/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://ianonymous3000.github.io/Pr0f3ss0r-1nc0gn1t0/projects/cryptowallet-opsec-guide/</guid><description>&lt;h1 id="comprehensive-cryptocurrency-wallet-opsec-guide">Comprehensive Cryptocurrency Wallet OpSec Guide&lt;/h1>
+&lt;h2 id="project-overview">Project Overview&lt;/h2>
+&lt;p>This guide provides detailed operational security practices for protecting cryptocurrency wallets and assets. From basic wallet security to advanced protection strategies, we cover essential measures for safeguarding your digital assets through proper OpSec procedures.&lt;/p>
+&lt;h2 id="why-this-matters">Why This Matters&lt;/h2>
+&lt;p>Cryptocurrency wallets are prime targets for attackers, and a single security mistake can lead to permanent loss of funds. Proper operational security is crucial for protecting your digital assets from theft, ensuring safe transactions, and maintaining long-term access to your cryptocurrency investments.&lt;/p></description></item><item><title>Comprehensive Guide to Rust for Security and Privacy Researchers</title><link>https://ianonymous3000.github.io/Pr0f3ss0r-1nc0gn1t0/projects/awesome-rust-security-guide/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://ianonymous3000.github.io/Pr0f3ss0r-1nc0gn1t0/projects/awesome-rust-security-guide/</guid><description>&lt;h1 id="comprehensive-guide-to-rust-for-security-and-privacy-researchers">Comprehensive Guide to Rust for Security and Privacy Researchers&lt;/h1>
+&lt;h2 id="project-overview">Project Overview&lt;/h2>
+&lt;p>A comprehensive educational resource focusing on Rust&amp;rsquo;s security and privacy features, designed for researchers and developers working in security-critical domains. This guide covers everything from fundamental concepts to advanced security implementations.&lt;/p>
+&lt;h2 id="why-this-matters">Why This Matters&lt;/h2>
+&lt;p>In an era where software security is paramount, Rust offers unique advantages for building secure systems. This guide helps security and privacy researchers leverage Rust&amp;rsquo;s powerful features effectively, ensuring robust and secure implementations.&lt;/p></description></item><item><title>Comprehensive Guide to Safe and Privacy-Respecting AI Usage</title><link>https://ianonymous3000.github.io/Pr0f3ss0r-1nc0gn1t0/projects/ai-privacy-guide/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://ianonymous3000.github.io/Pr0f3ss0r-1nc0gn1t0/projects/ai-privacy-guide/</guid><description>&lt;h1 id="comprehensive-guide-to-safe-and-privacy-respecting-ai-usage">Comprehensive Guide to Safe and Privacy-Respecting AI Usage&lt;/h1>
+&lt;h2 id="project-overview">Project Overview&lt;/h2>
+&lt;p>This guide aims to help users of all backgrounds understand and use AI technologies in a safe and privacy-respecting manner. We cover self-hosted AI solutions, privacy concerns with popular AI services, best practices for safe AI usage, and practical setup instructions for running your own AI models.&lt;/p>
+&lt;h2 id="why-this-matters">Why This Matters&lt;/h2>
+&lt;p>As AI becomes increasingly integrated into our daily lives, it&amp;rsquo;s crucial to be aware of the potential risks and take steps to protect our personal information. This guide provides a comprehensive overview of safe and privacy-respecting AI usage, with a focus on self-hosted solutions and practical advice for users of all levels.&lt;/p></description></item><item><title>Comprehensive Penetration Testing Checklist</title><link>https://ianonymous3000.github.io/Pr0f3ss0r-1nc0gn1t0/projects/pentest-checklist/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://ianonymous3000.github.io/Pr0f3ss0r-1nc0gn1t0/projects/pentest-checklist/</guid><description>&lt;h1 id="comprehensive-penetration-testing-checklist">Comprehensive Penetration Testing Checklist&lt;/h1>
+&lt;h2 id="project-overview">Project Overview&lt;/h2>
+&lt;p>A comprehensive guide for ethical penetration testing, meticulously designed to cover all phases of a penetration test. This step-by-step checklist ensures thorough coverage from preparation to reporting, ideal for both novice and experienced testers.&lt;/p>
+&lt;h2 id="why-this-matters">Why This Matters&lt;/h2>
+&lt;p>Thorough penetration testing is crucial for identifying and addressing security vulnerabilities before they can be exploited by malicious actors. A structured approach ensures consistent, comprehensive assessments while maintaining compliance and professionalism.&lt;/p></description></item><item><title>Contributing to Open-Source Projects</title><link>https://ianonymous3000.github.io/Pr0f3ss0r-1nc0gn1t0/projects/opensource-contribution-guide/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://ianonymous3000.github.io/Pr0f3ss0r-1nc0gn1t0/projects/opensource-contribution-guide/</guid><description>&lt;h1 id="contributing-to-open-source-projects">Contributing to Open-Source Projects&lt;/h1>
+&lt;h2 id="project-overview">Project Overview&lt;/h2>
+&lt;p>A comprehensive guide for contributing to open-source projects, designed to help both newcomers and experienced developers make meaningful contributions to the open-source community. This step-by-step guide covers everything from basic concepts to advanced collaboration techniques.&lt;/p>
+&lt;h2 id="why-this-matters">Why This Matters&lt;/h2>
+&lt;p>Contributing to open-source projects is a rewarding way to learn, share knowledge, and collaborate with developers worldwide. Whether you&amp;rsquo;re new to programming or an experienced developer, this guide will help you make impactful contributions to open-source projects.&lt;/p></description></item><item><title>De-Google Your Life: Top Alternatives</title><link>https://ianonymous3000.github.io/Pr0f3ss0r-1nc0gn1t0/projects/de-google-your-life/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://ianonymous3000.github.io/Pr0f3ss0r-1nc0gn1t0/projects/de-google-your-life/</guid><description>&lt;h1 id="de-google-your-life-top-alternatives">De-Google Your Life: Top Alternatives&lt;/h1>
+&lt;h2 id="project-overview">Project Overview&lt;/h2>
+&lt;p>Welcome to the ultimate guide for reducing your dependence on Google while maintaining productivity and functionality. This carefully curated collection of 62+ privacy-respecting alternatives helps users transition away from Google services without sacrificing essential features or convenience.&lt;/p>
+&lt;h2 id="why-this-matters">Why This Matters&lt;/h2>
+&lt;p>In today&amp;rsquo;s digital landscape, Google&amp;rsquo;s services are deeply integrated into our daily lives. However, this convenience often comes at the cost of privacy and data autonomy. This project helps users reclaim their digital independence by providing carefully vetted alternatives to Google&amp;rsquo;s ecosystem.&lt;/p></description></item><item><title>Donation-Worthy Privacy Projects</title><link>https://ianonymous3000.github.io/Pr0f3ss0r-1nc0gn1t0/projects/donation-worthy-privacy-projects/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://ianonymous3000.github.io/Pr0f3ss0r-1nc0gn1t0/projects/donation-worthy-privacy-projects/</guid><description>&lt;h1 id="donation-worthy-privacy-projects">Donation-Worthy Privacy Projects&lt;/h1>
+&lt;h2 id="project-overview">Project Overview&lt;/h2>
+&lt;p>A carefully curated collection of open-source applications and services that are making significant contributions to digital privacy and security. This project highlights initiatives that deserve community support and recognition for their commitment to user freedom and privacy.&lt;/p>
+&lt;h2 id="why-this-matters">Why This Matters&lt;/h2>
+&lt;p>In a digital landscape dominated by commercial interests, these open-source projects represent the backbone of internet freedom and privacy. While many of these tools are free to use, they rely on community support to maintain their independence, continue development, and ensure long-term sustainability.&lt;/p></description></item><item><title>GitHub Security Hardening Guide</title><link>https://ianonymous3000.github.io/Pr0f3ss0r-1nc0gn1t0/projects/github-hardening-guide/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://ianonymous3000.github.io/Pr0f3ss0r-1nc0gn1t0/projects/github-hardening-guide/</guid><description>&lt;h1 id="github-security-hardening-guide">GitHub Security Hardening Guide&lt;/h1>
+&lt;h2 id="project-overview">Project Overview&lt;/h2>
+&lt;p>This guide provides comprehensive security recommendations for protecting GitHub repositories and organizations. From basic security measures to advanced features, we cover essential steps for securing your codebase, preventing unauthorized access, and maintaining development workflow integrity.&lt;/p>
+&lt;h2 id="why-this-matters">Why This Matters&lt;/h2>
+&lt;p>GitHub repositories often contain sensitive code, credentials, and intellectual property. A security breach can lead to data theft, unauthorized access, and compromise of entire development pipelines. Implementing proper security measures protects your assets and ensures safe collaboration.&lt;/p></description></item><item><title>GrapheneOS AppVerse</title><link>https://ianonymous3000.github.io/Pr0f3ss0r-1nc0gn1t0/projects/grapheneos-appverse/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://ianonymous3000.github.io/Pr0f3ss0r-1nc0gn1t0/projects/grapheneos-appverse/</guid><description>&lt;h1 id="grapheneos-appverse">GrapheneOS AppVerse&lt;/h1>
+&lt;h2 id="project-overview">Project Overview&lt;/h2>
+&lt;p>A comprehensive collection of 78+ privacy-respecting applications specifically curated for GrapheneOS users. This project aims to help new users transition smoothly to GrapheneOS by providing them with trusted, privacy-focused alternatives to common applications.&lt;/p>
+&lt;h2 id="why-this-matters">Why This Matters&lt;/h2>
+&lt;p>Moving to a privacy-focused mobile OS like GrapheneOS can be daunting, especially when looking for secure app alternatives. GrapheneOS AppVerse bridges this gap by providing a carefully vetted collection of privacy-respecting applications that maintain functionality without compromising security.&lt;/p></description></item><item><title>Husky Safety Initiative</title><link>https://ianonymous3000.github.io/Pr0f3ss0r-1nc0gn1t0/projects/husky-safety-initiative/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://ianonymous3000.github.io/Pr0f3ss0r-1nc0gn1t0/projects/husky-safety-initiative/</guid><description>&lt;h1 id="husky-safety-initiative">Husky Safety Initiative&lt;/h1>
+&lt;h2 id="project-overview">Project Overview&lt;/h2>
+&lt;p>The Husky Safety Initiative is Northeastern University&amp;rsquo;s dedicated digital defense program, designed to empower students, faculty, and staff with the tools and knowledge needed to safeguard their digital lives. In an age where online threats are just a click away, we provide comprehensive solutions for maintaining digital security without sacrificing productivity.&lt;/p>
+&lt;h2 id="why-this-matters">Why This Matters&lt;/h2>
+&lt;p>Digital security is crucial in today&amp;rsquo;s academic environment. The Husky Safety Initiative helps the Northeastern community protect their personal information, research data, and online activities through carefully vetted tools and practices.&lt;/p></description></item><item><title>Into the Cyberverse</title><link>https://ianonymous3000.github.io/Pr0f3ss0r-1nc0gn1t0/projects/into-the-cyberverse/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://ianonymous3000.github.io/Pr0f3ss0r-1nc0gn1t0/projects/into-the-cyberverse/</guid><description>&lt;h1 id="into-the-cyberverse">Into the Cyberverse&lt;/h1>
+&lt;h2 id="project-overview">Project Overview&lt;/h2>
+&lt;p>A curated collection of 196+ privacy and security tools, designed to help users enhance their digital privacy and security. This project is rooted in authenticity and independence, offering transparent, user-focused recommendations free from commercial influence.&lt;/p>
+&lt;h2 id="why-this-matters">Why This Matters&lt;/h2>
+&lt;p>Navigating the digital privacy landscape is increasingly challenging. Many popular recommendations are shaped by sponsorships or affiliate programs, leaving users to question their credibility. Into the Cyberverse is here to change that. Our unbiased, meticulously vetted collection ensures users can trust the tools they adopt, whether they&amp;rsquo;re taking their first steps toward digital privacy or seeking advanced security solutions.&lt;/p></description></item><item><title>Mobile Operating Systems Security Comparison</title><link>https://ianonymous3000.github.io/Pr0f3ss0r-1nc0gn1t0/projects/mobile-os-comparison/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://ianonymous3000.github.io/Pr0f3ss0r-1nc0gn1t0/projects/mobile-os-comparison/</guid><description>&lt;p>A comprehensive comparison of security, privacy, and convenience features across Android, GrapheneOS, and iOS mobile operating systems. This analysis is part of the &lt;a href="https://softwarecompare.org/charts/operating-systems">SoftwareCompare Operating Systems&lt;/a> project, with contributions from David Collini and others.&lt;/p>
+&lt;h2 id="overview">Overview&lt;/h2>
+&lt;table>
+ &lt;thead>
+ &lt;tr>
+ &lt;th>Operating System&lt;/th>
+ &lt;th>Base&lt;/th>
+ &lt;th>Supported Devices&lt;/th>
+ &lt;/tr>
+ &lt;/thead>
+ &lt;tbody>
+ &lt;tr>
+ &lt;td>&lt;strong>Android&lt;/strong>&lt;/td>
+ &lt;td>AOSP&lt;/td>
+ &lt;td>Various Devices&lt;/td>
+ &lt;/tr>
+ &lt;tr>
+ &lt;td>&lt;strong>GrapheneOS&lt;/strong>&lt;/td>
+ &lt;td>AOSP&lt;/td>
+ &lt;td>Google Pixel&lt;/td>
+ &lt;/tr>
+ &lt;tr>
+ &lt;td>&lt;strong>iOS&lt;/strong>&lt;/td>
+ &lt;td>Apple Proprietary&lt;/td>
+ &lt;td>iPhone&lt;/td>
+ &lt;/tr>
+ &lt;/tbody>
+&lt;/table>
+&lt;h2 id="privacy-features">Privacy Features&lt;/h2>
+&lt;table>
+ &lt;thead>
+ &lt;tr>
+ &lt;th>Feature&lt;/th>
+ &lt;th>Android&lt;/th>
+ &lt;th>GrapheneOS&lt;/th>
+ &lt;th>iOS&lt;/th>
+ &lt;/tr>
+ &lt;/thead>
+ &lt;tbody>
+ &lt;tr>
+ &lt;td>&lt;strong>Open Source&lt;/strong>&lt;/td>
+ &lt;td>⚠️&lt;/td>
+ &lt;td>✅&lt;/td>
+ &lt;td>❌&lt;/td>
+ &lt;/tr>
+ &lt;tr>
+ &lt;td>&lt;strong>Enhanced App Sandboxing&lt;/strong>&lt;/td>
+ &lt;td>⚠️&lt;/td>
+ &lt;td>✅&lt;/td>
+ &lt;td>⚠️&lt;/td>
+ &lt;/tr>
+ &lt;tr>
+ &lt;td>&lt;strong>Hardened Malloc&lt;/strong>&lt;/td>
+ &lt;td>❌&lt;/td>
+ &lt;td>✅&lt;/td>
+ &lt;td>❌&lt;/td>
+ &lt;/tr>
+ &lt;tr>
+ &lt;td>&lt;strong>Hardened WebView&lt;/strong>&lt;/td>
+ &lt;td>❌&lt;/td>
+ &lt;td>✅&lt;/td>
+ &lt;td>❌&lt;/td>
+ &lt;/tr>
+ &lt;tr>
+ &lt;td>&lt;strong>Sandboxed Google Play&lt;/strong>&lt;/td>
+ &lt;td>❌&lt;/td>
+ &lt;td>✅&lt;/td>
+ &lt;td>N/A&lt;/td>
+ &lt;/tr>
+ &lt;tr>
+ &lt;td>&lt;strong>Network Permissions Toggle&lt;/strong>&lt;/td>
+ &lt;td>❌&lt;/td>
+ &lt;td>✅&lt;/td>
+ &lt;td>⚠️&lt;/td>
+ &lt;/tr>
+ &lt;tr>
+ &lt;td>&lt;strong>Sensors Permissions Toggle&lt;/strong>&lt;/td>
+ &lt;td>❌&lt;/td>
+ &lt;td>✅&lt;/td>
+ &lt;td>✅&lt;/td>
+ &lt;/tr>
+ &lt;tr>
+ &lt;td>&lt;strong>Automatic Security Updates&lt;/strong>&lt;/td>
+ &lt;td>✅&lt;/td>
+ &lt;td>✅&lt;/td>
+ &lt;td>✅&lt;/td>
+ &lt;/tr>
+ &lt;tr>
+ &lt;td>&lt;strong>Hardware-Based Attestation&lt;/strong>&lt;/td>
+ &lt;td>⚠️&lt;/td>
+ &lt;td>✅&lt;/td>
+ &lt;td>✅&lt;/td>
+ &lt;/tr>
+ &lt;tr>
+ &lt;td>&lt;strong>Configurable Default Connections&lt;/strong>&lt;/td>
+ &lt;td>❌&lt;/td>
+ &lt;td>✅&lt;/td>
+ &lt;td>❌&lt;/td>
+ &lt;/tr>
+ &lt;tr>
+ &lt;td>&lt;strong>User Profiles&lt;/strong>&lt;/td>
+ &lt;td>✅&lt;/td>
+ &lt;td>✅&lt;/td>
+ &lt;td>❌&lt;/td>
+ &lt;/tr>
+ &lt;tr>
+ &lt;td>&lt;strong>Removes Screenshot Metadata&lt;/strong>&lt;/td>
+ &lt;td>❌&lt;/td>
+ &lt;td>✅&lt;/td>
+ &lt;td>❌&lt;/td>
+ &lt;/tr>
+ &lt;tr>
+ &lt;td>&lt;strong>Default Private Browser&lt;/strong>&lt;/td>
+ &lt;td>❌&lt;/td>
+ &lt;td>✅&lt;/td>
+ &lt;td>⚠️&lt;/td>
+ &lt;/tr>
+ &lt;tr>
+ &lt;td>&lt;strong>Contact Scopes&lt;/strong>&lt;/td>
+ &lt;td>❌&lt;/td>
+ &lt;td>✅&lt;/td>
+ &lt;td>⚠️&lt;/td>
+ &lt;/tr>
+ &lt;tr>
+ &lt;td>&lt;strong>Storage Scopes&lt;/strong>&lt;/td>
+ &lt;td>⚠️&lt;/td>
+ &lt;td>✅&lt;/td>
+ &lt;td>⚠️&lt;/td>
+ &lt;/tr>
+ &lt;tr>
+ &lt;td>&lt;strong>Backup with Another Device&lt;/strong>&lt;/td>
+ &lt;td>✅&lt;/td>
+ &lt;td>✅&lt;/td>
+ &lt;td>✅&lt;/td>
+ &lt;/tr>
+ &lt;/tbody>
+&lt;/table>
+&lt;h2 id="security-features">Security Features&lt;/h2>
+&lt;table>
+ &lt;thead>
+ &lt;tr>
+ &lt;th>Feature&lt;/th>
+ &lt;th>Android&lt;/th>
+ &lt;th>GrapheneOS&lt;/th>
+ &lt;th>iOS&lt;/th>
+ &lt;/tr>
+ &lt;/thead>
+ &lt;tbody>
+ &lt;tr>
+ &lt;td>&lt;strong>Full Disk Encryption&lt;/strong>&lt;/td>
+ &lt;td>✅&lt;/td>
+ &lt;td>✅&lt;/td>
+ &lt;td>✅&lt;/td>
+ &lt;/tr>
+ &lt;tr>
+ &lt;td>&lt;strong>Verified Boot&lt;/strong>&lt;/td>
+ &lt;td>✅&lt;/td>
+ &lt;td>✅&lt;/td>
+ &lt;td>✅&lt;/td>
+ &lt;/tr>
+ &lt;tr>
+ &lt;td>&lt;strong>Per-App Hardware Permissions&lt;/strong>&lt;/td>
+ &lt;td>✅&lt;/td>
+ &lt;td>✅&lt;/td>
+ &lt;td>✅&lt;/td>
+ &lt;/tr>
+ &lt;tr>
+ &lt;td>&lt;strong>Default App Sandboxing&lt;/strong>&lt;/td>
+ &lt;td>✅&lt;/td>
+ &lt;td>✅&lt;/td>
+ &lt;td>✅&lt;/td>
+ &lt;/tr>
+ &lt;tr>
+ &lt;td>&lt;strong>Built-in Firewall&lt;/strong>&lt;/td>
+ &lt;td>✅&lt;/td>
+ &lt;td>✅&lt;/td>
+ &lt;td>❌&lt;/td>
+ &lt;/tr>
+ &lt;tr>
+ &lt;td>&lt;strong>PIN Scrambling&lt;/strong>&lt;/td>
+ &lt;td>❌&lt;/td>
+ &lt;td>✅&lt;/td>
+ &lt;td>❌&lt;/td>
+ &lt;/tr>
+ &lt;tr>
+ &lt;td>&lt;strong>Supports Longer Passwords&lt;/strong>&lt;/td>
+ &lt;td>✅&lt;/td>
+ &lt;td>✅&lt;/td>
+ &lt;td>✅&lt;/td>
+ &lt;/tr>
+ &lt;tr>
+ &lt;td>&lt;strong>Auto-Reboot Feature&lt;/strong>&lt;/td>
+ &lt;td>❌&lt;/td>
+ &lt;td>✅&lt;/td>
+ &lt;td>✅&lt;/td>
+ &lt;/tr>
+ &lt;tr>
+ &lt;td>&lt;strong>Duress PIN/Password&lt;/strong>&lt;/td>
+ &lt;td>❌&lt;/td>
+ &lt;td>✅&lt;/td>
+ &lt;td>❌&lt;/td>
+ &lt;/tr>
+ &lt;tr>
+ &lt;td>&lt;strong>Encrypted Local Backups&lt;/strong>&lt;/td>
+ &lt;td>❌&lt;/td>
+ &lt;td>✅&lt;/td>
+ &lt;td>⚠️&lt;/td>
+ &lt;/tr>
+ &lt;tr>
+ &lt;td>&lt;strong>OS Integrity Monitoring&lt;/strong>&lt;/td>
+ &lt;td>❌&lt;/td>
+ &lt;td>✅&lt;/td>
+ &lt;td>❌&lt;/td>
+ &lt;/tr>
+ &lt;/tbody>
+&lt;/table>
+&lt;h2 id="trackinganalytics--freedom">Tracking/Analytics &amp;amp; Freedom&lt;/h2>
+&lt;table>
+ &lt;thead>
+ &lt;tr>
+ &lt;th>Feature&lt;/th>
+ &lt;th>Android&lt;/th>
+ &lt;th>GrapheneOS&lt;/th>
+ &lt;th>iOS&lt;/th>
+ &lt;/tr>
+ &lt;/thead>
+ &lt;tbody>
+ &lt;tr>
+ &lt;td>&lt;strong>No Advertising ID&lt;/strong>&lt;/td>
+ &lt;td>❌&lt;/td>
+ &lt;td>✅&lt;/td>
+ &lt;td>❌&lt;/td>
+ &lt;/tr>
+ &lt;tr>
+ &lt;td>&lt;strong>Sideloading&lt;/strong>&lt;/td>
+ &lt;td>✅&lt;/td>
+ &lt;td>✅&lt;/td>
+ &lt;td>⚠️&lt;/td>
+ &lt;/tr>
+ &lt;/tbody>
+&lt;/table>
+&lt;h2 id="convenience">Convenience&lt;/h2>
+&lt;table>
+ &lt;thead>
+ &lt;tr>
+ &lt;th>Feature&lt;/th>
+ &lt;th>Android&lt;/th>
+ &lt;th>GrapheneOS&lt;/th>
+ &lt;th>iOS&lt;/th>
+ &lt;/tr>
+ &lt;/thead>
+ &lt;tbody>
+ &lt;tr>
+ &lt;td>&lt;strong>Dark Mode&lt;/strong>&lt;/td>
+ &lt;td>✅&lt;/td>
+ &lt;td>✅&lt;/td>
+ &lt;td>✅&lt;/td>
+ &lt;/tr>
+ &lt;tr>
+ &lt;td>&lt;strong>Banking Apps&lt;/strong>&lt;/td>
+ &lt;td>✅&lt;/td>
+ &lt;td>&lt;a href="https://privsec.dev/posts/android/banking-applications-compatibility-with-grapheneos">⚠️&lt;/a>&lt;/td>
+ &lt;td>✅&lt;/td>
+ &lt;/tr>
+ &lt;tr>
+ &lt;td>&lt;strong>Biometric Authentication&lt;/strong>&lt;/td>
+ &lt;td>✅&lt;/td>
+ &lt;td>✅&lt;/td>
+ &lt;td>✅&lt;/td>
+ &lt;/tr>
+ &lt;tr>
+ &lt;td>&lt;strong>Google/Apple Pay Support&lt;/strong>&lt;/td>
+ &lt;td>✅&lt;/td>
+ &lt;td>❌&lt;/td>
+ &lt;td>✅&lt;/td>
+ &lt;/tr>
+ &lt;tr>
+ &lt;td>&lt;strong>Find My Device&lt;/strong>&lt;/td>
+ &lt;td>✅&lt;/td>
+ &lt;td>⚠️&lt;/td>
+ &lt;td>✅&lt;/td>
+ &lt;/tr>
+ &lt;/tbody>
+&lt;/table>
+&lt;h2 id="legend">Legend&lt;/h2>
+&lt;ul>
+&lt;li>✅ Supported&lt;/li>
+&lt;li>❌ Not Supported&lt;/li>
+&lt;li>⚠️ Partial/Limited Support&lt;/li>
+&lt;li>N/A Not Applicable&lt;/li>
+&lt;/ul>
+&lt;h2 id="key-findings">Key Findings&lt;/h2>
+&lt;ol>
+&lt;li>&lt;strong>Privacy Focus&lt;/strong>: &lt;strong>GrapheneOS&lt;/strong> leads in privacy features, offering the most comprehensive set of privacy controls and protections.&lt;/li>
+&lt;li>&lt;strong>Security Features&lt;/strong>: &lt;strong>GrapheneOS&lt;/strong> provides the strongest security features, including unique offerings like PIN Scrambling and Duress PIN/Password.&lt;/li>
+&lt;li>&lt;strong>Convenience Trade-offs&lt;/strong>: &lt;strong>iOS&lt;/strong> and &lt;strong>Android&lt;/strong> offer more convenience features but at the cost of some privacy and security enhancements found in GrapheneOS.&lt;/li>
+&lt;/ol>
+&lt;h2 id="contributing">Contributing&lt;/h2>
+&lt;p>This comparison is part of the SoftwareCompare project. For updates or corrections, please visit &lt;a href="https://softwarecompare.org">SoftwareCompare&lt;/a>.&lt;/p></description></item><item><title>Securing Your Google Account</title><link>https://ianonymous3000.github.io/Pr0f3ss0r-1nc0gn1t0/projects/google-hardening-guide/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://ianonymous3000.github.io/Pr0f3ss0r-1nc0gn1t0/projects/google-hardening-guide/</guid><description>&lt;h1 id="securing-your-google-account">Securing Your Google Account&lt;/h1>
+&lt;h2 id="project-overview">Project Overview&lt;/h2>
+&lt;p>This guide provides actionable recommendations for improving your Google account&amp;rsquo;s security posture through essential steps like using strong passwords, enabling two-factor authentication, limiting account access, managing privacy settings, and implementing additional security measures.&lt;/p>
+&lt;h2 id="why-this-matters">Why This Matters&lt;/h2>
+&lt;p>Your Google account holds a wealth of personal data. A compromised account can lead to identity theft, financial loss, account takeovers, data theft, and reputation damage. Taking proactive security measures minimizes these risks and ensures your online safety.&lt;/p></description></item><item><title>Setting Up a Decentralized Web Presence: A Complete Guide</title><link>https://ianonymous3000.github.io/Pr0f3ss0r-1nc0gn1t0/projects/web3/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://ianonymous3000.github.io/Pr0f3ss0r-1nc0gn1t0/projects/web3/</guid><description>&lt;p>Building a decentralized web presence is more than just following a trend—it&amp;rsquo;s about reclaiming control over your digital identity, ensuring your content is always accessible, and embracing the future of the internet. In this comprehensive guide, we&amp;rsquo;ll walk you through the process of creating a decentralized website using Cloudflare Web3 Gateways and Unstoppable Domains. Let&amp;rsquo;s embark on this journey to a more open and resilient web.&lt;/p>
+&lt;h2 id="why-choose-decentralization">Why Choose Decentralization?&lt;/h2>
+&lt;p>Before we dive into the technical steps, it&amp;rsquo;s essential to understand the benefits of a decentralized website:&lt;/p></description></item><item><title>Solidity Security Audit Checklist</title><link>https://ianonymous3000.github.io/Pr0f3ss0r-1nc0gn1t0/projects/solidity-security-audit-checklist/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://ianonymous3000.github.io/Pr0f3ss0r-1nc0gn1t0/projects/solidity-security-audit-checklist/</guid><description>&lt;h1 id="solidity-security-audit-checklist">Solidity Security Audit Checklist&lt;/h1>
+&lt;h2 id="project-overview">Project Overview&lt;/h2>
+&lt;p>A comprehensive checklist and toolkit designed to help developers, auditors, and security researchers identify common vulnerabilities in Solidity smart contracts. This resource provides structured guidance for conducting thorough security audits and implementing secure coding practices.&lt;/p>
+&lt;h2 id="why-this-matters">Why This Matters&lt;/h2>
+&lt;p>Smart contract vulnerabilities can lead to significant financial losses and compromised systems. This checklist helps ensure thorough security reviews by:&lt;/p>
+&lt;ul>
+&lt;li>Providing systematic vulnerability assessment guidelines&lt;/li>
+&lt;li>Offering practical examples and fixes&lt;/li>
+&lt;li>Incorporating lessons learned from past incidents&lt;/li>
+&lt;li>Supporting both manual and automated security analysis&lt;/li>
+&lt;/ul>
+&lt;h2 id="key-features">Key Features&lt;/h2>
+&lt;p>Our checklist covers critical security aspects including:&lt;/p></description></item><item><title>The Ultimate Guide to Getting Started with Bitcoin</title><link>https://ianonymous3000.github.io/Pr0f3ss0r-1nc0gn1t0/projects/bitcoin-guide/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://ianonymous3000.github.io/Pr0f3ss0r-1nc0gn1t0/projects/bitcoin-guide/</guid><description>&lt;h2 id="project-overview">Project Overview&lt;/h2>
+&lt;p>This guide provides a complete introduction to Bitcoin, from basic concepts to advanced topics. We cover essential knowledge for beginners entering the cryptocurrency space, including wallet setup, security practices, and investment considerations.&lt;/p>
+&lt;h2 id="why-this-matters">Why This Matters&lt;/h2>
+&lt;p>As the first and most established cryptocurrency, Bitcoin offers a decentralized alternative to traditional financial systems. Understanding how to safely use and store Bitcoin is crucial for anyone looking to participate in the digital economy or protect their financial privacy.&lt;/p></description></item><item><title>The Ultimate iOS Hardening Guide</title><link>https://ianonymous3000.github.io/Pr0f3ss0r-1nc0gn1t0/projects/ios-hardening-guide/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://ianonymous3000.github.io/Pr0f3ss0r-1nc0gn1t0/projects/ios-hardening-guide/</guid><description>&lt;h1 id="the-ultimate-ios-hardening-guide">The Ultimate iOS Hardening Guide&lt;/h1>
+&lt;h2 id="project-overview">Project Overview&lt;/h2>
+&lt;p>This guide provides comprehensive steps and best practices for securing iOS and iPadOS devices. From initial device selection to advanced security configurations, we cover essential measures for protecting your Apple devices and personal data.&lt;/p>
+&lt;h2 id="why-this-matters">Why This Matters&lt;/h2>
+&lt;p>Your iOS device contains a wealth of personal information and provides access to sensitive accounts. Proper security hardening helps protect against threats like device theft, data breaches, surveillance, and unauthorized access while maintaining privacy in an increasingly connected world.&lt;/p></description></item></channel></rss>

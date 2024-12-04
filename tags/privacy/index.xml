@@ -1,0 +1,308 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Privacy on</title><link>https://ianonymous3000.github.io/Pr0f3ss0r-1nc0gn1t0/tags/privacy/</link><description>Recent content in Privacy on</description><generator>Hugo</generator><language>en</language><atom:link href="https://ianonymous3000.github.io/Pr0f3ss0r-1nc0gn1t0/tags/privacy/index.xml" rel="self" type="application/rss+xml"/><item><title>Decentralized Identity Research: A Comprehensive Analysis</title><link>https://ianonymous3000.github.io/Pr0f3ss0r-1nc0gn1t0/research/decentralized-identity/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://ianonymous3000.github.io/Pr0f3ss0r-1nc0gn1t0/research/decentralized-identity/</guid><description>&lt;h2 id="introduction">Introduction&lt;/h2>
+&lt;p>In an era where digital interactions are integral to daily life, managing digital identities has become a critical concern. Traditional centralized identity systems are vulnerable to security breaches, data misuse, and privacy violations.&lt;/p>
+&lt;p>&lt;strong>Decentralized Identity (DID) systems offer a promising alternative&lt;/strong> by empowering users with control over their personal data and reducing reliance on centralized authorities.&lt;/p>
+&lt;p>This comprehensive analysis delves into the state of decentralized identity systems. We examine technical architectures, user adoption challenges, regulatory considerations, and future directions. The research was spearheaded by the NEU Blockchain Club in collaboration with Superscrypt, aiming to contribute valuable insights to the evolving landscape of digital identity.&lt;/p></description></item><item><title>Lichess: The Open Source Revolution in Chess</title><link>https://ianonymous3000.github.io/Pr0f3ss0r-1nc0gn1t0/chess/lichess-foss-revolution/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://ianonymous3000.github.io/Pr0f3ss0r-1nc0gn1t0/chess/lichess-foss-revolution/</guid><description>&lt;h1 id="lichess-how-the-open-source-community-is-revolutionizing-chess">Lichess: How the Open Source Community is Revolutionizing Chess&lt;/h1>
+&lt;p>&lt;em>A deep dive into the world&amp;rsquo;s most popular open-source chess platform, its impact, and how you can be part of its future.&lt;/em>&lt;/p>
+&lt;h2 id="the-chess-revolution">The Chess Revolution&lt;/h2>
+&lt;p>In 2010, a programmer named &lt;a href="https://lichess.org/@/thibault">Thibault Duplessis&lt;/a> had a simple yet powerful vision: create a chess platform that would be completely free, open-source, and accessible to everyone. Today, that vision has evolved into Lichess (pronounced &amp;ldquo;lee-chess&amp;rdquo;), a platform that serves millions of players daily and hosts billions of games annually. The name itself reflects its technical roots: &amp;ldquo;lila&amp;rdquo; = &lt;strong>li&lt;/strong>chess in Sca&lt;strong>la&lt;/strong>.&lt;/p></description></item><item><title>Mobile Operating Systems Security Comparison</title><link>https://ianonymous3000.github.io/Pr0f3ss0r-1nc0gn1t0/projects/mobile-os-comparison/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://ianonymous3000.github.io/Pr0f3ss0r-1nc0gn1t0/projects/mobile-os-comparison/</guid><description>&lt;p>A comprehensive comparison of security, privacy, and convenience features across Android, GrapheneOS, and iOS mobile operating systems. This analysis is part of the &lt;a href="https://softwarecompare.org/charts/operating-systems">SoftwareCompare Operating Systems&lt;/a> project, with contributions from David Collini and others.&lt;/p>
+&lt;h2 id="overview">Overview&lt;/h2>
+&lt;table>
+ &lt;thead>
+ &lt;tr>
+ &lt;th>Operating System&lt;/th>
+ &lt;th>Base&lt;/th>
+ &lt;th>Supported Devices&lt;/th>
+ &lt;/tr>
+ &lt;/thead>
+ &lt;tbody>
+ &lt;tr>
+ &lt;td>&lt;strong>Android&lt;/strong>&lt;/td>
+ &lt;td>AOSP&lt;/td>
+ &lt;td>Various Devices&lt;/td>
+ &lt;/tr>
+ &lt;tr>
+ &lt;td>&lt;strong>GrapheneOS&lt;/strong>&lt;/td>
+ &lt;td>AOSP&lt;/td>
+ &lt;td>Google Pixel&lt;/td>
+ &lt;/tr>
+ &lt;tr>
+ &lt;td>&lt;strong>iOS&lt;/strong>&lt;/td>
+ &lt;td>Apple Proprietary&lt;/td>
+ &lt;td>iPhone&lt;/td>
+ &lt;/tr>
+ &lt;/tbody>
+&lt;/table>
+&lt;h2 id="privacy-features">Privacy Features&lt;/h2>
+&lt;table>
+ &lt;thead>
+ &lt;tr>
+ &lt;th>Feature&lt;/th>
+ &lt;th>Android&lt;/th>
+ &lt;th>GrapheneOS&lt;/th>
+ &lt;th>iOS&lt;/th>
+ &lt;/tr>
+ &lt;/thead>
+ &lt;tbody>
+ &lt;tr>
+ &lt;td>&lt;strong>Open Source&lt;/strong>&lt;/td>
+ &lt;td>⚠️&lt;/td>
+ &lt;td>✅&lt;/td>
+ &lt;td>❌&lt;/td>
+ &lt;/tr>
+ &lt;tr>
+ &lt;td>&lt;strong>Enhanced App Sandboxing&lt;/strong>&lt;/td>
+ &lt;td>⚠️&lt;/td>
+ &lt;td>✅&lt;/td>
+ &lt;td>⚠️&lt;/td>
+ &lt;/tr>
+ &lt;tr>
+ &lt;td>&lt;strong>Hardened Malloc&lt;/strong>&lt;/td>
+ &lt;td>❌&lt;/td>
+ &lt;td>✅&lt;/td>
+ &lt;td>❌&lt;/td>
+ &lt;/tr>
+ &lt;tr>
+ &lt;td>&lt;strong>Hardened WebView&lt;/strong>&lt;/td>
+ &lt;td>❌&lt;/td>
+ &lt;td>✅&lt;/td>
+ &lt;td>❌&lt;/td>
+ &lt;/tr>
+ &lt;tr>
+ &lt;td>&lt;strong>Sandboxed Google Play&lt;/strong>&lt;/td>
+ &lt;td>❌&lt;/td>
+ &lt;td>✅&lt;/td>
+ &lt;td>N/A&lt;/td>
+ &lt;/tr>
+ &lt;tr>
+ &lt;td>&lt;strong>Network Permissions Toggle&lt;/strong>&lt;/td>
+ &lt;td>❌&lt;/td>
+ &lt;td>✅&lt;/td>
+ &lt;td>⚠️&lt;/td>
+ &lt;/tr>
+ &lt;tr>
+ &lt;td>&lt;strong>Sensors Permissions Toggle&lt;/strong>&lt;/td>
+ &lt;td>❌&lt;/td>
+ &lt;td>✅&lt;/td>
+ &lt;td>✅&lt;/td>
+ &lt;/tr>
+ &lt;tr>
+ &lt;td>&lt;strong>Automatic Security Updates&lt;/strong>&lt;/td>
+ &lt;td>✅&lt;/td>
+ &lt;td>✅&lt;/td>
+ &lt;td>✅&lt;/td>
+ &lt;/tr>
+ &lt;tr>
+ &lt;td>&lt;strong>Hardware-Based Attestation&lt;/strong>&lt;/td>
+ &lt;td>⚠️&lt;/td>
+ &lt;td>✅&lt;/td>
+ &lt;td>✅&lt;/td>
+ &lt;/tr>
+ &lt;tr>
+ &lt;td>&lt;strong>Configurable Default Connections&lt;/strong>&lt;/td>
+ &lt;td>❌&lt;/td>
+ &lt;td>✅&lt;/td>
+ &lt;td>❌&lt;/td>
+ &lt;/tr>
+ &lt;tr>
+ &lt;td>&lt;strong>User Profiles&lt;/strong>&lt;/td>
+ &lt;td>✅&lt;/td>
+ &lt;td>✅&lt;/td>
+ &lt;td>❌&lt;/td>
+ &lt;/tr>
+ &lt;tr>
+ &lt;td>&lt;strong>Removes Screenshot Metadata&lt;/strong>&lt;/td>
+ &lt;td>❌&lt;/td>
+ &lt;td>✅&lt;/td>
+ &lt;td>❌&lt;/td>
+ &lt;/tr>
+ &lt;tr>
+ &lt;td>&lt;strong>Default Private Browser&lt;/strong>&lt;/td>
+ &lt;td>❌&lt;/td>
+ &lt;td>✅&lt;/td>
+ &lt;td>⚠️&lt;/td>
+ &lt;/tr>
+ &lt;tr>
+ &lt;td>&lt;strong>Contact Scopes&lt;/strong>&lt;/td>
+ &lt;td>❌&lt;/td>
+ &lt;td>✅&lt;/td>
+ &lt;td>⚠️&lt;/td>
+ &lt;/tr>
+ &lt;tr>
+ &lt;td>&lt;strong>Storage Scopes&lt;/strong>&lt;/td>
+ &lt;td>⚠️&lt;/td>
+ &lt;td>✅&lt;/td>
+ &lt;td>⚠️&lt;/td>
+ &lt;/tr>
+ &lt;tr>
+ &lt;td>&lt;strong>Backup with Another Device&lt;/strong>&lt;/td>
+ &lt;td>✅&lt;/td>
+ &lt;td>✅&lt;/td>
+ &lt;td>✅&lt;/td>
+ &lt;/tr>
+ &lt;/tbody>
+&lt;/table>
+&lt;h2 id="security-features">Security Features&lt;/h2>
+&lt;table>
+ &lt;thead>
+ &lt;tr>
+ &lt;th>Feature&lt;/th>
+ &lt;th>Android&lt;/th>
+ &lt;th>GrapheneOS&lt;/th>
+ &lt;th>iOS&lt;/th>
+ &lt;/tr>
+ &lt;/thead>
+ &lt;tbody>
+ &lt;tr>
+ &lt;td>&lt;strong>Full Disk Encryption&lt;/strong>&lt;/td>
+ &lt;td>✅&lt;/td>
+ &lt;td>✅&lt;/td>
+ &lt;td>✅&lt;/td>
+ &lt;/tr>
+ &lt;tr>
+ &lt;td>&lt;strong>Verified Boot&lt;/strong>&lt;/td>
+ &lt;td>✅&lt;/td>
+ &lt;td>✅&lt;/td>
+ &lt;td>✅&lt;/td>
+ &lt;/tr>
+ &lt;tr>
+ &lt;td>&lt;strong>Per-App Hardware Permissions&lt;/strong>&lt;/td>
+ &lt;td>✅&lt;/td>
+ &lt;td>✅&lt;/td>
+ &lt;td>✅&lt;/td>
+ &lt;/tr>
+ &lt;tr>
+ &lt;td>&lt;strong>Default App Sandboxing&lt;/strong>&lt;/td>
+ &lt;td>✅&lt;/td>
+ &lt;td>✅&lt;/td>
+ &lt;td>✅&lt;/td>
+ &lt;/tr>
+ &lt;tr>
+ &lt;td>&lt;strong>Built-in Firewall&lt;/strong>&lt;/td>
+ &lt;td>✅&lt;/td>
+ &lt;td>✅&lt;/td>
+ &lt;td>❌&lt;/td>
+ &lt;/tr>
+ &lt;tr>
+ &lt;td>&lt;strong>PIN Scrambling&lt;/strong>&lt;/td>
+ &lt;td>❌&lt;/td>
+ &lt;td>✅&lt;/td>
+ &lt;td>❌&lt;/td>
+ &lt;/tr>
+ &lt;tr>
+ &lt;td>&lt;strong>Supports Longer Passwords&lt;/strong>&lt;/td>
+ &lt;td>✅&lt;/td>
+ &lt;td>✅&lt;/td>
+ &lt;td>✅&lt;/td>
+ &lt;/tr>
+ &lt;tr>
+ &lt;td>&lt;strong>Auto-Reboot Feature&lt;/strong>&lt;/td>
+ &lt;td>❌&lt;/td>
+ &lt;td>✅&lt;/td>
+ &lt;td>✅&lt;/td>
+ &lt;/tr>
+ &lt;tr>
+ &lt;td>&lt;strong>Duress PIN/Password&lt;/strong>&lt;/td>
+ &lt;td>❌&lt;/td>
+ &lt;td>✅&lt;/td>
+ &lt;td>❌&lt;/td>
+ &lt;/tr>
+ &lt;tr>
+ &lt;td>&lt;strong>Encrypted Local Backups&lt;/strong>&lt;/td>
+ &lt;td>❌&lt;/td>
+ &lt;td>✅&lt;/td>
+ &lt;td>⚠️&lt;/td>
+ &lt;/tr>
+ &lt;tr>
+ &lt;td>&lt;strong>OS Integrity Monitoring&lt;/strong>&lt;/td>
+ &lt;td>❌&lt;/td>
+ &lt;td>✅&lt;/td>
+ &lt;td>❌&lt;/td>
+ &lt;/tr>
+ &lt;/tbody>
+&lt;/table>
+&lt;h2 id="trackinganalytics--freedom">Tracking/Analytics &amp;amp; Freedom&lt;/h2>
+&lt;table>
+ &lt;thead>
+ &lt;tr>
+ &lt;th>Feature&lt;/th>
+ &lt;th>Android&lt;/th>
+ &lt;th>GrapheneOS&lt;/th>
+ &lt;th>iOS&lt;/th>
+ &lt;/tr>
+ &lt;/thead>
+ &lt;tbody>
+ &lt;tr>
+ &lt;td>&lt;strong>No Advertising ID&lt;/strong>&lt;/td>
+ &lt;td>❌&lt;/td>
+ &lt;td>✅&lt;/td>
+ &lt;td>❌&lt;/td>
+ &lt;/tr>
+ &lt;tr>
+ &lt;td>&lt;strong>Sideloading&lt;/strong>&lt;/td>
+ &lt;td>✅&lt;/td>
+ &lt;td>✅&lt;/td>
+ &lt;td>⚠️&lt;/td>
+ &lt;/tr>
+ &lt;/tbody>
+&lt;/table>
+&lt;h2 id="convenience">Convenience&lt;/h2>
+&lt;table>
+ &lt;thead>
+ &lt;tr>
+ &lt;th>Feature&lt;/th>
+ &lt;th>Android&lt;/th>
+ &lt;th>GrapheneOS&lt;/th>
+ &lt;th>iOS&lt;/th>
+ &lt;/tr>
+ &lt;/thead>
+ &lt;tbody>
+ &lt;tr>
+ &lt;td>&lt;strong>Dark Mode&lt;/strong>&lt;/td>
+ &lt;td>✅&lt;/td>
+ &lt;td>✅&lt;/td>
+ &lt;td>✅&lt;/td>
+ &lt;/tr>
+ &lt;tr>
+ &lt;td>&lt;strong>Banking Apps&lt;/strong>&lt;/td>
+ &lt;td>✅&lt;/td>
+ &lt;td>&lt;a href="https://privsec.dev/posts/android/banking-applications-compatibility-with-grapheneos">⚠️&lt;/a>&lt;/td>
+ &lt;td>✅&lt;/td>
+ &lt;/tr>
+ &lt;tr>
+ &lt;td>&lt;strong>Biometric Authentication&lt;/strong>&lt;/td>
+ &lt;td>✅&lt;/td>
+ &lt;td>✅&lt;/td>
+ &lt;td>✅&lt;/td>
+ &lt;/tr>
+ &lt;tr>
+ &lt;td>&lt;strong>Google/Apple Pay Support&lt;/strong>&lt;/td>
+ &lt;td>✅&lt;/td>
+ &lt;td>❌&lt;/td>
+ &lt;td>✅&lt;/td>
+ &lt;/tr>
+ &lt;tr>
+ &lt;td>&lt;strong>Find My Device&lt;/strong>&lt;/td>
+ &lt;td>✅&lt;/td>
+ &lt;td>⚠️&lt;/td>
+ &lt;td>✅&lt;/td>
+ &lt;/tr>
+ &lt;/tbody>
+&lt;/table>
+&lt;h2 id="legend">Legend&lt;/h2>
+&lt;ul>
+&lt;li>✅ Supported&lt;/li>
+&lt;li>❌ Not Supported&lt;/li>
+&lt;li>⚠️ Partial/Limited Support&lt;/li>
+&lt;li>N/A Not Applicable&lt;/li>
+&lt;/ul>
+&lt;h2 id="key-findings">Key Findings&lt;/h2>
+&lt;ol>
+&lt;li>&lt;strong>Privacy Focus&lt;/strong>: &lt;strong>GrapheneOS&lt;/strong> leads in privacy features, offering the most comprehensive set of privacy controls and protections.&lt;/li>
+&lt;li>&lt;strong>Security Features&lt;/strong>: &lt;strong>GrapheneOS&lt;/strong> provides the strongest security features, including unique offerings like PIN Scrambling and Duress PIN/Password.&lt;/li>
+&lt;li>&lt;strong>Convenience Trade-offs&lt;/strong>: &lt;strong>iOS&lt;/strong> and &lt;strong>Android&lt;/strong> offer more convenience features but at the cost of some privacy and security enhancements found in GrapheneOS.&lt;/li>
+&lt;/ol>
+&lt;h2 id="contributing">Contributing&lt;/h2>
+&lt;p>This comparison is part of the SoftwareCompare project. For updates or corrections, please visit &lt;a href="https://softwarecompare.org">SoftwareCompare&lt;/a>.&lt;/p></description></item><item><title>Privacy-First Security: Building Trust Through Data Protection</title><link>https://ianonymous3000.github.io/Pr0f3ss0r-1nc0gn1t0/blog/security/privacyfirst-security/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://ianonymous3000.github.io/Pr0f3ss0r-1nc0gn1t0/blog/security/privacyfirst-security/</guid><description>&lt;p>In an era where data breaches and privacy concerns dominate headlines, adopting a privacy-first security approach is more critical than ever. This guide examines how organizations can build trust through robust privacy practices, offering insights into foundational principles, advanced implementation strategies, and real-world case studies. Discover how leading organizations are achieving enhanced security and customer trust by prioritizing privacy at every level.&lt;/p>
+&lt;h2 id="introduction">Introduction&lt;/h2>
+&lt;p>The digital age has transformed data into one of the most valuable assets—and one of the most significant liabilities. Privacy has shifted from being a mere compliance requirement to a cornerstone of customer trust and brand reputation. According to a 2023 McKinsey report, &lt;strong>76% of consumers&lt;/strong> indicate they won&amp;rsquo;t engage with companies they don&amp;rsquo;t trust to handle their data responsibly. This shift underscores that privacy isn&amp;rsquo;t just about avoiding fines; it&amp;rsquo;s about fostering sustainable relationships built on trust and transparency.&lt;/p></description></item><item><title>Understanding Google Safe Browsing and Brave's Implementation: How It Works and Why It's Important</title><link>https://ianonymous3000.github.io/Pr0f3ss0r-1nc0gn1t0/blog/security/brave-safe-browsing/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://ianonymous3000.github.io/Pr0f3ss0r-1nc0gn1t0/blog/security/brave-safe-browsing/</guid><description>&lt;p>Imagine clicking a link and unwittingly downloading malware that encrypts all your files, or entering your banking credentials on what appears to be your bank&amp;rsquo;s website—only to discover it&amp;rsquo;s an elaborate fake. These aren&amp;rsquo;t hypothetical scenarios; they&amp;rsquo;re daily realities. Enter Google Safe Browsing, our guardian that silently protects billions of users from these exact threats.&lt;/p>
+&lt;p>In this deep dive, we&amp;rsquo;ll peel back the layers of Google Safe Browsing&amp;rsquo;s technical architecture, explore its critical role in modern web security, and examine how browsers like Brave have innovated upon its foundation to enhance user privacy. Whether you&amp;rsquo;re a developer integrating these protections, a website owner ensuring your site stays secure, or simply someone who wants to understand what keeps you safe online, this guide will equip you with essential knowledge about one of the web&amp;rsquo;s most crucial security systems.&lt;/p></description></item></channel></rss>

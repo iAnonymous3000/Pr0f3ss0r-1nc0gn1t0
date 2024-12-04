@@ -1,0 +1,299 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Ios on</title><link>https://ianonymous3000.github.io/Pr0f3ss0r-1nc0gn1t0/tags/ios/</link><description>Recent content in Ios on</description><generator>Hugo</generator><language>en</language><atom:link href="https://ianonymous3000.github.io/Pr0f3ss0r-1nc0gn1t0/tags/ios/index.xml" rel="self" type="application/rss+xml"/><item><title>Mobile Operating Systems Security Comparison</title><link>https://ianonymous3000.github.io/Pr0f3ss0r-1nc0gn1t0/projects/mobile-os-comparison/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://ianonymous3000.github.io/Pr0f3ss0r-1nc0gn1t0/projects/mobile-os-comparison/</guid><description>&lt;p>A comprehensive comparison of security, privacy, and convenience features across Android, GrapheneOS, and iOS mobile operating systems. This analysis is part of the &lt;a href="https://softwarecompare.org/charts/operating-systems">SoftwareCompare Operating Systems&lt;/a> project, with contributions from David Collini and others.&lt;/p>
+&lt;h2 id="overview">Overview&lt;/h2>
+&lt;table>
+ &lt;thead>
+ &lt;tr>
+ &lt;th>Operating System&lt;/th>
+ &lt;th>Base&lt;/th>
+ &lt;th>Supported Devices&lt;/th>
+ &lt;/tr>
+ &lt;/thead>
+ &lt;tbody>
+ &lt;tr>
+ &lt;td>&lt;strong>Android&lt;/strong>&lt;/td>
+ &lt;td>AOSP&lt;/td>
+ &lt;td>Various Devices&lt;/td>
+ &lt;/tr>
+ &lt;tr>
+ &lt;td>&lt;strong>GrapheneOS&lt;/strong>&lt;/td>
+ &lt;td>AOSP&lt;/td>
+ &lt;td>Google Pixel&lt;/td>
+ &lt;/tr>
+ &lt;tr>
+ &lt;td>&lt;strong>iOS&lt;/strong>&lt;/td>
+ &lt;td>Apple Proprietary&lt;/td>
+ &lt;td>iPhone&lt;/td>
+ &lt;/tr>
+ &lt;/tbody>
+&lt;/table>
+&lt;h2 id="privacy-features">Privacy Features&lt;/h2>
+&lt;table>
+ &lt;thead>
+ &lt;tr>
+ &lt;th>Feature&lt;/th>
+ &lt;th>Android&lt;/th>
+ &lt;th>GrapheneOS&lt;/th>
+ &lt;th>iOS&lt;/th>
+ &lt;/tr>
+ &lt;/thead>
+ &lt;tbody>
+ &lt;tr>
+ &lt;td>&lt;strong>Open Source&lt;/strong>&lt;/td>
+ &lt;td>⚠️&lt;/td>
+ &lt;td>✅&lt;/td>
+ &lt;td>❌&lt;/td>
+ &lt;/tr>
+ &lt;tr>
+ &lt;td>&lt;strong>Enhanced App Sandboxing&lt;/strong>&lt;/td>
+ &lt;td>⚠️&lt;/td>
+ &lt;td>✅&lt;/td>
+ &lt;td>⚠️&lt;/td>
+ &lt;/tr>
+ &lt;tr>
+ &lt;td>&lt;strong>Hardened Malloc&lt;/strong>&lt;/td>
+ &lt;td>❌&lt;/td>
+ &lt;td>✅&lt;/td>
+ &lt;td>❌&lt;/td>
+ &lt;/tr>
+ &lt;tr>
+ &lt;td>&lt;strong>Hardened WebView&lt;/strong>&lt;/td>
+ &lt;td>❌&lt;/td>
+ &lt;td>✅&lt;/td>
+ &lt;td>❌&lt;/td>
+ &lt;/tr>
+ &lt;tr>
+ &lt;td>&lt;strong>Sandboxed Google Play&lt;/strong>&lt;/td>
+ &lt;td>❌&lt;/td>
+ &lt;td>✅&lt;/td>
+ &lt;td>N/A&lt;/td>
+ &lt;/tr>
+ &lt;tr>
+ &lt;td>&lt;strong>Network Permissions Toggle&lt;/strong>&lt;/td>
+ &lt;td>❌&lt;/td>
+ &lt;td>✅&lt;/td>
+ &lt;td>⚠️&lt;/td>
+ &lt;/tr>
+ &lt;tr>
+ &lt;td>&lt;strong>Sensors Permissions Toggle&lt;/strong>&lt;/td>
+ &lt;td>❌&lt;/td>
+ &lt;td>✅&lt;/td>
+ &lt;td>✅&lt;/td>
+ &lt;/tr>
+ &lt;tr>
+ &lt;td>&lt;strong>Automatic Security Updates&lt;/strong>&lt;/td>
+ &lt;td>✅&lt;/td>
+ &lt;td>✅&lt;/td>
+ &lt;td>✅&lt;/td>
+ &lt;/tr>
+ &lt;tr>
+ &lt;td>&lt;strong>Hardware-Based Attestation&lt;/strong>&lt;/td>
+ &lt;td>⚠️&lt;/td>
+ &lt;td>✅&lt;/td>
+ &lt;td>✅&lt;/td>
+ &lt;/tr>
+ &lt;tr>
+ &lt;td>&lt;strong>Configurable Default Connections&lt;/strong>&lt;/td>
+ &lt;td>❌&lt;/td>
+ &lt;td>✅&lt;/td>
+ &lt;td>❌&lt;/td>
+ &lt;/tr>
+ &lt;tr>
+ &lt;td>&lt;strong>User Profiles&lt;/strong>&lt;/td>
+ &lt;td>✅&lt;/td>
+ &lt;td>✅&lt;/td>
+ &lt;td>❌&lt;/td>
+ &lt;/tr>
+ &lt;tr>
+ &lt;td>&lt;strong>Removes Screenshot Metadata&lt;/strong>&lt;/td>
+ &lt;td>❌&lt;/td>
+ &lt;td>✅&lt;/td>
+ &lt;td>❌&lt;/td>
+ &lt;/tr>
+ &lt;tr>
+ &lt;td>&lt;strong>Default Private Browser&lt;/strong>&lt;/td>
+ &lt;td>❌&lt;/td>
+ &lt;td>✅&lt;/td>
+ &lt;td>⚠️&lt;/td>
+ &lt;/tr>
+ &lt;tr>
+ &lt;td>&lt;strong>Contact Scopes&lt;/strong>&lt;/td>
+ &lt;td>❌&lt;/td>
+ &lt;td>✅&lt;/td>
+ &lt;td>⚠️&lt;/td>
+ &lt;/tr>
+ &lt;tr>
+ &lt;td>&lt;strong>Storage Scopes&lt;/strong>&lt;/td>
+ &lt;td>⚠️&lt;/td>
+ &lt;td>✅&lt;/td>
+ &lt;td>⚠️&lt;/td>
+ &lt;/tr>
+ &lt;tr>
+ &lt;td>&lt;strong>Backup with Another Device&lt;/strong>&lt;/td>
+ &lt;td>✅&lt;/td>
+ &lt;td>✅&lt;/td>
+ &lt;td>✅&lt;/td>
+ &lt;/tr>
+ &lt;/tbody>
+&lt;/table>
+&lt;h2 id="security-features">Security Features&lt;/h2>
+&lt;table>
+ &lt;thead>
+ &lt;tr>
+ &lt;th>Feature&lt;/th>
+ &lt;th>Android&lt;/th>
+ &lt;th>GrapheneOS&lt;/th>
+ &lt;th>iOS&lt;/th>
+ &lt;/tr>
+ &lt;/thead>
+ &lt;tbody>
+ &lt;tr>
+ &lt;td>&lt;strong>Full Disk Encryption&lt;/strong>&lt;/td>
+ &lt;td>✅&lt;/td>
+ &lt;td>✅&lt;/td>
+ &lt;td>✅&lt;/td>
+ &lt;/tr>
+ &lt;tr>
+ &lt;td>&lt;strong>Verified Boot&lt;/strong>&lt;/td>
+ &lt;td>✅&lt;/td>
+ &lt;td>✅&lt;/td>
+ &lt;td>✅&lt;/td>
+ &lt;/tr>
+ &lt;tr>
+ &lt;td>&lt;strong>Per-App Hardware Permissions&lt;/strong>&lt;/td>
+ &lt;td>✅&lt;/td>
+ &lt;td>✅&lt;/td>
+ &lt;td>✅&lt;/td>
+ &lt;/tr>
+ &lt;tr>
+ &lt;td>&lt;strong>Default App Sandboxing&lt;/strong>&lt;/td>
+ &lt;td>✅&lt;/td>
+ &lt;td>✅&lt;/td>
+ &lt;td>✅&lt;/td>
+ &lt;/tr>
+ &lt;tr>
+ &lt;td>&lt;strong>Built-in Firewall&lt;/strong>&lt;/td>
+ &lt;td>✅&lt;/td>
+ &lt;td>✅&lt;/td>
+ &lt;td>❌&lt;/td>
+ &lt;/tr>
+ &lt;tr>
+ &lt;td>&lt;strong>PIN Scrambling&lt;/strong>&lt;/td>
+ &lt;td>❌&lt;/td>
+ &lt;td>✅&lt;/td>
+ &lt;td>❌&lt;/td>
+ &lt;/tr>
+ &lt;tr>
+ &lt;td>&lt;strong>Supports Longer Passwords&lt;/strong>&lt;/td>
+ &lt;td>✅&lt;/td>
+ &lt;td>✅&lt;/td>
+ &lt;td>✅&lt;/td>
+ &lt;/tr>
+ &lt;tr>
+ &lt;td>&lt;strong>Auto-Reboot Feature&lt;/strong>&lt;/td>
+ &lt;td>❌&lt;/td>
+ &lt;td>✅&lt;/td>
+ &lt;td>✅&lt;/td>
+ &lt;/tr>
+ &lt;tr>
+ &lt;td>&lt;strong>Duress PIN/Password&lt;/strong>&lt;/td>
+ &lt;td>❌&lt;/td>
+ &lt;td>✅&lt;/td>
+ &lt;td>❌&lt;/td>
+ &lt;/tr>
+ &lt;tr>
+ &lt;td>&lt;strong>Encrypted Local Backups&lt;/strong>&lt;/td>
+ &lt;td>❌&lt;/td>
+ &lt;td>✅&lt;/td>
+ &lt;td>⚠️&lt;/td>
+ &lt;/tr>
+ &lt;tr>
+ &lt;td>&lt;strong>OS Integrity Monitoring&lt;/strong>&lt;/td>
+ &lt;td>❌&lt;/td>
+ &lt;td>✅&lt;/td>
+ &lt;td>❌&lt;/td>
+ &lt;/tr>
+ &lt;/tbody>
+&lt;/table>
+&lt;h2 id="trackinganalytics--freedom">Tracking/Analytics &amp;amp; Freedom&lt;/h2>
+&lt;table>
+ &lt;thead>
+ &lt;tr>
+ &lt;th>Feature&lt;/th>
+ &lt;th>Android&lt;/th>
+ &lt;th>GrapheneOS&lt;/th>
+ &lt;th>iOS&lt;/th>
+ &lt;/tr>
+ &lt;/thead>
+ &lt;tbody>
+ &lt;tr>
+ &lt;td>&lt;strong>No Advertising ID&lt;/strong>&lt;/td>
+ &lt;td>❌&lt;/td>
+ &lt;td>✅&lt;/td>
+ &lt;td>❌&lt;/td>
+ &lt;/tr>
+ &lt;tr>
+ &lt;td>&lt;strong>Sideloading&lt;/strong>&lt;/td>
+ &lt;td>✅&lt;/td>
+ &lt;td>✅&lt;/td>
+ &lt;td>⚠️&lt;/td>
+ &lt;/tr>
+ &lt;/tbody>
+&lt;/table>
+&lt;h2 id="convenience">Convenience&lt;/h2>
+&lt;table>
+ &lt;thead>
+ &lt;tr>
+ &lt;th>Feature&lt;/th>
+ &lt;th>Android&lt;/th>
+ &lt;th>GrapheneOS&lt;/th>
+ &lt;th>iOS&lt;/th>
+ &lt;/tr>
+ &lt;/thead>
+ &lt;tbody>
+ &lt;tr>
+ &lt;td>&lt;strong>Dark Mode&lt;/strong>&lt;/td>
+ &lt;td>✅&lt;/td>
+ &lt;td>✅&lt;/td>
+ &lt;td>✅&lt;/td>
+ &lt;/tr>
+ &lt;tr>
+ &lt;td>&lt;strong>Banking Apps&lt;/strong>&lt;/td>
+ &lt;td>✅&lt;/td>
+ &lt;td>&lt;a href="https://privsec.dev/posts/android/banking-applications-compatibility-with-grapheneos">⚠️&lt;/a>&lt;/td>
+ &lt;td>✅&lt;/td>
+ &lt;/tr>
+ &lt;tr>
+ &lt;td>&lt;strong>Biometric Authentication&lt;/strong>&lt;/td>
+ &lt;td>✅&lt;/td>
+ &lt;td>✅&lt;/td>
+ &lt;td>✅&lt;/td>
+ &lt;/tr>
+ &lt;tr>
+ &lt;td>&lt;strong>Google/Apple Pay Support&lt;/strong>&lt;/td>
+ &lt;td>✅&lt;/td>
+ &lt;td>❌&lt;/td>
+ &lt;td>✅&lt;/td>
+ &lt;/tr>
+ &lt;tr>
+ &lt;td>&lt;strong>Find My Device&lt;/strong>&lt;/td>
+ &lt;td>✅&lt;/td>
+ &lt;td>⚠️&lt;/td>
+ &lt;td>✅&lt;/td>
+ &lt;/tr>
+ &lt;/tbody>
+&lt;/table>
+&lt;h2 id="legend">Legend&lt;/h2>
+&lt;ul>
+&lt;li>✅ Supported&lt;/li>
+&lt;li>❌ Not Supported&lt;/li>
+&lt;li>⚠️ Partial/Limited Support&lt;/li>
+&lt;li>N/A Not Applicable&lt;/li>
+&lt;/ul>
+&lt;h2 id="key-findings">Key Findings&lt;/h2>
+&lt;ol>
+&lt;li>&lt;strong>Privacy Focus&lt;/strong>: &lt;strong>GrapheneOS&lt;/strong> leads in privacy features, offering the most comprehensive set of privacy controls and protections.&lt;/li>
+&lt;li>&lt;strong>Security Features&lt;/strong>: &lt;strong>GrapheneOS&lt;/strong> provides the strongest security features, including unique offerings like PIN Scrambling and Duress PIN/Password.&lt;/li>
+&lt;li>&lt;strong>Convenience Trade-offs&lt;/strong>: &lt;strong>iOS&lt;/strong> and &lt;strong>Android&lt;/strong> offer more convenience features but at the cost of some privacy and security enhancements found in GrapheneOS.&lt;/li>
+&lt;/ol>
+&lt;h2 id="contributing">Contributing&lt;/h2>
+&lt;p>This comparison is part of the SoftwareCompare project. For updates or corrections, please visit &lt;a href="https://softwarecompare.org">SoftwareCompare&lt;/a>.&lt;/p></description></item></channel></rss>
