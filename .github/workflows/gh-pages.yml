@@ -12,13 +12,12 @@ jobs:
   deploy:
     runs-on: ubuntu-latest
     steps:
-      # Step 1: Checkout the repository
       - name: Checkout
         uses: actions/checkout@v4
         with:
           submodules: 'recursive'
+          fetch-depth: 0
           
-      # Step 2: Load Hugo version from .env file
       - name: Load Hugo Version from .env
         id: hugo-version
         run: |
@@ -27,34 +26,21 @@ jobs:
           set +a
           echo "version=${HUGO_VERSION}" >> $GITHUB_OUTPUT
           
-      # Step 3: Setup Hugo with the version from .env
       - name: Setup Hugo
         uses: peaceiris/actions-hugo@v2
         with:
           hugo-version: ${{ steps.hugo-version.outputs.version }}
           extended: true
           
-      # Step 4: Build with GitHub Pages specific configuration
       - name: Build
         run: |
-          # Create temporary config override for GitHub Pages
-          cat > config.github.yaml <<EOF
-          baseURL: 'https://ianonymous3000.github.io/Pr0f3ss0r-1nc0gn1t0'
-          publishDir: 'docs'
-          EOF
-          # Build using both configs (original + github override)
-          hugo --minify --config config.yaml,config.github.yaml
+          # Use command line flags instead of config file for GitHub Pages specific settings
+          hugo --minify --destination docs --baseURL="https://ianonymous3000.github.io/Pr0f3ss0r-1nc0gn1t0"
           touch docs/.nojekyll
           
-      # Step 5: Deploy to GitHub Pages branch
-      - name: Deploy to GitHub Pages
+      - name: Deploy
         uses: peaceiris/actions-gh-pages@v3
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: ./docs
-          commit_message: "Deploy to GitHub Pages"
-          full_commit_message: |
-            Deploy to GitHub Pages
-            
-            Build from: ${{ github.sha }}
-            Workflow: ${{ github.workflow }}
+          force_orphan: true
