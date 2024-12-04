@@ -35,6 +35,30 @@ params:
   ShowRssButtonInSectionTermList: true
 
   mirrors: []  # Empty array, the workflow will populate this
+
+  Social: # To support legacy `.Site.Social`
+    - name: "GitHub"
+      url: "https://github.com/iAnonymous3000"
+      title: "GitHub"
+    - name: "LinkedIn"
+      url: "https://www.linkedin.com/in/soorajsathyanarayanan"
+      title: "LinkedIn"
+    - name: "X (formerly Twitter)"
+      url: "https://x.com/iAnonymous3000"
+      title: "X"
+    - name: "Mastodon"
+      url: "https://mastodon.social/@ianonymous3000"
+      title: "Mastodon"
+      rel: "me"
+    - name: "Bluesky"
+      url: "https://bsky.app/profile/profincognito.me"
+      title: "Bluesky"
+    - name: "Signal"
+      url: "https://signal.me/#eu/tao35l1vQxmrWcie6iW3dXlcFo0t3Pzae7WFHEMJnAIqKn2WxP5KnKKq5ClE-ZDD"
+      title: "Signal"
+    - name: "RSS Feed"
+      url: "/index.xml"
+      title: "RSS Feed"  
   
 # Site Label
   label:
