@@ -3,8 +3,6 @@ title: "Privacy"
 description: "Deep insights into privacy rights, technology, and strategies for protecting personal data in our interconnected world"
 ---
 
-## What to Expect
-
 Welcome to the Privacy section - where we delve into the critical intersection of personal freedom, technology, and digital rights. Here, we explore practical strategies and deep insights for protecting privacy in an increasingly connected world.
 
 ### Core Focus Areas
