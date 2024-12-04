@@ -3,13 +3,33 @@ on:
   push:
     branches:
       - main
+    paths-ignore:
+      - "images/**"
+      - "LICENSE"
+      - "README.md"
   workflow_dispatch:
+    inputs:
+      hugoVersion:
+        description: "Hugo Version"
+        required: false
+        default: ""  # Will be read from .env if not specified
+
+# Allow one concurrent deployment
+concurrency:
+  group: "pages"
+  cancel-in-progress: true
+
+defaults:
+  run:
+    shell: bash
 
 permissions:
-  contents: write
+  contents: read
+  pages: write
+  id-token: write
 
 jobs:
-  deploy:
+  build:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
@@ -17,30 +37,52 @@ jobs:
         with:
           submodules: 'recursive'
           fetch-depth: 0
-          
+
       - name: Load Hugo Version from .env
         id: hugo-version
         run: |
           set -a
           source .env
           set +a
-          echo "version=${HUGO_VERSION}" >> $GITHUB_OUTPUT
-          
+          if [ "${{ github.event.inputs.hugoVersion }}" != "" ]; then
+            echo "version=${{ github.event.inputs.hugoVersion }}" >> $GITHUB_OUTPUT
+          else
+            echo "version=${HUGO_VERSION}" >> $GITHUB_OUTPUT
+          fi
+
       - name: Setup Hugo
         uses: peaceiris/actions-hugo@v2
         with:
           hugo-version: ${{ steps.hugo-version.outputs.version }}
           extended: true
-          
+
+      - name: Setup Pages
+        id: pages
+        uses: actions/configure-pages@v3
+
+      - name: Update theme to Latest commit
+        run: git submodule update --remote --merge
+
       - name: Build
         run: |
-          # Use command line flags instead of config file for GitHub Pages specific settings
-          hugo --minify --destination docs --baseURL="https://ianonymous3000.github.io/Pr0f3ss0r-1nc0gn1t0"
-          touch docs/.nojekyll
-          
-      - name: Deploy
-        uses: peaceiris/actions-gh-pages@v3
+          hugo \
+            --minify \
+            --destination public \
+            --baseURL ${{ steps.pages.outputs.base_url }}
+          touch public/.nojekyll
+
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v2
         with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./docs
-          force_orphan: true
+          path: ./public
+
+  deploy:
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    runs-on: ubuntu-latest
+    needs: build
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v2
