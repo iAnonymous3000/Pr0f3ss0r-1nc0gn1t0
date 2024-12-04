@@ -4,7 +4,8 @@ description: "A personal journey into the Privacy Acceleration movement and why 
 tags: ["privacy", "digital rights", "technology", "surveillance", "data protection", "privacy acceleration", "digital freedom", "priv/acc"]
 ---
 
-# **Reclaiming Our Digital Freedom: Why I Joined the Privacy Acceleration Movement**
+![privacc-badge](https://github.com/user-attachments/assets/4a7be1eb-29a4-468c-8d35-c4c09eedeb3c)
+
 
 I added "priv/acc" to my social media bio. It wasn't just another cryptic internet acronym – it was a declaration of intent. The Privacy Acceleration movement has given voice to concerns I've harbored about our digital lives, and today I want to share why this matters deeply to me – and should matter to you too.
 
