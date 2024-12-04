@@ -60,16 +60,9 @@ The website is deployed to two platforms:
 
 1. **Primary (Cloudflare Pages)**:
    - Automated deployment via Cloudflare Pages
-   - Uses latest Hugo version specified in `.env`
    - Build command: 
      ```bash
-     source .env && hugo && \
-     git checkout --orphan gh-pages && \
-     git reset --hard && \
-     cp -r public/* . && \
-     git add . && \
-     git commit -m "Deploy to GitHub Pages" && \
-     git push origin gh-pages -f
+     hugo
      ```
    - Available at: [profincognito.me](https://profincognito.me)
 
