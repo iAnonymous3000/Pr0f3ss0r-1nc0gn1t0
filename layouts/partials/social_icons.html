@@ -1,0 +1,7 @@
+<div class="{{ with .align}}{{ . }}{{ else }}center{{ end }}">
+  {{- range $name, $url := .Site.Params.socialIcons }}
+    <a href="{{ $url.url }}"{{ with $url.rel }} rel="{{ . }}"{{ end }}{{ with $url.title}} title="{{ . }}"{{ end }}>
+      {{ partial "svg.html" $name }}
+    </a>
+  {{- end }}
+</div>
