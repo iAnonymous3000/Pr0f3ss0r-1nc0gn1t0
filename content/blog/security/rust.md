@@ -22,7 +22,7 @@ That’s when I discovered Rust, and it opened my eyes to an entirely new paradi
 
 ## The Crisis of Insecure and Inefficient Code
 
-As of the early 2020s, the software industry faces a multifaceted crisis. Memory-related bugs are responsible for the majority of severe security vulnerabilities in widely used systems. For instance, memory safety issues account for **70% of Microsoft's security vulnerabilities**[^1] and the majority of severe bugs in Chrome[^2]. The costs are staggering: stolen data, lost productivity, eroded trust.
+As of the early 2020s, the software industry faces a multifaceted crisis. Memory-related bugs are responsible for the majority of severe security vulnerabilities in widely used systems. For instance, memory safety issues account for **[70% of Microsoft's security vulnerabilities](https://www.zdnet.com/article/microsoft-70-percent-of-all-security-bugs-are-memory-safety-issues)**[^1] and the majority of severe bugs in Chrome[^2]. The costs are staggering: stolen data, lost productivity, eroded trust.
 
 But it’s not just about memory safety. Performance bottlenecks, complex concurrency models, and limited tooling all compound the challenges. We’ve tried patching these problems with garbage collectors, static analyzers, and exhaustive code reviews. Yet the core issues remain: languages often struggle to balance safety, speed, and developer productivity. We’ve been building skyscrapers on quicksand.
 
