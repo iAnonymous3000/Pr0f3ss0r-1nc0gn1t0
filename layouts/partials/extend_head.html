@@ -8,9 +8,6 @@
 <link rel="icon" type="image/png" sizes="192x192" href="/images/favicon/android-chrome-192x192.png">
 <link rel="icon" type="image/png" sizes="512x512" href="/images/favicon/android-chrome-512x512.png">
 
-<!-- This is for Mastodon verification -->
-<link rel="me" href="https://mastodon.social/@ianonymous3000">
-
 <!-- Open Graph Meta Tags -->
 <meta property="og:title" content="{{ if .IsHome }}{{ site.Title }}{{ else }}{{ .Title }} | {{ site.Title }}{{ end }}">
 <meta property="og:description" content="{{ with .Description }}{{ . }}{{ else }}{{- if or .IsPage .IsSection}}{{ .Summary | default (printf "%s - %s" .Title site.Title) }}{{ else }}{{ with site.Params.description }}{{ . }}{{ end }}{{ end }}{{ end }}">
