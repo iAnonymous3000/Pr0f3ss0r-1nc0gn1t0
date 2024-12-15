@@ -20,12 +20,12 @@ Google employs automated systems called web crawlers to systematically browse th
 
 - **Content Examination**: Crawlers analyze website content, including HTML, JavaScript, and embedded resources.
 - **Behavioral Analysis**: Scripts and code are executed in a sandbox environment to detect malicious behaviors not apparent through static analysis.
-- **Detection Techniques**: Uses heuristics and signature-based detection to identify malware and phishing sites.
+- **Detection Techniques**: Heuristics, machine learning models, and signature-based detection identify malware and phishing sites.
 
 <div align="center">
   <img src="https://github.com/user-attachments/assets/4f6df1a6-9168-4d2d-8e11-ebc03b29ccf4" alt="Web Crawling and Analysis Process">
 
-<em> Flowchart illustrating the web crawling and analysis process.</em>
+<em>Flowchart illustrating the web crawling and analysis process.</em>
 </div>
 
 
@@ -85,7 +85,7 @@ Brave enhances privacy in its implementation of Google Safe Browsing by taking a
 
 When Brave needs to request full hashes from Google's Safe Browsing servers (after a local match of a hashed prefix), it routes these requests through Brave's servers.
 
-- **Anonymity**: This prevents Google from seeing the user's IP address, enhancing privacy.
+- **Anonymity**: Prevents Google from seeing the user's IP address.
 - **Privacy Enhancement**: Stops Google from associating Safe Browsing requests with specific users.
 
 #### Limiting Data Sent to Google
@@ -102,7 +102,7 @@ Brave minimizes the data sent to Google by:
 
 <div align="center">
   <img src="https://github.com/user-attachments/assets/b9ee2d48-8560-4f99-bda7-2592c6bff4a7" alt="Standard vs Brave Safe Browsing Implementation">
-<em> Flowchart comparing standard Safe Browsing implementation with Brave's enhanced privacy approach.</em>
+<em>Flowchart comparing standard Safe Browsing implementation with Brave's enhanced privacy approach.</em>
 </div>
 
 ## Responding to Google Safe Browsing Warnings
@@ -133,7 +133,7 @@ Brave minimizes the data sent to Google by:
 <div align="center">
   <img src="https://github.com/user-attachments/assets/7d1da7c2-32e6-4233-8c0e-677b3a4c35b2" alt="URL Hashing and Prefix Matching Process">
 
-<em> Diagram showing the process of URL hashing and how hash prefixes are used to check against the Safe Browsing database without compromising privacy.</em>
+<em>Diagram showing the process of URL hashing and how hash prefixes are used to check against the Safe Browsing database without compromising privacy.</em>
 </div>
 
 ### Machine Learning and Threat Detection
@@ -154,7 +154,7 @@ Brave minimizes the data sent to Google by:
 
 ## Conclusion
 
-Google Safe Browsing is an elegant balance of robust security and technical sophistication helps create a safer internet for everyone – from casual browsers to business owners. While the technology itself is remarkable, it's the innovations by privacy-focused browsers like **Brave** that truly showcase its potential: proving that - we don't have to choose between staying safe and staying private. The future of web security isn't just about building walls; it's about building them intelligently.
+Google Safe Browsing is an elegant balance of robust security and technical sophistication that helps create a safer internet for everyone—from casual browsers to business owners. While the technology itself is remarkable, it's the innovations by privacy-focused browsers like **Brave** that truly showcase its potential, proving that we don't have to choose between staying safe and staying private. The future of web security isn't just about building walls; it's about building them intelligently.
 
 ---
 *Do you have any experiences or tips related to staying safe online? Share your thoughts!*
