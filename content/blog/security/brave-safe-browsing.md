@@ -101,8 +101,10 @@ Brave minimizes the data sent to Google by:
 - **Efficiency**: Local checks are fast and protect user privacy by avoiding unnecessary network requests.
 
 <div align="center">
-  <img src="https://github.com/user-attachments/assets/b9ee2d48-8560-4f99-bda7-2592c6bff4a7" alt="Standard vs Brave Safe Browsing Implementation">
-<em>Flowchart comparing standard Safe Browsing implementation with Brave's enhanced privacy approach.</em>
+  <img src="https://github.com/user-attachments/assets/1369f617-7f4d-45e0-a822-1fab54594034" alt="Standard Safe Browsing Implementation">
+  <img src="https://github.com/user-attachments/assets/620335d2-d227-4cae-a639-3f56af97f6a5" alt="Brave Safe Browsing Implementation">
+  <br>
+  <em>Flowchart comparing standard Safe Browsing implementation with Brave's enhanced privacy approach.</em>
 </div>
 
 ## Responding to Google Safe Browsing Warnings
