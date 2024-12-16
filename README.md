@@ -67,6 +67,8 @@ The website is deployed to two platforms:
    - Available at: [profincognito.me](https://profincognito.me)
 
 2. **Mirror (GitHub Pages)**:
+   
+   [![Deploy to GitHub Pages](https://github.com/iAnonymous3000/Pr0f3ss0r-1nc0gn1t0/actions/workflows/gh-pages.yml/badge.svg)](https://github.com/iAnonymous3000/Pr0f3ss0r-1nc0gn1t0/actions/workflows/gh-pages.yml)
    - Serves as backup/mirror
    - Automatically updated when Cloudflare builds
    - Serves static files from gh-pages branch
