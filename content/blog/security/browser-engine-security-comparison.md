@@ -1,6 +1,5 @@
 ---
 title: "Comparing Browser Engine Security: Chromium, Gecko, WebKit"
-date: 2025-01-15
 description: "A deep-dive into multi-process sandboxing, exploit mitigations, memory safety, extension security, and specialized hardened Chromium forks like Vanadium (for GrapheneOS) and Trivalent (for desktop Linux)."
 tags: ["security", "browsers", "chromium", "firefox", "webkit", "vanadium", "trivalent", "grapheneos", "sandboxing", "exploit-mitigation", "site-isolation", "memory-safety", "multi-process", "browser-security", "hardened_malloc", "rlbox"]
 ---
