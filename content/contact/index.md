@@ -47,9 +47,9 @@ Key Features:
 ## 📅 Meeting Requests
 For scheduled discussions:
 
-➜ [Book a Meeting](https://cal.com/ianonymous3000)
+➜ [Book a Meeting](https://cal.com/timechainconsulting)
 
-<img src="https://github.com/user-attachments/assets/f6d89164-43a3-4c7d-be8f-888f3908f8e8" alt="Calendar QR Code" width="300" height="300" style="display: block; margin: 20px 0;">
+<img src="https://github.com/user-attachments/assets/141f7f30-34f8-40f3-9979-24562ec52494" alt="Calendar QR Code" width="300" height="300" style="display: block; margin: 20px 0;">
 
 Available for:
 - Project consultations
