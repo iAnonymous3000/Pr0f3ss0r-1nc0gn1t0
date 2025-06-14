@@ -1,9 +1,0 @@
-{
-  "name": "pr0f3ss0r-1nc0gn1t0",
-  "compatibility_date": "2025-06-13",
-  "assets": {
-    "directory": "./public/",
-    "not_found_handling": "single-page-application"
-  },
-  "workers_dev": true
-}
