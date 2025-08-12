@@ -3,9 +3,7 @@ title: "About"
 summary: "About Professor Incognito"
 ---
 
-![Sooraj Sathyanarayanan presenting at a technical session](/images/about_header.jpg)
-
-👋 Hi there! I'm **Sooraj Sathyanarayanan**, a cybersecurity and privacy researcher with over 3 years of deep technical experience across various security domains. Currently pursuing my Master's in Cybersecurity at Northeastern University (expected Dec 2024), I blend hands-on technical prowess with a passion for privacy-focused solutions, secure systems design, and meaningful digital rights advocacy.
+👋 Hi there! I'm **Sooraj Sathyanarayanan**, a cybersecurity and privacy researcher with over 4 years of deep technical experience across various security domains. I hold a Master’s in Cybersecurity from Northeastern University and blend hands-on technical expertise with a passion for privacy-focused solutions, secure systems design, and meaningful digital rights advocacy.
 
 ## Mission
 
