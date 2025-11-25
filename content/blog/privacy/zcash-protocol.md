@@ -15,18 +15,18 @@ This technical deep dive examines the Zcash protocol specification (Version 2025
 
 ## Table of Contents
 
-- [Introduction: The Privacy Problem](#1-introduction-the-privacy-problem)
-- [Zcash Architecture Overview](#2-zcash-architecture-overview)
-- [The Dual Payment System](#3-the-dual-payment-system)
-- [Core Privacy Primitives](#4-core-privacy-primitives)
-- [The Three Shielded Protocols](#5-the-three-shielded-protocols)
-- [Zero-Knowledge Proof Systems](#6-zero-knowledge-proof-systems)
-- [Key Architecture and Derivation](#7-key-architecture-and-derivation)
-- [Cryptographic Building Blocks](#8-cryptographic-building-blocks)
-- [Transaction Structure and Validation](#9-transaction-structure-and-validation)
-- [Security Analysis](#10-security-analysis)
-- [Network Upgrades](#11-network-upgrades)
-- [Conclusion](#12-conclusion)
+- [1. Introduction: The Privacy Problem](#1-introduction-the-privacy-problem)
+- [2. Zcash Architecture Overview](#2-zcash-architecture-overview)
+- [3. The Dual Payment System](#3-the-dual-payment-system)
+- [4. Core Privacy Primitives](#4-core-privacy-primitives)
+- [5. The Three Shielded Protocols](#5-the-three-shielded-protocols)
+- [6. Zero-Knowledge Proof Systems](#6-zero-knowledge-proof-systems)
+- [7. Key Architecture and Derivation](#7-key-architecture-and-derivation)
+- [8. Cryptographic Building Blocks](#8-cryptographic-building-blocks)
+- [9. Transaction Structure and Validation](#9-transaction-structure-and-validation)
+- [10. Security Analysis](#10-security-analysis)
+- [11. Network Upgrades](#11-network-upgrades)
+- [12. Conclusion](#12-conclusion)
 
 ---
 
@@ -123,9 +123,6 @@ PRIVACY GUARANTEES BY TRANSACTION TYPE:
   Shielded → Transparent:     Amount visible at exit point only
 ```
 
-> **📊 Diagram Placeholder — Pool Flow Visualization**  
-> *For publication: Replace ASCII art above with a high-fidelity flow diagram showing value movement between Transparent, Sapling, Orchard pools, and the Lockbox. Include arrows indicating privacy state (visible/hidden) at each transition point.*
-
 ### 2.2 Chain Value Pools
 
 Zcash maintains separate **chain value pools**:
@@ -218,7 +215,7 @@ $$n_{Sprout} = (a_{pk}, v, \rho, rcm)$$
 Where:
 
 - $a_{pk} \in \mathbb{B}^{256}$ — paying key of recipient's address
-- $v \in \{0, ..., MAX\_MONEY\}$ — value in zatoshi (1 ZEC = $10^8$ zatoshi)
+- $v \in \lbrace 0, \ldots, MAX\_MONEY \rbrace$ — value in zatoshi (1 ZEC = $10^8$ zatoshi)
 - $\rho \in \mathbb{B}^{256}$ — nullifier randomness
 - $rcm$ — random commitment trapdoor
 
@@ -230,8 +227,8 @@ Where:
 
 - $d \in \mathbb{B}^{88}$ — diversifier
 - $pk_d \in \mathbb{J}^{(r)*}$ — diversified transmission key (Jubjub curve point)
-- $v \in \{0, ..., MAX\_MONEY\}$ — value in zatoshi
-- $rcm \in \mathbb{F}_{r_\mathbb{J}}$ — commitment trapdoor
+- $v \in \lbrace 0, \ldots, MAX\_MONEY \rbrace$ — value in zatoshi
+- $rcm \in \mathbb{F}_{r_{\mathbb{J}}}$ — commitment trapdoor
 
 #### Orchard Note Structure
 
@@ -241,9 +238,9 @@ Where:
 
 - $d \in \mathbb{B}^{88}$ — diversifier
 - $pk_d \in \mathbb{P}$ — diversified transmission key (Pallas curve point)
-- $v \in \{0, ..., 2^{64}-1\}$ — value in zatoshi
-- $\rho \in \mathbb{F}_{q_\mathbb{P}}$ — nullifier randomness
-- $\psi \in \mathbb{F}_{q_\mathbb{P}}$ — additional nullifier randomness
+- $v \in \lbrace 0, \ldots, 2^{64}-1 \rbrace$ — value in zatoshi
+- $\rho \in \mathbb{F}_{q_{\mathbb{P}}}$ — nullifier randomness
+- $\psi \in \mathbb{F}_{q_{\mathbb{P}}}$ — additional nullifier randomness
 - $rcm$ — commitment trapdoor
 
 ### 4.2 Note Commitments
@@ -267,7 +264,7 @@ $$cm = SHA256Compress(cm \| rcm)$$
 
 #### Sapling Note Commitment
 
-$$cm = NoteCommit_{rcm}^{Sapling}(repr_\mathbb{J}(g_d), repr_\mathbb{J}(pk_d), v)$$
+$$cm = NoteCommit_{rcm}^{Sapling}(repr_{\mathbb{J}}(g_d), repr_{\mathbb{J}}(pk_d), v)$$
 
 Where:
 
@@ -276,17 +273,17 @@ Where:
 
 The Pedersen commitment has the form:
 
-$$cm = [rcm] \cdot \mathcal{H} + Pedersen(repr_\mathbb{J}(g_d) \| repr_\mathbb{J}(pk_d) \| v)$$
+$$cm = [rcm] \cdot \mathcal{H} + Pedersen(repr_{\mathbb{J}}(g_d) \| repr_{\mathbb{J}}(pk_d) \| v)$$
 
 Where $\mathcal{H}$ is a nothing-up-my-sleeve generator point.
 
 #### Orchard Note Commitment
 
-$$cm = NoteCommit_{rcm}^{Orchard}(repr_\mathbb{P}(g_d), repr_\mathbb{P}(pk_d), v, \rho, \psi)$$
+$$cm = NoteCommit_{rcm}^{Orchard}(repr_{\mathbb{P}}(g_d), repr_{\mathbb{P}}(pk_d), v, \rho, \psi)$$
 
 Using **Sinsemilla** hash function for improved circuit efficiency:
 
-$$cm = SinsemillaCommit_{rcm}(repr_\mathbb{P}(g_d) \| repr_\mathbb{P}(pk_d) \| I2LEBSP_{64}(v) \| \rho \| \psi)$$
+$$cm = SinsemillaCommit_{rcm}(repr_{\mathbb{P}}(g_d) \| repr_{\mathbb{P}}(pk_d) \| I2LEBSP_{64}(v) \| \rho \| \psi)$$
 
 ### 4.3 Note Commitment Trees
 
@@ -317,11 +314,11 @@ The **Merkle root** (called an **anchor**) uniquely identifies the state of the 
 
 To prove a commitment exists in the tree, the spender provides a **Merkle path**—the sequence of sibling hashes from leaf to root:
 
-$$path = [M_{sibling(h,i)}^h \text{ for } h \text{ from } MerkleDepth \text{ down to } 1]$$
+$$path = \left[ M_{sibling(h,i)}^h \text{ for } h \text{ from } MerkleDepth \text{ down to } 1 \right]$$
 
 Where:
 
-$$sibling(h, i) = \lfloor \frac{i}{2^{MerkleDepth-h}} \rfloor \oplus 1$$
+$$sibling(h, i) = \left\lfloor \frac{i}{2^{MerkleDepth-h}} \right\rfloor \oplus 1$$
 
 Verification recomputes the root from the leaf:
 
@@ -346,12 +343,12 @@ $$nf = PRF_{a_{sk}}^{nf}(\rho)$$
 
 **Sapling:**
 
-$$nf = PRF_{nk^*}^{nfSapling}(\rho^*)$$
+$$nf = PRF_{nk^{\ast}}^{nfSapling}(\rho^{\ast})$$
 
 Where:
 
-- $nk^* = repr_\mathbb{J}(nk)$ — serialized nullifier deriving key
-- $\rho^* = repr_\mathbb{J}(MixingPedersenHash(cm, pos))$
+- $nk^{\ast} = repr_{\mathbb{J}}(nk)$ — serialized nullifier deriving key
+- $\rho^{\ast} = repr_{\mathbb{J}}(MixingPedersenHash(cm, pos))$
 - $pos$ — the note's position in the commitment tree
 
 **Orchard:**
@@ -360,7 +357,7 @@ $$nf = DeriveNullifier_{nk}(\rho, \psi, cm)$$
 
 Using Poseidon hash:
 
-$$nf = Extract_\mathbb{P}([PRF_{nk}^{nfOrchard}(\rho) + \psi] \cdot \mathcal{K} + cm)$$
+$$nf = Extract_{\mathbb{P}}([PRF_{nk}^{nfOrchard}(\rho) + \psi] \cdot \mathcal{K} + cm)$$
 
 Where $\mathcal{K}$ is a generator point for the nullifier base.
 
@@ -551,9 +548,6 @@ The most significant change is the proving system. While BCTV14 and Groth16 requ
 | Quantum resistance | None | None |
 | Curve | BLS12-381 | Pallas/Vesta |
 
-> **📊 Diagram Placeholder — Trusted vs. Transparent Setup**  
-> *For publication: Create a side-by-side comparison showing (1) Groth16's multi-party ceremony with "toxic waste" destruction requirement, and (2) Halo 2's transparent setup derived from public randomness. Emphasize the trust assumption difference.*
-
 #### Circuit Changes
 
 Orchard's Action circuit proves (for each Action):
@@ -609,7 +603,7 @@ More precisely, there exists an **extractor** that can recover $w$ from any succ
 
 Proofs reveal nothing beyond statement truth. There exists a simulator $\mathcal{S}$ producing indistinguishable "fake" proofs:
 
-$$\{Prove(pk, x, w)\}_{(x,w) \in \mathcal{R}} \approx \{Simulate(x)\}_{x}$$
+$$\lbrace Prove(pk, x, w) \rbrace_{(x,w) \in \mathcal{R}} \approx \lbrace Simulate(x) \rbrace_{x}$$
 
 ### 6.3 BCTV14 (Sprout, pre-Sapling)
 
@@ -728,9 +722,6 @@ Zcash's key hierarchy enables flexible access control:
     └──────────────┘    └──────────────┘
 ```
 
-> **📊 Diagram Placeholder — Key Derivation Hierarchy**  
-> *For publication: Replace ASCII art with a professional hierarchical diagram showing key derivation flow. Color-code by capability level: Red (full spend authority), Yellow (view outgoing), Green (view incoming), Blue (receive only). This is the most developer-critical diagram in the document.*
-
 ### 7.2 Sapling Key Derivation
 
 Starting from a random spending key $sk \in \mathbb{B}^{256}$:
@@ -743,7 +734,7 @@ $$nsk = ToScalar^{Sapling}(PRF^{expand}_{sk}([0x01]))$$
 
 $$ovk = truncate_{32}(PRF^{expand}_{sk}([0x02]))$$
 
-Where $ToScalar^{Sapling}(x) = LEOS2IP_{512}(x) \mod r_\mathbb{J}$
+Where $ToScalar^{Sapling}(x) = LEOS2IP_{512}(x) \mod r_{\mathbb{J}}$
 
 #### Proof Authorizing Key
 
@@ -753,11 +744,11 @@ $$nk = [nsk] \cdot \mathcal{H}^{Sapling}$$
 
 #### Incoming Viewing Key
 
-$$ivk = CRH^{ivk}(repr_\mathbb{J}(ak), repr_\mathbb{J}(nk))$$
+$$ivk = CRH^{ivk}(repr_{\mathbb{J}}(ak), repr_{\mathbb{J}}(nk))$$
 
 Using BLAKE2s with parameter block modifications:
 
-$$ivk = BLAKE2s_{256}("Zcash\_ivk", ak || nk) \mod 2^{251}$$
+$$ivk = BLAKE2s_{256}(\text{"Zcash\_ivk"}, ak \| nk) \mod 2^{251}$$
 
 #### Diversified Payment Address
 
@@ -771,7 +762,7 @@ $$addr = (d, pk_d)$$
 
 The diversifier is hashed to a curve point using:
 
-$$g_d = GroupHash^{\mathbb{J}}("Zcash\_gd", "Zcash\_G\_", d)$$
+$$g_d = GroupHash^{\mathbb{J}}(\text{"Zcash\_gd"}, \text{"Zcash\_G\_"}, d)$$
 
 If $g_d = \bot$ (not on curve), choose a different $d$.
 
@@ -787,8 +778,8 @@ $$rivk = ToScalar^{Orchard}(PRF^{expand}_{sk}([0x08]))$$
 
 Where:
 
-- $ToBase^{Orchard}(x) = LEOS2IP_{512}(x) \mod q_\mathbb{P}$
-- $ToScalar^{Orchard}(x) = LEOS2IP_{512}(x) \mod r_\mathbb{P}$
+- $ToBase^{Orchard}(x) = LEOS2IP_{512}(x) \mod q_{\mathbb{P}}$
+- $ToScalar^{Orchard}(x) = LEOS2IP_{512}(x) \mod r_{\mathbb{P}}$
 
 #### Full Viewing Key
 
@@ -800,7 +791,7 @@ $$fvk = (ak, nk, rivk)$$
 
 $$dk = truncate_{32}(PRF^{expand}_{sk}([0x07]))$$
 
-$$ivk = Commit^{ivk}_{rivk}(ak, nk) \mod r_\mathbb{P}$$
+$$ivk = Commit^{ivk}_{rivk}(ak, nk) \mod r_{\mathbb{P}}$$
 
 ### 7.4 Viewing Key Capabilities
 
@@ -827,15 +818,15 @@ $$ivk = Commit^{ivk}_{rivk}(ak, nk) \mod r_\mathbb{P}$$
 
 **SHA-256** (Sprout): Standard NIST hash
 
-$$H: \{0,1\}^* \rightarrow \{0,1\}^{256}$$
+$$H: \lbrace 0,1 \rbrace^{\ast} \rightarrow \lbrace 0,1 \rbrace^{256}$$
 
 **BLAKE2b** (Sapling): Personalized keyed hash
 
-$$BLAKE2b_{512}("Zcash\_...", x)$$
+$$BLAKE2b_{512}(\text{"Zcash\_..."}, x)$$
 
 **BLAKE2s** (Sapling): For shorter outputs
 
-$$BLAKE2s_{256}("Zcash\_...", x)$$
+$$BLAKE2s_{256}(\text{"Zcash\_..."}, x)$$
 
 #### Pedersen Hash (Sapling)
 
@@ -846,7 +837,7 @@ $$PedersenHash(D, M) = \sum_{i=0}^{n-1} [enc(m_i)] \cdot \mathcal{P}_{D,i}$$
 Where:
 
 - $M$ is split into 3-bit chunks $m_i$
-- $enc(m) = m - 4$ for $m \in \{0,...,7\}$ (range $[-4, 3]$)
+- $enc(m) = m - 4$ for $m \in \lbrace 0,\ldots,7 \rbrace$ (range $[-4, 3]$)
 - $\mathcal{P}_{D,i}$ are independent generator points
 
 The window structure uses 4 generators per segment:
@@ -871,7 +862,7 @@ Where:
 
 Poseidon is an algebraic hash optimized for zkSNARKs:
 
-$$Poseidon_{width}(x_1, ..., x_w) = ARK \circ S \circ MDS \circ ... \circ ARK(x_1, ..., x_w)$$
+$$Poseidon_{width}(x_1, \ldots, x_w) = ARK \circ S \circ MDS \circ \ldots \circ ARK(x_1, \ldots, x_w)$$
 
 Where:
 
@@ -959,7 +950,7 @@ A Schnorr-based signature with re-randomizable keys:
 
 **Key Generation:**
 
-$$sk \leftarrow \{1, ..., r-1\}$$
+$$sk \leftarrow \lbrace 1, \ldots, r-1 \rbrace$$
 
 $$pk = [sk] \cdot \mathcal{B}$$
 
@@ -967,17 +958,17 @@ $$pk = [sk] \cdot \mathcal{B}$$
 
 $$T \leftarrow random()$$
 
-$$r = H(T || pk || M)$$
+$$r = H(T \| pk \| M)$$
 
 $$R = [r] \cdot \mathcal{B}$$
 
-$$S = r + H(R || pk || M) \cdot sk$$
+$$S = r + H(R \| pk \| M) \cdot sk$$
 
 $$\sigma = (R, S)$$
 
 **Verification:**
 
-$$[S] \cdot \mathcal{B} \stackrel{?}{=} R + [H(R || pk || M)] \cdot pk$$
+$$[S] \cdot \mathcal{B} \stackrel{?}{=} R + [H(R \| pk \| M)] \cdot pk$$
 
 **Re-randomization:**
 
@@ -1123,7 +1114,7 @@ This ensures only the legitimate recipient can compute the valid nullifier.
 
 The proving/verifying keys contain:
 
-$$pk = (g^{\alpha}, g^{\beta}, ..., g^{\tau^d})$$
+$$pk = (g^{\alpha}, g^{\beta}, \ldots, g^{\tau^d})$$
 
 Where $\tau$ (the "toxic waste") must be destroyed. If any party knows $\tau$, they can forge proofs and create counterfeit ZEC.
 
@@ -1228,9 +1219,6 @@ The most significant architectural change under development is **Crosslink**, le
 
 Crosslink represents Zcash's path toward hybrid PoW/PoS, addressing long-standing concerns about mining centralization and network security.
 
-> **📊 Diagram Placeholder — Crosslink Hybrid Consensus**  
-> *For publication: Create a conceptual diagram showing the two-layer consensus: (1) PoW miners producing candidate blocks, (2) PoS validators finalizing blocks. Show how a 51% PoW attack would be thwarted by the finality layer. Include timeline from block proposal → finalization.*
-
 #### Zcash Shielded Assets (ZSA) — Candidate ZIPs
 
 ZSA would enable **user-defined tokens** within shielded pools, extending Zcash's privacy guarantees to arbitrary assets. Key proposals include:
@@ -1314,11 +1302,11 @@ As privacy becomes increasingly valuable in digital economies, Zcash's cryptogra
 
 | Symbol | Meaning |
 |--------|---------|
-| $\mathbb{B}$ | Bit values $\{0, 1\}$ |
+| $\mathbb{B}$ | Bit values $\lbrace 0, 1 \rbrace$ |
 | $\mathbb{B}^n$ | Bit sequences of length $n$ |
 | $\mathbb{F}_p$ | Finite field with $p$ elements |
 | $\mathbb{G}$ | Elliptic curve group |
-| $[k] \cdot P$ | Scalar multiplication: $P + P + ... + P$ ($k$ times) |
+| $[k] \cdot P$ | Scalar multiplication: $P + P + \ldots + P$ ($k$ times) |
 | $e(P, Q)$ | Pairing function |
 | $\mathcal{O}$ | Point at infinity (group identity) |
 | $r$ | Subgroup order |
