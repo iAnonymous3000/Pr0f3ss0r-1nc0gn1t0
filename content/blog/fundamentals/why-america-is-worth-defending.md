@@ -67,7 +67,7 @@ Americans do not wait for the government to solve every problem. We form communi
 
 So when people ask why the "Idea of America" matters, I tell them it is because I know what the alternative looks like. I know what happens when the state is the master and the citizen is the servant.
 
-America is not perfect. But it is the only place on Earth where someone like me can work on securing the digital infrastructure of the free world, teach the next generation of defenders, and say exactly what I think about it—all without asking permission from a king or a commissar.
+America is not perfect. But it is the only place on Earth where someone like me can work on securing the digital infrastructure of the free world, teach the next generation of defenders, and say exactly what I think about it - all without asking permission from a king or a commissar.
 
 That is not just exceptionalism. That is freedom.
 
