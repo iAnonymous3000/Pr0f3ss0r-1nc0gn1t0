@@ -14,11 +14,11 @@ As a privacy advocate, I strongly encourage using privacy-preserving payment met
 **Shielded Zcash (ZEC)**
 
 <div class="flex justify-center">
-    <img src="https://github.com/user-attachments/assets/1c42259a-4141-451e-abbb-5c224d5ceaa8" alt="ZEC Donation QR Code" class="w-40 h-40 my-4">
+    <img src="https://github.com/user-attachments/assets/38d62943-7b5d-4590-a7b8-a2ef26ec3140" alt="ZEC Donation QR Code" class="w-40 h-40 my-4">
 </div>
 
 ```zcash
-u15sc93jcpngdtpx7tr0whpqtzfhmdvp45507c6tg495mcm2x8ryyllsg8pgnzjqcywuka6uevrnn56s60raazk7g5zf206ltcn6ujw6jalndvy77zse69prrcw5203rndlnwuwk37v8knawx5lx5kdssp75t60pjq4rx8fsy0eygl5z2evnkxv7m8v0x20jv2k9aht37agduws2z5cx9
+u1j99pfjct2l3zznrqktr559stpymcypna3mal44wxg6c3g24wwayl0qv6endlcp6gps8lzq9hed9ufxz3hk86mvhcmqv3yr0596g0n65640stee65cxr7yz35hhk7g0qmm47rls8yucwsnte7c4sg53qmd0qfp3jpdjn8jjxmuq0glu9f
 ```
 
 
