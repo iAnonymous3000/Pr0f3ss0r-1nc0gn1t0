@@ -1,6 +1,8 @@
 {
     "name": "Sooraj Sathyanarayanan",
     "short_name": "Pr0f3ss0r 1nc0gn1t0",
+    "start_url": "/",
+    "scope": "/",
     "icons": [
         {
             "src": "/images/favicon/favicon-16x16.png",

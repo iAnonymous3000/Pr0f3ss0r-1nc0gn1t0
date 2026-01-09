@@ -1,7 +1,7 @@
 # Professor Incognito - Personal Website  
 
 <a href="https://gohugo.io/">
-  <img src="https://img.shields.io/badge/Hugo-0.139.3-blue?style=flat-square&logo=hugo" alt="Hugo Version">
+  <img src="https://img.shields.io/badge/Hugo-0.147.8-blue?style=flat-square&logo=hugo" alt="Hugo Version">
 </a>
 <a href="https://pagespeed.web.dev/analysis/https-profincognito-me/l3b9r03hj6">
   <img src="https://img.shields.io/badge/PageSpeed-100%25-brightgreen?style=flat-square&logo=googlechrome" alt="PageSpeed Score">

@@ -15,7 +15,7 @@ Canonical: https://profincognito.me/.well-known/security.txt
 Hiring: https://profincognito.me/research
 
 # Expiration
-Expires: 2025-10-26T00:00:00.000Z
+Expires: 2027-01-09T00:00:00.000Z
 
 # Optional: Your OpenPGP key or link to it
 #Encryption: https://profincognito.me/pgp.txt

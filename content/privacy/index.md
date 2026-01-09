@@ -12,8 +12,8 @@ This privacy policy explains how [profincognito.me](https://profincognito.me) ("
 ## 2. Technical Infrastructure
 
 ### 2.1 Core Infrastructure
-- **Static Website**: Built with [Hugo Extended v0.121.0+](https://gohugo.io/)
-- **Theme**: [WonderMod](https://github.com/adityatelange/hugo-PaperMod) (Privacy-hardened fork of PaperMod)
+- **Static Website**: Built with [Hugo Extended](https://gohugo.io/)
+- **Theme**: [WonderMod](https://github.com/Wonderfall/hugo-WonderMod) (Privacy-hardened fork of PaperMod)
 - **Hosting**: [Cloudflare Pages](https://pages.cloudflare.com/)
 - **DNS & Security**: [Cloudflare](https://www.cloudflare.com/)
 - **Analytics**: [Cloudflare Web Analytics](https://www.cloudflare.com/web-analytics/)

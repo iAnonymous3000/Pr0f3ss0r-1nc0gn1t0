@@ -67,3 +67,15 @@ bower_components/
 *.tar
 *.rar
 *.7z
+
+# AI Assistant artifacts
+.claude/
+.claude*
+CLAUDE.md
+claude.md
+.cursorrules
+.cursor/
+.aider*
+.continue/
+.copilot/
+.github/copilot-*
