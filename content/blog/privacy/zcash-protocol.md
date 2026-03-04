@@ -1,7 +1,8 @@
 ---
 title: "Zcash Protocol Deep Dive: The Cryptography Behind Financial Privacy"
-description: "A comprehensive technical analysis of the Zcash protocol (v2025.6.1), covering zk-SNARKs, Halo 2, the Lockbox funding model, and the evolution of privacy from Sprout to Orchard."
+description: "A comprehensive technical analysis of the Zcash protocol (v2025.6.3), covering zk-SNARKs, Halo 2, the Lockbox funding model, and the evolution of privacy from Sprout to Orchard."
 tags: ["zcash", "cryptography", "zk-SNARKs", "privacy", "blockchain", "protocol analysis", "halo 2", "zero-knowledge"]
+math: true
 draft: false
 ---
 
@@ -9,7 +10,7 @@ draft: false
 
 Zcash represents one of the most sophisticated implementations of cryptographic privacy in production blockchain systems. Built on the theoretical foundations of the Zerocash protocol, Zcash employs zero-knowledge succinct non-interactive arguments of knowledge (zk-SNARKs) to enable fully private transactions while maintaining the integrity guarantees of a public ledger.
 
-This technical deep dive examines the Zcash protocol specification (Version 2025.6.1), covering its cryptographic primitives, privacy architecture, zero-knowledge proof systems, and the evolution from Sprout through Sapling to Orchard. We analyze the mathematical foundations, security properties, and design decisions that make Zcash a reference implementation for blockchain privacy.
+This technical deep dive examines the Zcash protocol specification (Version 2025.6.3), covering its cryptographic primitives, privacy architecture, zero-knowledge proof systems, and the evolution from Sprout through Sapling to Orchard. We analyze the mathematical foundations, security properties, and design decisions that make Zcash a reference implementation for blockchain privacy.
 
 ---
 
@@ -22,11 +23,12 @@ This technical deep dive examines the Zcash protocol specification (Version 2025
 - [5. The Three Shielded Protocols](#5-the-three-shielded-protocols)
 - [6. Zero-Knowledge Proof Systems](#6-zero-knowledge-proof-systems)
 - [7. Key Architecture and Derivation](#7-key-architecture-and-derivation)
-- [8. Cryptographic Building Blocks](#8-cryptographic-building-blocks)
-- [9. Transaction Structure and Validation](#9-transaction-structure-and-validation)
-- [10. Security Analysis](#10-security-analysis)
-- [11. Network Upgrades](#11-network-upgrades)
-- [12. Conclusion](#12-conclusion)
+- [8. Unified Addresses and Memo Fields](#8-unified-addresses-and-memo-fields)
+- [9. Cryptographic Building Blocks](#9-cryptographic-building-blocks)
+- [10. Transaction Structure and Validation](#10-transaction-structure-and-validation)
+- [11. Security Analysis](#11-security-analysis)
+- [12. Network Upgrades](#12-network-upgrades)
+- [13. Conclusion](#13-conclusion)
 
 ---
 
@@ -34,14 +36,14 @@ This technical deep dive examines the Zcash protocol specification (Version 2025
 
 ### 1.1 Bitcoin's Transparency Problem
 
-Bitcoin, despite popular misconception, is not anonymous—it is pseudonymous. Every transaction is permanently recorded on a public ledger, creating a complete transaction graph that links addresses through their spending patterns. Research has repeatedly demonstrated that this transparency, combined with off-chain data sources, enables deanonymization of users through:
+Bitcoin, despite popular misconception, is not anonymous. It is pseudonymous. Every transaction is permanently recorded on a public ledger, creating a complete transaction graph that links addresses through their spending patterns. Research has repeatedly demonstrated that this transparency, combined with off-chain data sources, enables deanonymization of users through:
 
 - **Transaction graph analysis**: Clustering algorithms identify addresses controlled by the same entity
 - **Amount correlation**: Matching input/output amounts across transactions
 - **Timing analysis**: Transaction timing patterns reveal behavioral signatures
 - **Exchange KYC linkage**: On-ramps and off-ramps connect pseudonyms to identities
 
-The implications extend beyond individual privacy. Financial surveillance at scale becomes trivial, and the fungibility of Bitcoin is compromised—coins with "tainted" histories may be rejected or discounted.
+The implications extend beyond individual privacy. Financial surveillance at scale becomes trivial, and the fungibility of Bitcoin is compromised, since coins with "tainted" histories may be rejected or discounted.
 
 ### 1.2 The Zerocash Solution
 
@@ -67,12 +69,13 @@ The Zcash ecosystem has matured into a multi-organization structure:
 **Reference Implementations:**
 
 - **Zashi**: ECC's modern wallet emphasizing usability; the primary user-facing reference for shielded transactions
-- **Zebra**: The Foundation's Rust implementation of a full node, now fully consensus-compatible with `zcashd` and improving network resilience through client diversity
-- **zcashd**: The original C++ node (ECC), still widely deployed
+- **Zebra**: The Foundation's Rust implementation of a full node, now fully consensus-compatible and serving as the primary node software going forward
+- **Zallet**: The successor wallet to zcashd's wallet functionality, designed to work with Zebra
+- **zcashd**: The original C++ node (ECC), now being deprecated in favor of Zebra and Zallet
 
 ### 1.4 Document Scope
 
-This analysis is based on the Zcash Protocol Specification Version 2025.6.1 [NU6.1], the authoritative technical document maintained collaboratively by Zcash ecosystem contributors. We examine the protocol as implemented through the NU6 network upgrade (activated November 2024), with discussion of the current NU6.1 changes.
+This analysis is based on the Zcash Protocol Specification Version 2025.6.3 [NU6.1], the authoritative technical document maintained collaboratively by Zcash ecosystem contributors. We examine the protocol as implemented through the NU6 network upgrade (activated November 2024) and NU6.1 (activated November 2025).
 
 ---
 
@@ -137,13 +140,13 @@ Zcash maintains separate **chain value pools**:
 
 The **Lockbox** (introduced in NU6) is distinct from user-accessible pools. It accumulates a portion of block rewards for future development grants, effectively holding funds in a "holding pattern" until a decentralized grant mechanism (per ZIP 1016) distributes them. Unlike Sprout/Sapling/Orchard, users cannot directly transact with the Lockbox.
 
-Value can move between user pools, but **cross-pool transfers always reveal the amount transferred**. This is a fundamental constraint—the system cannot hide what doesn't exist in the destination pool's commitment tree.
+Value can move between user pools, but **cross-pool transfers always reveal the amount transferred**. This is a fundamental constraint because the system cannot hide what doesn't exist in the destination pool's commitment tree.
 
 ### 2.3 Consensus Model
 
 Zcash inherits Bitcoin's Nakamoto consensus with modifications:
 
-- **Proof of Work**: Equihash (memory-hard, ASIC-resistant design intent)
+- **Proof of Work**: Equihash (memory-hard; originally designed for ASIC resistance, though specialized ASICs have since been developed)
 - **Block Time**: 75 seconds (post-Blossom)
 - **Difficulty Adjustment**: Per-block adjustment with damping
 - **Supply**: 21 million ZEC maximum, with halving schedule
@@ -206,7 +209,7 @@ The shielded components use **homomorphic commitments** (Sapling/Orchard) or **e
 
 ### 4.1 Notes
 
-In Zcash, value is carried by **notes**—the shielded equivalent of UTXOs. A note is not a "coin" in the physical sense but a tuple of cryptographic values that represent spendable funds.
+In Zcash, value is carried by **notes**, the shielded equivalent of UTXOs. A note is not a "coin" in the physical sense but a tuple of cryptographic values that represent spendable funds.
 
 #### Sprout Note Structure
 
@@ -214,10 +217,10 @@ $$n_{Sprout} = (a_{pk}, v, \rho, rcm)$$
 
 Where:
 
-- $a_{pk} \in \mathbb{B}^{256}$ — paying key of recipient's address
-- $v \in \lbrace 0, \ldots, MAX\_MONEY \rbrace$ — value in zatoshi (1 ZEC = $10^8$ zatoshi)
-- $\rho \in \mathbb{B}^{256}$ — nullifier randomness
-- $rcm$ — random commitment trapdoor
+- $a_{pk} \in \mathbb{B}^{256}$: paying key of recipient's address
+- $v \in \lbrace 0, \ldots, MAX\_MONEY \rbrace$: value in zatoshi (1 ZEC = $10^8$ zatoshi)
+- $\rho \in \mathbb{B}^{256}$: nullifier randomness
+- $rcm$: random commitment trapdoor
 
 #### Sapling Note Structure
 
@@ -225,10 +228,10 @@ $$n_{Sapling} = (d, pk_d, v, rcm)$$
 
 Where:
 
-- $d \in \mathbb{B}^{88}$ — diversifier
-- $pk_d \in \mathbb{J}^{(r)*}$ — diversified transmission key (Jubjub curve point)
-- $v \in \lbrace 0, \ldots, MAX\_MONEY \rbrace$ — value in zatoshi
-- $rcm \in \mathbb{F}_{r_{\mathbb{J}}}$ — commitment trapdoor
+- $d \in \mathbb{B}^{88}$: diversifier
+- $pk_d \in \mathbb{J}^{(r)*}$: diversified transmission key (Jubjub curve point)
+- $v \in \lbrace 0, \ldots, MAX\_MONEY \rbrace$: value in zatoshi
+- $rcm \in \mathbb{F}_{r_{\mathbb{J}}}$: commitment trapdoor
 
 #### Orchard Note Structure
 
@@ -236,12 +239,12 @@ $$n_{Orchard} = (d, pk_d, v, \rho, \psi, rcm)$$
 
 Where:
 
-- $d \in \mathbb{B}^{88}$ — diversifier
-- $pk_d \in \mathbb{P}$ — diversified transmission key (Pallas curve point)
-- $v \in \lbrace 0, \ldots, 2^{64}-1 \rbrace$ — value in zatoshi
-- $\rho \in \mathbb{F}_{q_{\mathbb{P}}}$ — nullifier randomness
-- $\psi \in \mathbb{F}_{q_{\mathbb{P}}}$ — additional nullifier randomness
-- $rcm$ — commitment trapdoor
+- $d \in \mathbb{B}^{88}$: diversifier
+- $pk_d \in \mathbb{P}$: diversified transmission key (Pallas curve point)
+- $v \in \lbrace 0, \ldots, 2^{64}-1 \rbrace$: value in zatoshi (64-bit field; consensus rules further constrain to MAX_MONEY)
+- $\rho \in \mathbb{F}_{q_{\mathbb{P}}}$: nullifier randomness
+- $\psi \in \mathbb{F}_{q_{\mathbb{P}}}$: additional nullifier randomness
+- $rcm$: commitment trapdoor
 
 ### 4.2 Note Commitments
 
@@ -268,7 +271,7 @@ $$cm = NoteCommit_{rcm}^{Sapling}(repr_{\mathbb{J}}(g_d), repr_{\mathbb{J}}(pk_d
 
 Where:
 
-- $g_d = DiversifyHash^{Sapling}(d)$ — the diversified base point
+- $g_d = DiversifyHash^{Sapling}(d)$: the diversified base point
 - The commitment uses **Windowed Pedersen Commitments** for efficiency
 
 The Pedersen commitment has the form:
@@ -312,7 +315,7 @@ The **Merkle root** (called an **anchor**) uniquely identifies the state of the 
 
 #### Merkle Path Verification
 
-To prove a commitment exists in the tree, the spender provides a **Merkle path**—the sequence of sibling hashes from leaf to root:
+To prove a commitment exists in the tree, the spender provides a **Merkle path**, the sequence of sibling hashes from leaf to root:
 
 $$path = \left[ M_{sibling(h,i)}^h \text{ for } h \text{ from } MerkleDepth \text{ down to } 1 \right]$$
 
@@ -347,9 +350,9 @@ $$nf = PRF_{nk^{\ast}}^{nfSapling}(\rho^{\ast})$$
 
 Where:
 
-- $nk^{\ast} = repr_{\mathbb{J}}(nk)$ — serialized nullifier deriving key
+- $nk^{\ast} = repr_{\mathbb{J}}(nk)$: serialized nullifier deriving key
 - $\rho^{\ast} = repr_{\mathbb{J}}(MixingPedersenHash(cm, pos))$
-- $pos$ — the note's position in the commitment tree
+- $pos$: the note's position in the commitment tree
 
 **Orchard:**
 
@@ -373,7 +376,7 @@ This ensures each note can only be spent once, without revealing which commitmen
 
 ### 4.5 Note Traceability Sets
 
-A critical privacy property is the **note traceability set**—the set of possible source notes for any given spend.
+A critical privacy property is the **note traceability set**, the set of possible source notes for any given spend.
 
 In Zcash, when spending a note, the spender proves knowledge of:
 
@@ -389,10 +392,10 @@ But the proof does **not** reveal which commitment. From an observer's perspecti
 |--------|-------------------|
 | Bitcoin (no mixing) | 1 |
 | CoinJoin | Participants in mix (~3-100) |
-| CryptoNote/Monero | Ring size (~11-16) |
+| CryptoNote/Monero | Ring size (fixed at 16) |
 | **Zcash** | **All unspent shielded notes** (~millions) |
 
-This is a fundamental architectural advantage—Zcash's anonymity set grows with every shielded transaction ever made.
+This is a fundamental architectural advantage: Zcash's anonymity set grows with every shielded transaction ever made.
 
 ---
 
@@ -512,7 +515,7 @@ The **binding signature** proves knowledge of $bsk = \sum rcv^{spend} - \sum rcv
 
 ### 5.3 Orchard (2021-Present)
 
-Orchard, activated with NU5 (May 2022), introduces Halo 2—eliminating trusted setup requirements.
+Orchard, activated with NU5 (May 2022), introduces Halo 2 and eliminates trusted setup requirements.
 
 #### Action-Based Design
 
@@ -543,7 +546,7 @@ The most significant change is the proving system. While BCTV14 and Groth16 requ
 | Property | Groth16 | Halo 2 |
 |----------|---------|--------|
 | Trusted setup | Required | **Not required** |
-| Proof size | 192 bytes | ~5 KB (aggregated) |
+| Proof size | 192 bytes | ~5 KB base + ~2.3 KB per action |
 | Verification | ~6 ms | ~variable |
 | Quantum resistance | None | None |
 | Curve | BLS12-381 | Pallas/Vesta |
@@ -658,9 +661,9 @@ The key breakthrough is replacing pairings with IPA:
 - Pairings require structured reference strings (toxic waste)
 - IPA requires only a random group element (can be derived from hash)
 
-**Trade-off**: Larger proofs (~5 KB vs 192 bytes), but:
+**Trade-off**: Larger proofs (~5 KB base + ~2.3 KB per action, vs 192 bytes for Groth16), but:
 
-- Proofs can be **aggregated** (many proofs → one verification)
+- A single proof covers an entire bundle of actions (amortizing the base cost)
 - No trusted setup ceremony required
 - Enables future **recursive proofs** (proofs that verify other proofs)
 
@@ -810,9 +813,72 @@ $$ivk = Commit^{ivk}_{rivk}(ak, nk) \mod r_{\mathbb{P}}$$
 
 ---
 
-## 8. Cryptographic Building Blocks
+## 8. Unified Addresses and Memo Fields
 
-### 8.1 Hash Functions
+### 8.1 Unified Addresses (ZIP 316)
+
+Introduced with NU5, **Unified Addresses (UAs)** solve a longstanding UX problem: users previously needed separate addresses for each pool (transparent, Sapling, Orchard), creating confusion and fragmentation.
+
+A Unified Address encodes multiple **receivers** in a single address string:
+
+```
+Unified Address
+┌───────────────────────────────────────────┐
+│  Orchard Receiver (preferred)             │
+│  Sapling Receiver (fallback)              │
+│  Transparent Receiver (optional fallback) │
+└───────────────────────────────────────────┘
+```
+
+When a sender creates a transaction to a UA, the wallet selects the most private receiver that both sender and recipient support. This means:
+
+- If both parties support Orchard, the transaction uses Orchard (best privacy)
+- If the sender only supports Sapling, it falls back to the Sapling receiver
+- The transparent receiver is used only as a last resort
+
+UAs use the **F4Jumble** encoding algorithm to ensure that the address cannot be partially parsed, preventing wallets from selectively ignoring shielded receivers.
+
+### 8.2 Encrypted Memo Fields
+
+Every shielded output includes a **512-byte encrypted memo field**, a distinctive feature not found in most other cryptocurrencies. The memo is encrypted alongside the note and is only visible to the recipient (or anyone with the appropriate viewing key).
+
+**Common uses:**
+
+- Payment references and invoice numbers
+- Return addresses for refunds
+- Encrypted messaging between parties
+- Compliance metadata (shared selectively via viewing keys)
+
+**Encryption layers:**
+
+Each shielded output contains two encrypted components:
+
+1. **$C^{enc}$** (encrypted to the recipient): Contains the note plaintext and memo, encrypted using the recipient's diversified transmission key via a KDF derived from Diffie-Hellman key agreement, then encrypted with ChaCha20-Poly1305 AEAD
+2. **$C^{out}$** (encrypted to the sender): Contains key material allowing the sender to decrypt the output later using their outgoing viewing key
+
+The key agreement uses the ephemeral secret key $esk$ and the recipient's $pk_d$:
+
+$$K^{enc} = KDF(DH(esk, pk_d), epk)$$
+
+This design ensures forward secrecy: compromising $esk$ after the transaction is mined does not help an attacker, since $esk$ is ephemeral and discarded.
+
+### 8.3 ZIP 317: Proportional Fee Mechanism
+
+Traditional Zcash used a flat fee of 1,000 zatoshis regardless of transaction complexity. ZIP 317 introduced a **proportional fee model** where the fee scales with the number of logical actions (inputs and outputs) in a transaction.
+
+The conventional fee under ZIP 317 is:
+
+$$fee = max(marginal\_fee \cdot max(grace\_actions, logical\_actions), marginal\_fee)$$
+
+Where $marginal\_fee = 5000$ zatoshis and $grace\_actions = 2$.
+
+This prevents abuse by high-output transactions (previously, a transaction with 1,100 outputs paid the same fee as one with 2 outputs) while keeping simple transactions inexpensive. A standard two-action transaction pays 10,000 zatoshis (0.0001 ZEC).
+
+---
+
+## 9. Cryptographic Building Blocks
+
+### 9.1 Hash Functions
 
 #### SHA-256 and BLAKE2
 
@@ -872,7 +938,7 @@ Where:
 
 Orchard uses Poseidon for PRF operations where algebraic structure is advantageous.
 
-### 8.2 Elliptic Curves
+### 9.2 Elliptic Curves
 
 #### BN-254 (Sprout)
 
@@ -882,7 +948,7 @@ $$y^2 = x^3 + 3$$
 
 Over $\mathbb{F}_p$ where $p$ is a 254-bit prime.
 
-**Security note**: BN-254 provides approximately 100 bits of security due to advances in discrete log attacks on pairing curves (notably the Kim-Barbulescu attack). This reduced security margin, combined with the deprecated status of the Sprout protocol, means that **modern wallets like Zashi effectively quarantine Sprout funds**—users are strongly encouraged to migrate any remaining Sprout ZEC to Sapling or Orchard pools.
+**Security note**: BN-254 provides approximately 100 bits of security due to advances in discrete log attacks on pairing curves (notably the Kim-Barbulescu attack). This reduced security margin, combined with the deprecated status of the Sprout protocol, means that **modern wallets like Zashi effectively quarantine Sprout funds**. Users are strongly encouraged to migrate any remaining Sprout ZEC to Sapling or Orchard pools.
 
 #### BLS12-381 (Sapling)
 
@@ -926,7 +992,7 @@ Where $q = r_p$ (Vesta's base field = Pallas's scalar field) and vice versa.
 
 This cycle enables **recursive composition**: a Pallas proof can verify a Vesta proof, and vice versa.
 
-### 8.3 Commitment Schemes
+### 9.3 Commitment Schemes
 
 #### Windowed Pedersen Commitment (Sapling)
 
@@ -942,7 +1008,7 @@ $$Commit_r(x) = [r] \cdot \mathcal{H} + PedersenHash(D, x)$$
 
 $$SinsemillaCommit_r(D, M) = SinsemillaHash(D, M) + [r] \cdot \mathcal{R}$$
 
-### 8.4 Signature Schemes
+### 9.4 Signature Schemes
 
 #### RedDSA (Sapling/Orchard)
 
@@ -982,9 +1048,9 @@ This enables **spend authorization signatures** that cannot be linked to the ori
 
 ---
 
-## 9. Transaction Structure and Validation
+## 10. Transaction Structure and Validation
 
-### 9.1 Transaction Versions
+### 10.1 Transaction Versions
 
 | Version | Introduced | Features |
 |---------|------------|----------|
@@ -994,7 +1060,7 @@ This enables **spend authorization signatures** that cannot be linked to the ori
 | 4 | Sapling | + Spend/Output descriptions |
 | 5 | NU5 | + Action descriptions, nonmalleable txid |
 
-### 9.2 Version 5 Transaction Structure
+### 10.2 Version 5 Transaction Structure
 
 ```
 Transaction v5:
@@ -1032,7 +1098,7 @@ Transaction v5:
     └── bindingSigOrchard (64 bytes)
 ```
 
-### 9.3 Consensus Rules
+### 10.3 Consensus Rules
 
 #### General Rules
 
@@ -1049,7 +1115,7 @@ Transaction v5:
 4. **Signature validity**: All spend auth and binding signatures must verify
 5. **Value balance**: Commitments must balance with transparent change
 
-### 9.4 SIGHASH Algorithm
+### 10.4 SIGHASH Algorithm
 
 Transaction authorization requires binding signatures to specific transactions. The SIGHASH algorithm creates a digest covering:
 
@@ -1070,9 +1136,9 @@ Each sub-digest covers specific transaction components, providing flexibility fo
 
 ---
 
-## 10. Security Analysis
+## 11. Security Analysis
 
-### 10.1 Cryptographic Assumptions
+### 11.1 Cryptographic Assumptions
 
 Zcash security relies on:
 
@@ -1084,7 +1150,7 @@ Zcash security relies on:
 | Knowledge of Exponent | zk-SNARKs (BCTV14, Groth16) |
 | Algebraic Group Model | Halo 2 soundness |
 
-### 10.2 Historical Vulnerabilities
+### 11.2 Historical Vulnerabilities
 
 #### Faerie Gold Attack (Fixed pre-launch)
 
@@ -1108,7 +1174,7 @@ This ensures only the legitimate recipient can compute the valid nullifier.
 
 **Fix**: Enhanced duplicate detection in transaction validation.
 
-### 10.3 Trusted Setup Considerations
+### 11.3 Trusted Setup Considerations
 
 **BCTV14/Groth16 Requirement:**
 
@@ -1128,9 +1194,9 @@ Security requires that at least one participant honestly destroyed their contrib
 
 **Halo 2 Elimination:**
 
-Orchard's Halo 2 requires no trusted setup—the "setup" is just a hash of a random string, publicly verifiable.
+Orchard's Halo 2 requires no trusted setup. The "setup" is just a hash of a random string, publicly verifiable.
 
-### 10.4 Privacy Limitations
+### 11.4 Privacy Limitations
 
 #### Timing Analysis
 
@@ -1162,7 +1228,7 @@ Non-transaction data may deanonymize:
 - Timing of wallet connections
 - Exchange deposit/withdrawal records
 
-### 10.5 Quantum Considerations
+### 11.5 Quantum Considerations
 
 Current Zcash is **not quantum-resistant**:
 
@@ -1177,9 +1243,9 @@ The Zcash community is researching post-quantum alternatives, including lattice-
 
 ---
 
-## 11. Network Upgrades
+## 12. Network Upgrades
 
-### 11.1 Upgrade History
+### 12.1 Upgrade History
 
 | Upgrade | Height | Date | Key Changes |
 |---------|--------|------|-------------|
@@ -1191,11 +1257,11 @@ The Zcash community is researching post-quantum alternatives, including lattice-
 | **Canopy** | 1,046,400 | Nov 2020 | Dev fund, deprecate Sprout |
 | **NU5** | 1,687,104 | May 2022 | Orchard, Halo 2, unified addresses |
 | **NU6** | 2,726,400 | Nov 2024 | Lockbox (ZIP 2001), second halving, new funding model |
-| **NU6.1** | ~2,820,000 | Nov 2025 | Lockbox disbursement fixes, funding stream adjustments |
+| **NU6.1** | 3,146,400 | Nov 2025 | ZIP 1016 C&C funding model, v5 default transactions, Orchard balance fixes |
 
-NU6 marked a significant milestone, coinciding with the second Zcash halving (block reward reduced to 1.5625 ZEC) and the expiration of the original Dev Fund. The Lockbox mechanism (ZIP 2001) now accumulates 20% of block rewards for future decentralized grant distribution.
+NU6 marked a significant milestone, coinciding with the second Zcash halving (block reward reduced from 3.125 ZEC to 1.5625 ZEC) and the expiration of the original Dev Fund. The Lockbox mechanism (ZIP 2001) accumulates 20% of block rewards. NU6.1 subsequently introduced the Community and Coinholder (C&C) funding model via ZIP 1016, which preserves 8% for Zcash Community Grants and directs the remaining 12% to the protocol-controlled Lockbox for future decentralized distribution.
 
-### 11.2 Upgrade Mechanism
+### 12.2 Upgrade Mechanism
 
 Zcash uses **coordinated network upgrades**:
 
@@ -1204,7 +1270,7 @@ Zcash uses **coordinated network upgrades**:
 3. Activation at predetermined block height
 4. Old transaction formats remain valid (backward compatibility)
 
-### 11.3 Future Directions
+### 12.3 Future Directions
 
 The Zcash ecosystem continues active development across multiple organizations. Key initiatives for 2025 and beyond include:
 
@@ -1219,13 +1285,24 @@ The most significant architectural change under development is **Crosslink**, le
 
 Crosslink represents Zcash's path toward hybrid PoW/PoS, addressing long-standing concerns about mining centralization and network security.
 
-#### Zcash Shielded Assets (ZSA) — Candidate ZIPs
+#### Zcash Shielded Assets (ZSA)
 
-ZSA would enable **user-defined tokens** within shielded pools, extending Zcash's privacy guarantees to arbitrary assets. Key proposals include:
+ZSA would enable **user-defined tokens** within shielded pools, extending Zcash's privacy guarantees to arbitrary assets. Developed by QEDIT and funded by Zcash Community Grants:
 
-- **ZIP 226/227**: Asset issuance and transfer mechanics
-- **Status**: Specification complete; not yet activated on Mainnet
-- **Use cases**: Stablecoins, NFTs, wrapped assets—all with Zcash-grade privacy
+- **ZIP 226**: Transfer and burn mechanics for shielded assets within the Orchard pool
+- **ZIP 227**: Issuance protocol with issuer key pairs and transparent supply tracking
+- **Status**: Audited and live on testnet; candidate for inclusion in NU7, though community debate continues over scope
+- **Use cases**: Stablecoins, NFTs, wrapped assets, all with Zcash-grade privacy
+
+#### FROST Threshold Signatures
+
+The Zcash Foundation has released a production-ready implementation of **FROST (Flexible Round-Optimized Schnorr Threshold signatures)**, enabling $t$-of-$n$ multisignature schemes for Zcash shielded transactions (ZIP 312). FROST allows a group of participants to collaboratively sign transactions without any single party holding the complete spending key, using only two communication rounds.
+
+Because Zcash already uses Schnorr-based signatures (RedDSA) for spend authorization, FROST integrates naturally with the existing key architecture. The re-randomization property of RedDSA is preserved through FROST's rerandomized variant, maintaining unlinkability of spend authorization signatures.
+
+#### Sprout Pool Removal (NU7)
+
+The upcoming NU7 network upgrade is expected to fully deprecate the Sprout pool by disallowing v4 transactions (only v5 and later will be supported). Any remaining Sprout funds will be burned at the activation height. Users with Sprout ZEC should migrate to Sapling or Orchard before NU7 activation.
 
 #### Post-Quantum Migration
 
@@ -1245,9 +1322,9 @@ Halo 2's architecture enables proofs that verify other proofs, opening possibili
 
 ---
 
-## 12. Conclusion
+## 13. Conclusion
 
-### 12.1 Summary
+### 13.1 Summary
 
 Zcash represents the state of the art in blockchain privacy, implementing zero-knowledge proofs at scale to provide:
 
@@ -1256,9 +1333,9 @@ Zcash represents the state of the art in blockchain privacy, implementing zero-k
 - **Strong fungibility**: All shielded ZEC are cryptographically identical
 - **Decentralized trust**: No trusted parties required for transaction validation
 
-The evolution from Sprout to Sapling to Orchard demonstrates continuous improvement in efficiency, security, and usability—culminating in Halo 2's elimination of trusted setup requirements. With NU6's activation in late 2024 and ongoing NU6.1 refinements, the protocol continues to mature.
+The evolution from Sprout to Sapling to Orchard demonstrates continuous improvement in efficiency, security, and usability, culminating in Halo 2's elimination of trusted setup requirements. With NU6's activation in late 2024 and ongoing NU6.1 refinements, the protocol continues to mature.
 
-### 12.2 Privacy in Context
+### 13.2 Privacy in Context
 
 Zcash exists within a broader ecosystem:
 
@@ -1269,13 +1346,16 @@ Zcash exists within a broader ecosystem:
 
 The multi-organization structure (ECC, Zcash Foundation, Shielded Labs) ensures resilience and diverse perspectives on protocol evolution.
 
-### 12.3 Looking Forward
+### 13.3 Looking Forward
 
 The Zcash protocol stands at an inflection point. Key developments to watch:
 
 - **Crosslink**: The proposed hybrid PoW/PoS system addresses 51% attack concerns and could fundamentally change Zcash's consensus model
 - **ZSA (Zcash Shielded Assets)**: User-defined tokens with full privacy would expand Zcash's utility beyond simple value transfer
-- **Continued decentralization**: The Lockbox mechanism and future grant distribution aim to reduce reliance on any single organization
+- **FROST multisignatures**: Production-ready threshold signatures enable institutional custody and multisig workflows for shielded transactions
+- **Sprout removal (NU7)**: Full deprecation of the legacy Sprout pool simplifies the protocol and removes the weakest cryptographic link
+- **zcashd to Zebra migration**: The transition from zcashd to Zebra (Rust) and Zallet improves code quality and long-term maintainability
+- **Continued decentralization**: The C&C funding model and Lockbox mechanism aim to reduce reliance on any single organization
 - **Post-quantum preparedness**: Long-term research ensures Zcash remains secure against emerging threats
 
 As privacy becomes increasingly valuable in digital economies, Zcash's cryptographic foundations provide a blueprint for financial systems that respect user sovereignty without sacrificing security guarantees.
@@ -1286,7 +1366,7 @@ As privacy becomes increasingly valuable in digital economies, Zcash's cryptogra
 
 1. Ben-Sasson, E., Chiesa, A., Garman, C., Green, M., Miers, I., Tromer, E., & Virza, M. (2014). *Zerocash: Decentralized Anonymous Payments from Bitcoin*. IEEE Symposium on Security and Privacy.
 
-2. Hopwood, D., Bowe, S., Hornby, T., & Wilcox, N. (2025). *Zcash Protocol Specification*. Version 2025.6.1 [NU6.1].
+2. Hopwood, D., Bowe, S., Hornby, T., & Wilcox, N. (2025). *Zcash Protocol Specification*. Version 2025.6.3 [NU6.1].
 
 3. Groth, J. (2016). *On the Size of Pairing-Based Non-interactive Arguments*. EUROCRYPT 2016.
 
@@ -1294,7 +1374,9 @@ As privacy becomes increasingly valuable in digital economies, Zcash's cryptogra
 
 5. Electric Coin Company. *Zcash Improvement Proposals (ZIPs)*. https://zips.z.cash
 
-6. Nakamoto, S. (2008). *Bitcoin: A Peer-to-Peer Electronic Cash System*.
+6. Komlo, C., & Goldberg, I. (2020). *FROST: Flexible Round-Optimized Schnorr Threshold Signatures*. Selected Areas in Cryptography (SAC).
+
+7. Nakamoto, S. (2008). *Bitcoin: A Peer-to-Peer Electronic Cash System*.
 
 ---
 
@@ -1354,4 +1436,4 @@ As privacy becomes increasingly valuable in digital economies, Zcash's cryptogra
 
 ---
 
-*This analysis was prepared based on the Zcash Protocol Specification Version 2025.6.1 [NU6.1]. For the authoritative protocol definition, consult the official specification maintained at [zips.z.cash](https://zips.z.cash). For implementation details, refer to the reference clients: zcashd (ECC), Zebra (Zcash Foundation), and Zashi wallet (ECC).*
+*This analysis was prepared based on the Zcash Protocol Specification Version 2025.6.3 [NU6.1]. For the authoritative protocol definition, consult the official specification maintained at [zips.z.cash](https://zips.z.cash). For implementation details, refer to Zebra (Zcash Foundation), Zashi wallet (ECC), and Zallet.*

@@ -1,3 +1,20 @@
+{{ if .Params.math }}
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.21/dist/katex.min.css" integrity="sha384-zh0CIslj3dQfLLmpJhFlhmfMzlSXCJmhq8p34rlkKMa6BLpOE7GnV1KeB3OAGFQ0" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.21/dist/katex.min.js" integrity="sha384-gY2ursjHLvMJaJMXkJA3I3DD80GgegFMF15r4x6UCnFbCaIFdT8zPNFuM/MM5tP5" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.21/dist/contrib/auto-render.min.js" integrity="sha384-hCXGrKII/06yNpKhYcFMgqa2OIu8MjXC3VE2OHkka3T6XrrMzjS/8BlXQch2g57k" crossorigin="anonymous"></script>
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+  renderMathInElement(document.body, {
+    delimiters: [
+      {left: "$$", right: "$$", display: true},
+      {left: "$", right: "$", display: false}
+    ],
+    throwOnError: false
+  });
+});
+</script>
+{{ end }}
+
 <!-- Custom Meta Tags -->
 <meta name="keywords" content="{{ delimit site.Params.keywords ", " }}">
 
