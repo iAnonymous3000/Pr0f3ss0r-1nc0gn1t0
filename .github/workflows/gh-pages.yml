@@ -67,7 +67,15 @@ jobs:
               echo "::error::KaTeX CSS not found in Zcash protocol page"
               exit 1
             fi
-            echo "Math rendering assets verified"
+            if ! grep -q 'katex-init.js' "$ZCASH_PAGE"; then
+              echo "::error::KaTeX init script not found in Zcash protocol page"
+              exit 1
+            fi
+            if grep -q 'renderMathInElement' "$ZCASH_PAGE"; then
+              echo "::error::Inline renderMathInElement found; math init must be in external JS"
+              exit 1
+            fi
+            echo "Math rendering assets verified (no inline scripts)"
           fi
 
       - name: Upload artifact

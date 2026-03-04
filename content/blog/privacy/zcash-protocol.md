@@ -1,6 +1,7 @@
 ---
 title: "Zcash Protocol Deep Dive: The Cryptography Behind Financial Privacy"
 description: "A comprehensive technical analysis of the Zcash protocol (v2025.6.3), covering zk-SNARKs, Halo 2, the Lockbox funding model, and the evolution of privacy from Sprout to Orchard."
+date: 2025-11-25
 tags: ["zcash", "cryptography", "zk-SNARKs", "privacy", "blockchain", "protocol analysis", "halo 2", "zero-knowledge"]
 math: true
 draft: false

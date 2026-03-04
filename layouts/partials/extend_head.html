@@ -1,17 +1,11 @@
 {{- partial "math.html" . -}}
 
-<!-- Custom Meta Tags -->
-<meta name="keywords" content="{{ delimit site.Params.keywords ", " }}">
-
 <!-- Manifest -->
-<link rel="manifest" href="/images/favicon/site.webmanifest">
+<link rel="manifest" href="{{ "images/favicon/site.webmanifest" | absURL }}">
 
 <!-- Android Chrome Icons -->
-<link rel="icon" type="image/png" sizes="192x192" href="/images/favicon/android-chrome-192x192.png">
-<link rel="icon" type="image/png" sizes="512x512" href="/images/favicon/android-chrome-512x512.png">
-
-<!-- Additional Theme Color -->
-<meta name="theme-color" content="#1b1d1e">
+<link rel="icon" type="image/png" sizes="192x192" href="{{ "images/favicon/android-chrome-192x192.png" | absURL }}">
+<link rel="icon" type="image/png" sizes="512x512" href="{{ "images/favicon/android-chrome-512x512.png" | absURL }}">
 
 <!-- Mastodon Verification -->
 <link rel="me" href="https://mastodon.social/@ianonymous3000">
