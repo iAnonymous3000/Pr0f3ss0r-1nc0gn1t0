@@ -44,9 +44,6 @@ jobs:
         id: pages
         uses: actions/configure-pages@v5
         
-      - name: Update theme to Latest commit
-        run: git submodule update --remote --merge
-        
       - name: Build
         run: |
           hugo \

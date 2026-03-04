@@ -63,7 +63,7 @@ params:
 # Site Label
   label:
     text: "Pr0f3ss0r 1nc0gn1t0"
-    icon: "/images/favicon/favicon-45x45.png"
+    icon: "images/favicon/favicon-45x45.png"
 
   # Repository Info
   githubUsername: "iAnonymous3000"
@@ -154,7 +154,7 @@ params:
     enabled: true
     title: "Sooraj Sathyanarayanan"
     subtitle: "Privacy Researcher & Security Strategist | Advocate for Open Source, Privacy, and Digital Freedom | FIDE Arena Grand Master"
-    imageUrl: "/images/profile/avatar.jpg"
+    imageUrl: "images/profile/avatar.jpg"
     imageWidth: 120
     imageHeight: 120
     imageTitle: "Sooraj Sathyanarayanan"
