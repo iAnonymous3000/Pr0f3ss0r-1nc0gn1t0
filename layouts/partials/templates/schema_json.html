@@ -85,7 +85,7 @@
     {{- end}}
   {{- end -}}
   "datePublished": {{ .PublishDate }},
-  "dateModified": {{ .Lastmod }},
+  "dateModified": {{ if not .Lastmod.IsZero }}{{ .Lastmod }}{{ else }}{{ .PublishDate }}{{ end }},
   {{- with (.Params.author | default site.Params.author) }}
   "author":
     {{- if (or (eq (printf "%T" .) "[]string") (eq (printf "%T" .) "[]interface {}")) -}}

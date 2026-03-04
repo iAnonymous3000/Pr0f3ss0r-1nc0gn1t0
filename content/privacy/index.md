@@ -14,47 +14,32 @@ This privacy policy explains how [profincognito.me](https://profincognito.me) ("
 ### 2.1 Core Infrastructure
 - **Static Website**: Built with [Hugo Extended](https://gohugo.io/)
 - **Theme**: [WonderMod](https://github.com/Wonderfall/hugo-WonderMod) (Privacy-hardened fork of PaperMod)
-- **Hosting**: [Cloudflare Pages](https://pages.cloudflare.com/)
+- **Primary Hosting**: [Cloudflare Pages](https://pages.cloudflare.com/)
+- **Mirror**: [GitHub Pages](https://pages.github.com/)
 - **DNS & Security**: [Cloudflare](https://www.cloudflare.com/)
-- **Analytics**: [Cloudflare Web Analytics](https://www.cloudflare.com/web-analytics/)
 
 ### 2.2 Privacy-First Architecture
 We implement:
-- No JavaScript tracking (except privacy-focused Cloudflare Analytics)
-- No external dependencies
+- No analytics or JavaScript tracking
 - No cookies
 - No local storage
-- Minimal external requests
+- Minimal external requests (some content images are hosted on GitHub)
 - Privacy-preserving contact methods (detailed in Section 5)
 
 ## 3. Data Collection
 
-### 3.1 Cloudflare Analytics
-We use [Cloudflare Web Analytics](https://www.cloudflare.com/web-analytics/), which:
-- Is privacy-preserving by design
-- Does not use cookies
-- Does not track users across sites
-- Does not collect personal information
-- Provides aggregate metrics only
-- Complies with privacy regulations
-
-**Analytics Opt-Out Options:**
-1. Use standard browser privacy features (they're respected)
-2. Enable DNS-level blocking
-3. Use script-blocking extensions
-
-### 3.2 What We Don't Collect
+### 3.1 What We Don't Collect
 We explicitly do not:
+- Run any analytics services
 - Store personal data
 - Use tracking cookies
 - Maintain user accounts
 - Process sensitive information
 - Track individual users
 - Store IP addresses
-- Use third-party analytics services
 
-### 3.3 Cloudflare Services
-Cloudflare provides our infrastructure services including content delivery, DDoS protection, DNS resolution, and privacy-preserving web analytics. For details about their data handling, see [Cloudflare's Privacy Policy](https://www.cloudflare.com/privacypolicy).
+### 3.2 Cloudflare Services
+Cloudflare provides our infrastructure services including content delivery, DDoS protection, and DNS resolution. Cloudflare may collect standard server-side metrics (request counts, bandwidth) as part of operating the CDN. For details about their data handling, see [Cloudflare's Privacy Policy](https://www.cloudflare.com/privacypolicy).
 
 ## 4. Security Measures
 
@@ -130,4 +115,4 @@ Users can verify our privacy practices through:
 - Monitoring network requests
 - Auditing our build process
 
-This policy reflects our commitment to transparency and minimal data collection while providing essential insights through privacy-preserving analytics.
+This policy reflects our commitment to transparency and minimal data collection.

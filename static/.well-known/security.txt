@@ -8,7 +8,7 @@ Contact: https://profincognito.me/about
 Preferred-Languages: en
 
 # Policy & Documentation
-Policy: https://profincognito.me/security-policy
+Policy: https://github.com/iAnonymous3000/Pr0f3ss0r-1nc0gn1t0/security/policy
 Canonical: https://profincognito.me/.well-known/security.txt
 
 # Hiring (if you're open to security work)

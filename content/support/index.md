@@ -13,8 +13,8 @@ As a privacy advocate, I strongly encourage using privacy-preserving payment met
 
 **Shielded Zcash (ZEC)**
 
-<div class="flex justify-center">
-    <img src="https://github.com/user-attachments/assets/38d62943-7b5d-4590-a7b8-a2ef26ec3140" alt="ZEC Donation QR Code" class="w-40 h-40 my-4">
+<div style="text-align:center">
+    <img src="https://github.com/user-attachments/assets/38d62943-7b5d-4590-a7b8-a2ef26ec3140" alt="ZEC Donation QR Code" style="width:160px;height:160px;margin:1rem auto">
 </div>
 
 ```zcash
@@ -25,8 +25,8 @@ u1j99pfjct2l3zznrqktr559stpymcypna3mal44wxg6c3g24wwayl0qv6endlcp6gps8lzq9hed9ufx
 
 **Monero (XMR)**
 
-<div class="flex justify-center">
-    <img src="https://github.com/user-attachments/assets/ab327dbe-cbbc-4f84-9e87-297b9df9cb76" alt="XMR Donation QR Code" class="w-40 h-40 my-4">
+<div style="text-align:center">
+    <img src="https://github.com/user-attachments/assets/ab327dbe-cbbc-4f84-9e87-297b9df9cb76" alt="XMR Donation QR Code" style="width:160px;height:160px;margin:1rem auto">
 </div>
 
 ```monero

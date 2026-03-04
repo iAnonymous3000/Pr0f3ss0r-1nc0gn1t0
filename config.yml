@@ -79,7 +79,17 @@ params:
   showPostNavLinks: true
   showCodeCopyButtons: true
   showFullTextInRSS: true
-  
+
+  # Asset Configuration (theme reads site.Params.assets.*)
+  assets:
+    disableFingerprinting: false
+    disableHLJS: true
+    favicon: "images/favicon/favicon.ico"
+    favicon16x16: "images/favicon/favicon-16x16.png"
+    favicon32x32: "images/favicon/favicon-32x32.png"
+    apple_touch_icon: "images/favicon/apple-touch-icon.png"
+    theme_color: "#1b1d1e"
+
   # Social Icons Configuration
   socialIcons:
     - name: "github"
@@ -278,21 +288,6 @@ build:
   writeStats: false
   cacheDir: tmp/hugo_cache
 
-# Asset Configuration for Production
+# Asset Pipeline
 assets:
   disableFingerprinting: false
-  disableHLJS: true
-  favicon: "/images/favicon/favicon.ico"
-  favicon16x16: "/images/favicon/favicon-16x16.png"
-  favicon32x32: "/images/favicon/favicon-32x32.png"
-  appleTouchIcon: "/images/favicon/apple-touch-icon.png"
-  androidChrome192: "/images/favicon/android-chrome-192x192.png"
-  androidChrome512: "/images/favicon/android-chrome-512x512.png"
-  webmanifest: "/images/favicon/site.webmanifest"
-  imageOptimization:
-    enable: true
-    formats: ["webp", "avif"]
-    quality: 85
-    stripMetadata: true
-    responsiveSizes: [640, 768, 1024, 1366, 1920]
-  lazyLoading: true
