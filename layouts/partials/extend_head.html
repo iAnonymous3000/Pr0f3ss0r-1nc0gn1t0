@@ -1,19 +1,4 @@
-{{ if .Params.math }}
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.21/dist/katex.min.css" integrity="sha384-zh0CIslj3dQfLLmpJhFlhmfMzlSXCJmhq8p34rlkKMa6BLpOE7GnV1KeB3OAGFQ0" crossorigin="anonymous">
-<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.21/dist/katex.min.js" integrity="sha384-gY2ursjHLvMJaJMXkJA3I3DD80GgegFMF15r4x6UCnFbCaIFdT8zPNFuM/MM5tP5" crossorigin="anonymous"></script>
-<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.21/dist/contrib/auto-render.min.js" integrity="sha384-hCXGrKII/06yNpKhYcFMgqa2OIu8MjXC3VE2OHkka3T6XrrMzjS/8BlXQch2g57k" crossorigin="anonymous"></script>
-<script>
-document.addEventListener("DOMContentLoaded", function() {
-  renderMathInElement(document.body, {
-    delimiters: [
-      {left: "$$", right: "$$", display: true},
-      {left: "$", right: "$", display: false}
-    ],
-    throwOnError: false
-  });
-});
-</script>
-{{ end }}
+{{- partial "math.html" . -}}
 
 <!-- Custom Meta Tags -->
 <meta name="keywords" content="{{ delimit site.Params.keywords ", " }}">
@@ -24,22 +9,6 @@ document.addEventListener("DOMContentLoaded", function() {
 <!-- Android Chrome Icons -->
 <link rel="icon" type="image/png" sizes="192x192" href="/images/favicon/android-chrome-192x192.png">
 <link rel="icon" type="image/png" sizes="512x512" href="/images/favicon/android-chrome-512x512.png">
-
-<!-- Open Graph Meta Tags -->
-<meta property="og:title" content="{{ if .IsHome }}{{ site.Title }}{{ else }}{{ .Title }} | {{ site.Title }}{{ end }}">
-<meta property="og:description" content="{{ with .Description }}{{ . }}{{ else }}{{- if or .IsPage .IsSection}}{{ .Summary | default (printf "%s - %s" .Title site.Title) }}{{ else }}{{ with site.Params.description }}{{ . }}{{ end }}{{ end }}{{ end }}">
-<meta property="og:type" content="{{ if .IsPage }}article{{ else }}website{{ end }}">
-<meta property="og:url" content="{{ .Permalink }}">
-<meta property="og:image" content="{{ site.BaseURL }}/images/profile/avatar.jpg">
-<meta property="og:site_name" content="{{ site.Params.label.text }}">
-
-<!-- Twitter Card Meta Tags -->
-<meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:site" content="@iAnonymous3000">
-<meta name="twitter:creator" content="@iAnonymous3000">
-<meta name="twitter:title" content="{{ if .IsHome }}{{ site.Title }}{{ else }}{{ .Title }} | {{ site.Title }}{{ end }}">
-<meta name="twitter:description" content="{{ with .Description }}{{ . }}{{ else }}{{- if or .IsPage .IsSection}}{{ .Summary | default (printf "%s - %s" .Title site.Title) }}{{ else }}{{ with site.Params.description }}{{ . }}{{ end }}{{ end }}{{ end }}">
-<meta name="twitter:image" content="{{ site.BaseURL }}/images/profile/avatar.jpg">
 
 <!-- Additional Theme Color -->
 <meta name="theme-color" content="#1b1d1e">

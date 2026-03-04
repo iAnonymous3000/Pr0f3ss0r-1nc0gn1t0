@@ -54,7 +54,22 @@ jobs:
             --destination public \
             --baseURL ${{ steps.pages.outputs.base_url }}
           touch public/.nojekyll
-          
+
+      - name: Verify math rendering assets
+        run: |
+          ZCASH_PAGE="public/blog/privacy/zcash-protocol/index.html"
+          if [ -f "$ZCASH_PAGE" ]; then
+            if ! grep -q 'katex.min.js' "$ZCASH_PAGE"; then
+              echo "::error::KaTeX JS not found in Zcash protocol page"
+              exit 1
+            fi
+            if ! grep -q 'katex.min.css' "$ZCASH_PAGE"; then
+              echo "::error::KaTeX CSS not found in Zcash protocol page"
+              exit 1
+            fi
+            echo "Math rendering assets verified"
+          fi
+
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v4
         with:
