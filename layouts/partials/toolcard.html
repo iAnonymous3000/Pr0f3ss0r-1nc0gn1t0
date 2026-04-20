@@ -1,0 +1,26 @@
+<article class="tool-card">
+  <div class="tool-card-header">
+    {{ with .Params.Image }}
+      <img class="tool-card-logo" src="{{ . }}" alt="{{ $.Title }} logo" loading="lazy" />
+    {{ end }}
+    <div class="tool-card-heading">
+      <h3><a href="{{ $.RelPermalink }}">{{ $.Title }}</a></h3>
+      {{ with $.CurrentSection }}
+        {{ if .Parent }}
+          <p>{{ .Title }}</p>
+        {{ end }}
+      {{ end }}
+    </div>
+  </div>
+
+  {{ with .Description }}
+    <p class="tool-card-description">{{ . }}</p>
+  {{ end }}
+
+  <div class="tool-card-actions">
+    <a class="tool-card-read" href="{{ .RelPermalink }}">Read notes</a>
+    {{ with .Params.LinkToTool }}
+      <a class="tool-card-visit" href="{{ . }}" target="_blank" rel="noreferrer noopener">Visit site</a>
+    {{ end }}
+  </div>
+</article>

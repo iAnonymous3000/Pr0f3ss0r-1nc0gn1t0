@@ -1,0 +1,98 @@
+{{- /* Tools feed needs descendant pages because the top-level section only contains child sections. */}}
+{{- /* Deprecate site.Author.email in favor of site.Params.author.email */}}
+{{- $authorEmail := "" }}
+{{- with site.Params.author }}
+  {{- if reflect.IsMap . }}
+    {{- with .email }}
+      {{- $authorEmail = . }}
+    {{- end }}
+  {{- end }}
+{{- else }}
+  {{- with site.Author.email }}
+    {{- $authorEmail = . }}
+    {{- warnf "The author key in site configuration is deprecated. Use params.author.email instead." }}
+  {{- end }}
+{{- end }}
+
+{{- /* Deprecate site.Author.name in favor of site.Params.author.name */}}
+{{- $authorName := "" }}
+{{- with site.Params.author }}
+  {{- if reflect.IsMap . }}
+    {{- with .name }}
+      {{- $authorName = . }}
+    {{- end }}
+  {{- else }}
+    {{- $authorName = . }}
+  {{- end }}
+{{- else }}
+  {{- with site.Author.name }}
+    {{- $authorName = . }}
+    {{- warnf "The author key in site configuration is deprecated. Use params.author.name instead." }}
+  {{- end }}
+{{- end }}
+
+{{- $pages := .RegularPagesRecursive.ByDate.Reverse }}
+{{- $limit := site.Config.Services.RSS.Limit }}
+{{- if ge $limit 1 }}
+  {{- $pages = $pages | first $limit }}
+{{- end }}
+{{- $updated := .Date }}
+{{- if gt (len $pages) 0 }}
+  {{- $updated = (index $pages 0).Date }}
+  {{- with (index $pages 0).File }}
+    {{- if $updated.IsZero }}
+      {{- $updated = .FileInfo.ModTime }}
+    {{- end }}
+  {{- end }}
+  {{- if not (index $pages 0).Lastmod.IsZero }}
+    {{- $updated = (index $pages 0).Lastmod }}
+  {{- end }}
+{{- end }}
+
+{{- printf "<?xml version=\"1.0\" encoding=\"utf-8\" standalone=\"yes\"?>" | safeHTML }}
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>{{ if eq .Title site.Title }}{{ site.Title }}{{ else }}{{ with .Title }}{{ . }} on {{ end }}{{ site.Title }}{{ end }}</title>
+  <link rel="alternate" href="{{ (.OutputFormats.Get "HTML").Permalink }}" />
+  <link rel="self" href="{{ (.OutputFormats.Get "RSS").Permalink }}" />
+  <subtitle>Recent content {{ if ne .Title site.Title }}{{ with .Title }}in {{ . }} {{ end }}{{ end }}on {{ site.Title }}</subtitle>
+  <id>{{ .Permalink }}</id>
+  <generator uri="http://gohugo.io" version="{{ hugo.Version }}">Hugo</generator>
+  <language>{{ site.Language.LanguageCode }}</language>
+  <updated>{{ $updated.Format "2006-01-02T15:04:05Z07:00" | safeHTML }}</updated>
+  <author>
+    {{ with $authorName }}<name>{{ . }}</name>{{ end }}
+    {{ with $authorEmail }}<name>{{ . }}</name>{{ end }}
+  </author>
+  {{ with site.Copyright }}<rights>{{ . }}</rights>{{ end }}
+
+  {{- range $pages }}
+    {{- if and (ne .Layout `search`) (ne .Layout `archives`) }}
+      {{- $entryPublished := .Date }}
+      {{- with .File }}
+        {{- if $entryPublished.IsZero }}
+          {{- $entryPublished = .FileInfo.ModTime }}
+        {{- end }}
+      {{- end }}
+      {{- $entryUpdated := .Date }}
+      {{- with .File }}
+        {{- if $entryUpdated.IsZero }}
+          {{- $entryUpdated = .FileInfo.ModTime }}
+        {{- end }}
+      {{- end }}
+      {{- if not .Lastmod.IsZero }}
+        {{- $entryUpdated = .Lastmod }}
+      {{- end }}
+      <entry>
+        <title>{{ .Title }}</title>
+        <link rel="alternate" href="{{ .Permalink }}" />
+        <id>{{ .Permalink }}</id>
+        <published>{{ $entryPublished.Format "2006-01-02T15:04:05Z07:00" | safeHTML }}</published>
+        <updated>{{ $entryUpdated.Format "2006-01-02T15:04:05Z07:00" | safeHTML }}</updated>
+        <summary type="html">{{ with .Description | html }}{{ . }}{{ else }}{{ .Summary | html }}{{ end -}}</summary>
+        {{- if site.Params.ShowFullTextinRSS }}
+          <content type="html">{{ (printf "<![CDATA[%s]]>" .Content) | safeHTML }}</content>
+        {{- end }}
+      </entry>
+    {{- end }}
+  {{- end }}
+</feed>

@@ -1,0 +1,69 @@
+{{- $isRoot := eq .FirstSection.RelPermalink .RelPermalink -}}
+{{- $sections := .Sections.ByTitle -}}
+{{- $pages := .RegularPages.ByTitle -}}
+
+<header class="page-header tools-page-header">
+  {{- partial "breadcrumbs.html" . }}
+  <h1>{{ .Title }}</h1>
+  {{- with .Description }}
+    <div class="post-description">
+      {{ . | markdownify }}
+    </div>
+  {{- end }}
+</header>
+
+{{- if .Content }}
+  <div class="post-content tools-intro">
+    {{- if not (.Param "disableAnchoredHeadings") }}
+      {{- partial "anchored_headings.html" .Content -}}
+    {{- else }}
+      {{ .Content }}
+    {{- end }}
+  </div>
+{{- end }}
+
+{{- if and $isRoot (gt (len $sections) 0) }}
+  <nav class="tools-directory" aria-label="Tools categories">
+    {{- range $sections }}
+      <a class="tools-directory-link" href="#{{ .LinkTitle | anchorize }}">{{ .Title }}</a>
+    {{- end }}
+  </nav>
+{{- end }}
+
+{{- if and $isRoot (gt (len $sections) 0) }}
+  {{- range $sections }}
+    <section class="tools-group" id="{{ .LinkTitle | anchorize }}">
+      <div class="tools-group-header">
+        <div>
+          <h2>{{ .Title }}</h2>
+          {{- with .Params.SubTitle }}
+            <p>{{ . }}</p>
+          {{- end }}
+        </div>
+        <a class="tools-group-link" href="{{ .RelPermalink }}">View category</a>
+      </div>
+
+      {{- with .RegularPages.ByTitle }}
+        <div class="tools-grid">
+          {{- range . }}
+            {{- partial "toolcard.html" . -}}
+          {{- end }}
+        </div>
+      {{- else }}
+        <p class="tools-empty-state">No tools published in this category yet.</p>
+      {{- end }}
+    </section>
+  {{- end }}
+{{- else }}
+  <section class="tools-group">
+    {{- with $pages }}
+      <div class="tools-grid">
+        {{- range . }}
+          {{- partial "toolcard.html" . -}}
+        {{- end }}
+      </div>
+    {{- else }}
+      <p class="tools-empty-state">No tools published here yet.</p>
+    {{- end }}
+  </section>
+{{- end }}

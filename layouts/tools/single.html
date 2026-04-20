@@ -1,0 +1,52 @@
+{{- define "main" }}
+
+<article class="post-single tool-single">
+  <header class="post-header">
+    {{- partial "breadcrumbs.html" . }}
+
+    <div class="tool-single-hero">
+      {{- with .Params.Image }}
+        <div class="tool-single-logo-wrap">
+          <img class="tool-single-logo" src="{{ . }}" alt="{{ $.Title }} logo" />
+        </div>
+      {{- end }}
+
+      <div class="tool-single-copy">
+        {{- with .CurrentSection }}
+          {{- if .Parent }}
+            <p class="tool-single-category">{{ .Title }}</p>
+          {{- end }}
+        {{- end }}
+
+        <h1 class="post-title">{{ .Title }}</h1>
+
+        {{- with .Description }}
+          <div class="post-description">{{ . }}</div>
+        {{- end }}
+
+        <div class="tool-single-actions">
+          {{- with .Params.LinkToTool }}
+            <a class="tool-action tool-action-primary" href="{{ . }}" target="_blank" rel="noreferrer noopener">Visit site</a>
+          {{- end }}
+          {{- with .CurrentSection }}
+            {{- if .Parent }}
+              <a class="tool-action tool-action-secondary" href="{{ .RelPermalink }}">Browse category</a>
+            {{- end }}
+          {{- end }}
+        </div>
+      </div>
+    </div>
+  </header>
+
+  {{- if .Content }}
+    <div class="post-content">
+      {{- if not (.Param "disableAnchoredHeadings") }}
+        {{- partial "anchored_headings.html" .Content -}}
+      {{- else }}
+        {{ .Content }}
+      {{- end }}
+    </div>
+  {{- end }}
+</article>
+
+{{- end }}

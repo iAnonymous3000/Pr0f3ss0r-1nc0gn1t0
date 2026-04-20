@@ -34,6 +34,10 @@ Thumbs.db
 .env.local
 .env.development
 .env.production
+.envrc
+.direnv/
+.cache/
+.history/
 node_modules/
 
 # Build files
@@ -44,6 +48,7 @@ build/
 *.bak
 *.backup
 *.old
+*.orig
 *#
 *.save
 

@@ -1,0 +1,228 @@
+.tools-page-header {
+    margin-bottom: 1.5rem;
+}
+
+.tools-intro {
+    margin-bottom: 2rem;
+}
+
+.tools-directory {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+    margin: 0 0 2rem;
+}
+
+.tools-directory-link {
+    padding: 0.55rem 0.85rem;
+    background: var(--entry);
+    border: 1px solid var(--border);
+    border-radius: 999px;
+    color: var(--primary);
+    text-decoration: none;
+}
+
+.tools-directory-link:hover {
+    color: var(--primary);
+    background: var(--tertiary);
+}
+
+.tools-group {
+    margin-bottom: 2.5rem;
+}
+
+.tools-group-header {
+    display: flex;
+    align-items: end;
+    justify-content: space-between;
+    gap: 1rem;
+    margin-bottom: 1rem;
+}
+
+.tools-group-header h2 {
+    margin: 0;
+    font-size: 1.9rem;
+}
+
+.tools-group-header p {
+    margin: 0.4rem 0 0;
+    color: var(--secondary);
+}
+
+.tools-group-link {
+    white-space: nowrap;
+    color: var(--secondary);
+    text-decoration: none;
+}
+
+.tools-group-link:hover {
+    color: var(--primary);
+}
+
+.tools-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 1rem;
+}
+
+.tool-card {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    height: 100%;
+    padding: 1.1rem;
+    background: var(--entry);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    transition: transform 0.12s ease, border-color 0.12s ease;
+}
+
+.tool-card:hover {
+    transform: translateY(-2px);
+    border-color: var(--secondary);
+}
+
+.tool-card-header {
+    display: flex;
+    align-items: center;
+    gap: 0.85rem;
+}
+
+.tool-card-logo {
+    width: 48px;
+    height: 48px;
+    border-radius: 12px;
+    object-fit: cover;
+    background: var(--theme);
+    flex-shrink: 0;
+}
+
+.tool-card-heading h3 {
+    margin: 0;
+    font-size: 1.05rem;
+}
+
+.tool-card-heading h3 a {
+    text-decoration: none;
+}
+
+.tool-card-heading p {
+    margin: 0.25rem 0 0;
+    color: var(--secondary);
+    font-size: 0.92rem;
+}
+
+.tool-card-description {
+    margin: 0;
+    color: var(--secondary);
+    line-height: 1.65;
+    flex: 1;
+}
+
+.tool-card-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+    align-items: center;
+}
+
+.tool-card-read,
+.tool-card-visit,
+.tool-action {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 40px;
+    padding: 0.6rem 0.9rem;
+    border-radius: 999px;
+    text-decoration: none;
+}
+
+.tool-card-read,
+.tool-action-secondary {
+    background: var(--theme);
+    color: var(--primary);
+    border: 1px solid var(--border);
+}
+
+.tool-card-visit,
+.tool-action-primary {
+    background: var(--primary);
+    color: var(--theme);
+}
+
+.tool-card-read:hover,
+.tool-card-visit:hover,
+.tool-action:hover {
+    opacity: 0.92;
+}
+
+.tool-card-visit:hover,
+.tool-action-primary:hover {
+    color: var(--theme);
+}
+
+.tool-single-hero {
+    display: grid;
+    grid-template-columns: minmax(96px, 120px) 1fr;
+    gap: 1.25rem;
+    align-items: center;
+}
+
+.tool-single-logo-wrap {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 120px;
+    height: 120px;
+    padding: 1rem;
+    background: var(--entry);
+    border: 1px solid var(--border);
+    border-radius: 24px;
+}
+
+.tool-single-logo {
+    max-width: 100%;
+    max-height: 100%;
+    border-radius: 18px;
+}
+
+.tool-single-copy .post-title {
+    margin-top: 0;
+}
+
+.tool-single-category {
+    margin: 0 0 0.55rem;
+    color: var(--secondary);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    font-size: 0.85rem;
+}
+
+.tool-single-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+    margin-top: 1.25rem;
+}
+
+.tools-empty-state {
+    color: var(--secondary);
+    margin: 0;
+}
+
+@media (max-width: 720px) {
+    .tools-group-header {
+        align-items: start;
+        flex-direction: column;
+    }
+
+    .tool-single-hero {
+        grid-template-columns: 1fr;
+    }
+
+    .tool-single-logo-wrap {
+        width: 96px;
+        height: 96px;
+    }
+}

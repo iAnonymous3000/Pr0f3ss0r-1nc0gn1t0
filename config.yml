@@ -1,5 +1,5 @@
 # Base Configuration
-baseURL: '/'
+baseURL: 'https://profincognito.me/'
 languageCode: 'en-us'
 title: 'Sooraj Sathyanarayanan'
 theme: 'hugo-WonderMod'
@@ -88,6 +88,7 @@ params:
     favicon16x16: "images/favicon/favicon-16x16.png"
     favicon32x32: "images/favicon/favicon-32x32.png"
     apple_touch_icon: "images/favicon/apple-touch-icon.png"
+    safari_pinned_tab: "safari-pinned-tab.svg"
     theme_color: "#1b1d1e"
 
   # Social Icons Configuration
@@ -200,6 +201,13 @@ menu:
       params:
         feedIcon: true
         feedURL: /projects/index.xml    
+    - identifier: tools
+      name: Tools
+      url: /tools/
+      weight: 35
+      params:
+        feedIcon: true
+        feedURL: /tools/index.xml
     - identifier: chess
       name: Chess
       url: /chess/
@@ -257,7 +265,6 @@ markup:
     codeFences: true
     guessSyntax: true
     tabWidth: 4
-    
   goldmark:
     extensions:
       definitionList: true
