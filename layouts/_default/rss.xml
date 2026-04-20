@@ -35,6 +35,8 @@
 {{- $pages := slice }}
 {{- if or $.IsHome $.IsSection }}
 {{- $pages = $pctx.RegularPages }}
+{{- else if gt (len $pctx.RegularPages) 0 }}
+{{- $pages = $pctx.RegularPages }}
 {{- else }}
 {{- $pages = $pctx.Pages }}
 {{- end }}
@@ -42,7 +44,18 @@
 {{- if ge $limit 1 }}
 {{- $pages = $pages | first $limit }}
 {{- end }}
-{{- $updated := .Date }}
+{{- $updated := now }}
+{{- with site.RegularPages.ByDate.Reverse }}
+  {{- $updated = (index . 0).Date }}
+  {{- with (index . 0).File }}
+    {{- if $updated.IsZero }}
+      {{- $updated = .FileInfo.ModTime }}
+    {{- end }}
+  {{- end }}
+  {{- if not (index . 0).Lastmod.IsZero }}
+    {{- $updated = (index . 0).Lastmod }}
+  {{- end }}
+{{- end }}
 {{- if gt (len $pages) 0 }}
   {{- $updated = (index $pages 0).Date }}
   {{- with (index $pages 0).File }}
