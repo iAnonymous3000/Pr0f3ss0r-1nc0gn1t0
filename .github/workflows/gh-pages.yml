@@ -32,7 +32,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6
         with:
           submodules: 'recursive'
           fetch-depth: 0
@@ -55,7 +55,7 @@ jobs:
           tar -C "${HOME}/.local/hugo" -xf "hugo_extended_${HUGO_VERSION}_linux-${HUGO_ARCH}.tar.gz"
           rm "hugo_extended_${HUGO_VERSION}_linux-${HUGO_ARCH}.tar.gz"
           echo "${HOME}/.local/hugo" >> "${GITHUB_PATH}"
-          hugo version
+          "${HOME}/.local/hugo/hugo" version
           
       - name: Setup Pages
         id: pages
