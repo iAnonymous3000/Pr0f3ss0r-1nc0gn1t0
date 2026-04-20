@@ -24,21 +24,38 @@ permissions:
   id-token: write
   actions: read
 
+env:
+  HUGO_VERSION: 0.160.1
+
 jobs:
   build:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
-        uses: actions/checkout@v6
+        uses: actions/checkout@v4
         with:
           submodules: 'recursive'
           fetch-depth: 0
-          
-      - name: Setup Hugo
-        uses: peaceiris/actions-hugo@v3
-        with:
-          hugo-version: '0.147.8'
-          extended: true
+
+      - name: Install Hugo
+        run: |
+          set -euo pipefail
+
+          case "$(dpkg --print-architecture)" in
+            amd64) HUGO_ARCH="amd64" ;;
+            arm64) HUGO_ARCH="arm64" ;;
+            *)
+              echo "::error::Unsupported runner architecture: $(dpkg --print-architecture)"
+              exit 1
+              ;;
+          esac
+
+          curl -sLJO "https://github.com/gohugoio/hugo/releases/download/v${HUGO_VERSION}/hugo_extended_${HUGO_VERSION}_linux-${HUGO_ARCH}.tar.gz"
+          mkdir -p "${HOME}/.local/hugo"
+          tar -C "${HOME}/.local/hugo" -xf "hugo_extended_${HUGO_VERSION}_linux-${HUGO_ARCH}.tar.gz"
+          rm "hugo_extended_${HUGO_VERSION}_linux-${HUGO_ARCH}.tar.gz"
+          echo "${HOME}/.local/hugo" >> "${GITHUB_PATH}"
+          hugo version
           
       - name: Setup Pages
         id: pages
