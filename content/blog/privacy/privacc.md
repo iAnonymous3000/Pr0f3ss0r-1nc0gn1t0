@@ -1,10 +1,11 @@
 ---
+date: "2026-03-04"
 title: "Reclaiming Our Digital Freedom: Why I Joined the Privacy Acceleration Movement"
 description: "A personal journey into the Privacy Acceleration movement and why digital privacy matters more than ever in our interconnected world."
 tags: ["privacy", "digital rights", "technology", "surveillance", "data protection", "privacy acceleration", "digital freedom", "priv/acc"]
 ---
 
-![privacc-badge](https://github.com/user-attachments/assets/4a7be1eb-29a4-468c-8d35-c4c09eedeb3c)
+![privacc-badge](/images/content/blog-privacy-privacc-4a7be1eb-29a4-468c-8d35-c4c09eedeb3c.jpg)
 
 
 I added "priv/acc" to my social media bio. It wasn't just another cryptic internet acronym – it was a declaration of intent. The Privacy Acceleration movement has given voice to concerns I've harbored about our digital lives, and today I want to share why this matters deeply to me – and should matter to you too.

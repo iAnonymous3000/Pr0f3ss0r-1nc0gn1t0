@@ -1,4 +1,5 @@
 ---
+date: "2026-03-04"
 title: "Ikigai: Finding Your Purpose and Living a Fulfilled Life"
 description: "Discover how to apply the ancient Japanese concept of Ikigai to find meaning at the intersection of passion, profession, mission, and vocation. Learn practical steps to identify and live your purpose."
 tags: ["personal development", "philosophy", "life purpose", "happiness", "career", "self-discovery", "Japanese culture", "mindfulness", "well-being", "work-life balance"]
@@ -7,7 +8,7 @@ tags: ["personal development", "philosophy", "life purpose", "happiness", "caree
 In a world where many struggle to find meaning and purpose in their daily lives, the Japanese concept of **Ikigai** offers a profound framework for discovering what truly makes life worth living. Originating from the Japanese words *"iki"* (life) and *"gai"* (worth), Ikigai represents the intersection of what you love, what you're good at, what the world needs, and what you can be paid for.
 
 
-![Modern Ikigai Concept Diagram](https://github.com/user-attachments/assets/76d2e94c-19ff-4d0b-970a-c64ef79efb59)
+![Modern Ikigai Concept Diagram](/images/content/blog-fundamentals-ikigai-76d2e94c-19ff-4d0b-970a-c64ef79efb59.png)
 
 *The four overlapping elements of Ikigai showing the sweet spot where purpose is found*
 

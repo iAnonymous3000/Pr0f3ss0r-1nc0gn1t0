@@ -1,4 +1,5 @@
 ---
+date: "2026-03-04"
 title: "Blog"
 description: "Insights on Privacy, Security, and Strategic Thinking"
 params:

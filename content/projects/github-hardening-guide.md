@@ -1,4 +1,5 @@
 ---
+date: "2026-03-04"
 title: "GitHub Security Hardening Guide"
 description: "A comprehensive guide to enhancing the security of your GitHub repositories and organizations through best practices, monitoring, and advanced security features"
 ---

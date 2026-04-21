@@ -1,4 +1,5 @@
 ---
+date: "2026-03-04"
 title: "Lichess: The Open Source Revolution in Chess"
 draft: false
 tags: ["lichess", "open-source", "chess", "programming", "scala", "privacy", "community"]
@@ -53,7 +54,7 @@ Every day, thousands of volunteers share their computing power through the Fishn
 
 ## Technical Architecture
 
-![tech-architecture](https://github.com/user-attachments/assets/b7a3b2f8-b6b1-4f24-bbff-9ec47edc0a4c)
+![tech-architecture](/images/content/chess-lichess-foss-revolution-b7a3b2f8-b6b1-4f24-bbff-9ec47edc0a4c.png)
 
 
 The platform is built on a modern, scalable stack:

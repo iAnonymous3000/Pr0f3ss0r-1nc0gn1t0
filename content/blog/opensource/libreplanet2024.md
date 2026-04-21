@@ -24,7 +24,7 @@ tags:
   - "GNU Taler"
 ---
 
-![LibrePlanet 2024](https://github.com/user-attachments/assets/01f7e077-75f4-4971-9540-aeab85cfc982)
+![LibrePlanet 2024](/images/content/blog-opensource-libreplanet2024-01f7e077-75f4-4971-9540-aeab85cfc982.png)
 
 ## Personal Experience
 
@@ -32,7 +32,7 @@ I had the incredible opportunity to attend LibrePlanet 2024 in person at the Wen
 
 A highlight of the conference was meeting Richard Stallman, the pioneer of the free software movement. Our conversation about the future of digital rights and the importance of maintaining free software principles in our rapidly evolving digital landscape was both enlightening and inspiring. It served as a powerful reminder of why we continue to advocate for software freedom.
 
-![Meeting with Richard Stallman at LibrePlanet 2024](https://github.com/user-attachments/assets/2b0e72f3-4818-415f-b4a4-ee50cd3f830d)
+![Meeting with Richard Stallman at LibrePlanet 2024](/images/content/blog-opensource-libreplanet2024-2b0e72f3-4818-415f-b4a4-ee50cd3f830d.png)
 *A memorable moment discussing digital rights with Richard Stallman at LibrePlanet 2024*
 
 ## A Critical Moment for Digital Freedom

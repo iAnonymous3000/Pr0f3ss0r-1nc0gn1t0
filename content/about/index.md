@@ -1,4 +1,5 @@
 ---
+date: "2026-03-04"
 title: "About"
 summary: "About Professor Incognito"
 ---
@@ -96,7 +97,6 @@ I’m actively seeking roles in:
 - DevSecOps Engineering
 
 Let’s discuss security, privacy, or chess strategies!  
-- [LinkedIn](https://www.linkedin.com/in/soorajsathyanarayanan/)  
 - [GitHub](https://github.com/ianonymous3000)  
 - <a href="https://mastodon.social/@ianonymous3000" rel="me">Mastodon</a>
 

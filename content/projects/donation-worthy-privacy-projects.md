@@ -1,4 +1,5 @@
 ---
+date: "2026-03-04"
 title: "Donation-Worthy Privacy Projects"
 description: "A curated list of opensource apps and services deserving of your support"
 ---

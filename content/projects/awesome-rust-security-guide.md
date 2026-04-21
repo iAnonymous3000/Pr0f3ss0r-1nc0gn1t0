@@ -1,4 +1,5 @@
 ---
+date: "2026-03-04"
 title: "Comprehensive Guide to Rust for Security and Privacy Researchers"
 description: "A complete guide covering memory safety, cryptography, secure coding practices, and formal verification"
 ---

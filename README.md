@@ -1,7 +1,7 @@
 # Professor Incognito - Personal Website  
 
 <a href="https://gohugo.io/">
-  <img src="https://img.shields.io/badge/Hugo-0.147.8-blue?style=flat-square&logo=hugo" alt="Hugo Version">
+  <img src="https://img.shields.io/badge/Hugo-0.160.1-blue?style=flat-square&logo=hugo" alt="Hugo Version">
 </a>
 <a href="https://pagespeed.web.dev/analysis/https-profincognito-me/l3b9r03hj6">
   <img src="https://img.shields.io/badge/PageSpeed-100%25-brightgreen?style=flat-square&logo=googlechrome" alt="PageSpeed Score">
@@ -46,12 +46,12 @@ A privacy-focused personal website built with Hugo WonderMod theme, showcasing s
 
 ## Privacy Features  
 Built with privacy-first principles:  
-- No JavaScript tracking  
-- No external dependencies  
+- No first-party analytics or tracking scripts
+- Content images are served locally from this domain
 - No cookies  
-- No local storage  
-- Minimal external requests  
-- Strong Content Security Policy  
+- No `localStorage` persistence for UI preferences
+- No automatic third-party embeds
+- Strong Content Security Policy via Cloudflare Pages `_headers`
 - Privacy-preserving contact methods  
 - Secure email routing  
 
@@ -79,7 +79,7 @@ This dual-deployment setup ensures high availability.
 ## Local Development  
 
 ### Prerequisites  
-- Hugo Latest Version  
+- Hugo Extended 0.160.1 or newer
 - Git  
 
 ### Setup  

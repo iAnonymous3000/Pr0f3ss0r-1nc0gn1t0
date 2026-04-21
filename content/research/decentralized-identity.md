@@ -1,4 +1,5 @@
 ---
+date: "2026-03-04"
 title: "Decentralized Identity Research: A Comprehensive Analysis"
 description: "An in-depth exploration of decentralized identity systems, their challenges, and future directions, based on research leadership at Superscrypt"
 tags:
@@ -53,7 +54,7 @@ The transition from Web2 to Web3 identity systems is characterized by several pi
 
 - **Privacy Framework**: Implementing advanced cryptographic techniques, such as zero-knowledge proofs, to enable selective disclosure of identity attributes while preserving user privacy.
 
-![Evolution of Identity Systems](https://github.com/user-attachments/assets/d9a9ec97-4586-460e-82fa-f10d8e682a93)
+![Evolution of Identity Systems](/images/content/research-decentralized-identity-d9a9ec97-4586-460e-82fa-f10d8e682a93.png)
 
 
 ### Critical Challenges Identified
@@ -163,7 +164,7 @@ The convergence of decentralized identity and AI presents novel opportunities:
 
 - **Automated Compliance**: Implementing smart contracts that automatically enforce compliance with regulatory requirements during data transactions.
 
-![Decentralized Identity and AI Integration Flow](https://github.com/user-attachments/assets/1a14f4cf-d9e6-42e4-94f7-90d6d2213138)
+![Decentralized Identity and AI Integration Flow](/images/content/research-decentralized-identity-1a14f4cf-d9e6-42e4-94f7-90d6d2213138.png)
 
 
 ### Market Applications

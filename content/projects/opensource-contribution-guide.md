@@ -1,4 +1,5 @@
 ---
+date: "2026-03-04"
 title: "Contributing to Open-Source Projects"
 description: "A step-by-step guide for beginners to learn, contribute, and thrive in the opensource community"
 ---

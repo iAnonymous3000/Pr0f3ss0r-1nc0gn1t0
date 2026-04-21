@@ -1,4 +1,5 @@
 ---
+date: "2026-03-04"
 title: "Into the Cyberverse"
 description: "A comprehensive collection of privacy-focused tools and software alternatives"
 ---

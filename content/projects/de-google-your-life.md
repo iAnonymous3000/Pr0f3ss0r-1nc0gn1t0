@@ -1,4 +1,5 @@
 ---
+date: "2026-03-04"
 title: "De-Google Your Life: Top Alternatives"
 description: "A comprehensive guide to reducing Google dependency while maintaining productivity"
 ---

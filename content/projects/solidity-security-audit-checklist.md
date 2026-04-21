@@ -1,4 +1,5 @@
 ---
+date: "2026-03-04"
 title: "Solidity Security Audit Checklist"
 description: "A comprehensive checklist and resource guide for auditing Solidity smart contracts"
 ---

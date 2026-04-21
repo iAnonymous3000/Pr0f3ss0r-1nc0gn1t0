@@ -1,4 +1,5 @@
 ---
+date: "2026-03-04"
 title: "The Vital Importance of Free Speech in a Complex World"
 description: "A wide-ranging exploration of free speech, its cultural and legal foundations, the nuances of censorship, the role of technology, and how platforms like Nostr can help preserve open dialogue."
 tags: ["free speech", "cancel culture", "censorship", "Nostr", "encryption", "First Amendment", "media literacy"]

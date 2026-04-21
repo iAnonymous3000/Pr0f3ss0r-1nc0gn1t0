@@ -1,4 +1,5 @@
 ---
+date: "2026-03-04"
 title: "Comprehensive Guide to Safe and Privacy-Respecting AI Usage"
 description: "A complete guide covering self-hosted AI solutions, privacy concerns with popular AI services, best practices for safe AI usage, and practical setup instructions"
 ---

@@ -1,4 +1,5 @@
 ---
+date: "2026-03-04"
 title: "Cyber Security Is a Game of Chess: Strategy, Anticipation, and the Battle of Wits"
 tags: ["cybersecurity", "strategy", "chess", "threat intelligence", "risk management", "incident response", "security", "network security", "information security", "data protection"]
 description: "Explore how the strategic principles of chess apply to cyber security. Learn how anticipation, adaptability, and strategic thinking can help organizations stay ahead in the digital security landscape."
@@ -6,7 +7,7 @@ description: "Explore how the strategic principles of chess apply to cyber secur
 
 When the **NotPetya** cyberattack struck in 2017, it spread across networks with the precision of a grandmaster executing a flawless chess strategy. Organizations worldwide were caught off-guard, leading to billions in damages. This watershed moment in cybersecurity history demonstrates how cyber security is much like a high-stakes game of chess—professionals must anticipate their opponent's moves, develop robust strategies, and sometimes make sacrifices to protect their most valuable assets. The parallels between cyber security and chess are profound, offering valuable insights into how organizations can better defend themselves in an ever-evolving digital landscape.
 
-![Chess and Cybersecurity Strategic Matrix](https://github.com/user-attachments/assets/6b244ce1-1c30-410a-ad4c-640405eb7dec)
+![Chess and Cybersecurity Strategic Matrix](/images/content/blog-security-cyber-security-chess-strategy-6b244ce1-1c30-410a-ad4c-640405eb7dec.png)
 
 ## The Opening Moves: Establishing a Strong Defense
 
@@ -44,7 +45,7 @@ Chess is a game of foresight, where players think several moves ahead. Cyber sec
 
 By anticipating potential threats, cyber security professionals can implement strategies that mitigate risks before they materialize.
 
-![Strategic Defense Cycle](https://github.com/user-attachments/assets/bc4de073-634a-41a4-8f68-3bd1c5182a57)
+![Strategic Defense Cycle](/images/content/blog-security-cyber-security-chess-strategy-bc4de073-634a-41a4-8f68-3bd1c5182a57.png)
 
 ## Adaptability: Responding to an Ever-Changing Landscape
 

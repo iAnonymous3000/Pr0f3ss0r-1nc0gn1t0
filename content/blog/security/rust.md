@@ -1,4 +1,5 @@
 ---
+date: "2026-03-04"
 
 title: "Beyond Memory Safety: Rust's Comprehensive Approach to Modern Programming"  
 tags:  

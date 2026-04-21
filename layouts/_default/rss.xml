@@ -33,8 +33,10 @@
 {{- $pctx := . }}
 {{- if .IsHome }}{{ $pctx = site }}{{ end }}
 {{- $pages := slice }}
-{{- if or $.IsHome $.IsSection }}
-{{- $pages = $pctx.RegularPages }}
+{{- if $.IsHome }}
+{{- $pages = site.RegularPages }}
+{{- else if $.IsSection }}
+{{- $pages = $pctx.RegularPagesRecursive }}
 {{- else if gt (len $pctx.RegularPages) 0 }}
 {{- $pages = $pctx.RegularPages }}
 {{- else }}

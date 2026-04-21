@@ -1,4 +1,5 @@
 ---
+date: "2026-03-04"
 title: "A Beginner's Guide to Monero"
 description: "A comprehensive introduction to Monero, covering wallet setup, acquiring XMR, secure transactions, and privacy features of this privacy-focused cryptocurrency"
 ---

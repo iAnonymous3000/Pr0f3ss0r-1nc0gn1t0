@@ -1,4 +1,5 @@
 ---
+date: "2026-03-04"
 title: "Husky Safety Initiative"
 description: "Northeastern University's dedicated digital defense program"
 ---

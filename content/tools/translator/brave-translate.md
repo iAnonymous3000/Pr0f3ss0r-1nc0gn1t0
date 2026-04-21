@@ -4,7 +4,7 @@ description: "Built-in browser translator with privacy protection"
 date: 2024-12-09T16:45:00-04:00
 draft: false
 image: "/images/tools/brave.png"
-linkToTool: "https://brave.com/translate"
+linkToTool: "https://brave.com/blog/brave-translate-expansion/"
 ---
 Brave Translate is the built-in translation feature of the Brave web browser, offering secure translations while protecting user privacy. Key features include:
 - Support for 100+ languages using Lingvanex

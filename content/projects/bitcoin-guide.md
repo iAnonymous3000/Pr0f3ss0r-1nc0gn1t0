@@ -1,4 +1,5 @@
 ---
+date: "2026-03-04"
 title: "The Ultimate Guide to Getting Started with Bitcoin"
 description: "A comprehensive guide covering everything from Bitcoin basics to advanced concepts, helping newcomers understand and safely participate in the Bitcoin ecosystem"
 ---

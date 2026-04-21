@@ -1,4 +1,5 @@
 ---
+date: "2026-03-04"
 title: "GrapheneOS AppVerse"
 description: "Curated privacy-respecting apps for new GrapheneOS users"
 ---

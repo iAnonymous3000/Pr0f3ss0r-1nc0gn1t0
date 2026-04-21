@@ -1,4 +1,5 @@
 ---
+date: "2026-03-04"
 
 title: "Mobile Operating Systems Security Comparison"
 description: "A comprehensive comparison of security, privacy, and convenience features across Android, GrapheneOS, and iOS mobile operating systems"

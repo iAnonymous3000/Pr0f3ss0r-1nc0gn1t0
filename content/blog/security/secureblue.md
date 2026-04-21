@@ -1,4 +1,5 @@
 ---
+date: "2026-03-04"
 title: "secureblue: Redefining Security in Linux Desktop Operating Systems"
 description: "An in-depth look at secureblue, a security-hardened Linux distribution built on Fedora Atomic that aims to be the most secure desktop Linux OS while maintaining usability."
 tags:
@@ -159,13 +160,13 @@ secureblue utilizes **[BlueBuild](https://blue-build.org/)**, an innovative tool
 
 secureblue welcomes contributions and community involvement:
 
-- **Contributing**: Review the [Contributing Documentation](https://github.com/secureblue/secureblue/blob/live/docs/CONTRIBUTING.md) to understand how to contribute effectively.
+- **Contributing**: Start with the [secureblue repository](https://github.com/secureblue/secureblue/) and its [documentation](https://github.com/secureblue/secureblue/blob/live/docs/README.md) for current build and contribution context.
 
 - **Code of Conduct**: Adhere to the project's [Code of Conduct](https://github.com/secureblue/secureblue/blob/live/docs/CODE_OF_CONDUCT.md).
 
 - **Community Support**: Join discussions on the **[secureblue Discord server](https://discord.gg/DxqDExrhXW)** to collaborate with other contributors and users.
 
-- **Donations**: Consider supporting the project by donating. Details are available on the [Donate page](https://github.com/secureblue/secureblue/blob/live/docs/DONATE.md).
+- **Donations**: Consider supporting the project through [GitHub Sponsors](https://github.com/sponsors/secureblue).
 
 
 

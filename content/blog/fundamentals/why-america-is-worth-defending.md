@@ -1,4 +1,5 @@
 ---
+date: "2026-03-04"
 title: "Why America Is Worth Defending"
 description: "A personal reflection on American exceptionalism - why the United States remains the world's beacon of liberty, innovation, and opportunity. Exploring the values worth defending in a nation founded on ideas, not bloodlines."
 tags:

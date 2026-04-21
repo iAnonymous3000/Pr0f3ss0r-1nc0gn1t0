@@ -1,4 +1,5 @@
 ---
+date: "2026-03-04"
 title: "The Ultimate iOS Hardening Guide"
 description: "A comprehensive guide for enhancing security and privacy on iOS and iPadOS devices through device selection, security settings, and best practices"
 ---

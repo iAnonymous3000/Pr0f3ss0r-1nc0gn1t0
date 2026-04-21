@@ -1,4 +1,5 @@
 ---
+date: "2026-03-04"
 title: "First Principles Thinking: From Foundational Truths to Revolutionary Solutions"
 description: "Master the art of first principles thinking to break down complex problems, challenge assumptions, and build innovative solutions from the ground up. Learn how security experts and innovators use this powerful mental model."
 tags:
@@ -125,7 +126,7 @@ In our rapidly evolving technological landscape, inherited solutions and "best p
 
 ## The First Principles Method
 
-![Framework](https://github.com/user-attachments/assets/52406d03-a2a2-444d-bb31-3d2f94a88264)
+![Framework](/images/content/blog-fundamentals-first-principles-thinking-52406d03-a2a2-444d-bb31-3d2f94a88264.png)
 
 
 ### 1. Question Everything Systematically
@@ -150,7 +151,7 @@ Analysis Framework:
 
 ### 3. Build Up from Fundamentals
 
-![Validation Process](https://github.com/user-attachments/assets/390bd7ee-a58e-4511-8052-9dd5d9ca5c37)
+![Validation Process](/images/content/blog-fundamentals-first-principles-thinking-390bd7ee-a58e-4511-8052-9dd5d9ca5c37.png)
 
 - **Start with Proven Truths**: Base your reasoning on established facts and mathematical certainties
 - **Add Only What You Can Verify**: Incorporate new elements only when supported by evidence
@@ -195,7 +196,7 @@ Analysis Framework:
 
 ### 1. The Socratic Method
 
-![Socratic Method Process](https://github.com/user-attachments/assets/8dbbab7b-c911-448e-9cf7-c7bb22791a53)
+![Socratic Method Process](/images/content/blog-fundamentals-first-principles-thinking-8dbbab7b-c911-448e-9cf7-c7bb22791a53.png)
 
 
 - **Question Assumptions**: Challenge every inherited belief
@@ -205,7 +206,7 @@ Analysis Framework:
 
 ### 2. Decision Trees
 
-![Decision Tree](https://github.com/user-attachments/assets/fca96e43-dc4f-4da9-933b-87dcfb8a1e12)
+![Decision Tree](/images/content/blog-fundamentals-first-principles-thinking-fca96e43-dc4f-4da9-933b-87dcfb8a1e12.png)
 
 
 

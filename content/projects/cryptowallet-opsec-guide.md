@@ -1,4 +1,5 @@
 ---
+date: "2026-03-04"
 title: "Comprehensive Cryptocurrency Wallet OpSec Guide"
 description: "A comprehensive guide offering best practices for securing your cryptocurrency wallets through robust operational security (OpSec) measures"
 ---

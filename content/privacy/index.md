@@ -1,4 +1,5 @@
 ---
+date: "2026-03-04"
 title: "Privacy Policy"
 description: "Comprehensive privacy policy detailing our minimal data handling practices"
 ---
@@ -20,17 +21,19 @@ This privacy policy explains how [profincognito.me](https://profincognito.me) ("
 
 ### 2.2 Privacy-First Architecture
 We implement:
-- No analytics or JavaScript tracking
+- No first-party analytics or tracking scripts in the site source
 - No cookies
-- No local storage
-- Minimal external requests (some content images are hosted on GitHub)
+- No `localStorage` persistence for UI preferences
+- Content images served locally from this domain
+- No automatic third-party embeds
+- A Content Security Policy that allows scripts only from this site
 - Privacy-preserving contact methods (detailed in Section 5)
 
 ## 3. Data Collection
 
 ### 3.1 What We Don't Collect
 We explicitly do not:
-- Run any analytics services
+- Run site-owned analytics services
 - Store personal data
 - Use tracking cookies
 - Maintain user accounts
@@ -39,17 +42,20 @@ We explicitly do not:
 - Store IP addresses
 
 ### 3.2 Cloudflare Services
-Cloudflare provides our infrastructure services including content delivery, DDoS protection, and DNS resolution. Cloudflare may collect standard server-side metrics (request counts, bandwidth) as part of operating the CDN. For details about their data handling, see [Cloudflare's Privacy Policy](https://www.cloudflare.com/privacypolicy).
+Cloudflare provides infrastructure services including content delivery, DDoS protection, DNS resolution, and security enforcement. Cloudflare may collect standard server-side metrics, request metadata, and security telemetry as part of operating the CDN and protecting the site. Cloudflare Pages Analytics should remain disabled for this project; the repository-level Content Security Policy also blocks third-party analytics scripts. For details about Cloudflare's data handling, see [Cloudflare's Privacy Policy](https://www.cloudflare.com/privacypolicy).
 
 ## 4. Security Measures
 
 ### 4.1 Security Headers
+The primary Cloudflare Pages deployment uses repository-defined headers from `static/_headers`. The GitHub Pages mirror is subject to GitHub Pages' platform headers and may not expose the exact same policy set.
+
 #### Basic Security Headers
 - **X-Frame-Options**: `SAMEORIGIN` - Controls framing of our pages
 - **X-Content-Type-Options**: `nosniff` - Prevents MIME type sniffing
-- **X-XSS-Protection**: `1; mode=block` - Legacy XSS protection
+- **X-XSS-Protection**: `0` - Disables legacy browser XSS filters in favor of CSP
 - **Referrer-Policy**: `strict-origin-when-cross-origin` - Controls referrer information
 - **Strict-Transport-Security**: `max-age=31536000; includeSubDomains; preload` - Enforces HTTPS
+- **Content-Security-Policy**: `default-src 'self'` with scripts, images, fonts, and connections restricted to this site
 
 #### Cross-Origin Policies
 - **Embedder Policy**: `require-corp`
@@ -61,8 +67,9 @@ We explicitly disable unnecessary browser features including:
 - Sensors (accelerometer, gyroscope, etc.)
 - Media devices (camera, microphone)
 - Location services
-- Payment and clipboard APIs
-- Display features (fullscreen, picture-in-picture)
+- Payment APIs
+- Clipboard read access
+- Picture-in-picture and autoplay
 - Device APIs (USB, serial, etc.)
 
 ### 4.2 Infrastructure Security

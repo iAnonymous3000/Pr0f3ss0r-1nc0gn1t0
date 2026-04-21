@@ -1,4 +1,5 @@
 ---
+date: "2026-03-04"
 title: "Privacy"
 description: "Deep insights into privacy rights, technology, and strategies for protecting personal data in our interconnected world"
 ---

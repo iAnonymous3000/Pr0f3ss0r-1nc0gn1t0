@@ -1,4 +1,5 @@
 ---
+date: "2026-03-04"
 title: "Securing Your Google Account"
 description: "A comprehensive guide to hardening your Google account security through strong passwords, two-factor authentication, privacy settings, and best practices"
 ---

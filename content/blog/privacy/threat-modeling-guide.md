@@ -1,4 +1,5 @@
 ---
+date: "2026-03-04"
 title: "Personal Digital Threat Modeling: A Practical Guide to OPSEC for Everyone"
 description: "A comprehensive guide to understanding and implementing personal digital threat modeling and operational security (OPSEC). Learn how to identify your digital assets, assess potential threats, and develop practical strategies to protect yourself."
 tags: [opsec, threat-modeling]
@@ -6,7 +7,7 @@ tags: [opsec, threat-modeling]
 
 Balancing security, privacy, and usability is one of the first (and trickiest) hurdles you face when improving your digital security. Every new layer of protection usually brings some level of inconvenience—prompting many to give up on privacy tools before they’ve even started.
 
-![image](https://github.com/user-attachments/assets/8671eb75-e989-4c56-9167-047cc043b724)
+![image](/images/content/blog-privacy-threat-modeling-guide-8671eb75-e989-4c56-9167-047cc043b724.png)
 
 *As security measures become more robust, they often require more effort and reduce convenience. Finding your ideal balance point depends on your specific needs and threat model.*
 
@@ -27,7 +28,7 @@ Instead of trying every privacy tool out there, you focus on a tailored set of p
 
 ## Five Key Questions for Building Your Threat Model
 
-![image](https://github.com/user-attachments/assets/6391f5c1-e375-4ddc-8ef7-7a81dc361828)
+![image](/images/content/blog-privacy-threat-modeling-guide-6391f5c1-e375-4ddc-8ef7-7a81dc361828.png)
 
 
 A classic approach to threat modeling involves asking five foundational questions. You’ll see this framework in various privacy and security guides, including the [EFF](https://ssd.eff.org) and [Privacy Guides](https://www.privacyguides.org). It’s popular because it covers the essentials without overwhelming you.
@@ -61,7 +62,7 @@ This refers to **risk**—the probability of a threat becoming reality. Some thr
 Aim your efforts at the threats you genuinely encounter or feel are plausible. If you frequently receive phishing emails or suspicious direct messages, prioritize preventing social engineering attacks.
 
 
-![image](https://github.com/user-attachments/assets/06a3f8d7-e8c3-46a7-9a8e-6a83f23dbe72)
+![image](/images/content/blog-privacy-threat-modeling-guide-06a3f8d7-e8c3-46a7-9a8e-6a83f23dbe72.png)
 
 *This matrix helps visualize how to prioritize different security threats based on their likelihood and potential impact.*
 

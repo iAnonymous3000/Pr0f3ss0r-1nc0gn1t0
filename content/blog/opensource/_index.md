@@ -1,4 +1,5 @@
 ---
+date: "2026-03-04"
 title: "Open Source"
 description: "Journey through the transformative world of Free and Open Source Software (FOSS) - from philosophical foundations to practical implementations"
 summary: "Comprehensive exploration of open source technologies, methodologies, and culture, with focus on privacy, security, and community-driven innovation"

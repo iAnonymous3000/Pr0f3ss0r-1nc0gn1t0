@@ -76,6 +76,14 @@
   "articleBody": {{ .Content | safeJS | htmlUnescape | plainify }},
   "wordCount" : "{{ .WordCount }}",
   "inLanguage": {{ .Language.Lang | default "en-us" }},
+  {{- $published := .PublishDate -}}
+  {{- if $published.IsZero -}}{{- $published = .Date -}}{{- end -}}
+  {{- if $published.IsZero -}}{{- $published = .Lastmod -}}{{- end -}}
+  {{- with .File -}}
+    {{- if $published.IsZero -}}{{- $published = .FileInfo.ModTime -}}{{- end -}}
+  {{- end -}}
+  {{- $modified := .Lastmod -}}
+  {{- if $modified.IsZero -}}{{- $modified = $published -}}{{- end -}}
   {{ if .Params.cover.image -}}
   "image":
     {{- if (ne .Params.cover.relative true) -}}
@@ -84,8 +92,8 @@
     {{ (path.Join .RelPermalink .Params.cover.image ) | absURL }},
     {{- end}}
   {{- end -}}
-  "datePublished": {{ .PublishDate }},
-  "dateModified": {{ if not .Lastmod.IsZero }}{{ .Lastmod }}{{ else }}{{ .PublishDate }}{{ end }},
+  "datePublished": {{ $published }},
+  "dateModified": {{ $modified }},
   {{- with (.Params.author | default site.Params.author) }}
   "author":
     {{- if (or (eq (printf "%T" .) "[]string") (eq (printf "%T" .) "[]interface {}")) -}}

@@ -1,4 +1,5 @@
 ---
+date: "2026-03-04"
 
 title: "Setting Up a Decentralized Web Presence: A Complete Guide"
 description: "Learn how to create a fully decentralized website using Cloudflare Web3 Gateways and Unstoppable Domains, with step-by-step instructions for building a resilient and censorship-resistant web presence."
@@ -22,7 +23,7 @@ Before we dive into the technical steps, it's essential to understand the benefi
 
 Before we dive into the technical steps, let's understand how all the pieces fit together:
 
-![Decentralized Web Architecture](https://github.com/user-attachments/assets/89968305-c25c-4492-8a9f-efd036b4b10a)
+![Decentralized Web Architecture](/images/content/projects-web3-89968305-c25c-4492-8a9f-efd036b4b10a.png)
 
 *Architecture of a Decentralized Website using Unstoppable Domains, IPFS, and Cloudflare Web3 Gateways.*
 

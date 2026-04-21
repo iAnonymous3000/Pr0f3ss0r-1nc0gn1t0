@@ -1,4 +1,5 @@
 ---
+date: "2026-03-04"
 
 title: "Projects"  
 description: "Privacy Engineering, Security Research, and Open-Source Contributions"  

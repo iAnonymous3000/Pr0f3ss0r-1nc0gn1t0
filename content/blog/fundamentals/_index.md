@@ -1,4 +1,5 @@
 ---
+date: "2026-03-04"
 title: "Fundamentals"
 description: "Building Better Mental Models for Complex Problem Solving"
 ---

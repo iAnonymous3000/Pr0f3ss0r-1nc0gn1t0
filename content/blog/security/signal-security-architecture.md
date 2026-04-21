@@ -1,4 +1,5 @@
 ---
+date: "2026-03-04"
 title: "Inside the Signal Protocol’s Security Architecture: A Technical Deep Dive"
 description: "A comprehensive, technical exploration of the Signal Protocol’s cryptographic underpinnings, including PQXDH for post-quantum resistance, formal verification references, performance benchmarks, secure memory management best practices, and additional considerations such as user verification, multi-device security, ephemeral messaging, reproducible builds, and future standards."
 tags: ["Signal Protocol", "cryptography", "end-to-end encryption", "security", "Double Ratchet", "X3DH", "PQXDH", "metadata minimization", "secure messaging", "quantum resistance", "ProVerif", "Tamarin", "MLS", "ephemeral messages", "user verification"]
@@ -29,7 +30,7 @@ The **Signal Protocol**, widely recognized for powering Signal Messenger and oth
 
 Future-proofing against large-scale quantum adversaries is now part of the threat model, with **PQXDH** ensuring that even if a quantum computer becomes capable of breaking elliptic curve assumptions, the post-quantum KEM layer will preserve message confidentiality.
 
-![Signal Protocol Threat Model Overview](https://github.com/user-attachments/assets/187de5ee-0680-4e14-951b-730df5c2e35e)
+![Signal Protocol Threat Model Overview](/images/content/blog-security-signal-security-architecture-187de5ee-0680-4e14-951b-730df5c2e35e.png)
 
 *Overview of the Signal Protocol threat model, highlighting the distinction between threats it mitigates (e.g., network-level attacks, server compromise) and those out of scope (e.g., active device compromise).*
 
@@ -61,7 +62,7 @@ Keys are never stored in plaintext if hardware support is present. Ephemeral pri
 
 **X3DH** (Extended Triple Diffie-Hellman) establishes a shared secret without prior contact. It combines multiple Diffie-Hellman operations (DH1–DH4) that feed into an HKDF to derive a root key. Historically, X3DH relies solely on elliptic curve assumptions (X25519).
 
-![Signal Protocol Session Establishment (X3DH + PQXDH)](https://github.com/user-attachments/assets/a24c83ed-3342-4e39-89e6-8263bfe16f91)
+![Signal Protocol Session Establishment (X3DH + PQXDH)](/images/content/blog-security-signal-security-architecture-a24c83ed-3342-4e39-89e6-8263bfe16f91.png)
 
 *X3DH and PQXDH combined handshake flow. The classical X3DH components (left) provide immediate security while the PQXDH addition (right) provides quantum resistance. Both feed secrets into HKDF to derive the Double Ratchet’s root key.*
 
@@ -101,7 +102,7 @@ Robust error handling is critical:
 - **Out-of-Order Messages**: The protocol can handle missing or delayed messages by advancing the ratchet state.  
 - **Session Resets**: If states fall hopelessly out of sync, a new PQXDH handshake re-establishes session security.
 
-![Double Ratchet Protocol: Complete Key Derivation Flow](https://github.com/user-attachments/assets/6b6efe4c-de69-4099-a182-7a0b468f171c)
+![Double Ratchet Protocol: Complete Key Derivation Flow](/images/content/blog-security-signal-security-architecture-6b6efe4c-de69-4099-a182-7a0b468f171c.png)
 
 *The Double Ratchet protocol uses DH and symmetric ratchets for forward secrecy and post-compromise security. Each message key is used once and never reused, ensuring old traffic cannot be decrypted if new keys are compromised.*
 
@@ -204,7 +205,7 @@ Signal supports multiple linked devices:
 - **Session Synchronization**: Double Ratchet states and PQXDH handshakes automatically extend to new devices.  
 - **User Verification Across Devices**: Safety Numbers and user prompts ensure that newly added devices do not silently replace an existing identity.
 
-![Signal Multi-Device Architecture](https://github.com/user-attachments/assets/bfa52f85-4189-4f30-8971-03f39caaccb9)
+![Signal Multi-Device Architecture](/images/content/blog-security-signal-security-architecture-bfa52f85-4189-4f30-8971-03f39caaccb9.png)
 
 *The multi-device architecture for Signal. Each linked device maintains its own state, preserving forward secrecy. The key distribution server helps register device identity keys but does not have message access.*
 
@@ -222,7 +223,7 @@ Ephemeral (disappearing) messages auto-delete after a set interval. While forwar
 - **Dependency Management**: Strict auditing of libraries, especially cryptographic ones.  
 - **Reproducible Builds**: Publicly released binaries can be verified to match the source, reducing the risk of supply chain tampering.
 
-![Signal Supply Chain Security](https://github.com/user-attachments/assets/72d87f5a-61e4-4b5d-b3dd-737e1985938a)
+![Signal Supply Chain Security](/images/content/blog-security-signal-security-architecture-72d87f5a-61e4-4b5d-b3dd-737e1985938a.png)
 
 *Comprehensive build and verification pipeline for Signal. Multiple steps—from source code review to final distribution—ensure that no hidden changes can be introduced without being detected.*
 

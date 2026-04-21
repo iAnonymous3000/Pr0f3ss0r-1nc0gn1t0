@@ -25,6 +25,22 @@ buildExpired: false
 buildFuture: false
 watch: false
 
+# Hugo privacy settings for built-in templates and shortcodes
+privacy:
+  disqus:
+    disable: true
+  googleAnalytics:
+    anonymizeIP: true
+    disable: true
+    respectDoNotTrack: true
+    useSessionStorage: false
+  instagram:
+    disable: true
+  x:
+    enableDNT: true
+  youtube:
+    privacyEnhanced: true
+
 # Primary Parameters
 params:
   env: production
@@ -40,9 +56,6 @@ params:
     - name: "GitHub"
       url: "https://github.com/iAnonymous3000"
       title: "GitHub"
-    - name: "LinkedIn"
-      url: "https://www.linkedin.com/in/soorajsathyanarayanan"
-      title: "LinkedIn"
     - name: "X (formerly Twitter)"
       url: "https://x.com/iAnonymous3000"
       title: "X"
@@ -96,9 +109,6 @@ params:
     - name: "github"
       url: "https://github.com/iAnonymous3000"
       title: "GitHub"
-    - name: "linkedin"
-      url: "https://www.linkedin.com/in/soorajsathyanarayanan"
-      title: "LinkedIn"
     - name: "x" 
       url: "https://x.com/iAnonymous3000"
       title: "X (formerly Twitter)"
@@ -138,22 +148,6 @@ params:
       minMatchCharLength: 3
       keys: ["title", "permalink", "summary", "content"]
   
-  # Privacy Settings
-  privacy:
-    disqus:
-      disable: true
-    googleAnalytics:
-      anonymizeIP: true
-      disable: true
-      respectDoNotTrack: true
-      useSessionStorage: false
-    instagram:
-      disable: true
-    twitter:
-      enableDNT: true
-    youtube:
-      privacyEnhanced: true
-
   # Edit Post Configuration
   editPost:
     URL: "https://github.com/iAnonymous3000/Pr0f3ss0r-1nc0gn1t0/blob/main/content"

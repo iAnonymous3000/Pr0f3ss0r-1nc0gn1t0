@@ -1,4 +1,5 @@
 ---
+date: "2026-03-04"
 title: "The Ultimate Guide to Chess Movies & Shows"
 draft: false
 tags: ["chess", "movies", "tv-shows", "entertainment", "documentary", "drama", "biography"]

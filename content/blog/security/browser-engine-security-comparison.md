@@ -1,4 +1,5 @@
 ---
+date: "2026-03-04"
 title: "Comparing Browser Engine Security: Chromium, Gecko, WebKit"
 description: "A deep-dive into multi-process sandboxing, exploit mitigations, memory safety, extension security, and specialized hardened Chromium forks like Vanadium (for GrapheneOS) and Trivalent (for desktop Linux)."
 tags: ["security", "browsers", "chromium", "firefox", "webkit", "vanadium", "trivalent", "grapheneos", "sandboxing", "exploit-mitigation", "site-isolation", "memory-safety", "multi-process", "browser-security", "hardened_malloc", "rlbox"]
@@ -102,7 +103,7 @@ Trivalent is especially interesting for users on Fedora or other RPM-based Linux
   - **Trivalent** enforces these sandbox policies on Linux desktops, occasionally enabling extra flags like stricter GPU process isolation.  
   - **Vanadium** uses `isolatedProcess` for each renderer on Android, matching or exceeding desktop-level isolation.
 
-![image](https://github.com/user-attachments/assets/2683e8c5-8491-4293-a080-d7a8ba7f84e0)
+![image](/images/content/blog-security-browser-engine-security-comparison-2683e8c5-8491-4293-a080-d7a8ba7f84e0.png)
 
 
 ### Firefox (Gecko)
@@ -115,7 +116,7 @@ Trivalent is especially interesting for users on Fedora or other RPM-based Linux
 - **RLBox**:  
   - Sandboxes certain risky libraries in WebAssembly, preventing direct memory corruption from impacting the main process. It’s an interesting approach but doesn’t fully compensate for weaker multi-process architecture.
 
-![image](https://github.com/user-attachments/assets/bf59f6e4-7483-486f-a62d-b2aac8eab1d5)
+![image](/images/content/blog-security-browser-engine-security-comparison-bf59f6e4-7483-486f-a62d-b2aac8eab1d5.png)
 
 
 ### Safari (WebKit)
@@ -132,7 +133,7 @@ Trivalent is especially interesting for users on Fedora or other RPM-based Linux
 ---
 
 ### Security Boundaries Overview
-![image](https://github.com/user-attachments/assets/76d3ac40-73bb-43f8-9c1e-50abfede38a9)
+![image](/images/content/blog-security-browser-engine-security-comparison-76d3ac40-73bb-43f8-9c1e-50abfede38a9.png)
 
 ---
 
