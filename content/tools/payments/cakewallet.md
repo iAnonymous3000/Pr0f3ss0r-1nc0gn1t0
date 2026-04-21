@@ -1,14 +1,14 @@
 ---
 title: "Cake Wallet"
-description: "User-friendly mobile wallet for Monero"
+description: "User-friendly self-custody mobile wallet"
 date: 2024-10-23T13:13:01-04:00
 draft: false
 image: "/images/tools/cakewallet-logo.jpg"
 linkToTool: "https://cakewallet.com"
 ---
-Cake Wallet is a secure and private mobile wallet for Monero. Key features include:
+Cake Wallet is a secure self-custody mobile wallet for privacy-conscious digital payments. Key features include:
 - Built-in exchanges
-- Node selection
+- Flexible network and node options
 - Backup encryption
 - Multiple accounts
 - Open source code

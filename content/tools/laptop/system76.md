@@ -10,5 +10,5 @@ System76 manufactures laptops with privacy, security, and repairability built in
 - Intel ME neutralized for enhanced security
 - Open source firmware (Coreboot-based) for transparency
 - Fully user-serviceable hardware design
-- Pop!_OS privacy-focused Linux preinstalled
+- Linux preinstalled and supported by the hardware vendor
 - Complete repair documentation and parts access

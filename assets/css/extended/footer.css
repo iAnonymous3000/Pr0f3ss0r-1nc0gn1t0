@@ -1,0 +1,7 @@
+.footer {
+    overflow-wrap: anywhere;
+}
+
+.footer span:last-child {
+    white-space: normal;
+}

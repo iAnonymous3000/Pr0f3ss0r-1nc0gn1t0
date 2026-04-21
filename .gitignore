@@ -74,10 +74,11 @@ bower_components/
 *.7z
 
 # AI Assistant artifacts
+.codex/
 .claude/
 .claude*
-CLAUDE.md
-claude.md
+CLAUDE*.md
+claude*.md
 .cursorrules
 .cursor/
 .aider*
