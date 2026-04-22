@@ -3,7 +3,7 @@ title: "Apple Watch"
 description: "Health-focused wearable with strong encryption and deep Health ecosystem integration"
 date: 2026-04-20T07:00:00-07:00
 draft: false
-image: "/images/tools/applewatch-logo.png"
+image: "/images/tools/apple-watch-logo.svg"
 linkToTool: "https://www.apple.com/apple-watch/"
 ---
 Apple Watch is one of the strongest mainstream wearables if health privacy matters to you. Key features include:

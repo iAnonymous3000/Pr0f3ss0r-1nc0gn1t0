@@ -3,7 +3,7 @@ title: "Apple Fitness"
 description: "Apple's fitness ecosystem with strong device-level protections and optional cloud privacy"
 date: 2026-04-20T07:00:00-07:00
 draft: false
-image: "/images/tools/applefitness-logo.png"
+image: "/images/tools/apple-fitness.webp"
 linkToTool: "https://www.apple.com/apple-fitness-plus/"
 ---
 Apple Fitness is Apple's workout and activity ecosystem across iPhone, Apple Watch, and Fitness+. Key features include:
