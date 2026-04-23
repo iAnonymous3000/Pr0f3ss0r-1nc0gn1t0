@@ -37,11 +37,11 @@
 
 {{- if $isRoot }}
   {{- if gt (len $sections) 0 }}
-    <nav class="tools-directory" aria-label="Tools categories">
+    <nav class="tools-directory tools-directory-sticky tools-directory-anchors" aria-label="Tools categories" data-tools-directory>
       {{- range $sections }}
         {{- $count := len .RegularPages -}}
         {{- $countLabel := cond (eq $count 1) "1 tool" (printf "%d tools" $count) -}}
-        <a class="tools-directory-link" href="#{{ .LinkTitle | anchorize }}" aria-label="{{ .Title }}, {{ $countLabel }}">
+        <a class="tools-directory-link" href="#{{ .LinkTitle | anchorize }}" aria-label="{{ .Title }}, {{ $countLabel }}" data-tools-directory-link>
           <span>{{ .Title }}</span>
           <span class="tools-directory-count" aria-hidden="true">{{ $count }}</span>
         </a>

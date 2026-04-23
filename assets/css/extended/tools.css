@@ -123,6 +123,7 @@
 
 .tools-group {
     margin-bottom: 2.5rem;
+    scroll-margin-top: 5.5rem;
 }
 
 .tools-group-header {
@@ -358,7 +359,7 @@
 }
 
 .tools-filter-active .tools-intro,
-.tools-filter-active .tools-directory:not(.tools-directory-sticky) {
+.tools-filter-active .tools-directory-anchors {
     display: none;
 }
 
