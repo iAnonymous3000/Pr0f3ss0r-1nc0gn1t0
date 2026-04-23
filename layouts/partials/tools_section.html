@@ -1,6 +1,11 @@
 {{- $isRoot := eq .FirstSection.RelPermalink .RelPermalink -}}
 {{- $sections := .Sections.ByWeight -}}
 {{- $pages := .RegularPages.ByTitle -}}
+{{- $toolCount := len $pages -}}
+{{- if $isRoot -}}
+  {{- $toolCount = len (where site.RegularPages "Section" "tools") -}}
+{{- end -}}
+{{- $toolCountLabel := cond (eq $toolCount 1) "1 tool" (printf "%d tools" $toolCount) -}}
 
 <header class="page-header tools-page-header">
   {{- partial "breadcrumbs.html" . }}
@@ -12,6 +17,53 @@
   {{- end }}
 </header>
 
+{{- if gt $toolCount 0 }}
+  <section class="tools-filter" aria-label="Tool finder" data-tools-filter-root>
+    <label class="tools-filter-label" for="tools-filter-input">Find tools</label>
+    <div class="tools-filter-control">
+      <input
+        id="tools-filter-input"
+        class="tools-filter-input"
+        type="search"
+        placeholder="Search tools"
+        autocomplete="off"
+        aria-describedby="tools-filter-count"
+        data-tools-filter-input
+      />
+      <span id="tools-filter-count" class="tools-filter-count" aria-live="polite" data-tools-filter-count>{{ $toolCountLabel }}</span>
+    </div>
+  </section>
+{{- end }}
+
+{{- if $isRoot }}
+  {{- if gt (len $sections) 0 }}
+    <nav class="tools-directory" aria-label="Tools categories">
+      {{- range $sections }}
+        {{- $count := len .RegularPages -}}
+        {{- $countLabel := cond (eq $count 1) "1 tool" (printf "%d tools" $count) -}}
+        <a class="tools-directory-link" href="#{{ .LinkTitle | anchorize }}" aria-label="{{ .Title }}, {{ $countLabel }}">
+          <span>{{ .Title }}</span>
+          <span class="tools-directory-count" aria-hidden="true">{{ $count }}</span>
+        </a>
+      {{- end }}
+    </nav>
+  {{- end }}
+{{- else }}
+  {{- $current := .RelPermalink -}}
+  {{- with site.GetPage "/tools" }}
+    <nav class="tools-directory tools-directory-sticky" aria-label="Tools categories">
+      {{- range .Sections.ByWeight }}
+        {{- $count := len .RegularPages -}}
+        {{- $countLabel := cond (eq $count 1) "1 tool" (printf "%d tools" $count) -}}
+        <a class="tools-directory-link{{ if eq .RelPermalink $current }} is-current{{ end }}" href="{{ .RelPermalink }}" aria-label="{{ .Title }}, {{ $countLabel }}"{{ if eq .RelPermalink $current }} aria-current="page"{{ end }}>
+          <span>{{ .Title }}</span>
+          <span class="tools-directory-count" aria-hidden="true">{{ $count }}</span>
+        </a>
+      {{- end }}
+    </nav>
+  {{- end }}
+{{- end }}
+
 {{- if .Content }}
   <div class="post-content tools-intro">
     {{- if not (.Param "disableAnchoredHeadings") }}
@@ -22,31 +74,18 @@
   </div>
 {{- end }}
 
-{{- if $isRoot }}
-  {{- if gt (len $sections) 0 }}
-    <nav class="tools-directory" aria-label="Tools categories">
-      {{- range $sections }}
-        <a class="tools-directory-link" href="#{{ .LinkTitle | anchorize }}">{{ .Title }}</a>
-      {{- end }}
-    </nav>
-  {{- end }}
-{{- else }}
-  {{- $current := .RelPermalink -}}
-  {{- with site.GetPage "/tools" }}
-    <nav class="tools-directory tools-directory-sticky" aria-label="Tools categories">
-      {{- range .Sections.ByWeight }}
-        <a class="tools-directory-link{{ if eq .RelPermalink $current }} is-current{{ end }}" href="{{ .RelPermalink }}"{{ if eq .RelPermalink $current }} aria-current="page"{{ end }}>{{ .Title }}</a>
-      {{- end }}
-    </nav>
-  {{- end }}
-{{- end }}
-
 {{- if and $isRoot (gt (len $sections) 0) }}
   {{- range $sections }}
-    <section class="tools-group" id="{{ .LinkTitle | anchorize }}">
+    {{- $groupPages := .RegularPages.ByTitle -}}
+    {{- $groupCount := len $groupPages -}}
+    {{- $groupCountLabel := cond (eq $groupCount 1) "1 tool" (printf "%d tools" $groupCount) -}}
+    <section class="tools-group" id="{{ .LinkTitle | anchorize }}" data-tool-group>
       <div class="tools-group-header">
         <div>
-          <h2>{{ .Title }}</h2>
+          <div class="tools-group-title-row">
+            <h2>{{ .Title }}</h2>
+            <span class="tools-group-count">{{ $groupCountLabel }}</span>
+          </div>
           {{- with .Params.SubTitle }}
             <p>{{ . }}</p>
           {{- end }}
@@ -54,7 +93,7 @@
         <a class="tools-group-link" href="{{ .RelPermalink }}">View category</a>
       </div>
 
-      {{- with .RegularPages.ByTitle }}
+      {{- with $groupPages }}
         <div class="tools-grid">
           {{- range . }}
             {{- partial "toolcard.html" . -}}
@@ -66,7 +105,7 @@
     </section>
   {{- end }}
 {{- else }}
-  <section class="tools-group">
+  <section class="tools-group" data-tool-group>
     {{- with $pages }}
       <div class="tools-grid">
         {{- range . }}
@@ -77,4 +116,15 @@
       <p class="tools-empty-state">No tools published here yet.</p>
     {{- end }}
   </section>
+{{- end }}
+
+{{- if gt $toolCount 0 }}
+  <p class="tools-empty-state tools-filter-empty" data-tools-filter-empty hidden>No matching tools found.</p>
+  {{- $toolsFilter := resources.Get "js/tools-filter.js" | resources.Minify -}}
+  {{- if not site.Params.assets.disableFingerprinting -}}
+    {{- $toolsFilterJS := $toolsFilter | fingerprint -}}
+    <script defer crossorigin="anonymous" src="{{ $toolsFilterJS.RelPermalink }}" integrity="{{ $toolsFilterJS.Data.Integrity }}"></script>
+  {{- else -}}
+    <script defer crossorigin="anonymous" src="{{ $toolsFilter.RelPermalink }}"></script>
+  {{- end -}}
 {{- end }}

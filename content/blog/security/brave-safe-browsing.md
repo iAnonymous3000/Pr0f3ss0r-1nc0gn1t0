@@ -24,7 +24,7 @@ Google employs automated systems called web crawlers to systematically browse th
 - **Detection Techniques**: Heuristics, machine learning models, and signature-based detection identify malware and phishing sites.
 
 <div align="center">
-  <img src="/images/content/blog-security-brave-safe-browsing-4f6df1a6-9168-4d2d-8e11-ebc03b29ccf4.png" alt="Web Crawling and Analysis Process">
+  <img src="{{< relurl "images/content/blog-security-brave-safe-browsing-4f6df1a6-9168-4d2d-8e11-ebc03b29ccf4.png" >}}" alt="Web Crawling and Analysis Process">
 
 <em>Flowchart illustrating the web crawling and analysis process.</em>
 </div>
@@ -102,8 +102,8 @@ Brave minimizes the data sent to Google by:
 - **Efficiency**: Local checks are fast and protect user privacy by avoiding unnecessary network requests.
 
 <div align="center">
-  <img src="/images/content/blog-security-brave-safe-browsing-1369f617-7f4d-45e0-a822-1fab54594034.png" alt="Standard Safe Browsing Implementation">
-  <img src="/images/content/blog-security-brave-safe-browsing-620335d2-d227-4cae-a639-3f56af97f6a5.png" alt="Brave Safe Browsing Implementation">
+  <img src="{{< relurl "images/content/blog-security-brave-safe-browsing-1369f617-7f4d-45e0-a822-1fab54594034.png" >}}" alt="Standard Safe Browsing Implementation">
+  <img src="{{< relurl "images/content/blog-security-brave-safe-browsing-620335d2-d227-4cae-a639-3f56af97f6a5.png" >}}" alt="Brave Safe Browsing Implementation">
   <br>
   <em>Flowchart comparing standard Safe Browsing implementation with Brave's enhanced privacy approach.</em>
 </div>
@@ -134,7 +134,7 @@ Brave minimizes the data sent to Google by:
 [Learn more about hash-based Safe Browsing in this Google Security Blog post.](https://security.googleblog.com/2022/08/how-hash-based-safe-browsing-works-in.html)
 
 <div align="center">
-  <img src="/images/content/blog-security-brave-safe-browsing-7d1da7c2-32e6-4233-8c0e-677b3a4c35b2.png" alt="URL Hashing and Prefix Matching Process">
+  <img src="{{< relurl "images/content/blog-security-brave-safe-browsing-7d1da7c2-32e6-4233-8c0e-677b3a4c35b2.png" >}}" alt="URL Hashing and Prefix Matching Process">
 
 <em>Diagram showing the process of URL hashing and how hash prefixes are used to check against the Safe Browsing database without compromising privacy.</em>
 </div>

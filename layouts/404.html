@@ -224,8 +224,8 @@
 
     <nav class="nav-footer" aria-label="Footer Navigation">
         <div class="footer-links">
-            <a href="/" class="footer-link">Return Home</a>
-            <a href="/blog" class="footer-link">Read Blog</a>
+            <a href="{{ site.Home.RelPermalink }}" class="footer-link">Return Home</a>
+            <a href="{{ (site.GetPage "/blog").RelPermalink }}" class="footer-link">Read Blog</a>
         </div>
     </nav>
 </div>

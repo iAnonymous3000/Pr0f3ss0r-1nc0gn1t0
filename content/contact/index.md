@@ -12,7 +12,7 @@ For direct, secure communication:
 
 ➜ [Contact via Signal](https://signal.me/#eu/tao35l1vQxmrWcie6iW3dXlcFo0t3Pzae7WFHEMJnAIqKn2WxP5KnKKq5ClE-ZDD)
 
-<img src="/images/content/contact-e2549eae-458a-4699-9699-5dd98e354355.png" alt="Signal QR Code" width="300" height="300" style="display: block; margin: 20px 0;">
+<img src="{{< relurl "images/content/contact-e2549eae-458a-4699-9699-5dd98e354355.png" >}}" alt="Signal QR Code" width="300" height="300" style="display: block; margin: 20px 0;">
 
 - End-to-end encrypted
 - Secure media sharing
@@ -28,7 +28,7 @@ For anonymous, sensitive information:
 
 ➜ [Submit Anonymous Tip](https://tips.hushline.app/to/ianonymous3000)
 
-<img src="/images/content/contact-8e105c4f-344c-4506-a5b7-315087f7ae90.png" alt="HushLine QR Code" width="300" height="300" style="display: block; margin: 20px 0;">
+<img src="{{< relurl "images/content/contact-8e105c4f-344c-4506-a5b7-315087f7ae90.png" >}}" alt="HushLine QR Code" width="300" height="300" style="display: block; margin: 20px 0;">
 
 Appropriate for:
 - Security vulnerability reports
@@ -50,7 +50,7 @@ For scheduled discussions:
 
 ➜ [Book a Meeting](https://cal.com/timechainconsulting)
 
-<img src="/images/content/contact-141f7f30-34f8-40f3-9979-24562ec52494.png" alt="Calendar QR Code" width="300" height="300" style="display: block; margin: 20px 0;">
+<img src="{{< relurl "images/content/contact-141f7f30-34f8-40f3-9979-24562ec52494.png" >}}" alt="Calendar QR Code" width="300" height="300" style="display: block; margin: 20px 0;">
 
 Available for:
 - Project consultations

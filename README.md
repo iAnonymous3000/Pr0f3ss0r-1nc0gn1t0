@@ -1,4 +1,4 @@
-# Professor Incognito - Personal Website  
+# Pr0f3ss0r 1nc0gn1t0
 
 <a href="https://gohugo.io/">
   <img src="https://img.shields.io/badge/Hugo-0.160.1-blue?style=flat-square&logo=hugo" alt="Hugo Version">
@@ -26,102 +26,109 @@
 </a>
 
 
-A privacy-focused personal website built with Hugo WonderMod theme, showcasing security research, chess strategy, and digital rights advocacy.
+A privacy-first personal site built with Hugo and the WonderMod theme. It publishes security research, digital-rights writing, chess analysis, and a curated tools directory for privacy-respecting software and services.
 
-## Overview  
-[profincognito.me](https://profincognito.me) serves as a platform for:  
-- Privacy Research & Security Strategies  
-- Open Source Security Tools  
-- Chess-Inspired Security Thinking  
-- Digital Rights Education  
-- Privacy-Preserving Technologies  
+## Overview
 
-## Tech Stack  
-- **Static Site Generator**: Hugo  
-- **Theme**: [WonderMod](https://github.com/Wonderfall/hugo-WonderMod) (Privacy-hardened fork of PaperMod)  
-- **Primary Hosting**: Cloudflare Pages  
-- **Mirror/Backup**: GitHub Pages  
-- **DNS & Security**: Cloudflare  
-- **Deployment**: Automated via Cloudflare Pages and GitHub Actions  
+[profincognito.me](https://profincognito.me) is designed as a fast static site with a minimal client-side footprint. The main sections are:
 
-## Privacy Features  
-Built with privacy-first principles:  
+- Security, privacy, and digital-rights articles
+- A searchable tools directory with category pages and individual notes
+- Chess writing and analysis
+- Contact, support, and site policy pages
+- Static assets served locally where practical
+
+## Tech Stack
+
+- **Static site generator**: Hugo Extended 0.160.1+
+- **Theme**: [WonderMod](https://github.com/Wonderfall/hugo-WonderMod), a privacy-hardened PaperMod fork
+- **Primary hosting**: Cloudflare Pages
+- **Mirror hosting**: GitHub Pages
+- **DNS and edge security**: Cloudflare
+- **Deployment**: Cloudflare Pages plus a GitHub Actions mirror workflow
+
+## Features
+
+- Responsive layouts for desktop and mobile
+- Local client-side site search
+- Searchable and filterable tools directory
+- Base-path-safe asset handling for the GitHub Pages mirror
+- Markdown image rendering that works across the primary domain and mirror
+- Math rendering support where enabled in content
+- RSS feeds and structured metadata
+
+## Privacy and Security
+
+Built with privacy-first principles:
+
 - No first-party analytics or tracking scripts
 - Content images are served locally from this domain
-- No cookies  
+- No cookies
 - No `localStorage` persistence for UI preferences
 - No automatic third-party embeds
 - Strong Content Security Policy via Cloudflare Pages `_headers`
-- Privacy-preserving contact methods  
-- Secure email routing  
+- Security contact metadata under `/.well-known/security.txt`
+- Privacy-preserving contact and support options
 
-## Deployment  
+## Local Development
+
+### Prerequisites
+
+- Hugo Extended 0.160.1 or newer
+- Git
+
+### Run Locally
+
+```bash
+hugo server -D --disableFastRender
+```
+
+The local site is served from `http://localhost:1313/`.
+
+### Production Build
+
+```bash
+hugo --ignoreCache --gc --minify --printPathWarnings
+```
+
+### Mirror Build Check
+
+Use this before changing paths, images, or generated URLs that must work under the GitHub Pages project path.
+
+```bash
+hugo --ignoreCache --gc --minify \
+  --baseURL "https://ianonymous3000.github.io/Pr0f3ss0r-1nc0gn1t0/" \
+  --destination public-mirror
+```
+
+## Deployment
+
 The website is deployed to two platforms:
 
-1. **Primary (Cloudflare Pages)**:
-   - Automated deployment via Cloudflare Pages
-   - Build command: 
-     ```bash
-     hugo
-     ```
-   - Available at: [profincognito.me](https://profincognito.me)
+1. **Primary: Cloudflare Pages**
+   - Build command: `hugo`
+   - Public URL: [profincognito.me](https://profincognito.me)
 
-2. **Mirror (GitHub Pages)**:
-   
-   [![Deploy to GitHub Pages](https://github.com/iAnonymous3000/Pr0f3ss0r-1nc0gn1t0/actions/workflows/gh-pages.yml/badge.svg)](https://github.com/iAnonymous3000/Pr0f3ss0r-1nc0gn1t0/actions/workflows/gh-pages.yml)
-   - Serves as backup/mirror
-   - Automatically updated when Cloudflare builds
-   - Serves static files from gh-pages branch
-   - Available at: [ianonymous3000.github.io/Pr0f3ss0r-1nc0gn1t0](https://ianonymous3000.github.io/Pr0f3ss0r-1nc0gn1t0)
+2. **Mirror: GitHub Pages**
+   - Workflow: [Deploy to GitHub Pages](https://github.com/iAnonymous3000/Pr0f3ss0r-1nc0gn1t0/actions/workflows/gh-pages.yml)
+   - Downloads and verifies the Hugo release checksum before building
+   - Publishes the generated static site to the `gh-pages` branch
+   - Public URL: [ianonymous3000.github.io/Pr0f3ss0r-1nc0gn1t0](https://ianonymous3000.github.io/Pr0f3ss0r-1nc0gn1t0)
 
-This dual-deployment setup ensures high availability.
+## Repository Notes
 
-## Local Development  
+- `content/` contains posts, pages, chess notes, and tools entries.
+- `layouts/` contains WonderMod overrides and custom rendering behavior.
+- `assets/css/extended/` contains site-specific styling.
+- `assets/js/` contains local JavaScript for search and tools filtering.
+- `static/` contains copied-through files such as favicons, well-known files, and local images.
 
-### Prerequisites  
-- Hugo Extended 0.160.1 or newer
-- Git  
+## Contributions
 
-### Setup  
-```bash
-# Clone the repository
-git clone https://github.com/iAnonymous3000/Pr0f3ss0r-1nc0gn1t0.git
-cd Pr0f3ss0r-1nc0gn1t0
+This is a personal website, but bug reports and security-minded improvements are welcome. Use GitHub Issues for general reports and the repository security advisory flow or listed contact channels for sensitive issues.
 
-# Start development server
-hugo server -D
-```
+## License
 
-### Build  
-```bash
-# Production build
-hugo
-```
-
-## Contributions  
-While this is a personal website, bug reports are welcome:  
-1. Submit via GitHub Issues  
-2. Use security advisory for vulnerabilities  
-3. Contact through secure channels for sensitive issues  
-
-## Support  
-Support privacy research and development:  
-- Code contributions  
-- Security research collaboration  
-- Privacy-preserving cryptocurrency donations:  
-  - Monero (XMR)  
-  - Zcash (ZEC)  
-
-## License  
-- Website Source Code: [GNU Affero General Public License v3.0](LICENSE)  
-- Content & Articles: [Creative Commons Attribution-ShareAlike 4.0](https://creativecommons.org/licenses/by-sa/4.0/)  
-- Theme: MIT (WonderMod)  
-
-## Credits  
-- Hugo Team  
-- WonderMod Theme  
-- Privacy & Security Community  
-
----
-Project Pr0f3ss0r1nc0gn1t0: Advancing privacy and digital rights.  
-Made with ♟️ by Pr0f3ss0r 1nc0gn1t0
+- Website source code: [GNU Affero General Public License v3.0](LICENSE)
+- Content and articles: [Creative Commons Attribution-ShareAlike 4.0](https://creativecommons.org/licenses/by-sa/4.0/)
+- Theme: MIT license through WonderMod

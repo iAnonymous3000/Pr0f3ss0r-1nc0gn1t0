@@ -50,10 +50,14 @@ jobs:
               ;;
           esac
 
-          curl -sLJO "https://github.com/gohugoio/hugo/releases/download/v${HUGO_VERSION}/hugo_extended_${HUGO_VERSION}_linux-${HUGO_ARCH}.tar.gz"
+          HUGO_ARCHIVE="hugo_extended_${HUGO_VERSION}_linux-${HUGO_ARCH}.tar.gz"
+          curl -sSfL -o "$HUGO_ARCHIVE" "https://github.com/gohugoio/hugo/releases/download/v${HUGO_VERSION}/${HUGO_ARCHIVE}"
+          curl -sSfL -o hugo_checksums.txt "https://github.com/gohugoio/hugo/releases/download/v${HUGO_VERSION}/hugo_${HUGO_VERSION}_checksums.txt"
+          grep "  ${HUGO_ARCHIVE}$" hugo_checksums.txt | sha256sum -c -
+
           mkdir -p "${HOME}/.local/hugo"
-          tar -C "${HOME}/.local/hugo" -xf "hugo_extended_${HUGO_VERSION}_linux-${HUGO_ARCH}.tar.gz"
-          rm "hugo_extended_${HUGO_VERSION}_linux-${HUGO_ARCH}.tar.gz"
+          tar -C "${HOME}/.local/hugo" -xf "$HUGO_ARCHIVE"
+          rm "$HUGO_ARCHIVE" hugo_checksums.txt
           echo "${HOME}/.local/hugo" >> "${GITHUB_PATH}"
           "${HOME}/.local/hugo/hugo" version
           

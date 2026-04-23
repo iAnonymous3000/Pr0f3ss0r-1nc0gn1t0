@@ -6,8 +6,12 @@
 
     <div class="tool-single-hero">
       {{- with .Params.Image }}
+        {{- $src := . -}}
+        {{- if strings.HasPrefix $src "/" -}}
+          {{- $src = strings.TrimPrefix "/" $src | relURL -}}
+        {{- end -}}
         <div class="tool-single-logo-wrap">
-          <img class="tool-single-logo" src="{{ . }}" alt="" />
+          <img class="tool-single-logo" src="{{ $src | safeURL }}" alt="" />
         </div>
       {{- end }}
 

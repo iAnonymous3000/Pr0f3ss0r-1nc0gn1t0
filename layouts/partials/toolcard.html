@@ -1,7 +1,11 @@
-<article class="tool-card">
+<article class="tool-card" data-tool-card>
   <div class="tool-card-header">
     {{ with .Params.Image }}
-      <img class="tool-card-logo" src="{{ . }}" alt="" width="48" height="48" loading="lazy" />
+      {{- $src := . -}}
+      {{- if strings.HasPrefix $src "/" -}}
+        {{- $src = strings.TrimPrefix "/" $src | relURL -}}
+      {{- end -}}
+      <img class="tool-card-logo" src="{{ $src | safeURL }}" alt="" width="48" height="48" loading="lazy" />
     {{ end }}
     <div class="tool-card-heading">
       <h3><a href="{{ $.RelPermalink }}">{{ $.Title }}</a></h3>

@@ -3,7 +3,7 @@ title: "MacBook"
 description: "Apple laptops with strong hardware security and long platform support"
 date: 2026-04-20T07:00:00-07:00
 draft: false
-image: "/images/tools/macbook-logo.jpg"
+image: "/images/tools/macbook-icon.svg"
 linkToTool: "https://www.apple.com/macbook-air/"
 ---
 MacBook devices provide a strong security baseline for users who prefer the Apple ecosystem. Key features include:
