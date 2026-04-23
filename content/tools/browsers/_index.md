@@ -3,6 +3,7 @@ title: "Web Browsers"
 subTitle: "Secure and privacy-focused web browsers"
 date: 2024-10-21T13:13:01-04:00
 draft: false
+weight: 21
 ---
 
 Explore our recommended web browsers that prioritize privacy, security hardening, and sane defaults while browsing the internet.

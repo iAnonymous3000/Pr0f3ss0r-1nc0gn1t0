@@ -1,5 +1,5 @@
 {{- $isRoot := eq .FirstSection.RelPermalink .RelPermalink -}}
-{{- $sections := .Sections.ByTitle -}}
+{{- $sections := .Sections.ByWeight -}}
 {{- $pages := .RegularPages.ByTitle -}}
 
 <header class="page-header tools-page-header">
@@ -22,12 +22,23 @@
   </div>
 {{- end }}
 
-{{- if and $isRoot (gt (len $sections) 0) }}
-  <nav class="tools-directory" aria-label="Tools categories">
-    {{- range $sections }}
-      <a class="tools-directory-link" href="#{{ .LinkTitle | anchorize }}">{{ .Title }}</a>
-    {{- end }}
-  </nav>
+{{- if $isRoot }}
+  {{- if gt (len $sections) 0 }}
+    <nav class="tools-directory" aria-label="Tools categories">
+      {{- range $sections }}
+        <a class="tools-directory-link" href="#{{ .LinkTitle | anchorize }}">{{ .Title }}</a>
+      {{- end }}
+    </nav>
+  {{- end }}
+{{- else }}
+  {{- $current := .RelPermalink -}}
+  {{- with site.GetPage "/tools" }}
+    <nav class="tools-directory tools-directory-sticky" aria-label="Tools categories">
+      {{- range .Sections.ByWeight }}
+        <a class="tools-directory-link{{ if eq .RelPermalink $current }} is-current{{ end }}" href="{{ .RelPermalink }}"{{ if eq .RelPermalink $current }} aria-current="page"{{ end }}>{{ .Title }}</a>
+      {{- end }}
+    </nav>
+  {{- end }}
 {{- end }}
 
 {{- if and $isRoot (gt (len $sections) 0) }}

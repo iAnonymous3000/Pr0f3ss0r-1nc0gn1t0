@@ -1,6 +1,6 @@
 ---
 title: "Apple TV 4K"
-description: "Mainstream streaming device with stronger privacy defaults and no ad-supported OS layer"
+description: "Streaming device with no ACR, no ad-supported OS, and opt-in analytics"
 date: 2026-04-23T00:00:00-07:00
 draft: false
 image: "/images/tools/apple-tv-logo.jpg"

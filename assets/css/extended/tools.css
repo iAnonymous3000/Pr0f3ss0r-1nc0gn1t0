@@ -27,6 +27,38 @@
     background: var(--tertiary);
 }
 
+.tools-directory-sticky {
+    position: sticky;
+    top: 0;
+    z-index: 20;
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    overscroll-behavior-x: contain;
+    padding: 0.65rem 0;
+    margin: 0 -1rem 1.5rem;
+    padding-left: 1rem;
+    padding-right: 1rem;
+    background: var(--theme);
+    border-bottom: 1px solid var(--border);
+    scrollbar-width: thin;
+}
+
+.tools-directory-sticky .tools-directory-link {
+    flex-shrink: 0;
+    white-space: nowrap;
+}
+
+.tools-directory-link.is-current {
+    background: var(--primary);
+    color: var(--theme);
+    border-color: var(--primary);
+}
+
+.tools-directory-link.is-current:hover {
+    background: var(--primary);
+    color: var(--theme);
+}
+
 .tools-group {
     margin-bottom: 2.5rem;
 }
@@ -74,11 +106,22 @@
     background: var(--entry);
     border: 1px solid var(--border);
     border-radius: var(--radius);
-    transition: transform 0.12s ease, border-color 0.12s ease;
+    transition: border-color 0.12s ease;
 }
 
-.tool-card:hover {
-    transform: translateY(-2px);
+@media (prefers-reduced-motion: no-preference) {
+    .tool-card {
+        transition: transform 0.12s ease, border-color 0.12s ease;
+    }
+
+    .tool-card:hover,
+    .tool-card:focus-within {
+        transform: translateY(-2px);
+    }
+}
+
+.tool-card:hover,
+.tool-card:focus-within {
     border-color: var(--secondary);
 }
 
@@ -168,7 +211,7 @@
     display: grid;
     grid-template-columns: minmax(96px, 120px) 1fr;
     gap: 1.25rem;
-    align-items: center;
+    align-items: start;
 }
 
 .tool-single-logo-wrap {

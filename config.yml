@@ -10,9 +10,10 @@ enableEmoji: true
 
 frontmatter:
   lastmod:
-    - git
-    - fileModTime
-    - default
+    - :git
+    - :fileModTime
+    - lastmod
+    - :default
 
 # Pagination
 pagination:
