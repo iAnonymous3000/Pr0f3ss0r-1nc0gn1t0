@@ -3,7 +3,7 @@ title: "Plausible"
 description: "Simple, lightweight, privacy-friendly web analytics"
 date: 2026-04-23T00:00:00-07:00
 draft: false
-image: "/images/tools/plausible-logo.png"
+image: "/images/tools/plausible-logo.svg"
 linkToTool: "https://plausible.io/"
 ---
 

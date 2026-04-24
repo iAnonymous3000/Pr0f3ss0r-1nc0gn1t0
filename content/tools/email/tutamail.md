@@ -3,7 +3,7 @@ title: "Tuta Mail"
 description: "Email service with built-in encryption and zero-knowledge design"
 date: 2024-10-21T13:13:01-04:00
 draft: false
-image: "/images/tools/tuta-logo.svg"
+image: "/images/tools/tuta-mail-logo.png"
 linkToTool: "https://tuta.com/"
 ---
 
