@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" role="img" aria-labelledby="title desc">
+  <title id="title">Monochrome printer icon</title>
+  <desc id="desc">A simple monochrome printer icon for Brother printer recommendations.</desc>
+  <rect width="128" height="128" rx="24" fill="#f5f5f5"/>
+  <rect x="34" y="18" width="60" height="34" rx="4" fill="#ffffff" stroke="#1f2937" stroke-width="6"/>
+  <rect x="22" y="45" width="84" height="44" rx="8" fill="#1f2937"/>
+  <rect x="35" y="72" width="58" height="38" rx="4" fill="#ffffff" stroke="#1f2937" stroke-width="6"/>
+  <rect x="44" y="83" width="40" height="5" rx="2.5" fill="#64748b"/>
+  <rect x="44" y="94" width="28" height="5" rx="2.5" fill="#64748b"/>
+  <circle cx="92" cy="60" r="5" fill="#22c55e"/>
+</svg>

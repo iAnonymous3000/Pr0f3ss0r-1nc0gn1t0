@@ -21,6 +21,10 @@
     <p class="tool-card-description">{{ . }}</p>
   {{ end }}
 
+  {{ with .Params.RecommendationLabel }}
+    <p class="tool-recommendation-label">{{ . }}</p>
+  {{ end }}
+
   <div class="tool-card-actions">
     <a class="tool-card-read" href="{{ .RelPermalink }}">Read notes</a>
     {{ with .Params.LinkToTool }}

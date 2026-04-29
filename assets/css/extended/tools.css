@@ -252,6 +252,23 @@
     overflow-wrap: anywhere;
 }
 
+.tool-recommendation-label {
+    align-self: flex-start;
+    margin: 0;
+    padding: 0.18rem 0.55rem;
+    color: var(--primary);
+    background: var(--theme);
+    border: 1px solid var(--border);
+    border-radius: 999px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    line-height: 1.5;
+}
+
+.tool-single-recommendation {
+    margin-top: 0.85rem;
+}
+
 .tool-card-actions {
     display: flex;
     flex-wrap: wrap;

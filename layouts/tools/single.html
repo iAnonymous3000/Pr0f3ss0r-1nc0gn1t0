@@ -28,6 +28,10 @@
           <div class="post-description">{{ . }}</div>
         {{- end }}
 
+        {{- with .Params.RecommendationLabel }}
+          <p class="tool-recommendation-label tool-single-recommendation">{{ . }}</p>
+        {{- end }}
+
         <div class="tool-single-actions">
           {{- with .Params.LinkToTool }}
             <a class="tool-action tool-action-primary" href="{{ . }}" target="_blank" rel="noreferrer noopener">Visit site</a>
