@@ -1,15 +1,17 @@
-<svg width="128" height="128" viewBox="0 0 128 128" fill="none" xmlns="http://www.w3.org/2000/svg">
+<svg width="128" height="128" viewBox="0 0 128 128" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="iPhone icon">
   <rect width="128" height="128" rx="28" fill="#1D1D1F"/>
-  <rect x="38" y="17" width="52" height="94" rx="13" fill="#F5F5F7"/>
-  <rect x="42" y="23" width="44" height="82" rx="10" fill="url(#screen)"/>
-  <rect x="53" y="29" width="22" height="5" rx="2.5" fill="#16181D"/>
-  <circle cx="78.5" cy="31.5" r="2" fill="#16181D"/>
-  <path d="M47 85C54.5 78.5 60.5 75.5 66 76C73 76.5 77 83 86 80V96C86 100.971 81.9706 105 77 105H51C46.0294 105 42 100.971 42 96V91C43.6 89.4 45.2667 87.4 47 85Z" fill="#F5F5F7" fill-opacity="0.24"/>
+  <rect x="33" y="10" width="62" height="108" rx="17" fill="#E7E9EF"/>
+  <rect x="38" y="16" width="52" height="96" rx="13" fill="#111318"/>
+  <rect x="53" y="22" width="22" height="5" rx="2.5" fill="#2B2F38"/>
+  <circle cx="80" cy="24.5" r="2" fill="#2B2F38"/>
+  <path d="M38 69C47 59.5 55.5 55.5 64 56.5C73.5 57.5 80 65 90 60V99C90 106.18 84.18 112 77 112H51C43.82 112 38 106.18 38 99V69Z" fill="url(#iphone-screen)"/>
+  <path d="M49 47C53.75 41.2 58.75 38.3 64 38.3C69.25 38.3 74.25 41.2 79 47" stroke="#EAF3FF" stroke-width="4.5" stroke-linecap="round"/>
+  <path d="M53 89H75" stroke="#F7FAFF" stroke-width="5.5" stroke-linecap="round" opacity="0.82"/>
   <defs>
-    <linearGradient id="screen" x1="43" y1="24" x2="88" y2="104" gradientUnits="userSpaceOnUse">
-      <stop stop-color="#8FD6FF"/>
-      <stop offset="0.48" stop-color="#6E6BFF"/>
-      <stop offset="1" stop-color="#F36A8D"/>
+    <linearGradient id="iphone-screen" x1="38" y1="56" x2="90" y2="113" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#69D2FF"/>
+      <stop offset="0.48" stop-color="#3566FF"/>
+      <stop offset="1" stop-color="#F45F8F"/>
     </linearGradient>
   </defs>
 </svg>

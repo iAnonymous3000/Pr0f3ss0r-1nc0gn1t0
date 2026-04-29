@@ -3,7 +3,7 @@ title: "Apple AirTag"
 description: "Find My item tracker for keys, bags, luggage, and everyday items"
 date: 2026-04-23T00:00:00-07:00
 draft: false
-image: "/images/tools/airtag-logo.jpg"
+image: "/images/tools/airtag-logo.svg"
 linkToTool: "https://www.apple.com/airtag/"
 ---
 

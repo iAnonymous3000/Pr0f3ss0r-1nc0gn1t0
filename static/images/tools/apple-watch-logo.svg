@@ -1,15 +1,12 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="128" height="128" viewBox="0 0 128 128" role="img" aria-label="Apple Watch icon">
-  <rect width="128" height="128" rx="28" fill="#f5f5f7"/>
-  <path
-    fill="#1d1d1f"
-    fill-rule="evenodd"
-    clip-rule="evenodd"
-    d="M88.98 26.83c-.01 1.06-.04 2.1-.1 3.15C96.67 32.72 102 40.14 102 48.87V55h6v22h-6v16.13c0 8.72-5.33 16.14-13.1 18.88.07 1.14.1 2.3.1 3.46C89 124.34 81.84 132 73 132H51c-8.84 0-16-7.66-16-16.53 0-1.16.03-2.32.1-3.46C27.33 109.27 22 101.85 22 93.13V48.87c0-8.72 5.32-16.13 13.08-18.87-.08-1.32-.11-2.65-.1-3.99C35.03 17.17 42.23 10 51.07 10h22c8.84 0 15.96 7.99 15.91 16.83ZM46 28h32c-.3-3.64-3.4-6.55-7.07-6.57l-18.8-.09c-3.8-.02-6.93 2.91-7.13 6.66Zm38.8 13.96L62.3 41.84H44c-3.31 0-6 2.69-6 6v45.32c0 3.31 2.69 6 6 6h40c3.31 0 6-2.69 6-6V47.84c0-2.89-2.05-5.31-5.2-5.88ZM47 112c.3 3.36 3.13 6 6.56 6h20.88c3.43 0 6.26-2.64 6.56-6H47Z"
-    transform="translate(0 -7)"
-  />
-  <rect x="44" y="39" width="40" height="58" rx="7" fill="#050505"/>
-  <circle cx="55" cy="52" r="4" fill="#ff375f"/>
-  <circle cx="66" cy="52" r="4" fill="#32d74b"/>
-  <circle cx="77" cy="52" r="4" fill="#64d2ff"/>
-  <path d="M52 72h24M52 82h18" stroke="#f5f5f7" stroke-width="5" stroke-linecap="round"/>
+<svg width="128" height="128" viewBox="0 0 128 128" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Apple Watch icon">
+  <rect width="128" height="128" rx="28" fill="#1D1D1F"/>
+  <path d="M46 7H82C84.761 7 87 9.239 87 12V34H41V12C41 9.239 43.239 7 46 7Z" fill="#D9DDE5"/>
+  <path d="M41 94H87V116C87 118.761 84.761 121 82 121H46C43.239 121 41 118.761 41 116V94Z" fill="#C6CBD5"/>
+  <rect x="27" y="28" width="74" height="72" rx="20" fill="#E8EBF1"/>
+  <rect x="34" y="35" width="60" height="58" rx="15" fill="#090A0D"/>
+  <rect x="100" y="54" width="5" height="23" rx="2.5" fill="#B8BEC9"/>
+  <path d="M48 59C51.75 51.7 57.1 48 64 48C70.9 48 76.25 51.7 80 59" stroke="#61D2FF" stroke-width="5.5" stroke-linecap="round"/>
+  <path d="M48 76H68" stroke="#F5F7FB" stroke-width="5.5" stroke-linecap="round"/>
+  <path d="M48 85H78" stroke="#F5F7FB" stroke-width="5.5" stroke-linecap="round" opacity="0.72"/>
+  <circle cx="81" cy="48" r="3.8" fill="#FF375F"/>
 </svg>

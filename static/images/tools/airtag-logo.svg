@@ -1,0 +1,18 @@
+<svg width="128" height="128" viewBox="0 0 128 128" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Apple AirTag icon">
+  <rect width="128" height="128" rx="28" fill="#1D1D1F"/>
+  <circle cx="64" cy="64" r="48" fill="#EEF1F5"/>
+  <circle cx="64" cy="64" r="41" fill="#F9FAFC" stroke="#D8DEE8" stroke-width="2"/>
+  <circle cx="64" cy="64" r="29" fill="url(#airtag-face)"/>
+  <path d="M48 53C52.2 47.2 57.55 44.3 64 44.3C70.45 44.3 75.8 47.2 80 53" stroke="#C1C8D2" stroke-width="4" stroke-linecap="round"/>
+  <circle cx="64" cy="68" r="7" fill="#D3D9E2"/>
+  <circle cx="49" cy="81" r="2.2" fill="#C8CFDA"/>
+  <circle cx="64" cy="85" r="2.2" fill="#C8CFDA"/>
+  <circle cx="79" cy="81" r="2.2" fill="#C8CFDA"/>
+  <path d="M40 40C46.75 33 54.9 29.5 64.5 29.5C74.1 29.5 82.2 33 88.75 40" stroke="#FFFFFF" stroke-width="5.5" stroke-linecap="round" opacity="0.78"/>
+  <defs>
+    <radialGradient id="airtag-face" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(56 52) rotate(52.125) scale(42.2019)">
+      <stop stop-color="#FFFFFF"/>
+      <stop offset="1" stop-color="#DCE2EB"/>
+    </radialGradient>
+  </defs>
+</svg>
