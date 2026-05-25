@@ -1,0 +1,209 @@
+{{- $isRoot := eq .FirstSection.RelPermalink .RelPermalink -}}
+{{- $toolsRoot := site.GetPage "/tools" -}}
+{{- $rootSections := slice -}}
+{{- with $toolsRoot -}}
+  {{- $rootSections = .Sections.ByWeight -}}
+{{- end -}}
+{{- $sections := .Sections.ByWeight -}}
+{{- $pages := .RegularPages.ByTitle -}}
+{{- $toolCount := len $pages -}}
+{{- $allTools := where site.RegularPages "Section" "tools" -}}
+{{- if $isRoot -}}
+  {{- $toolCount = len $allTools -}}
+{{- end -}}
+{{- $toolCountLabel := cond (eq $toolCount 1) "1 tool" (printf "%d tools" $toolCount) -}}
+
+<header class="page-header tools-page-header">
+  {{- partial "breadcrumbs.html" . }}
+  <h1>{{ .Title }}</h1>
+  {{- with .Description }}
+    <div class="post-description">
+      {{ . | markdownify }}
+    </div>
+  {{- end }}
+</header>
+
+{{- if gt $toolCount 0 }}
+  <section class="tools-filter" aria-label="Tool finder" data-tools-filter-root>
+    <label class="tools-filter-label" for="tools-filter-input">Find tools</label>
+    <div class="tools-filter-control">
+      <input
+        id="tools-filter-input"
+        class="tools-filter-input"
+        type="search"
+        placeholder="Search tools"
+        autocomplete="off"
+        list="tools-filter-suggestions"
+        aria-describedby="tools-filter-count"
+        data-tools-filter-input
+      />
+      <datalist id="tools-filter-suggestions">
+        {{- range $rootSections }}
+          <option value="{{ .Title }}"></option>
+        {{- end }}
+        {{- range $allTools.ByTitle }}
+          <option value="{{ .Title }}"></option>
+        {{- end }}
+      </datalist>
+      <span id="tools-filter-count" class="tools-filter-count" aria-live="polite" data-tools-filter-count>{{ $toolCountLabel }}</span>
+    </div>
+    <div class="tools-filter-suggestions" aria-label="Suggested searches">
+      <button class="tools-filter-suggestion" type="button" data-tools-jump-id="vpn-services">VPN</button>
+      <button class="tools-filter-suggestion" type="button" data-tools-suggestion="browser">Browser</button>
+      <button class="tools-filter-suggestion" type="button" data-tools-suggestion="password">Passwords</button>
+      <button class="tools-filter-suggestion" type="button" data-tools-suggestion="email">Email</button>
+      <button class="tools-filter-suggestion" type="button" data-tools-suggestion="DNS">DNS</button>
+      <button class="tools-filter-suggestion" type="button" data-tools-suggestion="phone">Phone</button>
+      <button class="tools-filter-suggestion" type="button" data-tools-suggestion="camera">Cameras</button>
+    </div>
+    <div class="tools-filter-meta">
+      <p class="tools-sort-status" data-tools-sort-status>Browse order</p>
+      <label class="tools-sort-label" for="tools-sort-mode">Sort results</label>
+      <select id="tools-sort-mode" class="tools-sort-select" data-tools-sort-mode>
+        <option value="relevance">Relevance</option>
+        <option value="az">Within categories (A-Z)</option>
+      </select>
+    </div>
+  </section>
+
+  <section class="tools-active-state" data-tools-active-state hidden aria-live="polite">
+    <div class="tools-active-state-pills">
+      <span class="tools-active-pill" data-tools-active-search hidden></span>
+      <span class="tools-active-pill" data-tools-active-category hidden></span>
+    </div>
+    <button class="tools-active-clear" type="button" data-tools-clear-search hidden>Clear search</button>
+  </section>
+{{- end }}
+
+{{- if $isRoot }}
+  {{- if gt (len $rootSections) 0 }}
+    {{- $starterPaths := slice "/tools/browsers/" "/tools/messaging/" "/tools/email/" "/tools/password-managers/" "/tools/authenticator/" "/tools/keys/" "/tools/vpn/" "/tools/dns-resolvers/" "/tools/alias/" -}}
+    {{- $starterSections := slice -}}
+    {{- range $starterPaths }}
+      {{- $starterPath := . -}}
+      {{- range $rootSections }}
+        {{- if eq .RelPermalink $starterPath -}}
+          {{- $starterSections = $starterSections | append . -}}
+        {{- end -}}
+      {{- end }}
+    {{- end }}
+    <section class="tools-start" aria-label="Start here">
+      <div class="tools-start-header">
+        <h2>Start here</h2>
+        <p>Common picks</p>
+      </div>
+      <div class="tools-start-list">
+        {{- range $starterSections }}
+          <a class="tools-start-link" href="#{{ .LinkTitle | anchorize }}">{{ .Title }}</a>
+        {{- end }}
+      </div>
+    </section>
+
+    <details class="tools-category-picker tools-category-picker-root">
+      <summary>
+        <span>Browse categories</span>
+        <span>{{ len $rootSections }} categories</span>
+      </summary>
+      <nav class="tools-category-nav tools-directory-anchors" aria-label="Tools categories" data-tools-directory>
+        {{- partial "tools_category_links.html" (dict "sections" $rootSections "mode" "anchor" "directoryData" true) -}}
+      </nav>
+    </details>
+
+    <div class="tools-layout">
+      <aside class="tools-category-sidebar" aria-label="Tools categories">
+        <p class="tools-category-sidebar-title">Categories</p>
+        <nav class="tools-category-nav tools-directory-anchors" aria-label="Tools categories" data-tools-directory>
+          {{- partial "tools_category_links.html" (dict "sections" $rootSections "mode" "anchor" "directoryData" true) -}}
+        </nav>
+      </aside>
+
+      <div class="tools-content">
+        {{- if .Content }}
+          <div class="post-content tools-intro">
+            {{- if not (.Param "disableAnchoredHeadings") }}
+              {{- partial "anchored_headings.html" .Content -}}
+            {{- else }}
+              {{ .Content }}
+            {{- end }}
+          </div>
+        {{- end }}
+
+        {{- range $sections }}
+          {{- $groupPages := .RegularPages.ByTitle -}}
+          {{- $groupCount := len $groupPages -}}
+          {{- $groupCountLabel := cond (eq $groupCount 1) "1 tool" (printf "%d tools" $groupCount) -}}
+          <section class="tools-group" id="{{ .LinkTitle | anchorize }}" data-tool-group>
+            <div class="tools-group-header">
+              <div>
+                <div class="tools-group-title-row">
+                  <h2>{{ .Title }}</h2>
+                  <span class="tools-group-count">{{ $groupCountLabel }}</span>
+                </div>
+                {{- with .Params.SubTitle }}
+                  <p>{{ . }}</p>
+                {{- end }}
+              </div>
+              <a class="tools-group-link" href="{{ .RelPermalink }}">View category</a>
+            </div>
+
+            {{- with $groupPages }}
+              <div class="tools-grid">
+                {{- range . }}
+                  {{- partial "toolcard.html" . -}}
+                {{- end }}
+              </div>
+            {{- else }}
+              <p class="tools-empty-state">No tools published in this category yet.</p>
+            {{- end }}
+          </section>
+        {{- end }}
+      </div>
+    </div>
+  {{- end }}
+{{- else }}
+  {{- $current := .RelPermalink -}}
+  {{- if gt (len $rootSections) 0 }}
+    <details class="tools-category-picker tools-category-picker-page">
+      <summary>
+        <span>Browse categories</span>
+        <span>{{ len $rootSections }} categories</span>
+      </summary>
+      <nav class="tools-category-nav" aria-label="Tools categories">
+        {{- partial "tools_category_links.html" (dict "sections" $rootSections "mode" "page" "current" $current) -}}
+      </nav>
+    </details>
+  {{- end }}
+
+  {{- if .Content }}
+    <div class="post-content tools-intro">
+      {{- if not (.Param "disableAnchoredHeadings") }}
+        {{- partial "anchored_headings.html" .Content -}}
+      {{- else }}
+        {{ .Content }}
+      {{- end }}
+    </div>
+  {{- end }}
+
+  <section class="tools-group" data-tool-group>
+    {{- with $pages }}
+      <div class="tools-grid">
+        {{- range . }}
+          {{- partial "toolcard.html" . -}}
+        {{- end }}
+      </div>
+    {{- else }}
+      <p class="tools-empty-state">No tools published here yet.</p>
+    {{- end }}
+  </section>
+{{- end }}
+
+{{- if gt $toolCount 0 }}
+  <p class="tools-empty-state tools-filter-empty" data-tools-filter-empty hidden>No matching tools found.</p>
+  {{- $toolsFilter := resources.Get "js/tools-filter.js" | resources.Minify -}}
+  {{- if not site.Params.assets.disableFingerprinting -}}
+    {{- $toolsFilterJS := $toolsFilter | fingerprint -}}
+    <script defer crossorigin="anonymous" src="{{ $toolsFilterJS.RelPermalink }}" integrity="{{ $toolsFilterJS.Data.Integrity }}"></script>
+  {{- else -}}
+    <script defer crossorigin="anonymous" src="{{ $toolsFilter.RelPermalink }}"></script>
+  {{- end -}}
+{{- end }}

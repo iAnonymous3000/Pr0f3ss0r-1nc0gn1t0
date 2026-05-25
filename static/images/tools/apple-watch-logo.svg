@@ -1,0 +1,12 @@
+<svg width="128" height="128" viewBox="0 0 128 128" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Apple Watch icon">
+  <rect width="128" height="128" rx="28" fill="#1D1D1F"/>
+  <path d="M46 7H82C84.761 7 87 9.239 87 12V34H41V12C41 9.239 43.239 7 46 7Z" fill="#D9DDE5"/>
+  <path d="M41 94H87V116C87 118.761 84.761 121 82 121H46C43.239 121 41 118.761 41 116V94Z" fill="#C6CBD5"/>
+  <rect x="27" y="28" width="74" height="72" rx="20" fill="#E8EBF1"/>
+  <rect x="34" y="35" width="60" height="58" rx="15" fill="#090A0D"/>
+  <rect x="100" y="54" width="5" height="23" rx="2.5" fill="#B8BEC9"/>
+  <path d="M48 59C51.75 51.7 57.1 48 64 48C70.9 48 76.25 51.7 80 59" stroke="#61D2FF" stroke-width="5.5" stroke-linecap="round"/>
+  <path d="M48 76H68" stroke="#F5F7FB" stroke-width="5.5" stroke-linecap="round"/>
+  <path d="M48 85H78" stroke="#F5F7FB" stroke-width="5.5" stroke-linecap="round" opacity="0.72"/>
+  <circle cx="81" cy="48" r="3.8" fill="#FF375F"/>
+</svg>

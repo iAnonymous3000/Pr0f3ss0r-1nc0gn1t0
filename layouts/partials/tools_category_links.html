@@ -1,0 +1,54 @@
+{{- $sections := .sections -}}
+{{- $mode := .mode | default "page" -}}
+{{- $current := .current | default "" -}}
+{{- $linkClass := .linkClass | default "tools-category-link" -}}
+{{- $directoryData := .directoryData | default false -}}
+{{- $groupConfig := slice -}}
+{{- if ge hugo.Version "0.156.0" -}}
+  {{- $groupConfig = hugo.Data.tools_category_groups.groups -}}
+{{- else -}}
+  {{- $groupConfig = site.Data.tools_category_groups.groups -}}
+{{- end -}}
+{{- $groups := slice -}}
+{{- $assignedPaths := slice -}}
+
+{{- with $groupConfig }}
+  {{- range . }}
+    {{- $paths := .paths | default (slice) -}}
+    {{- $assignedPaths = $assignedPaths | append $paths -}}
+    {{- $groups = $groups | append (dict "title" .title "sections" (where $sections "RelPermalink" "in" $paths)) -}}
+  {{- end }}
+{{- end }}
+
+{{- if eq (len $groups) 0 }}
+  {{- $groups = $groups | append (dict "title" "Categories" "sections" $sections) -}}
+{{- end }}
+
+{{- $unassigned := where $sections "RelPermalink" "not in" $assignedPaths -}}
+{{- if gt (len $unassigned) 0 }}
+  {{- $groups = $groups | append (dict "title" "More Categories" "sections" $unassigned) -}}
+{{- end }}
+
+{{- range $groups }}
+  {{- $groupSections := index . "sections" -}}
+  {{- if gt (len $groupSections) 0 }}
+    <div class="tools-category-nav-group">
+      <p class="tools-category-nav-heading">{{ index . "title" }}</p>
+      <div class="tools-category-nav-links">
+        {{- range $groupSections }}
+          {{- $count := len .RegularPages -}}
+          {{- $countLabel := cond (eq $count 1) "1 tool" (printf "%d tools" $count) -}}
+          {{- $href := .RelPermalink -}}
+          {{- if eq $mode "anchor" -}}
+            {{- $href = printf "#%s" (.LinkTitle | anchorize) -}}
+          {{- end -}}
+          {{- $isCurrent := and (eq $mode "page") (eq .RelPermalink $current) -}}
+          <a class="{{ $linkClass }}{{ if $isCurrent }} is-current{{ end }}" href="{{ $href }}" aria-label="{{ .Title }}, {{ $countLabel }}"{{ if $isCurrent }} aria-current="page"{{ end }}{{ if $directoryData }} data-tools-directory-link{{ end }}>
+            <span>{{ .Title }}</span>
+            <span class="tools-category-count" aria-hidden="true">{{ $count }}</span>
+          </a>
+        {{- end }}
+      </div>
+    </div>
+  {{- end }}
+{{- end }}

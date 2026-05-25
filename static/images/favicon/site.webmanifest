@@ -1,0 +1,36 @@
+{
+    "name": "Sooraj Sathyanarayanan",
+    "short_name": "Pr0f3ss0r 1nc0gn1t0",
+    "start_url": "../../",
+    "scope": "../../",
+    "icons": [
+        {
+            "src": "favicon-16x16.png",
+            "sizes": "16x16",
+            "type": "image/png"
+        },
+        {
+            "src": "favicon-32x32.png",
+            "sizes": "32x32",
+            "type": "image/png"
+        },
+        {
+            "src": "favicon-45x45.png",
+            "sizes": "45x45",
+            "type": "image/png"
+        },
+        {
+            "src": "android-chrome-192x192.png",
+            "sizes": "192x192",
+            "type": "image/png"
+        },
+        {
+            "src": "android-chrome-512x512.png",
+            "sizes": "512x512",
+            "type": "image/png"
+        }
+    ],
+    "theme_color": "#1b1d1e",
+    "background_color": "#1b1d1e",
+    "display": "standalone"
+}

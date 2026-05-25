@@ -1,0 +1,3 @@
+{{- $src := .Get "src" -}}
+{{- $label := .Get "label" | default "Open this Lichess board" -}}
+<p><a href="{{ $src }}" rel="noopener noreferrer">{{ $label }}</a></p>

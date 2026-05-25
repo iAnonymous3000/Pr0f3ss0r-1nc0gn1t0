@@ -1,0 +1,61 @@
+groups:
+  - title: Communication & Identity
+    paths:
+      - /tools/messaging/
+      - /tools/video-conferencing/
+      - /tools/email/
+      - /tools/alias/
+      - /tools/mail-address-privacy/
+      - /tools/contacts/
+      - /tools/calendar/
+      - /tools/scheduling/
+      - /tools/authenticator/
+      - /tools/password-managers/
+      - /tools/keys/
+      - /tools/personal-information-removal/
+
+  - title: Web & Network
+    paths:
+      - /tools/browsers/
+      - /tools/search-engines/
+      - /tools/vpn/
+      - /tools/cellular-privacy/
+      - /tools/dns-resolvers/
+      - /tools/internet-access/
+      - /tools/domain-hosting/
+      - /tools/cloud/
+      - /tools/router-firmware/
+
+  - title: Devices & Home
+    paths:
+      - /tools/desktopos/
+      - /tools/mobileos/
+      - /tools/phone/
+      - /tools/laptop/
+      - /tools/smart-home/
+      - /tools/home-security-cameras/
+      - /tools/streaming-devices/
+      - /tools/home-robotics/
+      - /tools/location-tracking/
+      - /tools/health-wellness/
+      - /tools/physical-privacy-travel-kit/
+      - /tools/printers-document-hardware/
+
+  - title: Files & Productivity
+    paths:
+      - /tools/notes/
+      - /tools/office/
+      - /tools/file-sharing/
+      - /tools/torrenting/
+      - /tools/photos/
+      - /tools/maps/
+      - /tools/translator/
+      - /tools/blogging/
+      - /tools/ai/
+      - /tools/analytics/
+      - /tools/security-checks/
+
+  - title: Money
+    paths:
+      - /tools/payments/
+      - /tools/hardware-wallets/

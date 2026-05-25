@@ -1,0 +1,41 @@
+<article
+  class="tool-card"
+  data-tool-card
+  data-tool-title="{{ .Title }}"
+  {{- with .CurrentSection }} data-tool-category="{{ .Title }}"{{ end }}
+  {{- with .Description }} data-tool-description="{{ . }}"{{ end }}
+  {{- with .Params.RecommendationLabel }} data-tool-label="{{ . }}"{{ end }}
+>
+  <div class="tool-card-header">
+    {{ with .Params.Image }}
+      {{- $src := . -}}
+      {{- if strings.HasPrefix $src "/" -}}
+        {{- $src = strings.TrimPrefix "/" $src | relURL -}}
+      {{- end -}}
+      <img class="tool-card-logo" src="{{ $src | safeURL }}" alt="" width="48" height="48" loading="lazy" />
+    {{ end }}
+    <div class="tool-card-heading">
+      <h3><a href="{{ $.RelPermalink }}">{{ $.Title }}</a></h3>
+      {{ with $.CurrentSection }}
+        {{ if .Parent }}
+          <p>{{ .Title }}</p>
+        {{ end }}
+      {{ end }}
+    </div>
+  </div>
+
+  {{ with .Description }}
+    <p class="tool-card-description">{{ . }}</p>
+  {{ end }}
+
+  {{ with .Params.RecommendationLabel }}
+    <p class="tool-recommendation-label">{{ . }}</p>
+  {{ end }}
+
+  <div class="tool-card-actions">
+    <a class="tool-card-read" href="{{ .RelPermalink }}">Read notes</a>
+    {{ with .Params.LinkToTool }}
+      <a class="tool-card-visit" href="{{ . }}" target="_blank" rel="noreferrer noopener">Visit site</a>
+    {{ end }}
+  </div>
+</article>
