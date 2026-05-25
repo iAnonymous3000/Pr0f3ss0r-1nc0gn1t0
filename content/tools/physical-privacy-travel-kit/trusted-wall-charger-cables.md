@@ -10,6 +10,10 @@ weight: 50
 
 Trusted chargers and cables reduce reliance on borrowed, public, or unfamiliar charging equipment. They also make it easier to keep data and power paths predictable.
 
+Buying guidance:
+
+Cables and chargers are not the place for mystery imports. Buy from your device maker or established charging brands through direct or authorized channels, especially for higher-wattage USB-C laptop charging. For USB-C cables, look for [USB-IF certified markings](https://www.usb.org/sites/default/files/usb_type-c_cable_power_rating_logo_usage_guidelines_020222.pdf) that state power capability, such as 60W or 240W, instead of trusting a marketplace title alone.
+
 What to look for:
 
 - A charger from a reputable vendor with clear safety certifications
