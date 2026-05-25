@@ -1,20 +1,6 @@
-# Security Contact Information for profincognito.me
 Contact: mailto:security@profincognito.me
-Contact: https://profincognito.me/contact
-# If you set up Signal/Matrix later
-#Contact: signal:https://signal.me/#eu/tao35l1vQxmrWcie6iW3dXlcFo0t3Pzae7WFHEMJnAIqKn2WxP5KnKKq5ClE-ZDD
-
-# Language
-Preferred-Languages: en
-
-# Policy & Documentation
-Policy: https://github.com/iAnonymous3000/Pr0f3ss0r-1nc0gn1t0/security/policy
-Canonical: https://profincognito.me/.well-known/security.txt
-
-# Hiring (if you're open to security work)
-Hiring: https://profincognito.me/research
-
-# Expiration
-Expires: 2027-01-09T00:00:00.000Z
-
 Encryption: https://profincognito.me/.well-known/pgp.txt
+Preferred-Languages: en
+Canonical: https://profincognito.me/.well-known/security.txt
+Policy: https://profincognito.me/privacy/
+Expires: 2027-05-24T12:00:00Z

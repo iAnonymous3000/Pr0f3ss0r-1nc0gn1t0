@@ -1,10 +1,20 @@
+{{- $searchLabels := slice -}}
+{{- with .Params.RecommendationLabel -}}
+  {{- $searchLabels = $searchLabels | append . -}}
+{{- end -}}
+{{- with .Params.StatusLabels -}}
+  {{- range . -}}
+    {{- $searchLabels = $searchLabels | append . -}}
+  {{- end -}}
+{{- end -}}
+
 <article
   class="tool-card"
   data-tool-card
   data-tool-title="{{ .Title }}"
   {{- with .CurrentSection }} data-tool-category="{{ .Title }}"{{ end }}
   {{- with .Description }} data-tool-description="{{ . }}"{{ end }}
-  {{- with .Params.RecommendationLabel }} data-tool-label="{{ . }}"{{ end }}
+  {{- if gt (len $searchLabels) 0 }} data-tool-label="{{ delimit $searchLabels " " }}"{{ end }}
 >
   <div class="tool-card-header">
     {{ with .Params.Image }}
@@ -28,9 +38,18 @@
     <p class="tool-card-description">{{ . }}</p>
   {{ end }}
 
-  {{ with .Params.RecommendationLabel }}
-    <p class="tool-recommendation-label">{{ . }}</p>
-  {{ end }}
+  {{- if or .Params.RecommendationLabel .Params.StatusLabels }}
+    <div class="tool-label-row">
+      {{ with .Params.RecommendationLabel }}
+        <p class="tool-recommendation-label">{{ . }}</p>
+      {{ end }}
+      {{ with .Params.StatusLabels }}
+        {{ range . }}
+          <span class="tool-status-label">{{ . }}</span>
+        {{ end }}
+      {{ end }}
+    </div>
+  {{- end }}
 
   <div class="tool-card-actions">
     <a class="tool-card-read" href="{{ .RelPermalink }}">Read notes</a>

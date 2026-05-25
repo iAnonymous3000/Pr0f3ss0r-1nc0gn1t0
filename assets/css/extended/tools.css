@@ -529,7 +529,15 @@
     overflow-wrap: anywhere;
 }
 
-.tool-recommendation-label {
+.tool-label-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.45rem;
+    align-items: center;
+}
+
+.tool-recommendation-label,
+.tool-status-label {
     align-self: flex-start;
     margin: 0;
     padding: 0.18rem 0.55rem;
@@ -542,7 +550,12 @@
     line-height: 1.5;
 }
 
-.tool-single-recommendation {
+.tool-status-label {
+    color: var(--secondary);
+    font-weight: 500;
+}
+
+.tool-single-labels {
     margin-top: 0.85rem;
 }
 

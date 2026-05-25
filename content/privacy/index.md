@@ -39,10 +39,10 @@ We explicitly do not:
 - Maintain user accounts
 - Process sensitive information
 - Track individual users
-- Store IP addresses
+- Store IP addresses in first-party application logs or site-owned analytics
 
 ### 3.2 Cloudflare Services
-Cloudflare provides infrastructure services including content delivery, DDoS protection, DNS resolution, and security enforcement. Cloudflare may collect standard server-side metrics, request metadata, and security telemetry as part of operating the CDN and protecting the site. Cloudflare Pages Analytics should remain disabled for this project; the repository-level Content Security Policy also blocks third-party analytics scripts. For details about Cloudflare's data handling, see [Cloudflare's Privacy Policy](https://www.cloudflare.com/privacypolicy).
+Cloudflare provides CDN, DNS, DDoS protection, and security enforcement. This site does not run first-party analytics, user accounts, tracking cookies, or application-level visitor logging. Cloudflare may process request metadata, including IP-related network information, for routing, abuse prevention, security, and operational purposes.
 
 ## 4. Security Measures
 
@@ -84,8 +84,7 @@ We explicitly disable unnecessary browser features including:
 
 #### PGP
 - Key available at: [https://profincognito.me/.well-known/pgp.txt](https://profincognito.me/.well-known/pgp.txt)
-- Communications are end-to-end encrypted
-- No data retention
+- Sensitive reports should be sent with PGP. Message content is encrypted in transit to the listed key, but transport metadata and mail-provider logs may still exist outside this site's control.
 
 ### 5.2 Security Reports
 For security-related communications:

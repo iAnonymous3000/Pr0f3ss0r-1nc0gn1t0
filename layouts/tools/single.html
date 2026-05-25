@@ -28,8 +28,17 @@
           <div class="post-description">{{ . }}</div>
         {{- end }}
 
-        {{- with .Params.RecommendationLabel }}
-          <p class="tool-recommendation-label tool-single-recommendation">{{ . }}</p>
+        {{- if or .Params.RecommendationLabel .Params.StatusLabels }}
+          <div class="tool-label-row tool-single-labels">
+            {{- with .Params.RecommendationLabel }}
+              <p class="tool-recommendation-label">{{ . }}</p>
+            {{- end }}
+            {{- with .Params.StatusLabels }}
+              {{- range . }}
+                <span class="tool-status-label">{{ . }}</span>
+              {{- end }}
+            {{- end }}
+          </div>
         {{- end }}
 
         <div class="tool-single-actions">
