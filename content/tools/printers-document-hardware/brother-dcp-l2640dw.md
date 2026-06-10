@@ -6,6 +6,7 @@ draft: false
 image: "/images/tools/brother-printer.svg"
 linkToTool: "https://www.brother-usa.com/products/dcpl2640dw"
 recommendationLabel: "Scanner/copier option"
+weight: 30
 ---
 
 The Brother DCP-L2640DW is the all-in-one option for people who need print, scan, and copy in one device.

@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="Vehicle">
+  <rect width="64" height="64" rx="14" fill="#f4f7f2"/>
+  <path d="M17 34.5h30l-3.7-10.2a5.2 5.2 0 0 0-4.9-3.4H25.6a5.2 5.2 0 0 0-4.9 3.4L17 34.5Z" fill="#d7e7dd" stroke="#24463a" stroke-width="3" stroke-linejoin="round"/>
+  <path d="M13 36.5c0-2.2 1.8-4 4-4h30c2.2 0 4 1.8 4 4v8.3c0 1.2-1 2.2-2.2 2.2H15.2c-1.2 0-2.2-1-2.2-2.2v-8.3Z" fill="#ffffff" stroke="#24463a" stroke-width="3" stroke-linejoin="round"/>
+  <path d="M23.6 24h16.8l2.8 8.5H20.8L23.6 24Z" fill="#ffffff" stroke="#24463a" stroke-width="2" stroke-linejoin="round"/>
+  <circle cx="23" cy="46" r="5" fill="#24463a"/>
+  <circle cx="41" cy="46" r="5" fill="#24463a"/>
+  <circle cx="23" cy="46" r="2" fill="#f4f7f2"/>
+  <circle cx="41" cy="46" r="2" fill="#f4f7f2"/>
+  <path d="M18 38.5h5.5M40.5 38.5H46" stroke="#24463a" stroke-width="2.4" stroke-linecap="round"/>
+</svg>

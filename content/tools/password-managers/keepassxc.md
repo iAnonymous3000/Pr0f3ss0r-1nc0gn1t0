@@ -5,6 +5,7 @@ date: 2026-04-21T09:00:00-07:00
 draft: false
 image: "/images/tools/keepassxc-logo.svg"
 linkToTool: "https://keepassxc.org/"
+weight: 30
 ---
 KeePassXC is an open source password manager built around local encrypted KeePass databases. Key features include:
 

@@ -6,12 +6,7 @@ draft: false
 image: "/images/tools/mullvad-dns-logo.png"
 linkToTool: "https://mullvad.net/en/help/dns-over-https-and-dns-over-tls"
 recommendationLabel: "Strict privacy pick"
-tags:
-  - DNS
-  - Encrypted DNS
-  - No Logs
-  - Tracker Blocking
-  - Malware Blocking
+weight: 20
 ---
 Mullvad DNS is a public encrypted DNS service from Mullvad. It supports DNS over HTTPS and DNS over TLS, works even for non-Mullvad VPN customers, and offers several simple blocking presets.
 

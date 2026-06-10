@@ -4,7 +4,8 @@ description: "Security-focused authenticator for 2FA codes"
 date: 2024-10-21T13:13:01-04:00
 draft: false
 image: "/images/tools/enteauth-logo.png"
-linkToTool: "https://auth.ente.io"
+linkToTool: "https://ente.com/auth/"
+weight: 10
 ---
 
 Ente Auth helps you generate and store two-factor authentication (2FA) tokens securely. Key features include:

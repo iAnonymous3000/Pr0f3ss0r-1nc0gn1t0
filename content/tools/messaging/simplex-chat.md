@@ -5,6 +5,7 @@ date: 2026-04-21T09:00:00-07:00
 draft: false
 image: "/images/tools/simplex-logo.svg"
 linkToTool: "https://simplex.chat/"
+weight: 30
 ---
 SimpleX Chat is an end-to-end encrypted messenger designed to avoid permanent user identifiers. Key features include:
 

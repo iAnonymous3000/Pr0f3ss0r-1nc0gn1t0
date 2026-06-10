@@ -5,6 +5,7 @@ date: 2024-10-21T13:13:01-04:00
 draft: false
 image: "/images/tools/mullvadvpn-logo.png"
 linkToTool: "https://mullvad.net/"
+weight: 10
 ---
 
 Mullvad is a VPN service focused on privacy and security. Key features include:

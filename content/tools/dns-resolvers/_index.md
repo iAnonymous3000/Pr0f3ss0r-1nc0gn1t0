@@ -1,7 +1,6 @@
 ---
 title: "DNS Resolvers"
 description: "Privacy-respecting DNS resolvers and encrypted DNS services"
-subTitle: "Privacy-respecting DNS resolvers and encrypted DNS services"
 date: 2026-05-04T00:00:00-07:00
 draft: false
 weight: 17

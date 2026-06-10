@@ -12,7 +12,7 @@ A USB data blocker or charge-only cable helps keep a charging session limited to
 
 Buying guidance:
 
-Use makers with clear data-line-blocking claims and connector-specific variants, such as [PortaPow](https://portablepowersupplies.co.uk/product-category/usb-data-blocker), [Plugable](https://plugable.com/products/usb-mc1), or [ChargeDefense](https://www.chargedefense.com/product/juice-jack-defender-turbo/). Avoid adapters that market this as broad malware protection; it is only a narrow power/data separation tool, and some USB-C fast-charging behavior may depend on the exact cable and blocker design.
+Use makers with clear data-line-blocking claims and connector-specific variants, such as [PortaPow](https://portablepowersupplies.co.uk/product-category/usb-data-blocker) or [Plugable](https://plugable.com/products/usb-mc1). Avoid adapters that market this as broad malware protection; it is only a narrow power/data separation tool, and some USB-C fast-charging behavior may depend on the exact cable and blocker design.
 
 What to look for:
 

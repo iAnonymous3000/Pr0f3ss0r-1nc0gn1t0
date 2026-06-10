@@ -21,22 +21,31 @@
   }
 
   function isFullyVisibleInScroller(element) {
-    var parent = element.parentElement;
-    while (parent && parent !== document.body) {
-      var style = window.getComputedStyle(parent);
-      if (/(auto|scroll)/.test(style.overflowX + style.overflowY)) {
-        var parentRect = parent.getBoundingClientRect();
-        var elementRect = element.getBoundingClientRect();
-        return elementRect.left >= parentRect.left &&
-          elementRect.right <= parentRect.right &&
-          elementRect.top >= parentRect.top &&
-          elementRect.bottom <= parentRect.bottom;
-      }
-      parent = parent.parentElement;
+    var parent = getScrollableParent(element);
+    if (parent) {
+      var parentRect = parent.getBoundingClientRect();
+      var elementRect = element.getBoundingClientRect();
+      return elementRect.left >= parentRect.left &&
+        elementRect.right <= parentRect.right &&
+        elementRect.top >= parentRect.top &&
+        elementRect.bottom <= parentRect.bottom;
     }
 
     var rect = element.getBoundingClientRect();
     return rect.top >= 0 && rect.bottom <= window.innerHeight;
+  }
+
+  function getScrollableParent(element) {
+    var parent = element.parentElement;
+    while (parent && parent !== document.body) {
+      var style = window.getComputedStyle(parent);
+      if (/(auto|scroll)/.test(style.overflowX + style.overflowY)) {
+        return parent;
+      }
+      parent = parent.parentElement;
+    }
+
+    return null;
   }
 
   function getHashId(link) {
@@ -128,7 +137,19 @@
           return;
         }
 
-        item.link.scrollIntoView({ block: 'nearest', inline: 'nearest' });
+        var scroller = getScrollableParent(item.link);
+        if (!scroller) {
+          item.link.scrollIntoView({ block: 'nearest', inline: 'nearest' });
+          return;
+        }
+
+        var scrollerRect = scroller.getBoundingClientRect();
+        var linkRect = item.link.getBoundingClientRect();
+        if (linkRect.top < scrollerRect.top) {
+          scroller.scrollTop -= scrollerRect.top - linkRect.top;
+        } else if (linkRect.bottom > scrollerRect.bottom) {
+          scroller.scrollTop += linkRect.bottom - scrollerRect.bottom;
+        }
       });
     }
 
@@ -273,8 +294,7 @@
       title: normalize(card.getAttribute('data-tool-title') || ''),
       category: normalize(card.getAttribute('data-tool-category') || ''),
       description: normalize(card.getAttribute('data-tool-description') || ''),
-      label: normalize(card.getAttribute('data-tool-label') || ''),
-      text: normalize(card.textContent || '')
+      label: normalize(card.getAttribute('data-tool-label') || '')
     };
   }
 
@@ -298,10 +318,6 @@
 
       if (meta.description.indexOf(term) !== -1) {
         termScore += 14;
-      }
-
-      if (meta.text.indexOf(term) !== -1) {
-        termScore += 4;
       }
 
       if (!termScore) {
@@ -334,6 +350,8 @@
     var activeSearch = document.querySelector('[data-tools-active-search]');
     var activeCategory = document.querySelector('[data-tools-active-category]');
     var clearSearchButton = document.querySelector('[data-tools-clear-search]');
+    var searchAllLink = document.querySelector('[data-tools-search-all]');
+    var searchAllBase = searchAllLink ? searchAllLink.getAttribute('href') : '';
     var cardMeta = new Map();
     var directorySpy = initDirectoryScrollSpy();
     var categoryStateQueued = false;
@@ -519,6 +537,10 @@
       if (empty) {
         empty.hidden = visibleCount !== 0;
       }
+      if (searchAllLink) {
+        var searchAllQuery = input.value.trim();
+        searchAllLink.setAttribute('href', searchAllQuery ? searchAllBase + '?q=' + encodeURIComponent(searchAllQuery) : searchAllBase);
+      }
       if (sortStatus) {
         if (!isFiltering) {
           sortStatus.textContent = 'Browse order';
@@ -553,7 +575,12 @@
           return;
         }
 
-        input.value = button.getAttribute('data-tools-suggestion') || '';
+        var suggestion = button.getAttribute('data-tools-suggestion') || '';
+        if (!suggestion) {
+          return;
+        }
+
+        input.value = suggestion;
         input.focus();
         applyFilter();
       });
@@ -581,8 +608,7 @@
       updateActiveStateBar();
     });
     window.addEventListener('hashchange', function () {
-      var hashId = getHashCategoryId();
-      var handled = !!(directorySpy && directorySpy.setIntent && directorySpy.setIntent(hashId, 'hash'));
+      var handled = syncToHashIntent({ source: 'hash', smooth: true });
       categoryInteracted = handled || !!window.location.hash;
       scheduleActiveStateUpdate();
     });
@@ -607,6 +633,19 @@
       }
 
     });
+
+    if (!input.value) {
+      var initialQuery = '';
+      try {
+        initialQuery = new URLSearchParams(window.location.search).get('q') || '';
+      } catch (error) {
+        initialQuery = '';
+      }
+
+      if (initialQuery) {
+        input.value = initialQuery;
+      }
+    }
 
     applyFilter();
   });

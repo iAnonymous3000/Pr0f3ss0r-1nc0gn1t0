@@ -6,6 +6,7 @@ draft: false
 image: "/images/tools/brother-printer.svg"
 linkToTool: "https://www.brother-usa.com/products/hll2400d"
 recommendationLabel: "Most privacy-minimal pick"
+weight: 20
 ---
 
 The Brother HL-L2400D is the cleanest choice for people who do not need network printing.

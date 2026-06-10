@@ -41,6 +41,17 @@
           </div>
         {{- end }}
 
+        {{- $reviewed := .Lastmod -}}
+        {{- if $reviewed.IsZero }}{{- $reviewed = .Date -}}{{- end -}}
+        {{- if not $reviewed.IsZero }}
+          <p class="tool-single-meta">
+            <span>Last updated {{ $reviewed | time.Format (default "January 2, 2006" site.Params.DateFormat) }}</span>
+            {{- with .File }}
+              <a href="https://github.com/{{ site.Params.githubUsername }}/{{ site.Params.githubRepo }}/edit/main/content/{{ .Path }}" target="_blank" rel="noopener noreferrer">Suggest Changes</a>
+            {{- end }}
+          </p>
+        {{- end }}
+
         <div class="tool-single-actions">
           {{- with .Params.LinkToTool }}
             <a class="tool-action tool-action-primary" href="{{ . }}" target="_blank" rel="noreferrer noopener">Visit site</a>

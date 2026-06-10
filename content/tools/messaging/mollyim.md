@@ -5,6 +5,7 @@ date: 2024-10-21T13:13:01-04:00
 draft: false
 image: "/images/tools/mollyim.png"
 linkToTool: https://molly.im/
+weight: 20
 ---
 
 Molly is an independent, security-focused fork of Signal for Android users. Key features include:

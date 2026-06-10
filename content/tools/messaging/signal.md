@@ -5,6 +5,7 @@ date: 2024-10-21T13:13:01-04:00
 draft: false
 image: "/images/tools/signal-logo.svg"
 linkToTool: https://signal.org/
+weight: 10
 ---
 
 Signal is a cross-platform encrypted messaging service that emphasizes privacy and security. Key features include:

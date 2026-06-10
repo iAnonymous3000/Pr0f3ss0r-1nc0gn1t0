@@ -9,6 +9,7 @@ recommendationLabel: "Off-grid pick"
 statusLabels:
   - "Experimental"
   - "Advanced"
+weight: 40
 ---
 Bitchat is an open-source peer-to-peer messenger built for local communication when internet access is unreliable, censored, or unavailable. Key features include:
 

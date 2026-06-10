@@ -59,6 +59,43 @@
 }
 </script>
 {{- if .IsPage }}
+{{- $published := .PublishDate -}}
+{{- if $published.IsZero -}}{{- $published = .Date -}}{{- end -}}
+{{- if $published.IsZero -}}{{- $published = .Lastmod -}}{{- end -}}
+{{- with .File -}}
+  {{- if $published.IsZero -}}{{- $published = .FileInfo.ModTime -}}{{- end -}}
+{{- end -}}
+{{- $modified := .Lastmod -}}
+{{- if $modified.IsZero -}}{{- $modified = $published -}}{{- end -}}
+{{- if eq .Section "tools" }}
+{{/* Tool pages are curated directory entries, not blog posts */}}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "ItemPage",
+  "name": {{ .Title | plainify }},
+  "description": {{ with .Description | plainify }}{{ . }}{{ else }}{{ .Summary | plainify }}{{ end -}},
+  "url": {{ .Permalink | safeHTML }},
+  "inLanguage": {{ .Language.Lang | default "en-us" }},
+  "datePublished": {{ $published }},
+  "dateModified": {{ $modified }},
+  {{- with (.Params.author | default site.Params.author) }}
+  "author": {
+    "@type": "Person",
+    "name": {{ . }}
+  },
+  {{- end }}
+  "publisher": {
+    "@type": "{{- ( site.Params.schema.publisherType | default "Organization") | title -}}",
+    "name": {{ site.Title }},
+    "logo": {
+      "@type": "ImageObject",
+      "url": {{ site.Params.assets.favicon | default "favicon.ico" | absURL }}
+    }
+  }
+}
+</script>
+{{- else }}
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -76,14 +113,6 @@
   "articleBody": {{ .Content | safeJS | htmlUnescape | plainify }},
   "wordCount" : "{{ .WordCount }}",
   "inLanguage": {{ .Language.Lang | default "en-us" }},
-  {{- $published := .PublishDate -}}
-  {{- if $published.IsZero -}}{{- $published = .Date -}}{{- end -}}
-  {{- if $published.IsZero -}}{{- $published = .Lastmod -}}{{- end -}}
-  {{- with .File -}}
-    {{- if $published.IsZero -}}{{- $published = .FileInfo.ModTime -}}{{- end -}}
-  {{- end -}}
-  {{- $modified := .Lastmod -}}
-  {{- if $modified.IsZero -}}{{- $modified = $published -}}{{- end -}}
   {{ if .Params.cover.image -}}
   "image":
     {{- if (ne .Params.cover.relative true) -}}
@@ -125,6 +154,7 @@
   }
 }
 </script>
+{{- end }}
 {{- end }}{{/* .IsPage end */}}
 
 {{- end -}}

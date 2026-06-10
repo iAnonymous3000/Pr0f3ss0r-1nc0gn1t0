@@ -5,6 +5,7 @@ date: 2024-10-21T13:13:01-04:00
 draft: false
 image: "/images/tools/ivpn-logo.jpg"
 linkToTool: "https://www.ivpn.net/"
+weight: 30
 ---
 IVPN is a privacy-focused VPN service known for its strong security practices. Key features include:
 - No personal information required

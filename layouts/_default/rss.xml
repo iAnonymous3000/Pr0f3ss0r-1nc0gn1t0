@@ -78,11 +78,11 @@
   <subtitle>Recent content {{ if ne .Title site.Title }}{{ with .Title }}in {{ . }} {{ end }}{{ end }}on {{ site.Title }}</subtitle>
   <id>{{ .Permalink }}</id>
   <generator uri="http://gohugo.io" version="{{ hugo.Version }}">Hugo</generator>
-  <language>{{ site.Language.LanguageCode }}</language>
+  <language>{{ site.Language.Locale }}</language>
   <updated>{{ $updated.Format "2006-01-02T15:04:05Z07:00" | safeHTML }}</updated>
   <author>
     {{ with $authorName }}<name>{{ . }}</name>{{ end }}
-    {{ with $authorEmail }}<name>{{ . }}</name>{{ end }}
+    {{ with $authorEmail }}<email>{{ . }}</email>{{ end }}
   </author>
   {{ with site.Copyright }}<rights>{{ . }}</rights>{{ end }}
 

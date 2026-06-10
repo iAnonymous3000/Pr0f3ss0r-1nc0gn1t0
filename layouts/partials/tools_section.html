@@ -5,18 +5,28 @@
   {{- $rootSections = .Sections.ByWeight -}}
 {{- end -}}
 {{- $sections := .Sections.ByWeight -}}
-{{- $pages := .RegularPages.ByTitle -}}
+{{- $weightedPages := where .RegularPages "Weight" "gt" 0 -}}
+{{- $unweightedPages := where .RegularPages "Weight" "eq" 0 -}}
+{{- $pages := slice -}}
+{{- range $weightedPages.ByWeight -}}
+  {{- $pages = $pages | append . -}}
+{{- end -}}
+{{- range $unweightedPages.ByTitle -}}
+  {{- $pages = $pages | append . -}}
+{{- end -}}
 {{- $toolCount := len $pages -}}
 {{- $allTools := where site.RegularPages "Section" "tools" -}}
 {{- if $isRoot -}}
   {{- $toolCount = len $allTools -}}
 {{- end -}}
 {{- $toolCountLabel := cond (eq $toolCount 1) "1 tool" (printf "%d tools" $toolCount) -}}
+{{- $filterPlaceholder := cond $isRoot "Search tools" "Search this category" -}}
+{{- $headerDescription := .Description | default .Params.SubTitle -}}
 
 <header class="page-header tools-page-header">
   {{- partial "breadcrumbs.html" . }}
   <h1>{{ .Title }}</h1>
-  {{- with .Description }}
+  {{- with $headerDescription }}
     <div class="post-description">
       {{ . | markdownify }}
     </div>
@@ -31,31 +41,39 @@
         id="tools-filter-input"
         class="tools-filter-input"
         type="search"
-        placeholder="Search tools"
+        placeholder="{{ $filterPlaceholder }}"
         autocomplete="off"
         list="tools-filter-suggestions"
         aria-describedby="tools-filter-count"
         data-tools-filter-input
       />
       <datalist id="tools-filter-suggestions">
-        {{- range $rootSections }}
-          <option value="{{ .Title }}"></option>
-        {{- end }}
-        {{- range $allTools.ByTitle }}
-          <option value="{{ .Title }}"></option>
+        {{- if $isRoot }}
+          {{- range $rootSections }}
+            <option value="{{ .Title }}"></option>
+          {{- end }}
+          {{- range $allTools.ByTitle }}
+            <option value="{{ .Title }}"></option>
+          {{- end }}
+        {{- else }}
+          {{- range $pages.ByTitle }}
+            <option value="{{ .Title }}"></option>
+          {{- end }}
         {{- end }}
       </datalist>
       <span id="tools-filter-count" class="tools-filter-count" aria-live="polite" data-tools-filter-count>{{ $toolCountLabel }}</span>
     </div>
-    <div class="tools-filter-suggestions" aria-label="Suggested searches">
-      <button class="tools-filter-suggestion" type="button" data-tools-jump-id="vpn-services">VPN</button>
-      <button class="tools-filter-suggestion" type="button" data-tools-suggestion="browser">Browser</button>
-      <button class="tools-filter-suggestion" type="button" data-tools-suggestion="password">Passwords</button>
-      <button class="tools-filter-suggestion" type="button" data-tools-suggestion="email">Email</button>
-      <button class="tools-filter-suggestion" type="button" data-tools-suggestion="DNS">DNS</button>
-      <button class="tools-filter-suggestion" type="button" data-tools-suggestion="phone">Phone</button>
-      <button class="tools-filter-suggestion" type="button" data-tools-suggestion="camera">Cameras</button>
-    </div>
+    {{- if $isRoot }}
+      <div class="tools-filter-suggestions" aria-label="Suggested searches">
+        <button class="tools-filter-suggestion" type="button" data-tools-jump-id="vpn-services">VPN</button>
+        <button class="tools-filter-suggestion" type="button" data-tools-suggestion="browser">Browser</button>
+        <button class="tools-filter-suggestion" type="button" data-tools-suggestion="password">Passwords</button>
+        <button class="tools-filter-suggestion" type="button" data-tools-suggestion="email">Email</button>
+        <button class="tools-filter-suggestion" type="button" data-tools-suggestion="DNS">DNS</button>
+        <button class="tools-filter-suggestion" type="button" data-tools-suggestion="phone">Phone</button>
+        <button class="tools-filter-suggestion" type="button" data-tools-suggestion="camera">Cameras</button>
+      </div>
+    {{- end }}
     <div class="tools-filter-meta">
       <p class="tools-sort-status" data-tools-sort-status>Browse order</p>
       <label class="tools-sort-label" for="tools-sort-mode">Sort results</label>
@@ -129,7 +147,15 @@
         {{- end }}
 
         {{- range $sections }}
-          {{- $groupPages := .RegularPages.ByTitle -}}
+          {{- $groupWeightedPages := where .RegularPages "Weight" "gt" 0 -}}
+          {{- $groupUnweightedPages := where .RegularPages "Weight" "eq" 0 -}}
+          {{- $groupPages := slice -}}
+          {{- range $groupWeightedPages.ByWeight -}}
+            {{- $groupPages = $groupPages | append . -}}
+          {{- end -}}
+          {{- range $groupUnweightedPages.ByTitle -}}
+            {{- $groupPages = $groupPages | append . -}}
+          {{- end -}}
           {{- $groupCount := len $groupPages -}}
           {{- $groupCountLabel := cond (eq $groupCount 1) "1 tool" (printf "%d tools" $groupCount) -}}
           <section class="tools-group" id="{{ .LinkTitle | anchorize }}" data-tool-group>
@@ -139,7 +165,7 @@
                   <h2>{{ .Title }}</h2>
                   <span class="tools-group-count">{{ $groupCountLabel }}</span>
                 </div>
-                {{- with .Params.SubTitle }}
+                {{- with or .Params.SubTitle .Description }}
                   <p>{{ . }}</p>
                 {{- end }}
               </div>
@@ -149,7 +175,7 @@
             {{- with $groupPages }}
               <div class="tools-grid">
                 {{- range . }}
-                  {{- partial "toolcard.html" . -}}
+                  {{- partial "toolcard.html" (dict "page" . "headingLevel" 3) -}}
                 {{- end }}
               </div>
             {{- else }}
@@ -188,7 +214,7 @@
     {{- with $pages }}
       <div class="tools-grid">
         {{- range . }}
-          {{- partial "toolcard.html" . -}}
+          {{- partial "toolcard.html" (dict "page" . "headingLevel" 2) -}}
         {{- end }}
       </div>
     {{- else }}
@@ -198,7 +224,13 @@
 {{- end }}
 
 {{- if gt $toolCount 0 }}
-  <p class="tools-empty-state tools-filter-empty" data-tools-filter-empty hidden>No matching tools found.</p>
+  <p class="tools-empty-state tools-filter-empty" data-tools-filter-empty hidden>
+    {{- if $isRoot -}}
+      No matching tools found.
+    {{- else -}}
+      No matching tools found in this category. <a href="{{ with $toolsRoot }}{{ .RelPermalink }}{{ else }}/tools/{{ end }}" data-tools-search-all>Search all tools.</a>
+    {{- end -}}
+  </p>
   {{- $toolsFilter := resources.Get "js/tools-filter.js" | resources.Minify -}}
   {{- if not site.Params.assets.disableFingerprinting -}}
     {{- $toolsFilterJS := $toolsFilter | fingerprint -}}

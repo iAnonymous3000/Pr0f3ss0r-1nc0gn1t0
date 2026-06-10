@@ -4,6 +4,9 @@ description: ""
 summary: ""
 image: "/images/tools/<filename>.png"
 linkToTool: ""
+recommendationLabel: ""
+statusLabels: []
+weight: 0
 date: {{ .Date }}
 draft: true
 ---

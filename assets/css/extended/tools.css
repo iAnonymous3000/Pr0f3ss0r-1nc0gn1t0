@@ -59,7 +59,7 @@
 .tools-filter-suggestion {
     min-height: 36px;
     padding: 0.35rem 0.7rem;
-    color: var(--secondary);
+    color: var(--primary);
     background: var(--theme);
     border: 1px solid var(--border);
     border-radius: 999px;
@@ -140,7 +140,7 @@
     flex-shrink: 0;
     min-height: 36px;
     padding: 0.35rem 0.75rem;
-    color: var(--secondary);
+    color: var(--primary);
     background: var(--theme);
     border: 1px solid var(--border);
     border-radius: 999px;
@@ -324,80 +324,6 @@
     text-align: center;
 }
 
-.tools-directory {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0.75rem;
-    margin: 0 0 2rem;
-}
-
-.tools-directory-link {
-    display: inline-flex;
-    align-items: center;
-    gap: 0.45rem;
-    max-width: 100%;
-    padding: 0.55rem 0.85rem;
-    background: var(--entry);
-    border: 1px solid var(--border);
-    border-radius: 999px;
-    color: var(--primary);
-    text-decoration: none;
-}
-
-.tools-directory-link:hover {
-    color: var(--primary);
-    background: var(--tertiary);
-}
-
-.tools-directory-count {
-    min-width: 1.5em;
-    padding: 0.05rem 0.45rem;
-    color: var(--secondary);
-    background: var(--theme);
-    border-radius: 999px;
-    font-size: 0.82rem;
-    line-height: 1.5;
-    text-align: center;
-}
-
-.tools-directory-sticky {
-    box-sizing: border-box;
-    position: sticky;
-    top: 0;
-    z-index: 20;
-    flex-wrap: nowrap;
-    overflow-x: auto;
-    overscroll-behavior-x: contain;
-    padding: 0.65rem 0;
-    margin: 0 -1rem 1.5rem;
-    padding-left: 1rem;
-    padding-right: 1rem;
-    max-width: 100vw;
-    background: var(--theme);
-    border-bottom: 1px solid var(--border);
-    scrollbar-width: thin;
-}
-
-.tools-directory-sticky .tools-directory-link {
-    flex-shrink: 0;
-    white-space: nowrap;
-}
-
-.tools-directory-link.is-current {
-    background: var(--primary);
-    color: var(--theme);
-    border-color: var(--primary);
-}
-
-.tools-directory-link.is-current .tools-directory-count {
-    color: var(--primary);
-}
-
-.tools-directory-link.is-current:hover {
-    background: var(--primary);
-    color: var(--theme);
-}
-
 .tools-group {
     margin-bottom: 2.5rem;
     scroll-margin-top: 5.5rem;
@@ -505,13 +431,13 @@
     min-width: 0;
 }
 
-.tool-card-heading h3 {
+.tool-card-heading .tool-card-title {
     margin: 0;
     font-size: 1.05rem;
     overflow-wrap: anywhere;
 }
 
-.tool-card-heading h3 a {
+.tool-card-heading .tool-card-title a {
     text-decoration: none;
 }
 
@@ -551,12 +477,35 @@
 }
 
 .tool-status-label {
-    color: var(--secondary);
+    --tool-status-color: #4b5563;
+    color: var(--tool-status-color);
     font-weight: 500;
+}
+
+.dark .tool-status-label {
+    --tool-status-color: var(--secondary);
 }
 
 .tool-single-labels {
     margin-top: 0.85rem;
+}
+
+.tool-single-meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.35rem 0.75rem;
+    margin: 0.85rem 0 0;
+    color: var(--secondary);
+    font-size: 0.9rem;
+}
+
+.tool-single-meta a {
+    color: var(--secondary);
+    text-decoration: none;
+}
+
+.tool-single-meta a:hover {
+    color: var(--primary);
 }
 
 .tool-card-actions {
@@ -610,9 +559,8 @@
 .tools-start-link:focus-visible,
 .tools-category-picker summary:focus-visible,
 .tools-category-link:focus-visible,
-.tools-directory-link:focus-visible,
 .tools-group-link:focus-visible,
-.tool-card-heading h3 a:focus-visible,
+.tool-card-heading .tool-card-title a:focus-visible,
 .tool-card-read:focus-visible,
 .tool-card-visit:focus-visible,
 .tool-action:focus-visible {
@@ -771,23 +719,6 @@
 
     .tools-active-clear {
         align-self: flex-start;
-    }
-
-    .tools-directory:not(.tools-directory-sticky) {
-        flex-wrap: nowrap;
-        overflow-x: auto;
-        overscroll-behavior-x: contain;
-        margin: 0 -1rem 1.5rem;
-        padding: 0.65rem 1rem;
-        background: var(--theme);
-        border-top: 1px solid var(--border);
-        border-bottom: 1px solid var(--border);
-        scrollbar-width: thin;
-    }
-
-    .tools-directory-link {
-        flex-shrink: 0;
-        white-space: nowrap;
     }
 
     .tools-category-picker summary {

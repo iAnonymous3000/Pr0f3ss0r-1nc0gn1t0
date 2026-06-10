@@ -6,12 +6,7 @@ draft: false
 image: "/images/tools/cloudflare-1111-logo.png"
 linkToTool: "https://one.one.one.one/"
 recommendationLabel: "Fast mainstream resolver option"
-tags:
-  - DNS
-  - Encrypted DNS
-  - Fast Resolver
-  - Malware Blocking
-  - Mainstream
+weight: 30
 ---
 Cloudflare 1.1.1.1 is a widely used public DNS resolver focused on speed, availability, and encrypted DNS support. It is a good mainstream option, especially for users who want simple setup and strong performance.
 

@@ -4,7 +4,8 @@ description: "End-to-end encrypted alternative to Google Photos"
 date: 2024-10-21T13:13:01-04:00
 draft: false
 image: "/images/tools/entephotos-logo.jpg"
-linkToTool: "https://ente.io"
+linkToTool: "https://ente.com/"
+weight: 10
 ---
 
 Ente Photos is an encrypted photo storage and backup solution. Key features include:

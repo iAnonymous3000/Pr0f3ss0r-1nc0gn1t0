@@ -6,6 +6,7 @@ draft: false
 image: "/images/tools/aegis-authenticator-logo.png"
 linkToTool: "https://getaegis.app/"
 recommendationLabel: "Best Android TOTP pick"
+weight: 20
 ---
 Aegis Authenticator is a free, open-source 2FA app for Android that stores one-time password tokens in an encrypted local vault. It supports both TOTP and HOTP, making it compatible with the same standard token format used by most websites and services.
 

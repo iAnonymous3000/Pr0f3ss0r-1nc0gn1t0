@@ -5,6 +5,7 @@ date: 2026-04-20T07:00:00-07:00
 draft: false
 image: "/images/tools/1password-logo.jpg"
 linkToTool: "https://1password.com/"
+weight: 10
 ---
 1Password is a polished password manager that balances strong security with excellent usability. Key features include:
 - Encrypted vaults across devices

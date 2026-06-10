@@ -9,6 +9,7 @@ recommendationLabel: "Conditional Apple ecosystem pick"
 statusLabels:
   - "Conditional pick"
   - "Requires careful setup"
+weight: 20
 ---
 
 Apple Photos is a polished mainstream photo library for people already using iPhone, iPad, Mac, and iCloud. It is only worth treating as a privacy-conscious cloud photo option when iCloud Photos is protected with Advanced Data Protection.

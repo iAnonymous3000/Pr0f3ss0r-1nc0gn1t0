@@ -5,6 +5,7 @@ date: 2024-10-21T13:13:01-04:00
 draft: false
 image: "/images/tools/protonmail-logo.png"
 linkToTool: "https://proton.me/mail"
+weight: 10
 ---
 
 Proton Mail is a secure email service with end-to-end encryption. Key features include:

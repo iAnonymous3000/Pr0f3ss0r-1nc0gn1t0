@@ -6,12 +6,7 @@ draft: false
 image: "/images/tools/quad9-logo.svg"
 linkToTool: "https://quad9.net/"
 recommendationLabel: "Best default pick"
-tags:
-  - DNS
-  - Encrypted DNS
-  - Malware Blocking
-  - Nonprofit
-  - DNSSEC
+weight: 10
 ---
 Quad9 is a nonprofit public DNS resolver focused on security and privacy. Its recommended service blocks malicious domains, validates DNSSEC, and avoids EDNS Client Subnet by default.
 

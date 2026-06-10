@@ -5,6 +5,7 @@ date: 2026-04-20T07:00:00-07:00
 draft: false
 image: "/images/tools/bravevpn-logo.jpg"
 linkToTool: "https://brave.com/firewall-vpn/"
+weight: 40
 ---
 Brave VPN is a consumer-friendly VPN option for users who already rely on Brave products. Key features include:
 - Tight integration with Brave services

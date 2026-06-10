@@ -4,7 +4,7 @@ description: "Create and manage multiple digital identities"
 date: 2024-10-23T13:13:01-04:00
 draft: false
 image: "/images/tools/mysudo-logo.jpg"
-linkToTool: "https://mysudo.com"
+linkToTool: "https://anonyome.com/individuals/mysudo/"
 ---
 MySudo helps you create separate digital identities with their own phone numbers and email addresses. Key features include:
 - Multiple phone numbers
@@ -12,4 +12,3 @@ MySudo helps you create separate digital identities with their own phone numbers
 - Secure messaging
 - Private browsing
 - Compartmentalized identities
-

@@ -6,6 +6,7 @@ draft: false
 image: "/images/tools/brother-printer.svg"
 linkToTool: "https://www.brother-usa.com/products/hll2460dw"
 recommendationLabel: "Best default pick"
+weight: 10
 ---
 
 The Brother HL-L2460DW is the best default pick for most people who want a simple black-and-white laser printer with local connectivity options.

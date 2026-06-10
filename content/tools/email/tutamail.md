@@ -5,6 +5,7 @@ date: 2024-10-21T13:13:01-04:00
 draft: false
 image: "/images/tools/tuta-mail-logo.png"
 linkToTool: "https://tuta.com/"
+weight: 20
 ---
 
 Tuta is an end-to-end encrypted email service that protects your data with zero-knowledge principles. Key features include:
