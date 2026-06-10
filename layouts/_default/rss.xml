@@ -70,6 +70,11 @@
   {{- end }}
 {{- end }}
 
+{{- $languageCode := site.Language.LanguageCode | default site.Language.Lang | default "en-us" }}
+{{- if ge hugo.Version "0.150.0" }}
+  {{- $languageCode = site.Language.Locale | default $languageCode }}
+{{- end }}
+
 {{- printf "<?xml version=\"1.0\" encoding=\"utf-8\" standalone=\"yes\"?>" | safeHTML }}
 <feed xmlns="http://www.w3.org/2005/Atom">
   <title>{{ if eq .Title site.Title }}{{ site.Title }}{{ else }}{{ with .Title }}{{ . }} on {{ end }}{{ site.Title }}{{ end }}</title>
@@ -78,7 +83,7 @@
   <subtitle>Recent content {{ if ne .Title site.Title }}{{ with .Title }}in {{ . }} {{ end }}{{ end }}on {{ site.Title }}</subtitle>
   <id>{{ .Permalink }}</id>
   <generator uri="http://gohugo.io" version="{{ hugo.Version }}">Hugo</generator>
-  <language>{{ site.Language.Locale }}</language>
+  <language>{{ $languageCode }}</language>
   <updated>{{ $updated.Format "2006-01-02T15:04:05Z07:00" | safeHTML }}</updated>
   <author>
     {{ with $authorName }}<name>{{ . }}</name>{{ end }}

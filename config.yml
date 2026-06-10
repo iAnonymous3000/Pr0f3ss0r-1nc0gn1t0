@@ -1,5 +1,6 @@
 # Base Configuration
 baseURL: 'https://profincognito.me/'
+languageCode: 'en-us'
 locale: 'en-us'
 title: 'Sooraj Sathyanarayanan'
 theme: 'hugo-WonderMod'
