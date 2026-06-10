@@ -47,6 +47,7 @@ groups:
       - /tools/notes/
       - /tools/office/
       - /tools/file-sharing/
+      - /tools/pastebins/
       - /tools/torrenting/
       - /tools/photos/
       - /tools/maps/
