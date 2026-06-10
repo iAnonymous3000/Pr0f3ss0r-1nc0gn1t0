@@ -8,7 +8,7 @@ linkToTool: "https://brave.com/leo"
 ---
 Brave Leo is an AI assistant that prioritizes user privacy and doesn't require an account. Key features include:
 - No tracking or profiling
-- No chat history saved
+- Chat history is stored only on your device and can be disabled
 - No account needed
 - Built into Brave browser
-- Free to use
+- Free to use, with an optional premium tier
