@@ -3,7 +3,7 @@ title: "Brave Talk"
 description: "Private video calling built into Brave Browser"
 date: 2024-10-23T13:13:01-04:00
 draft: false
-image: "/images/tools/brave.png"
+image: "/images/tools/brave-icon.png"
 linkToTool: "https://talk.brave.com"
 ---
 Brave Talk offers private and secure video calling right from your browser. Key features include:

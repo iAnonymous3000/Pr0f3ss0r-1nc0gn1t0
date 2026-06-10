@@ -3,7 +3,7 @@ title: "Brave Search"
 description: "Private search engine with independent index"
 date: 2024-10-21T13:13:01-04:00
 draft: false
-image: "/images/tools/brave.png"
+image: "/images/tools/brave-icon.png"
 linkToTool: https://search.brave.com/
 ---
 

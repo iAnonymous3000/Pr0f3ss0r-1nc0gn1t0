@@ -3,7 +3,7 @@ title: "Brave Wallet"
 description: "Built-in self-custody wallet integrated directly into Brave"
 date: 2026-04-20T07:00:00-07:00
 draft: false
-image: "/images/tools/brave.png"
+image: "/images/tools/brave-icon.png"
 linkToTool: "https://brave.com/wallet/"
 ---
 Brave Wallet is a self-custody crypto wallet built directly into the Brave browser. Key features include:

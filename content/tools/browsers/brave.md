@@ -3,7 +3,7 @@ title: "Brave"
 description: "Fast, secure browser with built-in ad block and privacy controls"
 date: 2024-10-21T13:13:01-04:00
 draft: false
-image: "/images/tools/brave.png"
+image: "/images/tools/brave-icon.png"
 linkToTool: https://brave.com/
 recommendationLabel: "Default pick"
 statusLabels:
