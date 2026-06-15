@@ -36,7 +36,7 @@
       <p class="tools-category-nav-heading">{{ index . "title" }}</p>
       <div class="tools-category-nav-links">
         {{- range $groupSections }}
-          {{- $count := len .RegularPages -}}
+          {{- $count := len (where .RegularPages "Params.hideFromToolsCards" "ne" true) -}}
           {{- $countLabel := cond (eq $count 1) "1 tool" (printf "%d tools" $count) -}}
           {{- $href := .RelPermalink -}}
           {{- if eq $mode "anchor" -}}

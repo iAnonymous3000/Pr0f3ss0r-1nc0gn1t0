@@ -5,8 +5,9 @@
   {{- $rootSections = .Sections.ByWeight -}}
 {{- end -}}
 {{- $sections := .Sections.ByWeight -}}
-{{- $weightedPages := where .RegularPages "Weight" "gt" 0 -}}
-{{- $unweightedPages := where .RegularPages "Weight" "eq" 0 -}}
+{{- $regularPages := where .RegularPages "Params.hideFromToolsCards" "ne" true -}}
+{{- $weightedPages := where $regularPages "Weight" "gt" 0 -}}
+{{- $unweightedPages := where $regularPages "Weight" "eq" 0 -}}
 {{- $pages := slice -}}
 {{- range $weightedPages.ByWeight -}}
   {{- $pages = $pages | append . -}}
@@ -15,7 +16,7 @@
   {{- $pages = $pages | append . -}}
 {{- end -}}
 {{- $toolCount := len $pages -}}
-{{- $allTools := where site.RegularPages "Section" "tools" -}}
+{{- $allTools := where (where site.RegularPages "Section" "tools") "Params.hideFromToolsCards" "ne" true -}}
 {{- if $isRoot -}}
   {{- $toolCount = len $allTools -}}
 {{- end -}}
@@ -147,8 +148,9 @@
         {{- end }}
 
         {{- range $sections }}
-          {{- $groupWeightedPages := where .RegularPages "Weight" "gt" 0 -}}
-          {{- $groupUnweightedPages := where .RegularPages "Weight" "eq" 0 -}}
+          {{- $groupRegularPages := where .RegularPages "Params.hideFromToolsCards" "ne" true -}}
+          {{- $groupWeightedPages := where $groupRegularPages "Weight" "gt" 0 -}}
+          {{- $groupUnweightedPages := where $groupRegularPages "Weight" "eq" 0 -}}
           {{- $groupPages := slice -}}
           {{- range $groupWeightedPages.ByWeight -}}
             {{- $groupPages = $groupPages | append . -}}
