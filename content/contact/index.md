@@ -1,14 +1,14 @@
 ---
-date: "2026-03-04"
+date: "2026-06-22"
 title: "Contact"
-description: "Secure and private communication channels"
+description: "Secure, private, asynchronous communication channels"
 ---
 
 # Secure Communication Channels
-Choose the appropriate channel based on your needs and the nature of your communication.
+Choose the appropriate channel based on your needs and the nature of your communication. I am not accepting meeting requests or public calendar bookings through this site.
 
 ## 🔒 Signal Messenger (Primary)
-For direct, secure communication:
+For direct, secure, asynchronous communication:
 
 ➜ [Contact via Signal](https://signal.me/#eu/tao35l1vQxmrWcie6iW3dXlcFo0t3Pzae7WFHEMJnAIqKn2WxP5KnKKq5ClE-ZDD)
 
@@ -18,7 +18,7 @@ For direct, secure communication:
 - Secure media sharing
 - Best for:
   - Direct collaboration requests
-  - Security consulting inquiries
+  - Security and privacy questions
   - Project discussions
   - Technical questions
   - Time-sensitive matters
@@ -45,20 +45,6 @@ Key Features:
 - No tracking
 - One-way communication channel
 
-## 📅 Meeting Requests
-For scheduled discussions:
-
-➜ [Book a Meeting](https://cal.com/timechainconsulting)
-
-<img src="{{< relurl "images/content/contact-141f7f30-34f8-40f3-9979-24562ec52494.png" >}}" alt="Calendar QR Code" width="300" height="300" style="display: block; margin: 20px 0;">
-
-Available for:
-- Project consultations
-- Security assessments
-- Research discussions
-- Technical collaborations
-- In-depth topics requiring dedicated time
-
 ## Security Reports & Disclosures
 
 ### Reporting Priority
@@ -70,19 +56,18 @@ Available for:
 ## Communication Policy
 
 ### Accepted Channels
-✅ Signal Messenger  
-✅ Hush Line (anonymous tips only)  
-✅ GitHub Security Advisory  
-✅ Calendar booking system
+- ✅ Signal Messenger
+- ✅ Hush Line (anonymous tips only)
+- ✅ GitHub Security Advisory
 
 ### Not Accepted
-❌ Email communications  
-❌ Social media platforms  
-❌ Other messaging platforms
+- ❌ Meeting requests or calendar bookings
+- ❌ Email communications
+- ❌ Social media platforms
+- ❌ Other messaging platforms
 
 ## Security Assurance & Response Times
 - All channels undergo regular security audits
-- Signal messages: Within 24 hours
+- Signal messages: Within 24 hours for urgent or security-relevant messages
 - Anonymous tips: No direct response (one-way channel)
-- Meeting requests: Automatic confirmation
 - Security advisories: Within 48 hours
