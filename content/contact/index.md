@@ -1,11 +1,18 @@
 ---
 date: "2026-06-22"
 title: "Contact"
-description: "Private disclosure channels"
+description: "Public questions and private disclosure channels"
 ---
 
 # Contact
-I do not publish a public direct-messaging channel here, and I am not accepting meeting requests or public calendar bookings through this site. Use the options below for anonymous tips or project-specific security reports.
+I do not publish a public direct-messaging channel here, and I am not accepting meeting requests or public calendar bookings through this site. For non-sensitive public questions, tag me on 𝕏. For private tips or project-specific security reports, use the disclosure options below.
+
+## 𝕏 Mentions (Public Questions)
+For non-sensitive security, privacy, or general questions about my work, tag me publicly on 𝕏:
+
+➜ [@iAnonymous3000 on 𝕏](https://x.com/iAnonymous3000)
+
+I reply at my own pace. Do not use public mentions for vulnerabilities, private details, or anything that should not be indexed.
 
 ## 🤫 Hush Line (Anonymous Tips)
 For anonymous, sensitive information:
@@ -39,6 +46,7 @@ Key Features:
 ## Communication Policy
 
 ### Accepted Channels
+- ✅ 𝕏 public mentions for non-sensitive questions
 - ✅ Hush Line (anonymous tips only)
 - ✅ GitHub Security Advisory
 
@@ -46,10 +54,11 @@ Key Features:
 - ❌ Direct messaging handles or QR codes
 - ❌ Meeting requests or calendar bookings
 - ❌ Email communications
-- ❌ Social media platforms
+- ❌ Private social media DMs
 - ❌ Other messaging platforms
 
 ## Security Assurance & Response Times
 - All channels undergo regular security audits
+- 𝕏 mentions: Best-effort replies at my own pace
 - Anonymous tips: No direct response (one-way channel)
 - Security advisories: Within 48 hours
