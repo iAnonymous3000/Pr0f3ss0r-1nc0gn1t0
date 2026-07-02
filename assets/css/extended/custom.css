@@ -49,6 +49,22 @@
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
 }
 
+/* QR code images */
+.img-qr-wrap {
+    text-align: center;
+}
+
+.img-qr {
+    display: block;
+    margin: 20px 0;
+}
+
+.img-qr-donate {
+    width: 160px;
+    height: 160px;
+    margin: 1rem auto;
+}
+
 /* Chess TV and Puzzle containers */
 .chess-tv-container,
 .chess-puzzle-container {

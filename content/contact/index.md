@@ -19,7 +19,7 @@ For anonymous, sensitive information:
 
 ➜ [Submit Anonymous Tip](https://tips.hushline.app/to/ianonymous3000)
 
-<img src="{{< relurl "images/content/contact-8e105c4f-344c-4506-a5b7-315087f7ae90.png" >}}" alt="HushLine QR Code" width="300" height="300" style="display: block; margin: 20px 0;">
+<img src="{{< relurl "images/content/contact-8e105c4f-344c-4506-a5b7-315087f7ae90.png" >}}" alt="HushLine QR Code" width="300" height="300" class="img-qr">
 
 Appropriate for:
 - Security vulnerability reports

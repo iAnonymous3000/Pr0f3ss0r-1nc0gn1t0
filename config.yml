@@ -253,7 +253,7 @@ markup:
   highlight:
     style: dracula
     lineNos: false
-    noClasses: true
+    noClasses: false
     codeFences: true
     guessSyntax: true
     tabWidth: 4
