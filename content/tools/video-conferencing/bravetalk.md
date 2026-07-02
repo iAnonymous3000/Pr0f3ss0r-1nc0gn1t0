@@ -7,8 +7,10 @@ image: "/images/tools/brave-icon.png"
 linkToTool: "https://talk.brave.com"
 ---
 Brave Talk offers private and secure video calling right from your browser. Key features include:
-- End-to-end encryption by default
+- Encrypted calls with optional end-to-end Video Bridge Encryption
 - No account required
-- Unlimited 1-on-1 calls
+- Free calls for up to 4 people with no time limits
 - Screen sharing and chat
 - Built into Brave Browser
+
+Calls are transport-encrypted by default. End-to-end Video Bridge Encryption must be enabled in the call's security options, and it does not work with phone dial-in participants, calls larger than 20 people, or incompatible browsers.

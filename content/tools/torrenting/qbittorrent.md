@@ -3,7 +3,7 @@ title: "qBittorrent"
 description: "Free and open-source BitTorrent client without ads"
 date: 2026-04-23T00:00:00-07:00
 draft: false
-image: "/images/tools/qbittorrent-logo.png"
+image: "/images/tools/qbittorrent-logo.svg"
 linkToTool: "https://www.qbittorrent.org/"
 ---
 

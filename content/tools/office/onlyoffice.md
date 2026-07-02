@@ -3,7 +3,7 @@ title: "ONLYOFFICE"
 description: "Open-source office suite with strong Microsoft Office compatibility"
 date: 2026-04-23T00:00:00-07:00
 draft: false
-image: "/images/tools/onlyoffice-logo.webp"
+image: "/images/tools/onlyoffice-logo.png"
 linkToTool: "https://www.onlyoffice.com/"
 ---
 
