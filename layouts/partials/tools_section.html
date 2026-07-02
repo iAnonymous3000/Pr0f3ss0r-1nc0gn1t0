@@ -64,23 +64,12 @@
       </datalist>
       <span id="tools-filter-count" class="tools-filter-count" aria-live="polite" data-tools-filter-count>{{ $toolCountLabel }}</span>
     </div>
-    {{- if $isRoot }}
-      <div class="tools-filter-suggestions" aria-label="Suggested searches">
-        <button class="tools-filter-suggestion" type="button" data-tools-jump-id="vpn-services">VPN</button>
-        <button class="tools-filter-suggestion" type="button" data-tools-suggestion="browser">Browser</button>
-        <button class="tools-filter-suggestion" type="button" data-tools-suggestion="password">Passwords</button>
-        <button class="tools-filter-suggestion" type="button" data-tools-suggestion="email">Email</button>
-        <button class="tools-filter-suggestion" type="button" data-tools-suggestion="DNS">DNS</button>
-        <button class="tools-filter-suggestion" type="button" data-tools-suggestion="phone">Phone</button>
-        <button class="tools-filter-suggestion" type="button" data-tools-suggestion="camera">Cameras</button>
-      </div>
-    {{- end }}
     <div class="tools-filter-meta">
-      <p class="tools-sort-status" data-tools-sort-status>Browse order</p>
+      <p class="tools-sort-status tools-sr-only" aria-live="polite" data-tools-sort-status>Browse order</p>
       <label class="tools-sort-label" for="tools-sort-mode">Sort results</label>
       <select id="tools-sort-mode" class="tools-sort-select" data-tools-sort-mode>
         <option value="relevance">Relevance</option>
-        <option value="az">Within categories (A-Z)</option>
+        <option value="az">Name (A-Z)</option>
       </select>
     </div>
   </section>

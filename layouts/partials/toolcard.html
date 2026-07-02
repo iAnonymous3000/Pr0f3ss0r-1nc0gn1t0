@@ -32,11 +32,6 @@
       {{- else }}
       <h3 class="tool-card-title"><a href="{{ $page.RelPermalink }}">{{ $page.Title }}</a></h3>
       {{- end }}
-      {{ with $page.CurrentSection }}
-        {{ if .Parent }}
-          <p>{{ .Title }}</p>
-        {{ end }}
-      {{ end }}
     </div>
   </div>
 

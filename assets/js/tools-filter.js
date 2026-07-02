@@ -342,7 +342,6 @@
     var groups = Array.prototype.slice.call(document.querySelectorAll('[data-tool-group]'));
     var count = document.querySelector('[data-tools-filter-count]');
     var empty = document.querySelector('[data-tools-filter-empty]');
-    var suggestionButtons = Array.prototype.slice.call(document.querySelectorAll('[data-tools-suggestion], [data-tools-jump-id]'));
     var sortMode = document.querySelector('[data-tools-sort-mode]');
     var sortStatus = document.querySelector('[data-tools-sort-status]');
     var rootCategoryPicker = document.querySelector('.tools-category-picker-root');
@@ -545,7 +544,7 @@
         if (!isFiltering) {
           sortStatus.textContent = 'Browse order';
         } else if (activeSort === 'az') {
-          sortStatus.textContent = 'Results sorted within categories (A-Z)';
+          sortStatus.textContent = 'Results sorted by name (A-Z)';
         } else {
           sortStatus.textContent = 'Results sorted by relevance';
         }
@@ -562,29 +561,6 @@
     if (sortMode) {
       sortMode.addEventListener('change', applyFilter);
     }
-    suggestionButtons.forEach(function (button) {
-      button.addEventListener('click', function () {
-        var jumpId = button.getAttribute('data-tools-jump-id') || '';
-        if (jumpId && directorySpy && directorySpy.hasId && directorySpy.hasId(jumpId)) {
-          var encodedJumpId = encodeURIComponent(jumpId);
-          if (window.location.hash !== '#' + encodedJumpId) {
-            window.location.hash = encodedJumpId;
-          } else {
-            syncToHashIntent({ source: 'shortcut', smooth: true });
-          }
-          return;
-        }
-
-        var suggestion = button.getAttribute('data-tools-suggestion') || '';
-        if (!suggestion) {
-          return;
-        }
-
-        input.value = suggestion;
-        input.focus();
-        applyFilter();
-      });
-    });
     if (rootCategoryPicker) {
       rootCategoryPicker.addEventListener('click', function (event) {
         var link = event.target.closest('a[href^="#"]');
