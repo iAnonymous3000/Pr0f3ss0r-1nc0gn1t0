@@ -61,6 +61,12 @@ Both output directories are ignored by Git. Check links, images and assets on bo
 
 The mirror workflow runs on qualifying pushes to `main` and can also be started manually from Actions. Changes limited to `README.md`, `LICENSE` or `images/` are excluded by its path filter.
 
+## Search metadata
+
+The primary search URL is `https://profincognito.me/`, configured through `params.canonicalBaseURL`. The mirror keeps its own working navigation and assets while its canonical links, sitemap and structured identities point to the primary site. Paginated lists retain their distinct page URLs.
+
+Metadata helpers live in [`layouts/partials/seo/`](layouts/partials/seo/). The homepage identifies the author and website; About uses profile markup, and articles link to the same author identity. Internal search and error pages are excluded from indexing. Sitemap and structured metadata omit modification timestamps.
+
 ## Repository layout
 
 | Path | Purpose |

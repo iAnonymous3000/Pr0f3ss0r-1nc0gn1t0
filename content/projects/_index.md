@@ -1,36 +1,56 @@
 ---
 date: "2026-03-04"
-title: "Projects"
-description: "Selected software projects, open-source contributions, and practical security guides."
+title: "Security and Privacy Projects"
+description: "Security and privacy projects by Sooraj Sathyanarayanan: browser tooling, local forensic analysis, accepted open-source contributions and release verification."
 ---
 
-I work on software and educational resources that help people examine privacy risks and make informed security decisions.
+I build tools and educational resources that help people inspect software behavior, examine privacy risks and make informed security decisions. My work includes browser release review, automated privacy analysis, local forensic tools and contributions to existing open-source projects.
 
-## Selected work
+[Browser tooling](#browser-tooling) · [Local analysis tools](#local-analysis-tools) · [Open-source contributions](#open-source-contributions) · [Guides and resources](#guides-and-resources)
+
+## Browser tooling
+
+### Brave Nightly Change Tracker
+
+My work at Brave includes developing tooling for reviewing Brave Nightly changes. The public tracker organizes merged pull requests from `brave/brave-core` into a searchable review queue, with filters for separating relevant changes from routine maintenance.
+
+[Public review interface](https://brave-experiments.github.io/nightly-tracker/)
 
 ### Site Behavior Lab
 
-An open-source project for inspecting what a website does during an automated browser visit: network requests, third-party connections, cookies, storage, browser API use, and consent behavior. Reports include recorded evidence and the conditions of the visit. Findings need to be interpreted within the project's published coverage and limitations.
+An open-source project for inspecting what a website does during an automated browser visit: network requests, third-party connections, cookies, storage, browser API use, and consent behavior.
+
+Reports connect findings to recorded evidence and disclose the browser and scan conditions. This makes the observation available for inspection alongside its interpretation. A scan describes one visit under particular conditions; findings need to be interpreted within the project's published coverage and limitations.
 
 [Project and methodology](https://github.com/iAnonymous3000/site-behavior-lab) · [Website](https://sitebehavior.org/)
 
+## Local analysis tools
+
 ### Trace
 
-A Rust and WebAssembly tool for checking iPhone sysdiagnose archives against known spyware indicators in the browser. Its coverage is limited; a scan cannot establish that a device is free of compromise.
+A Rust and WebAssembly tool for checking iPhone sysdiagnose archives against known spyware indicators in the browser. Archive parsing, indicator matching and report assembly run locally in the browser tab. The reports distinguish findings from incomplete coverage.
 
-[Project and limitations](https://github.com/iAnonymous3000/tracescan)
+Trace is an initial triage tool with limited coverage. A scan cannot establish that a device is free of compromise or replace expert mobile forensics.
+
+[Project and limitations](https://github.com/iAnonymous3000/tracescan) · [Browser application](https://tracescan.pages.dev/)
 
 ### Metadata Remover
 
-A browser-based tool for inspecting and removing structural metadata from supported images, documents, audio, and video. It does not remove sensitive information visible in the content itself.
+A browser-based tool for inspecting and removing structural metadata from supported images, documents, audio, and video. Processing uses WebAssembly in a browser worker; cleaned files are checked again before download.
 
-[Project and supported formats](https://github.com/iAnonymous3000/metadata-remover)
+It does not remove sensitive information visible in the content itself. Format support and retained metadata need to be considered when sharing the result.
+
+[Project and supported formats](https://github.com/iAnonymous3000/metadata-remover) · [Browser application](https://ianonymous3000.github.io/metadata-remover/)
 
 ### QRWarden
 
-A pre-release QR inspector that shows decoded content and URL properties before opening a destination. It does not certify that a link is safe.
+A pre-release QR inspector that shows decoded content and observable URL properties before the user acts on them. Inspection runs in the browser without visiting the decoded destination. It does not certify that a link is safe, and the project is not yet supported for production use.
 
 [Project and release status](https://github.com/iAnonymous3000/qrwarden)
+
+## Open-source contributions
+
+The records below document accepted code contributions, release verification and project acknowledgements.
 
 ### Ente PrivacyPack contributions
 
@@ -62,4 +82,6 @@ I contributed DevSecOps work to Hush Line, an open-source whistleblowing platfor
 
 ## Guides and resources
 
-The collection below includes system-hardening guides, security checklists, and curated privacy resources. Scholarly publications are listed separately on the [Research page]({{< relref "/research/_index.md" >}}).
+The collection below includes system-hardening guides, security checklists, and curated privacy resources. Start with the [GitHub hardening guide]({{< relref "/projects/github-hardening-guide.md" >}}), [iOS hardening guide]({{< relref "/projects/ios-hardening-guide.md" >}}), or [penetration-testing checklist]({{< relref "/projects/pentest-checklist.md" >}}).
+
+See my [research publications]({{< relref "/research/_index.md" >}}#publications) for scholarly work, and [About page]({{< relref "/about/index.md" >}}) for professional background and independent coverage.

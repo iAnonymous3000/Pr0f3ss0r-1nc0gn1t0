@@ -1,0 +1,8 @@
+{{- $description := .Description | default .Params.summary -}}
+{{- if not $description -}}
+  {{- if .IsPage -}}{{- $description = .Summary -}}
+  {{- else if .IsHome -}}{{- $description = site.Params.description -}}
+  {{- else -}}{{- $description = printf "%s: articles and resources by %s." .Title site.Title -}}
+  {{- end -}}
+{{- end -}}
+{{- return ($description | plainify | htmlUnescape | strings.TrimSpace | truncate 180) -}}

@@ -1,0 +1,9 @@
+{{- $url := partial "seo/canonical.html" . -}}
+{{- $pager := partial "seo/pager.html" . -}}
+{{- if and (gt $pager.number 1) (not .Params.canonicalURL) -}}
+  {{- $base := printf "%s/" (strings.TrimRight "/" (site.Params.canonicalBaseURL | default site.BaseURL)) -}}
+  {{- $buildPath := (urls.Parse site.BaseURL).Path -}}
+  {{- $path := strings.TrimLeft "/" (strings.TrimPrefix $buildPath $pager.url) -}}
+  {{- $url = printf "%s%s" $base $path -}}
+{{- end -}}
+{{- return $url -}}

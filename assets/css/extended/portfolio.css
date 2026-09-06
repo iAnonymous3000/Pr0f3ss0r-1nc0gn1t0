@@ -1,0 +1,16 @@
+/* Keep a readable work overview close to the profile on small and large screens. */
+.main .portfolio-profile {
+    min-height: auto;
+    padding: 3rem 0 2rem;
+}
+.portfolio-overview {
+    border-top: 1px solid var(--border);
+    padding-top: 1.5rem;
+}
+.portfolio-overview h2:first-child {
+    margin-top: 0;
+}
+@media (max-width: 600px) {
+    .main .portfolio-profile { padding-top: 1.5rem; }
+    .portfolio-overview { padding-top: 1rem; }
+}

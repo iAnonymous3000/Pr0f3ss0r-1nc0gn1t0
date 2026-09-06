@@ -1,7 +1,7 @@
-<meta property="og:title" content="{{ .Title }}" />
-<meta property="og:description" content="{{ with .Description }}{{ . }}{{ else }}{{if .IsPage}}{{ .Summary }}{{ else }}{{ with site.Params.description }}{{ . }}{{ end }}{{ end }}{{ end }}" />
-<meta property="og:type" content="{{ if .IsPage }}article{{ else }}website{{ end }}" />
-<meta property="og:url" content="{{ .Permalink }}" />
+<meta property="og:title" content="{{ partial "seo/title.html" . }}" />
+<meta property="og:description" content="{{ partial "seo/description.html" . }}" />
+<meta property="og:type" content="{{ if and .IsPage (in (slice "blog" "research" "chess") .Section) }}article{{ else }}website{{ end }}" />
+<meta property="og:url" content="{{ partial "seo/current-url.html" . }}" />
 {{- if .Params.cover.image -}}
 {{- if (ne .Params.cover.relative true) }}
 <meta property="og:image" content="{{ .Params.cover.image | absURL }}" />
@@ -24,15 +24,15 @@
 {{- end -}}
 {{- end }}
 
-{{- if .IsPage }}
+{{- if and .IsPage (in (slice "blog" "research" "chess") .Section) }}
 {{- $iso8601 := "2006-01-02T15:04:05-07:00" -}}
 <meta property="article:section" content="{{ .Section }}" />
 {{ with .PublishDate }}<meta property="article:published_time" {{ .Format $iso8601 | printf "content=%q" | safeHTMLAttr }} />{{ end }}
 {{- end -}}
 
 {{- with .Params.audio }}<meta property="og:audio" content="{{ . }}" />{{ end }}
-{{- with .Params.locale }}<meta property="og:locale" content="{{ . }}" />{{ end }}
-{{- with site.Params.title }}<meta property="og:site_name" content="{{ . }}" />{{ end }}
+<meta property="og:locale" content="{{ .Params.locale | default "en_US" }}" />
+<meta property="og:site_name" content="{{ site.Title }}" />
 {{- with .Params.videos }}{{- range . }}
 <meta property="og:video" content="{{ . | absURL }}" />
 {{ end }}{{ end }}

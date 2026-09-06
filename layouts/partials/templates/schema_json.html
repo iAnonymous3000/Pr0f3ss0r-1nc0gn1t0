@@ -1,156 +1,138 @@
-{{ if .IsHome }}
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "{{- ( site.Params.schema.publisherType | default "Organization") | title -}}",
-  "name": {{ site.Title }},
-  "url": {{ site.BaseURL }},
-  "description": {{ site.Params.description | plainify | truncate 180 | safeHTML }},
-  "thumbnailUrl": {{ site.Params.assets.favicon | default "favicon.ico" | absURL }},
-  "sameAs": [
-    {{- if site.Params.schema.sameAs }}
-      {{ range $i, $e := site.Params.schema.sameAs }}{{ if $i }}, {{ end }}{{ trim $e " " }}{{ end }}
-    {{- else}}
-      {{ range $i, $e := site.Params.SocialIcons }}{{ if $i }}, {{ end }}{{ trim $e.url " " | safeURL }}{{ end }}
-    {{- end}}
-  ]
-}
-</script>
-{{- else if (or .IsPage .IsSection) }}
-{{/* BreadcrumbList - fixed: use strings.TrimPrefix instead of replace for baseURL stripping */}}
-{{- $url := strings.TrimPrefix (site.BaseURL) .Parent.Permalink }}
-{{- $lang_url := strings.TrimPrefix ( printf "%s/" .Lang) $url }}
-{{- $bc_list := (split $lang_url "/")}}
+{{- /* Keep one primary identity across the website and its public mirrors. */ -}}
+{{- $baseURL := printf "%s/" (strings.TrimRight "/" (site.Params.canonicalBaseURL | default site.BaseURL)) -}}
+{{- $canonical := partial "seo/canonical.html" . -}}
+{{- $pageURL := partial "seo/current-url.html" . -}}
+{{- $aboutURL := $baseURL -}}
+{{- with site.GetPage "/about" -}}
+  {{- $aboutURL = partial "seo/canonical.html" . -}}
+{{- end -}}
+{{- $contactURL := "" -}}
+{{- with site.GetPage "/contact" -}}{{- $contactURL = partial "seo/canonical.html" . -}}{{- end -}}
+{{- $personID := printf "%s#person" $baseURL -}}
+{{- $websiteID := printf "%s#website" $baseURL -}}
+{{- $authorName := site.Params.author | default site.Title -}}
+{{- $sameAs := site.Params.schema.sameAs | default (slice
+  "https://github.com/iAnonymous3000"
+  "https://scholar.google.com/citations?user=NwIwfYkAAAAJ"
+  "https://www.linkedin.com/in/soorajsathyanarayanan/") -}}
+{{- $person := dict
+  "@type" "Person"
+  "@id" $personID
+  "name" $authorName
+  "url" $aboutURL
+  "description" "Program Manager at Brave; cybersecurity and privacy researcher."
+  "jobTitle" "Program Manager"
+  "worksFor" (dict "@type" "Organization" "name" "Brave")
+  "sameAs" $sameAs -}}
+{{- $authorRef := dict "@type" "Person" "@id" $personID "name" $authorName "url" $aboutURL -}}
+{{- $websiteRef := dict "@id" $websiteID -}}
+{{- $graph := slice -}}
 
-{{- $scratch := newScratch }}
-{{- $pos := 0 }}
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "BreadcrumbList",
-  "itemListElement": [
-  {{- range $index, $element := $bc_list }}
-
-    {{- $scratch.Add "path" (printf "%s/" $element ) | safeJS }}
-    {{- $bc_pg := site.GetPage ($scratch.Get "path") -}}
-
-    {{- if (and ($bc_pg) (gt (len . ) 0))}}
-    {{- $pos = add $pos 1 }}
-    {{- if (gt $pos 1) }}, {{end }}
-    {
-      "@type": "ListItem",
-      "position": {{ $pos }},
-      "name": {{ $bc_pg.Name }},
-      "item": {{ $bc_pg.Permalink | safeHTML }}
-    }
-    {{- end }}
-
-  {{- end }}
-  {{- /*  self-page addition  */ -}}
-  {{- $pos = add $pos 1 }}
-  {{- if (gt $pos 1) }}, {{ end }}
-    {
-      "@type": "ListItem",
-      "position": {{ $pos }},
-      "name": {{ .Name }},
-      "item": {{ .Permalink | safeHTML }}
-    }
-  ]
-}
-</script>
-{{- if .IsPage }}
-{{- $published := .PublishDate -}}
-{{- if $published.IsZero -}}{{- $published = .Date -}}{{- end -}}
-{{- if eq .Section "tools" }}
-{{/* Tool pages are curated directory entries, not blog posts */}}
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "ItemPage",
-  "name": {{ .Title | plainify }},
-  "description": {{ with .Description | plainify }}{{ . }}{{ else }}{{ .Summary | plainify }}{{ end -}},
-  "url": {{ .Permalink | safeHTML }},
-  "inLanguage": {{ .Language.Lang | default "en-us" }},
-  {{- if not $published.IsZero }}
-  "datePublished": {{ $published }},
-  {{- end }}
-  {{- with (.Params.author | default site.Params.author) }}
-  "author": {
-    "@type": "Person",
-    "name": {{ . }}
-  },
-  {{- end }}
-  "publisher": {
-    "@type": "{{- ( site.Params.schema.publisherType | default "Organization") | title -}}",
-    "name": {{ site.Title }},
-    "logo": {
-      "@type": "ImageObject",
-      "url": {{ site.Params.assets.favicon | default "favicon.ico" | absURL }}
-    }
-  }
-}
-</script>
-{{- else }}
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "BlogPosting",
-  "headline": {{ .Title | plainify}},
-  "name": "{{ .Title | plainify }}",
-  "description": {{ with .Description | plainify }}{{ . }}{{ else }}{{ .Summary | plainify  }}{{ end -}},
-  "keywords": [
-    {{- if .Params.keywords }}
-    {{ range $i, $e := .Params.keywords }}{{ if $i }}, {{ end }}{{ $e }}{{ end }}
-    {{- else }}
-    {{ range $i, $e := .Params.tags }}{{ if $i }}, {{ end }}{{ $e }}{{ end }}
-    {{- end }}
-  ],
-  "articleBody": {{ .Content | safeJS | htmlUnescape | plainify }},
-  "wordCount" : "{{ .WordCount }}",
-  "inLanguage": {{ .Language.Lang | default "en-us" }},
-  {{ if .Params.cover.image -}}
-  "image":
-    {{- if (ne .Params.cover.relative true) -}}
-    {{ .Params.cover.image | absURL }},
-    {{- else -}}
-    {{ (path.Join .RelPermalink .Params.cover.image ) | absURL }},
-    {{- end}}
+{{- if .IsHome -}}
+  {{- $website := dict
+    "@type" "WebSite"
+    "@id" $websiteID
+    "name" site.Title
+    "url" $baseURL
+    "description" (site.Params.description | plainify | htmlUnescape)
+    "inLanguage" (.Language.Lang | default "en-us")
+    "publisher" $authorRef -}}
+  {{- with site.Params.label.text -}}
+    {{- $website = merge $website (dict "alternateName" .) -}}
   {{- end -}}
-  {{- if not $published.IsZero }}
-  "datePublished": {{ $published }},
-  {{- end }}
-  {{- with (.Params.author | default site.Params.author) }}
-  "author":
-    {{- if (or (eq (printf "%T" .) "[]string") (eq (printf "%T" .) "[]interface {}")) -}}
-  [{{- range $i, $v := . -}}
-  {{- if $i }}, {{end -}}
-  {
-    "@type": "Person",
-    "name": {{ $v }}
-  }
-  {{- end }}],
-    {{- else -}}
-  {
-    "@type": "Person",
-    "name": {{ . }}
-  },
-    {{- end -}}
-  {{- end }}
-  "mainEntityOfPage": {
-    "@type": "WebPage",
-    "@id": {{ .Permalink | safeHTML }}
-  },
-  "publisher": {
-    "@type": "{{- ( site.Params.schema.publisherType | default "Organization") | title -}}",
-    "name": {{ site.Title }},
-    "logo": {
-      "@type": "ImageObject",
-      "url": {{ site.Params.assets.favicon | default "favicon.ico" | absURL }}
-    }
-  }
-}
-</script>
-{{- end }}
-{{- end }}{{/* .IsPage end */}}
+  {{- $graph = slice $person $website -}}
+{{- else if or .IsPage .IsSection (eq .Kind "taxonomy") (eq .Kind "term") -}}
+  {{- /* A directory entry or profile is not an article or a product review. */ -}}
+  {{- $pageType := "WebPage" -}}
+  {{- $isArticle := and .IsPage (in (slice "blog" "research" "chess") .Section) -}}
+  {{- if eq $canonical $aboutURL -}}
+    {{- $pageType = "ProfilePage" -}}
+  {{- else if or .IsSection (eq .Kind "taxonomy") (eq .Kind "term") -}}
+    {{- $pageType = "CollectionPage" -}}
+  {{- else if eq .Section "tools" -}}
+    {{- $pageType = "ItemPage" -}}
+  {{- else if eq $canonical $contactURL -}}
+    {{- $pageType = "ContactPage" -}}
+  {{- else if eq .Layout "search" -}}
+    {{- $pageType = "SearchResultsPage" -}}
+  {{- else if $isArticle -}}
+    {{- $pageType = "Article" -}}
+    {{- if eq .Section "blog" -}}{{- $pageType = "BlogPosting" -}}{{- end -}}
+  {{- end -}}
+  {{- $pageID := printf "%s#webpage" $pageURL -}}
+  {{- if $isArticle -}}{{- $pageID = printf "%s#article" $canonical -}}{{- end -}}
+  {{- $document := dict
+    "@type" $pageType
+    "@id" $pageID
+    "name" (.Title | plainify | htmlUnescape)
+    "url" $pageURL
+    "isPartOf" $websiteRef
+    "inLanguage" (.Language.Lang | default "en-us") -}}
+  {{- with (.Description | default .Summary | plainify | htmlUnescape | strings.TrimSpace) -}}
+    {{- $document = merge $document (dict "description" (truncate 220 .)) -}}
+  {{- end -}}
 
+  {{- if eq $pageType "ProfilePage" -}}
+    {{- $document = merge $document (dict "mainEntity" $person) -}}
+  {{- else if $isArticle -}}
+    {{- $authors := slice -}}
+    {{- $names := .Params.author | default $authorName -}}
+    {{- if not (reflect.IsSlice $names) -}}{{- $names = slice $names -}}{{- end -}}
+    {{- range $names -}}
+      {{- if eq . $authorName -}}
+        {{- $authors = $authors | append $authorRef -}}
+      {{- else -}}
+        {{- $authors = $authors | append (dict "@type" "Person" "name" .) -}}
+      {{- end -}}
+    {{- end -}}
+    {{- $document = merge $document (dict
+      "headline" (.Title | plainify | htmlUnescape)
+      "author" $authors
+      "publisher" $authorRef
+      "wordCount" .WordCount
+      "mainEntityOfPage" (dict "@type" "WebPage" "@id" (printf "%s#webpage" $canonical) "url" $canonical)) -}}
+    {{- with (.Params.keywords | default .Params.tags) -}}
+      {{- $document = merge $document (dict "keywords" .) -}}
+    {{- end -}}
+    {{- /* Publication dates never fall back to Git, filesystem or update times. */ -}}
+    {{- $published := .PublishDate -}}
+    {{- if $published.IsZero -}}{{- $published = .Date -}}{{- end -}}
+    {{- if not $published.IsZero -}}
+      {{- $document = merge $document (dict "datePublished" ($published.Format "2006-01-02T15:04:05Z07:00")) -}}
+    {{- end -}}
+    {{- with .Params.cover.image -}}
+      {{- $imageURL := . -}}
+      {{- if not (or (strings.HasPrefix . "https://") (strings.HasPrefix . "http://")) -}}
+        {{- $imageBase := $baseURL -}}
+        {{- if $.Params.cover.relative -}}{{- $imageBase = $canonical -}}{{- end -}}
+        {{- $imageURL = printf "%s%s" $imageBase (strings.TrimLeft "/" .) -}}
+      {{- end -}}
+      {{- $document = merge $document (dict "image" $imageURL) -}}
+    {{- end -}}
+  {{- end -}}
+
+  {{- $breadcrumbs := slice -}}
+  {{- range .Ancestors.Reverse -}}
+    {{- $name := .Title | plainify | htmlUnescape -}}
+    {{- if .IsHome -}}{{- $name = i18n "home" | default "Home" -}}{{- end -}}
+    {{- $breadcrumbs = $breadcrumbs | append (dict
+      "@type" "ListItem"
+      "position" (add (len $breadcrumbs) 1)
+      "name" $name
+      "item" (partial "seo/canonical.html" .)) -}}
+  {{- end -}}
+  {{- $breadcrumbs = $breadcrumbs | append (dict
+    "@type" "ListItem"
+    "position" (add (len $breadcrumbs) 1)
+    "name" (.Title | plainify | htmlUnescape)
+    "item" $pageURL) -}}
+  {{- $breadcrumbID := printf "%s#breadcrumb" $pageURL -}}
+  {{- if not $isArticle -}}
+    {{- $document = merge $document (dict "breadcrumb" (dict "@id" $breadcrumbID)) -}}
+  {{- end -}}
+  {{- $graph = slice $document (dict "@type" "BreadcrumbList" "@id" $breadcrumbID "itemListElement" $breadcrumbs) -}}
+{{- end -}}
+
+{{- with $graph }}
+<script type="application/ld+json">{{ dict "@context" "https://schema.org" "@graph" . | jsonify | safeJS }}</script>
 {{- end -}}

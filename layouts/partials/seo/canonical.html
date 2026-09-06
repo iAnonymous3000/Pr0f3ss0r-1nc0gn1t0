@@ -1,0 +1,6 @@
+{{- /* A stable primary URL, independent of the deployment host or project prefix. */ -}}
+{{- $base := printf "%s/" (strings.TrimRight "/" (site.Params.canonicalBaseURL | default site.BaseURL)) -}}
+{{- $path := strings.TrimPrefix site.BaseURL .Permalink -}}
+{{- $url := printf "%s%s" $base $path -}}
+{{- with .Params.canonicalURL -}}{{- $url = strings.TrimSpace . -}}{{- end -}}
+{{- return $url -}}

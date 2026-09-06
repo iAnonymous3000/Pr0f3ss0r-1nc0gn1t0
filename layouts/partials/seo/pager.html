@@ -1,0 +1,7 @@
+{{- /* Match WonderMod's list collection before any cached pagination call. Tools use an unpaginated directory template. */ -}}
+{{- $result := dict "number" 1 "url" "" -}}
+{{- if and (in (slice "section" "term") .Kind) (ne .Section "tools") -}}
+  {{- $pager := .Paginate (union .RegularPages .Sections) -}}
+  {{- $result = dict "number" $pager.PageNumber "url" $pager.URL -}}
+{{- end -}}
+{{- return $result -}}

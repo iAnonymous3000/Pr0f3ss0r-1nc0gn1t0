@@ -1,0 +1,5 @@
+{{- $title := .Params.seoTitle | default .Title | default site.Title -}}
+{{- $pager := partial "seo/pager.html" . -}}
+{{- if gt $pager.number 1 -}}{{- $title = printf "%s – Page %d" $title $pager.number -}}{{- end -}}
+{{- if not .IsHome -}}{{- $title = printf "%s | %s" $title site.Title -}}{{- end -}}
+{{- return $title -}}

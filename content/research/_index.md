@@ -1,14 +1,16 @@
 ---
 date: "2026-03-04"
-title: "Research"
-description: "Publications and research in cybersecurity, privacy, and secure systems."
+title: "Cybersecurity and Privacy Research"
+description: "Cybersecurity research by Sooraj Sathyanarayanan on edge computing, blockchain security, browser privacy and fitness wearables, with publisher records."
 ---
 
-My research interests include privacy, security architecture, and the behavior of software systems. Below are selected publications, followed by other research notes.
+My research examines how systems protect data, how security assumptions affect their design, and how privacy claims compare with observable behavior. My coauthored publications address security isolation in edge computing, quantum-resilient zero-trust architectures and context-aware blockchain validation.
 
-[Google Scholar profile](https://scholar.google.com/citations?user=NwIwfYkAAAAJ)
+[Publications](#publications) · [Research support](#research-support) · [Applied work](#applied-work) · [Google Scholar](https://scholar.google.com/citations?user=NwIwfYkAAAAJ)
 
 ## Publications
+
+The entries below include the author lists, publication venues and original publisher records.
 
 ### Adaptive Fuzzy Logic Framework for Context-Aware Blockchain Security
 
@@ -46,6 +48,12 @@ My research on the privacy of fitness wearables received grant support from the 
 
 ## Applied work
 
-I also examine privacy claims and website behavior. See my [selected projects]({{< relref "/projects/_index.md" >}}) and [coverage of my work]({{< relref "/about/index.md" >}}#selected-coverage-and-acknowledgements).
+I also build tools and publish analysis that make security and privacy behavior easier to inspect.
+
+- **[Site Behavior Lab]({{< relref "/projects/_index.md" >}}#site-behavior-lab)** records website behavior during automated browser visits and connects findings to the observed evidence and scan conditions.
+- **[Trace]({{< relref "/projects/_index.md" >}}#trace)** applies known spyware indicators to iPhone diagnostic archives, with explicit coverage limits and incomplete-result handling.
+- **[Independent coverage]({{< relref "/about/index.md" >}}#selected-coverage-and-acknowledgements)** links to articles discussing my analysis of Microsoft Edge's network privacy feature and X Chat's security architecture.
+
+The [Projects page]({{< relref "/projects/_index.md" >}}) also includes open-source contribution records, release verification and security guides.
 
 ## Research notes

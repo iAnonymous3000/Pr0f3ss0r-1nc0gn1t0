@@ -45,6 +45,14 @@ privacy:
 # Primary Parameters
 params:
   env: production
+  canonicalBaseURL: "https://profincognito.me/"
+  schema:
+    publisherType: Person
+    sameAs:
+      - "https://github.com/iAnonymous3000"
+      - "https://scholar.google.com/citations?user=NwIwfYkAAAAJ"
+      - "https://www.linkedin.com/in/soorajsathyanarayanan/"
+      - "https://x.com/iAnonymous3000"
   author: "Sooraj Sathyanarayanan"
   description: "Program Manager at Brave. Cybersecurity and privacy research, open-source projects, and practical security guides by Sooraj Sathyanarayanan."
   keywords: [Privacy, Cybersecurity, Open Source, Digital Freedom, Threat Intelligence, Digital Forensics, Privacy Advocacy, Security Research, Chess, Vulnerability Assessment, Penetration Testing, Secure System Design, Data Sovereignty, Anonymity Tools, Incident Response, Threat Modeling, Blockchain Security, Cryptography, Decentralized Systems]
@@ -110,6 +118,9 @@ params:
     - name: "github"
       url: "https://github.com/iAnonymous3000"
       title: "GitHub"
+    - name: "linkedin"
+      url: "https://www.linkedin.com/in/soorajsathyanarayanan/"
+      title: "LinkedIn profile"
     - name: "googlescholar"
       url: "https://scholar.google.com/citations?user=NwIwfYkAAAAJ"
       title: "Google Scholar"
@@ -167,6 +178,8 @@ params:
     buttons:
       - name: "Selected work"
         url: "projects/"
+      - name: "About my work"
+        url: "about/"
       - name: "Publications"
         url: "research/"
       - name: "VERIFIED WITH KEYOXIDE ✓"
