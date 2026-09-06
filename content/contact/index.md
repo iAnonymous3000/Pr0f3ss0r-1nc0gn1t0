@@ -40,8 +40,8 @@ Key Features:
 
 ### Reporting Priority
 1. **Hush Line**: For anonymous tips and sensitive disclosures
-2. **GitHub Security Advisory**: For public project issues
-   ➜ [Submit Advisory](https://github.com/iAnonymous3000/Pr0f3ss0r-1nc0gn1t0/security)
+2. **GitHub Security Advisory**: For private vulnerability reports about this project
+   ➜ [Report a Vulnerability](https://github.com/iAnonymous3000/Pr0f3ss0r-1nc0gn1t0/security/advisories/new)
 
 ## Communication Policy
 
@@ -58,7 +58,6 @@ Key Features:
 - ❌ Other messaging platforms
 
 ## Security Assurance & Response Times
-- All channels undergo regular security audits
 - 𝕏 mentions: Best-effort replies at my own pace
 - Anonymous tips: No direct response (one-way channel)
-- Security advisories: Within 48 hours
+- Security advisories: Best-effort review; no guaranteed response or resolution deadline

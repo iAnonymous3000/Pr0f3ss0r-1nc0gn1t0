@@ -1,103 +1,28 @@
-# Security Policy
+# Security policy
 
-## Reporting a Vulnerability
+## Report a vulnerability
 
-If you discover a security vulnerability in this project, please follow these steps to report it responsibly:
+Report vulnerabilities affecting this repository or its deployed website through [GitHub private vulnerability reporting](https://github.com/iAnonymous3000/Pr0f3ss0r-1nc0gn1t0/security/advisories/new). Keep exploit details, credentials and personal information out of public issues and pull requests.
 
-1. **Do Not Create a Public Issue:**  
-   Avoid disclosing the vulnerability publicly until it has been addressed. This helps prevent malicious exploitation.
+For anonymous tips, use the Hush Line option on the [contact page](https://profincognito.me/contact/). It is a one-way channel, so it does not support a direct response. The current reporting routes are also listed in [security.txt](https://profincognito.me/.well-known/security.txt).
 
-2. **Contact Us Directly:**  
-   Reach out via our designated security contact methods:
-   - **Website:** [https://profincognito.me/contact](https://profincognito.me/contact)  
+A useful report includes:
 
-3. **Provide Detailed Information:**  
-   When reporting, include the following details to help us understand and address the issue effectively:
-   - **Description:** A clear and concise description of the vulnerability.  
-   - **Steps to Reproduce:** Detailed steps that can be followed to replicate the issue.  
-   - **Proof of Concept:** If possible, include proof-of-concept code or screenshots to illustrate the issue.  
-   - **Impact Assessment:** Information about the potential impact of the vulnerability.  
-   - **Affected Components:** Specify which parts of the project are affected.  
+- The affected URL, file or component and revision, if known.
+- Reproduction steps and a minimal proof of concept.
+- Expected behavior, observed behavior and practical impact.
+- Relevant logs or screenshots with sensitive data removed.
 
-4. **Acknowledgment:**  
-   We will acknowledge your report within 48 hours and strive to resolve critical issues within 30 days, wherever feasible.  
+This is a personal project. Review and responses are best effort; there is no guaranteed acknowledgment or resolution deadline. Coordinated disclosure and researcher credit can be discussed through the private report.
 
-5. **Resolution:**  
-   Once the vulnerability is addressed, we will notify you of the resolution and ensure proper credit is given if requested.
+## Repository context
 
-## Security Updates
+The repository contains Hugo content, theme overrides, browser-side JavaScript, static assets and deployment configuration. The primary site is hosted on Cloudflare Pages, with a GitHub Pages mirror. Hosting settings can affect behavior beyond what is represented in the repository.
 
-When a vulnerability is identified, we commit to the following actions:
+Security reports should identify the affected component and explain realistic impact. Automated findings need enough evidence to reproduce and assess the issue.
 
-1. **Assessment:**  
-   Evaluate the severity and impact of the vulnerability.  
+## Maintenance checks
 
-2. **Notification:**  
-   Inform all affected users and contributors about the vulnerability and the steps being taken to address it.  
+GitHub CodeQL, Dependabot, secret scanning and push protection are enabled for the repository. The Pages workflow verifies the Hugo archive checksum before building. These checks support maintenance; they do not establish that every change has been audited or that the deployed site is free of vulnerabilities.
 
-3. **Patch Development:**  
-   Develop and test a fix or provide a workaround as necessary.  
-
-4. **Release:**  
-   Deploy the security update promptly and communicate details about the resolution.
-
-## Security Practices
-
-We follow best practices to ensure the security and integrity of our project:
-
-- **Code Reviews:**  
-  All contributions undergo thorough code reviews to identify potential security issues.  
-
-- **Dependency Management:**  
-  Dependencies are regularly updated using Dependabot to incorporate security patches and improvements.  
-
-- **Automated Testing:**  
-  Utilize CodeQL and other static analysis tools to detect vulnerabilities and enforce coding standards.  
-
-- **Continuous Integration:**  
-  Implement CI/CD pipelines that include security checks to prevent vulnerabilities from being merged.  
-
-- **Access Control:**  
-  Restrict repository access to trusted contributors and regularly audit permissions.  
-
-- **Secret Scanning:**  
-  Monitor and prevent the accidental inclusion of secrets in the repository using GitHub's Secret Scanning.  
-
-- **Frequency:**  
-  Security scans are run at least weekly or with every code change to ensure vulnerabilities are identified and addressed promptly.
-
-## Security Tools
-
-We employ the following tools to enhance our security posture:
-
-- **Dependabot:**  
-  [Dependabot Alerts](https://github.com/iAnonymous3000/Pr0f3ss0r-1nc0gn1t0/security/dependabot) notify us when dependencies have vulnerabilities.  
-
-- **Code Scanning:**  
-  [CodeQL](https://github.com/github/codeql) and other static analysis tools automatically detect vulnerabilities and coding errors.  
-
-- **Secret Scanning:**  
-  GitHub's [Secret Scanning](https://github.com/iAnonymous3000/Pr0f3ss0r-1nc0gn1t0/security/secret-scanning) identifies and prevents the exposure of sensitive information.  
-
-- **Security Advisories:**  
-  We use GitHub's [Security Advisories](https://github.com/iAnonymous3000/Pr0f3ss0r-1nc0gn1t0/security/advisories) to privately discuss and resolve vulnerabilities.
-
-
-## Responsible Disclosure
-
-We appreciate responsible disclosure of vulnerabilities. By following the reporting guidelines outlined above, you help us maintain a secure project environment for all users. Proper credit will be given to researchers who responsibly disclose vulnerabilities, upon their request, in our release notes or advisories.
-
-## Additional Resources
-
-- **Security Contact Information:**  
-  Refer to our [security.txt](https://profincognito.me/.well-known/security.txt) for detailed security contact information and policies.  
-
-- **GitHub Security Features:**  
-  - [Security Advisories](https://github.com/features/security-advisories)  
-  - [Dependabot](https://github.com/features/dependabot)  
-  - [Code Scanning](https://docs.github.com/en/code-security/code-scanning)  
-  - [Secret Scanning](https://docs.github.com/en/code-security/secret-scanning)  
-
----
-
-This policy reflects our commitment to transparency, security, and collaboration with the community. Thank you for helping us maintain a secure and reliable project!
+See [the deployment workflow](.github/workflows/gh-pages.yml) and [Dependabot configuration](.github/dependabot.yml) for the checks and update schedule maintained in source.

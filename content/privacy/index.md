@@ -84,12 +84,12 @@ We explicitly disable unnecessary browser features including:
 
 #### PGP
 - Key available at: [https://profincognito.me/.well-known/pgp.txt](https://profincognito.me/.well-known/pgp.txt)
-- Sensitive reports should be sent with PGP. Message content is encrypted in transit to the listed key, but transport metadata and mail-provider logs may still exist outside this site's control.
+- The published key is available for encrypting sensitive material where appropriate. Use the disclosure channels on the [contact page]({{< relref "/contact/index.md" >}}); publishing a key does not provide an email or direct-messaging channel.
 
 ### 5.2 Security Reports
 For security-related communications:
-- Submit via [GitHub Security Advisory](https://github.com/iAnonymous3000/Pr0f3ss0r-1nc0gn1t0/security/advisories/new) for public issues
-- Use PGP for sensitive reports
+- Submit via [GitHub Security Advisory](https://github.com/iAnonymous3000/Pr0f3ss0r-1nc0gn1t0/security/advisories/new) for private vulnerability reports about this project
+- For anonymous tips, use the Hush Line option on the contact page. Keep sensitive details out of public issues and 𝕏 mentions.
 
 ## 6. External Links
 
@@ -103,7 +103,8 @@ Our website may contain links to external resources. We:
 Our website is open source:
 - Code available on [GitHub](https://github.com/iAnonymous3000/Pr0f3ss0r-1nc0gn1t0)
 - Content licensed under [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/)
-- Theme licensed under [MIT License](https://github.com/iAnonymous3000/Pr0f3ss0r-1nc0gn1t0/blob/main/LICENSE)
+- Website source code licensed under [AGPL v3](https://github.com/iAnonymous3000/Pr0f3ss0r-1nc0gn1t0/blob/main/LICENSE)
+- Theme licensed under [MIT License](https://github.com/Wonderfall/hugo-WonderMod/blob/3b0ee00eb05135a162fdb83de65576b968bab4f0/LICENSE)
 
 ## 8. Changes to This Policy
 
