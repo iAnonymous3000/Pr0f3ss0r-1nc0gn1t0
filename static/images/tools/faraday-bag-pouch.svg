@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 96 96" role="img" aria-label="Faraday pouch icon">
+  <rect width="96" height="96" rx="22" fill="#eef6f4"/>
+  <path d="M27 30h42l5 9v34a7 7 0 0 1-7 7H29a7 7 0 0 1-7-7V39l5-9z" fill="#fffdf8" stroke="#1f655d" stroke-width="5" stroke-linejoin="round"/>
+  <path d="M28 40h40" stroke="#1f655d" stroke-width="5" stroke-linecap="round"/>
+  <rect x="37" y="48" width="22" height="18" rx="3" fill="#e5f0ee" stroke="#1f655d" stroke-width="4"/>
+  <path d="M42 54h12M42 60h10" stroke="#c86445" stroke-width="3.5" stroke-linecap="round"/>
+  <path d="M65 26l12-12M75 32l12-12M72 41l12-12" stroke="#c86445" stroke-width="4" stroke-linecap="round"/>
+</svg>

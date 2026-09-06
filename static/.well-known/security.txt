@@ -1,0 +1,6 @@
+Contact: mailto:security@profincognito.me
+Encryption: https://profincognito.me/.well-known/pgp.txt
+Preferred-Languages: en
+Canonical: https://profincognito.me/.well-known/security.txt
+Policy: https://profincognito.me/privacy/
+Expires: 2027-05-24T12:00:00Z

@@ -1,0 +1,64 @@
+{{- $page := .page }}
+{{- $pages := .pages }}
+{{- $limit := site.Config.Services.RSS.Limit }}
+{{- if ge $limit 1 }}
+  {{- $pages = $pages | first $limit }}
+{{- end }}
+
+{{- $authorEmail := "" }}
+{{- $authorName := "" }}
+{{- with site.Params.author }}
+  {{- if reflect.IsMap . }}
+    {{- with .email }}{{ $authorEmail = . }}{{ end }}
+    {{- with .name }}{{ $authorName = . }}{{ end }}
+  {{- else }}
+    {{- $authorName = . }}
+  {{- end }}
+{{- else }}
+  {{- with site.Author.email }}{{ $authorEmail = . }}{{ end }}
+  {{- with site.Author.name }}{{ $authorName = . }}{{ end }}
+{{- end }}
+{{- $author := $authorEmail }}
+{{- if and $authorEmail $authorName }}
+  {{- $author = printf "%s (%s)" $authorEmail $authorName }}
+{{- end }}
+
+{{- $languageCode := site.Language.LanguageCode | default site.Language.Lang | default "en-us" }}
+{{- if ge hugo.Version "0.150.0" }}
+  {{- $languageCode = site.Language.Locale | default $languageCode }}
+{{- end }}
+
+{{- /* RSS permits date-free feeds. Do not emit build, file, or modification times. */}}
+{{- printf "<?xml version=\"1.0\" encoding=\"utf-8\" standalone=\"yes\"?>" | safeHTML }}
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:dc="http://purl.org/dc/elements/1.1/">
+  <channel>
+    <title>{{ if eq $page.Title site.Title }}{{ site.Title }}{{ else }}{{ with $page.Title }}{{ . }} on {{ end }}{{ site.Title }}{{ end }}</title>
+    <link>{{ ($page.OutputFormats.Get "HTML").Permalink }}</link>
+    <atom:link rel="self" href="{{ ($page.OutputFormats.Get "RSS").Permalink }}" type="application/rss+xml" />
+    <description>Recent content {{ if ne $page.Title site.Title }}{{ with $page.Title }}in {{ . }} {{ end }}{{ end }}on {{ site.Title }}</description>
+    <generator>Hugo</generator>
+    <language>{{ $languageCode }}</language>
+    {{- with $author }}<managingEditor>{{ . }}</managingEditor>{{ end }}
+    {{- with $authorName }}<dc:creator>{{ . }}</dc:creator>{{ end }}
+    {{- with site.Copyright }}<copyright>{{ . }}</copyright>{{ end }}
+    {{- range $pages }}
+      {{- if and (ne .Layout `search`) (ne .Layout `archives`) }}
+        {{- /* Configuration limits these values to explicit publication front matter. */}}
+        {{- $published := .PublishDate }}
+        {{- if $published.IsZero }}{{ $published = .Date }}{{ end }}
+        <item>
+          <title>{{ .Title }}</title>
+          <link>{{ .Permalink }}</link>
+          <guid isPermaLink="true">{{ .Permalink }}</guid>
+          {{- if not $published.IsZero }}<pubDate>{{ $published.Format "Mon, 02 Jan 2006 15:04:05 -0700" | safeHTML }}</pubDate>{{ end }}
+          {{- with $author }}<author>{{ . }}</author>{{ end }}
+          {{- with $authorName }}<dc:creator>{{ . }}</dc:creator>{{ end }}
+          <description>{{ with .Description }}{{ . | transform.HTMLEscape | safeHTML }}{{ else }}{{ .Summary | transform.HTMLEscape | safeHTML }}{{ end }}</description>
+          {{- if site.Params.ShowFullTextinRSS }}
+          <content:encoded>{{ printf "<![CDATA[%s]]>" (replace .Content "]]>" "]]]]><![CDATA[>") | safeHTML }}</content:encoded>
+          {{- end }}
+        </item>
+      {{- end }}
+    {{- end }}
+  </channel>
+</rss>

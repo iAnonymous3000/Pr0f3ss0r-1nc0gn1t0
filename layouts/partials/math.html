@@ -1,0 +1,6 @@
+{{- if .Params.math }}
+<link rel="stylesheet" href="{{ "lib/katex/katex.min.css" | absURL }}">
+<script defer src="{{ "lib/katex/katex.min.js" | absURL }}"></script>
+<script defer src="{{ "lib/katex/contrib/auto-render.min.js" | absURL }}"></script>
+<script defer src="{{ "lib/katex/katex-init.js" | absURL }}"></script>
+{{- end }}

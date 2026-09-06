@@ -1,0 +1,8 @@
+{{ $page := .Page }}
+{{ $githubURL := printf "https://github.com/%s/%s/edit/main/content/%s" site.Params.githubUsername site.Params.githubRepo $page.File.Path }}
+
+<div class="suggest-changes">
+  <a href="{{ $githubURL }}" target="_blank" rel="noopener noreferrer">
+    Suggest Changes
+  </a>
+</div>

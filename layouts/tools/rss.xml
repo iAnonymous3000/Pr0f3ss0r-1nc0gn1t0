@@ -1,0 +1,2 @@
+{{- /* Include descendants: the top-level tools section contains child sections. */}}
+{{- partial "rss-feed.xml" (dict "page" . "pages" .RegularPagesRecursive.ByDate.Reverse) }}

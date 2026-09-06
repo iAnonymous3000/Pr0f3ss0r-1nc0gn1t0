@@ -1,0 +1,75 @@
+==================================================================
+https://keybase.io/ianonymous3000
+--------------------------------------------------------------------
+
+I hereby claim:
+
+  * I am an admin of https://profincognito.me
+  * I am ianonymous3000 (https://keybase.io/ianonymous3000) on keybase.
+  * I have a public key with fingerprint 2FD1 C9E4 0B7E 50E8 5B34  0EE3 61F5 A83E 6620 08A3
+
+To do so, I am signing this object:
+
+{
+  "body": {
+    "key": {
+      "eldest_kid": "01204b405c9c4d5fcea5ae6239d8f2b2e0172bd9bd2c44bcc57d6a0d0edaf967f1cb0a",
+      "fingerprint": "2fd1c9e40b7e50e85b340ee361f5a83e662008a3",
+      "host": "keybase.io",
+      "key_id": "61f5a83e662008a3",
+      "kid": "010195861a018130d2438180e5b947eb642a24e3a089c86ab66a5680b01b4c4c6fe70a",
+      "uid": "756ea440b00c1998edb4f752c4d5e319",
+      "username": "ianonymous3000"
+    },
+    "service": {
+      "hostname": "profincognito.me",
+      "protocol": "https:"
+    },
+    "type": "web_service_binding",
+    "version": 1
+  },
+  "ctime": 1731918956,
+  "expire_in": 157680000,
+  "prev": "ae0b4f4c050327b21306c5778aedbfc93d622e5464f5060e6dc40deae4ca97d3",
+  "seqno": 29,
+  "tag": "signature"
+}
+
+which yields the signature:
+
+-----BEGIN PGP MESSAGE-----
+Version: Keybase OpenPGP v2.1.13
+Comment: https://keybase.io/crypto
+
+yMN1AnicbVJrUFVVGL0QL3F42VjhlNIZphoess/7gQOD9kMhYEYEHSUu57HP5Qjc
+e7vn8h5jhkIqGQTMISQceUhCUJCROTSTIKVUWBTTg0BeiQ6iBAYYQdM+jP5r/9mz
+v2+ttde39u73ecLk7SIuXYhSg7yaXL7tbcwxWYS1rCJMsikFmFCEZcKNDWYpUHea
+MzUFEzCAE4CSKEDLvEwptCpDkRYhQ5C8wqmERECAs4Sk8JJCyBQlyTLNKowIFAAV
+UeUZVsVlCYhYGKZqVgt02B2a1YlkCVXBZR5SQGIhDSBHSyQFICQZXKVFjoQMQwDA
+iSQiZth0g4HMSaIOd2o2VEMH84a9/8E/9g1wnuYYXAQ4h5NAISiSwzkAaYmnWCgx
+FCESFCRFwPEyx4gSw4g0wwEJ4BIlUzKjQnbDd86GHEszUKSQXQBknOc5qEiUytKE
+kQkkcd4A6tBhFbMhQmui1WYtyLbl6CQAADsWhqFeriZDI15jnkc4u8OGYpFtFqvm
+tO1EpTCj5LTJtizUzXA67bpgsJ0FdgOeByXzIyGzpFkVlChi5EKHrtmsmIAjpOzU
+DGWcRZ5wjqeZMAzm2zUHNGsGgmbRiGgZ98BcJClCgAahZEADkmAlAiXFoCdkORFN
+qMo8qTAEAWmKoVQaMAAyikwBBYqQkkWeVYy8dfia1YYJBI98ihakqWsWq+jMcUDs
+WF9vqpvJxdvk4e5qfDWT9yb/xx/Q0+y3trlZaXk+/3a+R9XEk0tK6LRP8ydjrx6q
+b0u/2fOmRffbRWAB4/Mm34SGmCuRX/b1eJ7tC/7Xzd1RPtTnbvaar996OORy8vnV
+0eoI+w8lVJKD3d0x9+HqUe3zd1rH2pfPvXsruKnMZ/q2a+QzvdHC/dbTJ+51U3ti
+dVFPDV6cu5/OteALL1Z9PN8a83vhyLVGofvE4Iz/gfnKq4MF/isT7P7Ok+OOsfd2
+RMcwF3e7Vk8GlS7Pjv69dMNe0XRwgK9Ze3Dn4uVOp1xLN5kDrr4c1nP37T29UdsK
+PRITotYPPDUsCPpzgfXCz3jl6gcPF2/GD5UmjG5qGTjcPtlm2vtW/J+DXtze8vpb
+X+2LbG/+bbj14PSPi0mHUiKwxACvV7YPH3GW18XSSlrTBeLcypzrutv3GcdXSp2j
+Z2Zqd/RX1qXfDv9sS7hlf2HxyJ1kdbV25Dj5vj3l5Ja6uFP3ckpqHvQseF0PNkf8
+EnTUuu2l5ZlLT6e+4ela0/WTX0lDbOFUKEp5Tg/raEsbPvNPYG9doLDr0+9Are9Q
+DKx66DXxReRYR9HpFxbW4lcd3V93FpdN5v06dSkt+dQf6WcrQrZvZlLmR4oHFk2F
+Pr2JU9e79oVkxzULRbPj+vp6ZEBNP99QdT4vJryxIvtaYGjcs3czv7nhWpVV5vvX
+leroyK6sj3KTukdmE8qObC17/T9Xac3u
+=E7Yj
+-----END PGP MESSAGE-----
+
+And finally, I am proving ownership of this host by posting or
+appending to this document.
+
+View my publicly-auditable identity here: https://keybase.io/ianonymous3000
+
+==================================================================

@@ -1,0 +1,13 @@
+{{- $pctx := . }}
+{{- if .IsHome }}{{ $pctx = site }}{{ end }}
+{{- $pages := slice }}
+{{- if $.IsHome }}
+  {{- $pages = site.RegularPages }}
+{{- else if $.IsSection }}
+  {{- $pages = $pctx.RegularPagesRecursive }}
+{{- else if gt (len $pctx.RegularPages) 0 }}
+  {{- $pages = $pctx.RegularPages }}
+{{- else }}
+  {{- $pages = $pctx.Pages }}
+{{- end }}
+{{- partial "rss-feed.xml" (dict "page" . "pages" $pages) }}

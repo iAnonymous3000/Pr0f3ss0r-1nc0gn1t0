@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 96 96" role="img" aria-label="Trusted charger and cables icon">
+  <rect width="96" height="96" rx="22" fill="#f4f7ee"/>
+  <rect x="29" y="21" width="34" height="41" rx="8" fill="#fffdf8" stroke="#4f6f2a" stroke-width="5"/>
+  <path d="M39 16v9M53 16v9" stroke="#4f6f2a" stroke-width="5" stroke-linecap="round"/>
+  <path d="M43 38h10l-8 15h11" fill="none" stroke="#c86445" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M63 56c13 0 14 20 1 20H37c-10 0-10-12 1-12h8" fill="none" stroke="#4f6f2a" stroke-width="5" stroke-linecap="round"/>
+  <path d="M35 73h9" stroke="#4f6f2a" stroke-width="5" stroke-linecap="round"/>
+</svg>
