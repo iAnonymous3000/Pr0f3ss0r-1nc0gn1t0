@@ -3,7 +3,7 @@ title: "Internet Access"
 subTitle: "Connectivity choices with better privacy tradeoffs in specific situations"
 date: 2026-05-21T00:00:00-07:00
 draft: false
-weight: 55
+weight: 56
 ---
 
 Explore internet access options where the provider itself is part of the privacy threat model.

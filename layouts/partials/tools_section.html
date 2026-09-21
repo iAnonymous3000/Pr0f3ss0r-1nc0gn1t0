@@ -203,9 +203,10 @@
 
   <section class="tools-group" data-tool-group>
     {{- with $pages }}
-      <div class="tools-grid">
+      <div class="tools-grid{{ if $.Params.featuredTool }} tools-grid-featured{{ end }}">
         {{- range . }}
-          {{- partial "toolcard.html" (dict "page" . "headingLevel" 2) -}}
+          {{- $featured := eq (.File.ContentBaseName) ($.Params.featuredTool | default "") -}}
+          {{- partial "toolcard.html" (dict "page" . "headingLevel" 2 "featured" $featured) -}}
         {{- end }}
       </div>
     {{- else }}

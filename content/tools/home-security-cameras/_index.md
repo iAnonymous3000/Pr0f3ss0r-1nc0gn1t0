@@ -3,7 +3,7 @@ title: "Home Security Cameras"
 subTitle: "Local-first camera systems and NVR platforms"
 date: 2026-05-25T00:00:00-07:00
 draft: false
-weight: 58
+weight: 59
 ---
 Explore home security camera systems that keep footage local where possible and make retention, remote access, licensing, and household privacy tradeoffs explicit.
 

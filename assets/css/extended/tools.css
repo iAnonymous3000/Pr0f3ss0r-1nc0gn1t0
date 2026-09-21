@@ -373,6 +373,10 @@
     gap: 1rem;
 }
 
+.tools-grid-featured {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
 .tool-card {
     display: flex;
     flex-direction: column;
@@ -384,6 +388,11 @@
     border: 1px solid var(--border);
     border-radius: var(--radius);
     transition: border-color 0.12s ease;
+}
+
+.tool-card-featured {
+    grid-column: 1 / -1;
+    border-inline-start: 4px solid var(--primary);
 }
 
 @media (prefers-reduced-motion: no-preference) {

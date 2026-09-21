@@ -11,7 +11,7 @@
 {{- end -}}
 
 <article
-  class="tool-card"
+  class="tool-card{{ if .featured }} tool-card-featured{{ end }}"
   data-tool-card
   data-tool-title="{{ $page.Title }}"
   {{- with $page.CurrentSection }} data-tool-category="{{ .Title }}"{{ end }}

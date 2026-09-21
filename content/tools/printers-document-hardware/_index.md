@@ -4,7 +4,7 @@ description: "Low-telemetry printers and document hardware for local printing an
 subTitle: "Low-telemetry local printing and scanning hardware"
 date: 2026-04-28T00:00:00-07:00
 draft: false
-weight: 61
+weight: 62
 ---
 
 Brother is a practical low-telemetry local-printing choice when configured correctly. It is not privacy-perfect, and printer setup still matters.

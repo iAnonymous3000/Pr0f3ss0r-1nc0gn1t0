@@ -13,7 +13,11 @@
   }
 
   function normalize(value) {
-    return value.toLowerCase().replace(/\s+/g, ' ').trim();
+    // Keep common Wi-Fi spellings equivalent without changing other punctuation.
+    return value.toLowerCase()
+      .replace(/\bwi[\s\u2010\u2011-]*fi\b/g, 'wifi')
+      .replace(/\s+/g, ' ')
+      .trim();
   }
 
   function isVisible(element) {

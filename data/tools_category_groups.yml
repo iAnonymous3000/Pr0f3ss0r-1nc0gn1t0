@@ -24,6 +24,7 @@ groups:
       - /tools/internet-access/
       - /tools/domain-hosting/
       - /tools/cloud/
+      - /tools/routers/
       - /tools/router-firmware/
 
   - title: Devices & Home
