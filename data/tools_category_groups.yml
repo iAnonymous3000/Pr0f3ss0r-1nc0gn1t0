@@ -35,6 +35,7 @@ groups:
       - /tools/laptop/
       - /tools/smart-home/
       - /tools/home-security-cameras/
+      - /tools/nas-home-servers/
       - /tools/streaming-devices/
       - /tools/home-robotics/
       - /tools/location-tracking/
@@ -45,6 +46,7 @@ groups:
 
   - title: Files & Productivity
     paths:
+      - /tools/file-encryption/
       - /tools/notes/
       - /tools/office/
       - /tools/file-sharing/

@@ -45,7 +45,7 @@ Tradeoffs:
 
 Verdict:
 
-Use Cloudflare 1.1.1.1 when performance, broad compatibility, and easy setup matter. Prefer Quad9 or Mullvad DNS when strict privacy minimization is the top priority.
+Use Cloudflare 1.1.1.1 when performance, broad compatibility, and easy setup matter. Prefer Quad9 when strict privacy minimization is the top priority.
 
 Sources:
 
