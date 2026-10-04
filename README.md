@@ -19,7 +19,7 @@ The source for my personal portfolio, security and privacy research, open-source
 
 ## Develop locally
 
-Install Git and **[Hugo Extended 0.160.1](https://github.com/gohugoio/hugo/releases/tag/v0.160.1)**, the version used by the deployment workflow and verified for this site.
+Install Git and **[Hugo Extended 0.167.0](https://github.com/gohugoio/hugo/releases/tag/v0.167.0)**, the version used by the deployment workflow and verified for this site.
 
 ```bash
 git clone --recurse-submodules https://github.com/iAnonymous3000/Pr0f3ss0r-1nc0gn1t0.git
