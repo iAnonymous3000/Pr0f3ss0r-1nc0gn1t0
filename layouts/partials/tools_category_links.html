@@ -14,7 +14,12 @@
 
 {{- with $groupConfig }}
   {{- range . }}
-    {{- $paths := .paths | default (slice) -}}
+    {{- $paths := slice -}}
+    {{- range .paths | default (slice) -}}
+      {{- with site.GetPage . -}}
+        {{- $paths = $paths | append .RelPermalink -}}
+      {{- end -}}
+    {{- end -}}
     {{- $assignedPaths = $assignedPaths | append $paths -}}
     {{- $groups = $groups | append (dict "title" .title "sections" (where $sections "RelPermalink" "in" $paths)) -}}
   {{- end }}

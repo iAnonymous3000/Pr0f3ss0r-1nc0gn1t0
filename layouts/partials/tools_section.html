@@ -88,11 +88,8 @@
     {{- $starterPaths := slice "/tools/browsers/" "/tools/messaging/" "/tools/email/" "/tools/password-managers/" "/tools/authenticator/" "/tools/keys/" "/tools/vpn/" "/tools/dns-resolvers/" "/tools/alias/" -}}
     {{- $starterSections := slice -}}
     {{- range $starterPaths }}
-      {{- $starterPath := . -}}
-      {{- range $rootSections }}
-        {{- if eq .RelPermalink $starterPath -}}
-          {{- $starterSections = $starterSections | append . -}}
-        {{- end -}}
+      {{- with site.GetPage . }}
+        {{- $starterSections = $starterSections | append . -}}
       {{- end }}
     {{- end }}
     <section class="tools-start" aria-label="Start here">

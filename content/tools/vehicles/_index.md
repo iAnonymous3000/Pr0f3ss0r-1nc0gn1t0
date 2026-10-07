@@ -14,12 +14,12 @@ Toyota announced a [broader U.S. DCM rollout](https://pressroom.toyota.com/toyot
 
 Before any purchase: run the VIN through [Privacy4Cars](https://vehicleprivacyreport.com) and physically inspect for an SOS or emergency-call button near the mirror or overhead console. On pre-2020 Toyotas, no SOS button is a strong sign that Safety Connect hardware was not installed, but still confirm by VIN and trim sheet before treating the car as clean.
 
-Use the [Vehicle Telematics Inspection Checklist](/tools/vehicles/vehicle-telematics-inspection-checklist/) before trusting any vehicle recommendation. Also run a separate [Aftermarket GPS / OBD Tracker Inspection](/tools/vehicles/aftermarket-gps-obd-tracker-inspection/) on used cars, especially former rentals, fleet vehicles, repossessions, financed cars, buy-here-pay-here cars, and trucks. A car can be factory-clean and still carry a dealer, fleet, finance, insurance, or prior-owner tracker.
+Use the [Vehicle Telematics Inspection Checklist]({{< relref "/tools/vehicles/vehicle-telematics-inspection-checklist" >}}) before trusting any vehicle recommendation. Also run a separate [Aftermarket GPS / OBD Tracker Inspection]({{< relref "/tools/vehicles/aftermarket-gps-obd-tracker-inspection" >}}) on used cars, especially former rentals, fleet vehicles, repossessions, financed cars, buy-here-pay-here cars, and trucks. A car can be factory-clean and still carry a dealer, fleet, finance, insurance, or prior-owner tracker.
 
 Assurance tiers:
 
 - Best: verified no embedded modem from the factory.
-- Acceptable: modem physically bypassed, antenna-disconnected, or removed on a vehicle you own and understand. For 2020+ Toyotas, the [Toyota DCM Bypass Harness](/tools/vehicles/toyota-dcm-bypass-harness/) is the advanced fallback when a clean pre-2020 car is not an option.
+- Acceptable: modem physically bypassed, antenna-disconnected, or removed on a vehicle you own and understand. For 2020+ Toyotas, the [Toyota DCM Bypass Harness]({{< relref "/tools/vehicles/toyota-dcm-bypass-harness" >}}) is the advanced fallback when a clean pre-2020 car is not an option.
 - Lower assurance: vendor or app deactivation with documentation from the manufacturer.
 - Not sufficient: subscription cancellation alone, app deletion alone, or "the dealer said it is fine."
 
