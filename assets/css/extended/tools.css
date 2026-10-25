@@ -588,6 +588,11 @@
     border-radius: 18px;
 }
 
+/* Preserve the rounded corners supplied in Maple's official SVG. */
+.tool-single-logo[src$="/images/tools/maple-logo.svg"] {
+    border-radius: 0;
+}
+
 .tool-single-copy .post-title {
     margin-top: 0;
 }
