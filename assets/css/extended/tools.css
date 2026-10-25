@@ -588,8 +588,9 @@
     border-radius: 18px;
 }
 
-/* Preserve the rounded corners supplied in Maple's official SVG. */
-.tool-single-logo[src$="/images/tools/maple-logo.svg"] {
+/* Preserve the shapes supplied in the official artwork. */
+.tool-single-logo[src$="/images/tools/maple-logo.svg"],
+.tool-single-logo[src$="/images/tools/bitrefill-logo.png"] {
     border-radius: 0;
 }
 
